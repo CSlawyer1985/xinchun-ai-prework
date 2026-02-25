@@ -21,5 +21,3 @@ features:
   - title: 支持渠道明确
     details: 学员群优先；紧急问题可联系陈石微信 13567896937。
 ---
-
-[![GitHub Repo stars](https://img.shields.io/github/stars/CSlawyer1985/xinchun-ai-prework?style=for-the-badge)](https://github.com/CSlawyer1985/xinchun-ai-prework/stargazers)
