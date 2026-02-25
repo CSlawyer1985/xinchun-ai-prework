@@ -353,7 +353,7 @@ Could not resolve host: open.bigmodel.cn
 **💡 小贴士**：LTS版本更稳定，适合生产环境。
 
 **图示参考（Windows）**
-![Node.js 下载页](https://mmbiz.qpic.cn/sz_mmbiz_png/L7Pjpic64pniaQRZGw3zPyVd5zibM52XzSwrrvCPuYPyuy6ia5Ph7HsMljbqtxvNPksbkVLtia851OV99OkOgiaB3u9uUoFLwF5qOqFkrk9RFDPXM/640?wx_fmt=png&from=appmsg&tp=wxpic&wxfrom=5&wx_lazy=1#imgIndex=2)
+![Node.js 下载页](/images/claude-guide/nodejs-download.png)
 
 #### 方法2：使用Homebrew（macOS/Linux推荐）
 
@@ -832,9 +832,9 @@ command not found: claude
 - 已复制并保存API Key
 
 **图示参考（GLM API Key）**
-![智谱控制台入口](https://mmbiz.qpic.cn/mmbiz_png/tOO35G3AFpBHwfJqfJAczT9cicuIgNprkwcmfBqr3FdeaUceKturFkT4dhMAaSE7t3CyicZCFryGsx1QaIuueFmw/640?wx_fmt=png&from=appmsg&tp=wxpic&wxfrom=5&wx_lazy=1#imgIndex=4)
-![添加新 API Key](https://mmbiz.qpic.cn/mmbiz_png/tOO35G3AFpBHwfJqfJAczT9cicuIgNprkib77fBkFuXVCeBxNKicTSQf4eorMmqcBnHDqKz40wbSb5FkhibR1vM8Aw/640?wx_fmt=png&from=appmsg&tp=wxpic&wxfrom=5&wx_lazy=1#imgIndex=5)
-![复制 API Key](https://mmbiz.qpic.cn/mmbiz_png/tOO35G3AFpBHwfJqfJAczT9cicuIgNprk5P6BZteULtAjYIOpsmyxAaPYV4vXjL0IWOor2AOic405Sm0XpQPLBeg/640?wx_fmt=png&from=appmsg&tp=wxpic&wxfrom=5&wx_lazy=1#imgIndex=7)
+![智谱控制台入口](/images/claude-guide/glm-console-entry.png)
+![添加新 API Key](/images/claude-guide/glm-add-api-key.png)
+![复制 API Key](/images/claude-guide/glm-copy-api-key.png)
 
 **❌ 失败表现**：
 
@@ -1021,8 +1021,8 @@ You: _
 - 能看到 `You:`提示符，等待输入
 
 **图示参考（Windows）**
-![运行 claude 启动](https://mmbiz.qpic.cn/mmbiz_png/L7Pjpic64pngx6ZUQHFiaCn5Sa3t6QYa4n7jIUQAicwvdgAEXvhsqURfXiaJy60t5WDDJ7obTD2lnftvwlZkt6GkibF3B1KEpiarXld7jFsvEPnvg/640?wx_fmt=png&from=appmsg&tp=wxpic&wxfrom=5&wx_lazy=1#imgIndex=13)
-![进入交互界面](https://mmbiz.qpic.cn/mmbiz_png/L7Pjpic64pnghNzczhKuyBktjB7sqpUrNRQr5gDxriaRicWgEYCDtecicwKHznpGStw3jhWPlrhEcUsFvWO2KYBXKMdrjs44C2ySYJEYjPydYaU/640?wx_fmt=png&from=appmsg&tp=wxpic&wxfrom=5&wx_lazy=1#imgIndex=14)
+![运行 claude 启动](/images/claude-guide/claude-run.png)
+![进入交互界面](/images/claude-guide/claude-interactive.png)
 
 **❌ 失败表现**：
 
