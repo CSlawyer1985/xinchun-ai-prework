@@ -30,6 +30,8 @@ jobs:
         run: npm install
 
       - name: Build
+        env:
+          SITE_URL: https://www.legalagi.cn
         run: npm run docs:build
 
       - name: Setup Pages

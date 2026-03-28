@@ -1,0 +1,39 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#071823"/>
+      <stop offset="0.55" stop-color="#0D2234"/>
+      <stop offset="1" stop-color="#111827"/>
+    </linearGradient>
+    <radialGradient id="glowA" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1020 80) rotate(129.515) scale(320 311.636)">
+      <stop stop-color="#22D3EE" stop-opacity="0.32"/>
+      <stop offset="1" stop-color="#22D3EE" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glowB" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(180 560) rotate(-21.8014) scale(360 212)">
+      <stop stop-color="#FACC15" stop-opacity="0.18"/>
+      <stop offset="1" stop-color="#FACC15" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="card" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="rgba(255,255,255,0.12)"/>
+      <stop offset="1" stop-color="rgba(255,255,255,0.04)"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <circle cx="1020" cy="80" r="260" fill="url(#glowA)"/>
+  <circle cx="180" cy="560" r="230" fill="url(#glowB)"/>
+  <rect x="70" y="64" width="170" height="42" rx="21" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.16)"/>
+  <text x="102" y="92" fill="#7DD3FC" font-size="18" letter-spacing="4" font-family="Hiragino Sans GB, PingFang SC, Arial Unicode MS, sans-serif">LAWYER AI CAMP</text>
+
+  <text x="70" y="220" fill="#F8FAFC" font-size="78" font-weight="700" font-family="Hiragino Sans GB, PingFang SC, Arial Unicode MS, sans-serif">法律人 AI 训练营</text>
+  <text x="70" y="300" fill="#D6E4F0" font-size="30" font-family="Hiragino Sans GB, PingFang SC, Arial Unicode MS, sans-serif">课前指引 · 实用工具 · 往期学员</text>
+  <text x="70" y="382" fill="#C3D3E3" font-size="24" font-family="Hiragino Sans GB, PingFang SC, Arial Unicode MS, sans-serif">面向法律人的 AI 实操训练站，适合分享给同事、学员与朋友圈。</text>
+
+  <rect x="70" y="458" width="286" height="88" rx="28" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.12)"/>
+  <text x="104" y="492" fill="#7DD3FC" font-size="18" letter-spacing="3" font-family="Hiragino Sans GB, PingFang SC, Arial Unicode MS, sans-serif">WECHAT SHARE READY</text>
+  <text x="104" y="528" fill="#F8FAFC" font-size="28" font-weight="700" font-family="Hiragino Sans GB, PingFang SC, Arial Unicode MS, sans-serif">分享卡片封面</text>
+
+  <rect x="846" y="424" width="284" height="120" rx="32" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.12)"/>
+  <text x="888" y="472" fill="#E5F3FF" font-size="26" font-weight="700" font-family="Hiragino Sans GB, PingFang SC, Arial Unicode MS, sans-serif">法律人 AI 训练营</text>
+  <text x="888" y="510" fill="#B7C7D8" font-size="20" font-family="Hiragino Sans GB, PingFang SC, Arial Unicode MS, sans-serif">课前指引站</text>
+  <circle cx="1090" cy="484" r="16" fill="#34D399" fill-opacity="0.9"/>
+</svg>

@@ -2,22 +2,53 @@ import { defineConfig } from 'vitepress'
 
 const repo = process.env.GITHUB_REPOSITORY?.split('/')[1] ?? ''
 const isUserSite = repo.endsWith('.github.io')
+const hasCustomSiteUrl = Boolean(process.env.SITE_URL ?? process.env.VITEPRESS_SITE_URL)
 const base = process.env.GITHUB_ACTIONS === 'true'
-  ? (isUserSite ? '/' : `/${repo}/`)
+  ? (hasCustomSiteUrl ? '/' : (isUserSite ? '/' : `/${repo}/`))
   : '/'
+const siteUrl = (process.env.SITE_URL ?? process.env.VITEPRESS_SITE_URL ?? '').replace(/\/$/, '')
+const siteTitle = '法律人 AI 训练营'
+const siteDescription = '面向法律人的 AI 实操训练站，含课前指引、实用工具与往期学员名录。'
+const shareImagePath = `${base}images/share/wechat-card.png`
+const shareImageUrl = siteUrl ? `${siteUrl}${shareImagePath}` : shareImagePath
+const homeUrl = siteUrl ? `${siteUrl}${base}` : undefined
+
+const shareHead = [
+  ['meta', { name: 'theme-color', content: '#071823' }],
+  ['meta', { property: 'og:type', content: 'website' }],
+  ['meta', { property: 'og:locale', content: 'zh_CN' }],
+  ['meta', { property: 'og:site_name', content: siteTitle }],
+  ['meta', { property: 'og:title', content: siteTitle }],
+  ['meta', { property: 'og:description', content: siteDescription }],
+  ['meta', { property: 'og:image', content: shareImageUrl }],
+  ['meta', { property: 'og:image:width', content: '1200' }],
+  ['meta', { property: 'og:image:height', content: '630' }],
+  ['meta', { property: 'og:image:type', content: 'image/png' }],
+  ['meta', { name: 'twitter:card', content: 'summary_large_image' }],
+  ['meta', { name: 'twitter:title', content: siteTitle }],
+  ['meta', { name: 'twitter:description', content: siteDescription }],
+  ['meta', { name: 'twitter:image', content: shareImageUrl }]
+] as [string, Record<string, string>][]
+
+if (homeUrl) {
+  shareHead.push(['meta', { property: 'og:url', content: homeUrl }])
+  shareHead.push(['link', { rel: 'canonical', href: homeUrl }])
+}
 
 export default defineConfig({
-  title: '新春AI工作坊',
-  description: '课前指引（学员查阅版）',
+  title: siteTitle,
+  description: siteDescription,
   lang: 'zh-CN',
   base,
   cleanUrls: true,
   lastUpdated: true,
+  head: shareHead,
   themeConfig: {
-    siteTitle: '新春AI工作坊',
+    siteTitle,
     nav: [
       { text: '课前指引', link: '/prework/00_课前准备总览' },
-      { text: '环境验证', link: '/prework/03_环境验证清单' },
+      { text: '实用工具', link: '/tools/00_实用工具总览' },
+      { text: '往期学员', link: '/students/00_往期学员名录' },
       { text: '常见问题', link: '/prework/04_常见问题FAQ' }
     ],
     sidebar: [
@@ -30,6 +61,19 @@ export default defineConfig({
           { text: '03 环境验证清单', link: '/prework/03_环境验证清单' },
           { text: '04 常见问题 FAQ', link: '/prework/04_常见问题FAQ' }
         ]
+      },
+      {
+        text: '实用工具',
+        items: [
+          { text: '00 实用工具总览', link: '/tools/00_实用工具总览' },
+          { text: '01 Claude Code 速查表', link: '/tools/01_Claude_Code_速查表' }
+        ]
+      },
+      {
+        text: '往期学员',
+        items: [
+          { text: '00 往期学员名录', link: '/students/00_往期学员名录' }
+        ]
       }
     ],
     socialLinks: [
@@ -39,7 +83,7 @@ export default defineConfig({
       provider: 'local'
     },
     footer: {
-      message: '新春AI工作坊 · 学员查阅版',
+      message: `${siteTitle} · 学员查阅版`,
       copyright: 'Copyright © 2026'
     }
   }
