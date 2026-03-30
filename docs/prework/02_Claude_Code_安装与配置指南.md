@@ -46,12 +46,28 @@
 
 **与传统AI聊天工具的区别**：
 
-| 传统AI聊天工具   | Claude Code CLI      |
-| ---------------- | -------------------- |
-| 只能对话         | 能对话+操作文件      |
-| 需要手动复制粘贴 | 自动读取本地文件     |
-| 无法批量处理     | 支持批量处理文档     |
-| 界面操作         | 命令行操作（更高效） |
+<div class="compare-grid compare-grid--two">
+  <article class="compare-card">
+    <span class="compare-card__eyebrow">传统 AI 聊天工具</span>
+    <h4>适合问答，不擅长深入处理本地材料</h4>
+    <ul>
+      <li><strong>交互方式</strong>：主要是对话</li>
+      <li><strong>材料处理</strong>：通常需要手动复制粘贴</li>
+      <li><strong>批量任务</strong>：不适合连续处理很多文档</li>
+      <li><strong>操作方式</strong>：以图形界面为主</li>
+    </ul>
+  </article>
+  <article class="compare-card">
+    <span class="compare-card__eyebrow">Claude Code CLI</span>
+    <h4>适合把“对话 + 文件 + 流程”连成一条线</h4>
+    <ul>
+      <li><strong>交互方式</strong>：能对话，也能操作文件</li>
+      <li><strong>材料处理</strong>：可直接读取本地文件</li>
+      <li><strong>批量任务</strong>：支持批量整理和自动化处理</li>
+      <li><strong>操作方式</strong>：命令行为主，效率更高</li>
+    </ul>
+  </article>
+</div>
 
 **适用场景**：
 
@@ -353,7 +369,7 @@ Could not resolve host: open.bigmodel.cn
 **💡 小贴士**：LTS版本更稳定，适合生产环境。
 
 **图示参考（Windows）**
-![Node.js 下载页](/images/claude-guide/nodejs-download.png)
+<BaseImage src="/images/claude-guide/nodejs-download.png" alt="Node.js 下载页" />
 
 #### 方法2：使用Homebrew（macOS/Linux推荐）
 
@@ -832,9 +848,9 @@ command not found: claude
 - 已复制并保存API Key
 
 **图示参考（GLM API Key）**
-![智谱控制台入口](/images/claude-guide/glm-console-entry.png)
-![添加新 API Key](/images/claude-guide/glm-add-api-key.png)
-![复制 API Key](/images/claude-guide/glm-copy-api-key.png)
+<BaseImage src="/images/claude-guide/glm-console-entry.png" alt="智谱控制台入口" />
+<BaseImage src="/images/claude-guide/glm-add-api-key.png" alt="添加新 API Key" />
+<BaseImage src="/images/claude-guide/glm-copy-api-key.png" alt="复制 API Key" />
 
 **❌ 失败表现**：
 
@@ -1021,8 +1037,8 @@ You: _
 - 能看到 `You:`提示符，等待输入
 
 **图示参考（Windows）**
-![运行 claude 启动](/images/claude-guide/claude-run.png)
-![进入交互界面](/images/claude-guide/claude-interactive.png)
+<BaseImage src="/images/claude-guide/claude-run.png" alt="运行 claude 启动" />
+<BaseImage src="/images/claude-guide/claude-interactive.png" alt="进入交互界面" />
 
 **❌ 失败表现**：
 

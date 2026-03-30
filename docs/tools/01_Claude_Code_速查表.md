@@ -16,16 +16,22 @@ outline: [2, 3]
   </div>
 </div>
 
-<div class="cc-guide-nav">
-  <a href="#最近更新">最近更新</a>
-  <a href="#键盘快捷键">键盘快捷键</a>
-  <a href="#mcp-服务器">MCP</a>
-  <a href="#slash-命令">Slash 命令</a>
-  <a href="#记忆与文件">记忆与文件</a>
-  <a href="#工作流与技巧">工作流与技巧</a>
-  <a href="#配置与环境变量">配置与环境变量</a>
-  <a href="#skills-与-agents">Skills 与 Agents</a>
-  <a href="#cli-与-flags">CLI 与 Flags</a>
+<div class="cc-guide-summary">
+  <article class="cc-guide-summary__card">
+    <span class="cc-guide-summary__eyebrow">课堂先看</span>
+    <strong class="cc-guide-summary__title">最近更新 + 键盘快捷键</strong>
+    <p>如果你是第一次上手，先看这两节，基本能覆盖课堂演示里的高频操作。</p>
+  </article>
+  <article class="cc-guide-summary__card">
+    <span class="cc-guide-summary__eyebrow">按需回查</span>
+    <strong class="cc-guide-summary__title">Slash、MCP、Skills</strong>
+    <p>遇到“怎么切模型、怎么挂工具、怎么用自定义技能”时，再回到对应章节查细节。</p>
+  </article>
+  <article class="cc-guide-summary__card">
+    <span class="cc-guide-summary__eyebrow">定位方式</span>
+    <strong class="cc-guide-summary__title">用右侧目录快速跳转</strong>
+    <p>这页已经保留 VitePress 大纲目录，桌面端看右侧，手机端下滑即可快速定位章节。</p>
+  </article>
 </div>
 
 ## 最近更新

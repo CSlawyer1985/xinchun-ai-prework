@@ -32,13 +32,30 @@
 
 ### Cherry Studio vs Claude Code
 
-| 特性                | Claude Code      | Cherry Studio      |
-| ------------------- | ---------------- | ------------------ |
-| **界面**      | 命令行           | 可视化界面         |
-| **上手难度**  | 需要熟悉命令行   | 点击操作，简单直观 |
-| **知识库**    | 不支持           | 支持本地知识库     |
-| **Skill开发** | 需要手动配置     | 可视化配置         |
-| **适用场景**  | 批量处理、自动化 | 日常对话、知识管理 |
+<div class="compare-grid compare-grid--two">
+  <article class="compare-card">
+    <span class="compare-card__eyebrow">Claude Code</span>
+    <h4>更适合自动化和批量任务</h4>
+    <ul>
+      <li><strong>界面</strong>：命令行</li>
+      <li><strong>上手难度</strong>：需要熟悉命令行</li>
+      <li><strong>知识库</strong>：不支持本地知识库</li>
+      <li><strong>Skill 开发</strong>：更多靠手动配置</li>
+      <li><strong>适用场景</strong>：批量处理、自动化、复杂工作流</li>
+    </ul>
+  </article>
+  <article class="compare-card">
+    <span class="compare-card__eyebrow">Cherry Studio</span>
+    <h4>更适合课堂演示和日常使用</h4>
+    <ul>
+      <li><strong>界面</strong>：可视化界面</li>
+      <li><strong>上手难度</strong>：点击操作，简单直观</li>
+      <li><strong>知识库</strong>：支持本地知识库</li>
+      <li><strong>Skill 开发</strong>：支持可视化配置</li>
+      <li><strong>适用场景</strong>：日常对话、知识管理、快速上手</li>
+    </ul>
+  </article>
+</div>
 
 ### 本课程的配置方案
 

@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { withBase } from 'vitepress'
 import { alumniCohorts } from './alumni-data'
 </script>
 
@@ -23,11 +24,15 @@ import { alumniCohorts } from './alumni-data'
           class="alumni-avatar"
         >
           <div class="student-avatar__media">
-            <img :src="member.image" :alt="`${member.name} 头像`" loading="lazy" />
-            <div class="student-avatar__overlay">
-              <strong>{{ member.name }}</strong>
-              <span v-if="member.note">{{ member.note }}</span>
-            </div>
+            <img
+              :src="withBase(member.image)"
+              :alt="`${member.name} 头像`"
+              loading="lazy"
+            />
+          </div>
+          <div class="student-avatar__caption">
+            <strong class="student-avatar__name">{{ member.name }}</strong>
+            <span v-if="member.note" class="student-avatar__note" :title="member.note">{{ member.note }}</span>
           </div>
         </article>
       </div>
