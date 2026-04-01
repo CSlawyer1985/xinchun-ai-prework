@@ -66,7 +66,8 @@ export default defineConfig({
         text: '实用工具',
         items: [
           { text: '00 实用工具总览', link: '/tools/00_实用工具总览' },
-          { text: '01 Claude Code 速查表', link: '/tools/01_Claude_Code_速查表' }
+          { text: '01 Claude Code 速查表', link: '/tools/01_Claude_Code_速查表' },
+          { text: '02 Claude Code 提示词 324 条中文翻译版', link: '/tools/02_Claude_Code_提示词_324条_中文翻译版' }
         ]
       },
       {
