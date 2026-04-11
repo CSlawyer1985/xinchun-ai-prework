@@ -26,7 +26,10 @@ const cohort = alumniCohorts[0]
             class="student-avatar__image"
             :src="withBase(member.image)"
             :alt="`${member.name} 头像`"
+            width="84"
+            height="84"
             loading="lazy"
+            decoding="async"
           />
         </div>
         <div class="student-avatar__caption">

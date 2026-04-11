@@ -27,7 +27,10 @@ import { alumniCohorts } from './alumni-data'
             <img
               :src="withBase(member.image)"
               :alt="`${member.name} 头像`"
+              width="84"
+              height="84"
               loading="lazy"
+              decoding="async"
             />
           </div>
           <div class="student-avatar__caption">
