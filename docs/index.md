@@ -27,8 +27,8 @@ features:
 <div class="home-prep-strip">
   <article class="home-prep-card">
     <span class="home-prep-card__label">课程安排</span>
-    <strong>5 次核心课 + 社群共学</strong>
-    <p>原则上每周一堂，安排在周日晚上。</p>
+    <strong>先导课 + 6 次主课 + 返场课</strong>
+    <p>原则上每周一堂，主课之间留一周作业推进。</p>
   </article>
   <article class="home-prep-card">
     <span class="home-prep-card__label">至少准备</span>
