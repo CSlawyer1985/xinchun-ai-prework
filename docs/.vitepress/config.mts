@@ -7,8 +7,8 @@ const base = process.env.GITHUB_ACTIONS === 'true'
   ? (hasCustomSiteUrl ? '/' : (isUserSite ? '/' : `/${repo}/`))
   : '/'
 const siteUrl = (process.env.SITE_URL ?? process.env.VITEPRESS_SITE_URL ?? '').replace(/\/$/, '')
-const siteTitle = '法律人 AI 训练营'
-const siteDescription = '面向法律人的 AI 实操训练站，含课前指引、实用工具与往期学员名录。'
+const siteTitle = '四明山法师 AI 夜校'
+const siteDescription = '面向法律人的 AI 实操夜校，含课前指引、实用工具与往期学员名录。'
 const shareImagePath = `${base}images/share/wechat-card.png`
 const shareImageUrl = siteUrl ? `${siteUrl}${shareImagePath}` : shareImagePath
 const homeUrl = siteUrl ? `${siteUrl}${base}` : undefined

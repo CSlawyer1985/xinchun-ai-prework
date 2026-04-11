@@ -2,9 +2,9 @@
 layout: home
 
 hero:
-  name: "法律人 AI 训练营"
+  name: "四明山法师 AI 夜校"
   text: "3 步完成课前准备"
-  tagline: "面向法律人的 AI 实操入门站。预计 1.5 - 2.5 小时完成环境准备，开课时直接进入实操。"
+  tagline: "面向法律人的 AI 实操夜校。预计 1.5 - 2.5 小时完成环境准备，开课时直接进入实操。"
   actions:
     - theme: brand
       text: 先看准备总览
@@ -22,7 +22,7 @@ features:
     details: 最后跑一遍环境验证清单；如果卡住，再查 FAQ 或截图到群里求助，约 10 分钟。
 ---
 
-<HomeAsciiHero text="法律人 AI 训练营" target=".VPHomeHero .heading" />
+<HomeAsciiHero text="四明山法师 AI 夜校" target=".VPHomeHero .heading" />
 
 <div class="home-prep-strip">
   <article class="home-prep-card">
