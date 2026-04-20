@@ -42,6 +42,7 @@ export default defineConfig({
   base,
   cleanUrls: true,
   lastUpdated: true,
+  appearance: 'dark',
   head: shareHead,
   themeConfig: {
     siteTitle,
