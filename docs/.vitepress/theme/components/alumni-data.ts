@@ -29,7 +29,6 @@ export const alumniCohorts: AlumniCohort[] = [
       { name: '宫致成', note: 'Robert', image: '/images/students/宫致成_Robert.jpg' },
       { name: '指针', image: '/images/students/指针.jpg' },
       { name: '李子豪', note: '君泽君', image: '/images/students/李子豪律师  「君泽君」.jpg' },
-      { name: '李震东', note: '律师', image: '/images/students/李震东律师.jpg' },
       { name: '林晓琳', image: '/images/students/林晓琳.jpg' },
       { name: '毛线球', image: '/images/students/毛线球。.jpg' },
       { name: '董远航', image: '/images/students/董远航.jpg' },
