@@ -4,7 +4,7 @@ layout: home
 hero:
   name: "四明山法师 AI 夜校"
   text: "3 步完成课前准备"
-  tagline: "面向法律人的 AI 实操夜校。<br>一个寻找快乐、制造正向飞轮的地方。"
+  tagline: "法律人AI实操夜校——培养业务与技术的双语者。<br>一个寻找快乐、制造正向飞轮的地方。"
   actions:
     - theme: brand
       text: 先看准备总览
