@@ -253,6 +253,10 @@
   margin-bottom: 22px;
 }
 
+.student-showcase__cohort + .student-showcase__cohort {
+  margin-top: 48px;
+}
+
 .student-showcase__eyebrow,
 .alumni-directory__season,
 .cc-guide-hero__eyebrow {
