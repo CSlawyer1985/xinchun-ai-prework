@@ -14,7 +14,7 @@ hero:
       link: /prework/02_Claude_Code_安装与配置指南
     - theme: brand
       text: 立即报名
-      link: https://xeikezlmp0.feishu.cn/share/base/form/shrcn3Wen5eDyxRZ1lKnK5u3Wnd
+      link: https://xeikezlmp0.feishu.cn/share/base/form/shrcn6iE0WZVQ1lKMNnWwM1I6dc
 
 features:
   - title: 第 1 步：模型账号 + Cherry Studio
