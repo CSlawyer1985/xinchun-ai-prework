@@ -40,8 +40,8 @@ features:
   </article>
   <article class="home-prep-card">
     <span class="home-prep-card__label">核心软件</span>
-    <strong>4 个工具</strong>
-    <p>Cherry Studio、Claude Code、VS Code、CC Switch。</p>
+    <strong>N 个工具</strong>
+    <p>Cherry Studio、Work body、Claude Code、Codex、VS Code、CC Switch 等。</p>
   </article>
 </div>
 
