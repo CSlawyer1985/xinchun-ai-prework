@@ -42,10 +42,6 @@
 - 三期 Harness 速查卡 + 上下文工程速查卡
 - AI 通识课 Lesson 24 MCP 生态系统
 
-## 截图
-
-![法律 Agent 运行结构仪表盘](/images/tools/dashboard-screenshot.png)
-
 ## 入口
 
 👉 **[打开仪表盘](https://cslawyer1985.github.io/agent-structure-dashboard/)**
