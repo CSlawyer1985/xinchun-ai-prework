@@ -70,7 +70,8 @@ export default defineConfig({
           { text: '01 Claude Code 速查表', link: '/tools/01_Claude_Code_速查表' },
           { text: '02 Claude Code 提示词 324 条中文翻译版', link: '/tools/02_Claude_Code_提示词_324条_中文翻译版' },
           { text: '03 法律概念 WIKI', link: 'https://cslawyer1985.github.io/legalwiki/index.html' },
-          { text: '04 Claude for Legal中国法适配', link: 'https://cslawyer1985.github.io/claude-for-legal-ZH/' }
+          { text: '04 Claude for Legal中国法适配', link: 'https://cslawyer1985.github.io/claude-for-legal-ZH/' },
+          { text: '05 法律 Agent 运行结构仪表盘', link: '/tools/05_法律Agent运行结构仪表盘' }
         ]
       },
       {
