@@ -41,7 +41,7 @@ features:
   <article class="home-prep-card">
     <span class="home-prep-card__label">核心软件</span>
     <strong>N 个工具</strong>
-    <p>Cherry Studio、Work body、Claude Code、Codex、VS Code、CC Switch 等。</p>
+    <p>Cherry Studio、Work buddy、Claude Code、Codex、VS Code、CC Switch 等。</p>
   </article>
 </div>
 
