@@ -45,4 +45,6 @@ features:
   </article>
 </div>
 
+<StudentVoices />
+
 <StudentShowcase />

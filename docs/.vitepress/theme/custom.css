@@ -674,3 +674,195 @@
     justify-content: center;
   }
 }
+
+/* ===== 学员心声弹幕板（StudentVoices） ===== */
+.student-voices {
+  margin: 40px 0 0;
+}
+
+.student-voices__header {
+  max-width: 640px;
+  margin-bottom: 22px;
+}
+
+.student-voices__eyebrow {
+  margin: 0 0 8px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #0f766e;
+}
+
+.student-voices__title {
+  margin: 0;
+  font-size: clamp(28px, 4vw, 40px);
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  color: #0f172a;
+  text-wrap: balance;
+}
+
+.student-voices__lead {
+  margin: 12px 0 0;
+  font-size: 15px;
+  line-height: 1.7;
+  color: rgba(15, 23, 42, 0.6);
+}
+
+.student-voices__board {
+  position: relative;
+  padding: 32px 0;
+  border-radius: 26px;
+  background:
+    radial-gradient(circle at 10% 18%, rgba(45, 212, 191, 0.18), transparent 32%),
+    radial-gradient(circle at 90% 82%, rgba(255, 138, 31, 0.1), transparent 30%),
+    linear-gradient(180deg, rgba(15, 23, 42, 0.92), rgba(15, 23, 42, 0.8));
+  box-shadow: 0 18px 40px rgba(2, 6, 23, 0.2);
+}
+
+.student-voices__rail {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 5%, #000 95%, transparent);
+  mask-image: linear-gradient(to right, transparent, #000 5%, #000 95%, transparent);
+}
+
+.student-voices__track {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  will-change: transform;
+  animation: voices-scroll linear infinite;
+  animation-duration: var(--voices-duration, 32s);
+  animation-delay: var(--voices-delay, 0s);
+}
+
+.student-voices__track--reverse {
+  animation-direction: reverse;
+}
+
+.student-voices__board:hover .student-voices__track {
+  animation-play-state: paused;
+}
+
+.student-voices__group {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.student-voice {
+  display: inline-flex;
+  align-items: baseline;
+  flex: none;
+  margin-right: 56px;
+  font-size: 19px;
+  line-height: 1.4;
+  font-weight: 500;
+  color: rgba(226, 232, 240, 0.74);
+  white-space: nowrap;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.student-voice::before {
+  content: '“';
+  margin-right: 6px;
+  color: rgba(94, 234, 212, 0.45);
+  font-weight: 700;
+}
+
+.student-voice--highlight {
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: #99f6e4;
+}
+
+.student-voice--highlight::before {
+  color: rgba(45, 212, 191, 0.85);
+}
+
+.student-voice:hover {
+  color: #f8fafc;
+  transform: translateY(-1px);
+}
+
+.student-voice--highlight:hover {
+  color: #ccfbf1;
+}
+
+@keyframes voices-scroll {
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(-50%, 0, 0); }
+}
+
+/* 暗色模式标题适配 */
+.dark .student-voices__eyebrow {
+  color: #5eead4;
+}
+
+.dark .student-voices__title {
+  color: rgba(248, 250, 252, 0.95);
+}
+
+.dark .student-voices__lead {
+  color: rgba(203, 213, 225, 0.68);
+}
+
+/* 响应式 */
+@media (max-width: 768px) {
+  .student-voices__board {
+    padding: 24px 0;
+  }
+
+  .student-voices__rail {
+    gap: 10px;
+  }
+
+  .student-voice {
+    margin-right: 36px;
+    font-size: 16px;
+  }
+
+  .student-voice--highlight {
+    font-size: 20px;
+  }
+}
+
+/* 降低动态偏好：弹幕退化为流式标签云，克隆组隐藏避免重复 */
+@media (prefers-reduced-motion: reduce) {
+  .student-voices__track {
+    animation: none;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .student-voices__track--reverse {
+    animation-direction: normal;
+  }
+
+  .student-voices__group {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .student-voices__group--clone {
+    display: none;
+  }
+
+  .student-voices__rail {
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+
+  .student-voice {
+    margin-right: 14px;
+    margin-bottom: 6px;
+  }
+}
