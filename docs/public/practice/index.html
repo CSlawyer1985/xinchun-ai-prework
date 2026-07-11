@@ -1,0 +1,1061 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Claude Code 命令打字练习 · 四明山法师 AI 夜校</title>
+<style>
+  /* ============================================================
+     Claude Code 命令打字练习 · 工作版（qwerty 交互对齐）
+     · 敲对自动进下一条（揭示卡停留 ~2s，空格跳过）
+     · 错误键红字保持到敲对
+     · 成功一闪 + 按键音效（可关）+ 深色模式
+     强调色：Klein Blue #002FA7
+     ============================================================ */
+  :root {
+    --bg: #f5f6f8;
+    --canvas: #ffffff;
+    --ink: #1a1d24;
+    --label: #4a4f5a;
+    --faint: #8b909c;
+    --pending: #cfd3db;
+    --line: #e3e6ec;
+    --line-2: #d4d8e0;
+    --row-alt: #f7f8fa;
+    --accent: #002FA7;
+    --accent-soft: #e6ebf7;
+    --accent-ink: #0a1f6b;
+    --ok: #1a1d24;
+    --ok-glow: #1fa871;
+    --err: #d64545;
+    --err-soft: #fde8e8;
+    --code-bg: #0f1330;
+    --code-fg: #e6e9f7;
+    --code-mut: #8b909c;
+    --code-acc: #6ea8ff;
+    --mono: 'JetBrains Mono','IBM Plex Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+    --sans: 'Inter',-apple-system,BlinkMacSystemFont,system-ui,'PingFang SC','Microsoft YaHei',sans-serif;
+  }
+  body[data-theme="dark"] {
+    --bg: #0d1117;
+    --canvas: #161b22;
+    --ink: #e6e9f0;
+    --label: #9aa3b2;
+    --faint: #6b7480;
+    --pending: #3a4150;
+    --line: #232a35;
+    --line-2: #2d3540;
+    --row-alt: #1c232d;
+    --accent: #5b82ff;
+    --accent-soft: #1a2347;
+    --accent-ink: #a8bcff;
+    --ok: #e6e9f0;
+    --ok-glow: #3ddc84;
+    --err: #ff6b6b;
+    --err-soft: #3a1f24;
+    --code-bg: #0a0e22;
+    --code-fg: #e6e9f7;
+    --code-mut: #6b7480;
+    --code-acc: #6ea8ff;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html,body { height: 100%; }
+  body {
+    background: var(--bg); color: var(--ink); font-family: var(--sans);
+    -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+    overflow: hidden; transition: background .2s, color .2s;
+  }
+  .app { display: flex; height: 100vh; }
+
+  /* ---------- 侧栏 ---------- */
+  .sidebar {
+    width: 248px; flex-shrink: 0;
+    border-right: 1px solid var(--line); background: var(--canvas);
+    padding: 18px 14px 14px; display: flex; flex-direction: column; gap: 12px;
+    overflow-y: auto; transition: background .2s, border-color .2s;
+  }
+  .brand { display: flex; align-items: center; gap: 9px; padding-bottom: 4px; }
+  .brand .logo { width: 22px; height: 22px; border-radius: 5px; background: var(--accent); position: relative; flex-shrink: 0; }
+  .brand .logo::after { content:''; position:absolute; inset:5px; border:2px solid #fff; border-radius:2px; }
+  .brand h1 { font-size: 13px; font-weight: 600; letter-spacing: -0.01em; }
+  .brand h1 em { font-style: normal; color: var(--faint); font-weight: 400; font-size: 11px; display:block; letter-spacing: 0.02em; }
+  .back-link { font: 11px var(--sans); color: var(--faint); text-decoration: none; letter-spacing: 0.02em; margin: -4px 2px 6px; padding: 3px 8px 3px 0; align-self: flex-start; transition: color .15s; }
+  .back-link:hover { color: var(--accent); }
+
+  .side-label { font: 9px/1 var(--mono); letter-spacing: 0.18em; color: var(--faint); text-transform: uppercase; }
+  .chap-name { font-size: 12.5px; font-weight: 600; }
+  .progress { height: 6px; background: var(--line); border-radius: 3px; overflow: hidden; }
+  .progress > i { display: block; height: 100%; width: 0; background: var(--accent); transition: width .3s ease; }
+  .progress-meta { font: 10px var(--mono); color: var(--faint); }
+
+  .cmd-list { display: flex; flex-direction: column; gap: 3px; margin-top: 2px; }
+  .cmd-item {
+    padding: 7px 10px; border-radius: 5px;
+    font: 11.5px var(--mono); color: var(--faint);
+    cursor: pointer; letter-spacing: 0.01em;
+    border: 1px solid transparent;
+    display: flex; align-items: center; gap: 8px;
+    transition: background .12s;
+  }
+  .cmd-item .mk { width: 6px; height: 6px; border-radius: 50%; background: var(--line-2); flex-shrink: 0; }
+  .cmd-item.done { color: var(--label); }
+  .cmd-item.done .mk { background: var(--accent); }
+  .cmd-item.now { background: var(--accent-soft); color: var(--accent-ink); border-color: var(--accent-soft); font-weight: 600; }
+  .cmd-item.now .mk { background: var(--accent); }
+  .cmd-item.wrong .mk { background: var(--err); }
+  .cmd-item:hover { background: var(--row-alt); }
+
+  .side-foot { margin-top: auto; border-top: 1px solid var(--line); padding-top: 12px; display: flex; flex-direction: column; gap: 7px; }
+  .wrong-box {
+    padding: 9px 11px; border: 1px solid var(--line); border-radius: 6px;
+    display: flex; align-items: center; justify-content: space-between;
+    font: 11px var(--mono); color: var(--label);
+  }
+  .wrong-box b { color: var(--err); font-weight: 600; }
+  .ghost {
+    height: 30px; padding: 0 13px; border: 1px solid var(--line); border-radius: 6px;
+    background: var(--canvas); font: 11px var(--mono); color: var(--label);
+    cursor: pointer; letter-spacing: 0.02em; transition: background .12s;
+  }
+  .ghost:hover { background: var(--row-alt); }
+
+  /* ---------- 主区 ---------- */
+  .main { flex: 1; display: flex; flex-direction: column; min-width: 0; }
+
+  .toolbar {
+    height: 56px; border-bottom: 1px solid var(--line);
+    display: flex; align-items: center; padding: 0 22px; gap: 6px;
+    background: var(--canvas); transition: background .2s, border-color .2s;
+  }
+  .tabs { display: flex; gap: 4px; }
+  .tab {
+    height: 30px; padding: 0 14px;
+    border: 1px solid var(--line); border-radius: 6px; background: var(--canvas);
+    font: 11.5px var(--mono); color: var(--label); letter-spacing: 0.02em;
+    cursor: pointer; display: flex; align-items: center; gap: 7px; transition: all .12s;
+  }
+  .tab .n { font-size: 9px; color: var(--faint); }
+  .tab:hover { background: var(--row-alt); }
+  .tab.on { background: var(--accent); color: #fff; border-color: var(--accent); }
+  .tab.on .n { color: rgba(255,255,255,.7); }
+  .tb-spacer { flex: 1; }
+  .icon-btn {
+    width: 32px; height: 32px; border: 1px solid var(--line); border-radius: 6px;
+    background: var(--canvas); cursor: pointer; display: grid; place-items: center;
+    color: var(--label); transition: background .12s, border-color .12s;
+    font-size: 15px; line-height: 1;
+  }
+  .icon-btn:hover { background: var(--row-alt); }
+  .icon-btn.on { color: var(--accent); border-color: var(--accent); background: var(--accent-soft); }
+
+  /* 命令显示区 */
+  .center {
+    flex: 1; position: relative;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    padding: 40px 32px; gap: 26px;
+  }
+  .kicker {
+    font: 10px/1 var(--mono); letter-spacing: 0.26em; color: var(--faint);
+    text-transform: uppercase; display: flex; gap: 10px; align-items: center;
+  }
+  .kicker .dot { width: 4px; height: 4px; border-radius: 50%; background: var(--accent); }
+
+  .cmd-line {
+    font-family: var(--mono); font-weight: 600;
+    font-size: clamp(32px, 5vw, 60px); line-height: 1.18;
+    letter-spacing: -0.005em;
+    user-select: none; text-align: center;
+    padding: 4px 6px; transition: filter .15s;
+  }
+  .cmd-line.success { animation: okpop .3s ease; }
+  @keyframes okpop {
+    0%   { filter: none; }
+    40%  { filter: drop-shadow(0 0 14px var(--ok-glow)); }
+    100% { filter: none; }
+  }
+  .lt { color: var(--pending); transition: color .08s, background .08s, box-shadow .08s; border-radius: 3px; padding: 0 1px; }
+  .lt.space { min-width: 0.34em; display: inline-block; }
+  .lt.ok { color: var(--ok); }
+  .lt.cur { color: var(--accent-ink); background: var(--accent-soft); box-shadow: inset 0 -2px 0 var(--accent); }
+  .lt.err { color: var(--err) !important; background: var(--err-soft) !important; box-shadow: inset 0 -2px 0 var(--err) !important; animation: shk .18s; }
+  @keyframes shk { 0%,100%{transform:translateX(0)} 33%{transform:translateX(-2px)} 66%{transform:translateX(2px)} }
+
+  .hint-row { font: 11px var(--mono); color: var(--faint); letter-spacing: 0.08em; display: flex; align-items: center; gap: 10px; min-height: 22px; }
+  .kbd { border: 1px solid var(--line-2); border-radius: 4px; padding: 2px 7px; font-size: 10px; color: var(--label); background: var(--canvas); }
+  .hint-row.go { color: var(--accent); }
+
+  /* 答对揭示卡 */
+  .reveal {
+    position: absolute; left: 50%; transform: translateX(-50%) translateY(14px);
+    bottom: 24px; width: min(740px, 90%); max-height: min(82vh, 680px); overflow-y: auto;
+    border: 1px solid var(--accent); background: var(--canvas);
+    border-radius: 10px; padding: 16px 18px 14px;
+    box-shadow: 0 18px 48px -22px rgba(0,47,167,.45);
+    opacity: 0; pointer-events: none; transition: opacity .25s, transform .25s;
+    display: flex; flex-direction: column; gap: 9px;
+  }
+  .reveal.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+  .reveal-tag {
+    display: inline-block; align-self: flex-start; margin-bottom: 2px;
+    background: var(--accent); color: #fff;
+    font: 9px/1 var(--mono); letter-spacing: 0.16em; padding: 5px 9px; border-radius: 4px;
+  }
+  .rv-head { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; padding: 2px 0 8px; border-bottom: 1px solid var(--line); }
+  .rv-name { font: 600 15px/1.35 var(--mono); color: var(--ink); word-break: break-all; }
+  .rv-alias { font: 11px var(--mono); color: var(--accent); background: var(--accent-soft); padding: 2px 7px; border-radius: 4px; white-space: nowrap; }
+  .rv-alias:empty { display: none; }
+  .rv-detail { font-size: 12.5px; line-height: 1.7; color: var(--label); }
+  .rv-row { display: grid; grid-template-columns: 38px 1fr; gap: 4px; align-items: start; }
+  .rv-k { font: 9px/1.7 var(--mono); letter-spacing: 0.16em; color: var(--faint); text-transform: uppercase; padding-top: 2px; }
+  .rv-v { font-size: 13px; color: var(--ink); line-height: 1.55; }
+  .rv-code {
+    background: var(--code-bg); color: var(--code-fg);
+    border-radius: 6px; padding: 8px 11px;
+    font: 12px/1.6 var(--mono); letter-spacing: 0.01em; overflow-x: auto;
+  }
+  .rv-code .m { color: var(--code-mut); }
+  .rv-code .a { color: var(--code-acc); }
+  .rv-eff { background: var(--accent-soft); border-left: 3px solid var(--accent); padding: 7px 11px; border-radius: 0 5px 5px 0; font-size: 12.5px; color: var(--accent-ink); line-height: 1.55; }
+  .reveal-next { position: absolute; bottom: 8px; right: 16px; font: 10px var(--mono); color: var(--faint); letter-spacing: 0.08em; }
+
+  /* ---------- 右栏：命令详解（常驻默认显示） ---------- */
+  .info-panel {
+    width: 230px; flex-shrink: 0;
+    border-left: 1px solid var(--line); background: var(--canvas);
+    padding: 14px 14px; overflow-y: auto;
+    display: flex; flex-direction: column; gap: 9px;
+    transition: background .2s, border-color .2s;
+  }
+  .ip-head { font: 9px/1 var(--mono); letter-spacing: 0.18em; color: var(--faint); text-transform: uppercase; padding-bottom: 4px; }
+
+  /* 统计条 */
+  .stats {
+    height: 62px; border-top: 1px solid var(--line);
+    display: grid; grid-template-columns: repeat(5, 1fr); background: var(--canvas);
+    transition: background .2s, border-color .2s;
+  }
+  .stat { border-right: 1px solid var(--line); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; }
+  .stat:last-child { border-right: 0; }
+  .stat-val { font: 600 18px/1 var(--mono); color: var(--ink); font-variant-numeric: tabular-nums; letter-spacing: -0.01em; }
+  .stat-val.acc { color: var(--accent); }
+  .stat-lbl { font: 9px/1 var(--mono); color: var(--faint); letter-spacing: 0.16em; text-transform: uppercase; }
+
+  .done-screen {
+    position: absolute; inset: 0; background: var(--bg);
+    display: none; flex-direction: column; align-items: center; justify-content: center; gap: 14px; z-index: 50;
+  }
+  .done-screen.show { display: flex; }
+  .done-screen h2 { font-size: 26px; font-weight: 600; }
+  .done-screen p { font: 12px var(--mono); color: var(--faint); letter-spacing: 0.06em; }
+
+  @media (max-width: 980px) {
+    .info-panel { display: none; }
+  }
+  @media (max-width: 820px) {
+    .sidebar { display: none; }
+    .tab { padding: 0 10px; font-size: 11px; }
+  }
+</style>
+</head>
+<body>
+<div class="app">
+
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="logo"></div>
+      <h1>Claude Code 打字练习<em>命令 × 肌肉记忆</em></h1>
+    </div>
+    <a class="back-link" href="../" title="返回四明山法师 AI 夜校">← 返回夜校</a>
+    <div class="side-label">当前章节</div>
+    <div class="chap-name" id="chapName">CLI 命令</div>
+    <div class="progress"><i id="progBar"></i></div>
+    <div class="progress-meta"><span id="progTxt">0 / 0</span></div>
+    <div class="side-label" style="margin-top:6px">命令列表</div>
+    <div class="cmd-list" id="cmdList"></div>
+    <div class="side-foot">
+      <div class="wrong-box"><span>错题本</span><b><span id="wrongCnt">0</span> 条</b></div>
+      <div class="ghost" id="resetBtn" style="justify-content:center;text-align:center;">重置当前类别进度</div>
+    </div>
+  </aside>
+
+  <div class="main">
+    <div class="toolbar">
+      <div class="tabs" id="tabs"></div>
+      <div class="tb-spacer"></div>
+      <div class="ghost" id="prevBtn" title="上一条">‹ 上一条</div>
+      <div class="icon-btn" id="soundBtn" title="音效开关" style="font-family:var(--mono);font-size:13px">♪</div>
+      <div class="icon-btn" id="themeBtn" title="深色模式" style="font-size:14px">◐</div>
+    </div>
+
+    <div class="center">
+      <div class="kicker"><span class="dot"></span><span id="kickerTxt">CLI · 01 / 09</span></div>
+      <div class="cmd-line" id="cmdLine"></div>
+      <div class="hint-row" id="hintRow"></div>
+
+      <div class="done-screen" id="doneScreen">
+        <h2>本章全部完成</h2>
+        <p id="doneStats">—</p>
+        <div class="ghost" id="restartBtn" style="margin-top:8px">重新练习本章</div>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="stat-val" id="sTime">00:00</div><div class="stat-lbl">时间</div></div>
+      <div class="stat"><div class="stat-val" id="sInput">0</div><div class="stat-lbl">输入数</div></div>
+      <div class="stat"><div class="stat-val" id="sWpm">0</div><div class="stat-lbl">WPM</div></div>
+      <div class="stat"><div class="stat-val" id="sCorrect">0</div><div class="stat-lbl">正确数</div></div>
+      <div class="stat"><div class="stat-val acc" id="sAcc">100%</div><div class="stat-lbl">正确率</div></div>
+    </div>
+  </div>
+
+  <aside class="info-panel" id="infoPanel" data-od-id="info-panel">
+    <div class="ip-head">命令详解 · 常驻显示</div>
+    <div class="rv-head"><span class="rv-name" id="rvName"></span><span class="rv-alias" id="rvAlias"></span></div>
+    <div class="rv-row"><div class="rv-k">说明</div><div class="rv-v" id="rvDesc"></div></div>
+    <div class="rv-row"><div class="rv-k">详解</div><div class="rv-v rv-detail" id="rvDetail"></div></div>
+    <div class="rv-row"><div class="rv-k">场景</div><div class="rv-v" id="rvWhen"></div></div>
+    <div class="rv-row"><div class="rv-k">示例</div><div class="rv-code" id="rvCode"></div></div>
+    <div class="rv-row"><div class="rv-k">效果</div><div class="rv-eff" id="rvEff"></div></div>
+    <div class="rv-row"><div class="rv-k">贴士</div><div class="rv-v" id="rvTip"></div></div>
+  </aside>
+</div>
+
+<script>
+/* ============================================================ 命令数据 ============================================================ */
+const DATA = {
+  CLI: { title: 'CLI 命令 · 终端启动与子命令', items: [
+    { name:'claude',          desc:'启动交互式会话（REPL）',        ex:'claude',                            eff:'进入终端对话界面，等待提问' },
+    { name:'claude -p',       desc:'打印模式：单次提示后退出',      ex:'claude -p "解释这段代码"',          eff:'非交互运行，输出即退出，适合脚本' },
+    { name:'claude -c',       desc:'继续当前目录最近会话',          ex:'claude -c',                         eff:'-c 是 --continue 缩写，接续上次对话' },
+    { name:'claude -r',       desc:'按 ID 或名称恢复会话',          ex:'claude -r auth-refactor',           eff:'-r 是 --resume 缩写；不带参数弹选择器' },
+    { name:'claude --model',  desc:'指定本次会话模型',              ex:'claude --model sonnet',             eff:'覆盖配置与 ANTHROPIC_MODEL 环境变量' },
+    { name:'claude --fallback-model', desc:'主模型不可用时的备选链', ex:'claude --fallback-model sonnet,haiku', eff:'按顺序尝试，最多 3 级' },
+    { name:'claude mcp',      desc:'管理 MCP 服务器',               ex:'claude mcp list',                   eff:'查看 / 添加 / 删除 MCP 连接' },
+    { name:'claude mcp login',desc:'命令行跑 MCP OAuth 流',         ex:'claude mcp login sentry',           eff:'不打开 /mcp 面板，适合脚本' },
+    { name:'claude config',   desc:'查看与设置配置项',              ex:'claude config set -g model opus',   eff:'-g 用户级；影响后续所有会话' },
+    { name:'claude update',   desc:'更新到最新版',                  ex:'claude update',                     eff:'自更新二进制，无需手动重装' },
+    { name:'claude doctor',   desc:'诊断安装与配置健康',            ex:'claude doctor',                     eff:'检查版本/网络/认证/权限，只读不修' },
+    { name:'claude auth login',  desc:'登录 Anthropic 账户',        ex:'claude auth login --console',       eff:'--console 走 API 计费，--sso 强制单点' },
+    { name:'claude auth status', desc:'查看登录状态（JSON）',       ex:'claude auth status',                eff:'已登录退出码 0，未登录退出码 1' },
+    { name:'claude agents',   desc:'打开后台会话视图',              ex:'claude agents --json',              eff:'监控并并行调度多个后台 session' },
+    { name:'claude setup-token', desc:'生成 CI 长效 OAuth token',   ex:'claude setup-token',                eff:'打印到终端不保存，需订阅' },
+    { name:'claude install',  desc:'安装或重装原生二进制',          ex:'claude install stable',             eff:'可指定版本号、stable 或 latest' },
+    { name:'claude --add-dir',desc:'为本会话追加工作目录',          ex:'claude --add-dir ../lib',           eff:'授予文件读写权限；持久化走 permissions' },
+    { name:'claude --dangerously-skip-permissions', desc:'跳过全部权限确认（危险）', ex:'claude --dangerously-skip-permissions', eff:'等同 --permission-mode bypassPermissions' },
+    { name:'claude -v',       desc:'查看版本号',                    ex:'claude -v',                         eff:'打印当前版本并退出' },
+  ]},
+  Slash: { title: '斜杠命令 · 会话内操作', items: [
+    { name:'/init',           desc:'初始化项目记忆',         ex:'/init',           eff:'扫描代码库，生成 CLAUDE.md' },
+    { name:'/clear',          desc:'清空对话上下文',         ex:'/clear',          eff:'别名 /reset /new；释放 token' },
+    { name:'/compact',        desc:'压缩历史对话',           ex:'/compact',        eff:'摘要化历史，腾出上下文空间' },
+    { name:'/model',          desc:'切换模型并存为默认',     ex:'/model opus',     eff:'切换底层模型，立即生效' },
+    { name:'/config',         desc:'打开设置界面',           ex:'/config',         eff:'别名 /settings；主题/模型/输出风格' },
+    { name:'/agents',         desc:'管理子智能体',           ex:'/agents',         eff:'提示编辑 .claude/agents/ 目录' },
+    { name:'/mcp',            desc:'管理 MCP 连接与 OAuth',  ex:'/mcp reconnect github', eff:'重连 / 启用 / 禁用 MCP 服务器' },
+    { name:'/memory',         desc:'编辑 CLAUDE.md 记忆',    ex:'/memory',         eff:'编辑记忆文件、开关自动记忆' },
+    { name:'/permissions',    desc:'管理权限规则',           ex:'/permissions',    eff:'别名 /allowed-tools；增删 allow/ask/deny' },
+    { name:'/hooks',          desc:'查看钩子配置',           ex:'/hooks',          eff:'查看各工具事件的钩子挂载' },
+    { name:'/review',         desc:'审查 GitHub PR',         ex:'/review 1234',    eff:'按 PR 号做单次只读审查' },
+    { name:'/cost',           desc:'查看用量与花费',         ex:'/cost',           eff:'别名 /usage /stats；显示累计消耗' },
+    { name:'/help',           desc:'查看可用命令',           ex:'/help',           eff:'列出全部斜杠命令与说明' },
+    { name:'/login',          desc:'登录账户',               ex:'/login',          eff:'交互式登录 Anthropic 账户' },
+    { name:'/logout',         desc:'登出账户',               ex:'/logout',         eff:'清除登录凭证' },
+    { name:'/status',         desc:'查看版本/模型/连接',     ex:'/status',         eff:'设置界面 Status 标签页' },
+    { name:'/resume',         desc:'恢复会话',               ex:'/resume',         eff:'别名 /continue；按 ID/名称恢复' },
+    { name:'/branch',         desc:'在当前点开对话分支',     ex:'/branch',         eff:'从当前位置分叉出新会话' },
+    { name:'/rewind',         desc:'回滚对话与代码',         ex:'/rewind',         eff:'别名 /checkpoint /undo' },
+    { name:'/diff',           desc:'查看未提交改动',         ex:'/diff',           eff:'交互式 diff 查看器，含逐轮 diff' },
+    { name:'/export',         desc:'导出对话为纯文本',       ex:'/export chat.txt', eff:'导出当前会话' },
+    { name:'/context',        desc:'上下文占用可视化',       ex:'/context',        eff:'彩色网格展示当前上下文使用' },
+    { name:'/doctor',         desc:'体检并修复问题',         ex:'/doctor',         eff:'别名 /checkup；可应用修复' },
+    { name:'/vim',            desc:'切换 vim 键位',          ex:'/vim',            eff:'输入框启用 vim 模式' },
+    { name:'/plan',           desc:'直接进入计划模式',       ex:'/plan fix the bug', eff:'只规划不执行，输出方案' },
+    { name:'/effort',         desc:'设置努力等级',           ex:'/effort high',    eff:'low/medium/high/xhigh/max' },
+    { name:'/add-dir',        desc:'会话内追加工作目录',     ex:'/add-dir ../lib', eff:'授予额外目录的文件访问' },
+    { name:'/security-review',desc:'安全审查当前分支',       ex:'/security-review', eff:'扫描待提交改动的漏洞' },
+    { name:'/release-notes',  desc:'查看更新日志',           ex:'/release-notes',  eff:'交互式版本选择器看 changelog' },
+    { name:'/advisor',  desc:'启用顾问模型',       ex:'/advisor opus',     eff:'关键节点让第二个模型给建议' },
+    { name:'/autofix-pr', desc:'云端 watch PR 自动修', ex:'/autofix-pr 只修 lint', eff:'CI 挂或评审提意见时自动推送修复' },
+    { name:'/background', desc:'本会话转入后台运行', ex:'/background',       eff:'detach 成后台 agent，腾出终端' },
+    { name:'/batch',     desc:'大规模并行改动编排', ex:'/batch 把 src/ 迁到 React', eff:'拆 5-30 单元，各起 worktree 并行' },
+    { name:'/btw',       desc:'快速问个旁支问题',   ex:'/btw 两函数区别?',  eff:'回答不计入主对话历史' },
+    { name:'/cd',        desc:'把会话移到新目录',     ex:'/cd ../other-repo', eff:'保留缓存，新目录 CLAUDE.md 追加' },
+    { name:'/chrome',    desc:'配置浏览器集成',     ex:'/chrome',           eff:'管理 Claude in Chrome 设置' },
+    { name:'/claude-api',desc:'载入 Claude API 文档', ex:'/claude-api migrate', eff:'按语言加载 SDK；migrate 升级旧代码' },
+    { name:'/code-review', desc:'审 diff 找 bug 与清理', ex:'/code-review high --fix', eff:'多 agent 审；--fix 直接改、--comment 发评论' },
+    { name:'/color',     desc:'设提示栏颜色',       ex:'/color blue',       eff:'红蓝绿黄紫橙粉青；default 重置' },
+    { name:'/copy',      desc:'复制最近回复到剪贴板', ex:'/copy 2',           eff:'N 取倒数第 N 条；SSH 可写文件' },
+    { name:'/dataviz',   desc:'图表设计指导',       ex:'/dataviz 画销售漏斗', eff:'选图型、配色、可访问性校验' },
+    { name:'/debug',     desc:'开调试日志排查问题', ex:'/debug 连不上 MCP', eff:'本会话起记录日志并分析' },
+    { name:'/deep-research', desc:'多源深度调研',   ex:'/deep-research hooks 怎么拦截', eff:'扇出搜索+交叉验证+引证报告' },
+    { name:'/design-login', desc:'授权 design-sync 访问', ex:'/design-login', eff:'用 claude.ai 账号授权一次' },
+    { name:'/design-sync', desc:'上传 React 设计系统', ex:'/design-sync Acme DS', eff:'设计稿用你的真实组件' },
+    { name:'/desktop',   desc:'转去桌面 App 继续',   ex:'/desktop',           eff:'需 Mac/Win + 订阅' },
+    { name:'/exit',      desc:'退出 CLI',           ex:'/exit',               eff:'/quit 别名；后台会话则 detach' },
+    { name:'/fast',      desc:'切换 fast 模式',     ex:'/fast on',           eff:'Opus 加速输出，不降级小模型' },
+    { name:'/fewer-permission-prompts', desc:'自动加只读命令白名单', ex:'/fewer-permission-prompts', eff:'扫历史写进 settings 减少确认' },
+    { name:'/focus',     desc:'切专注视图',         ex:'/focus',               eff:'只显最近提问+工具摘要+回复' },
+    { name:'/fork',      desc:'派生子智能体承接旁支', ex:'/fork 把测试补全',   eff:'后台子 agent 继承全对话，回填结果' },
+    { name:'/goal',      desc:'设目标做到满足',     ex:'/goal 测试全绿',     eff:'跨轮工作直到条件达成；clear 取消' },
+    { name:'/heapdump',  desc:'输出 JS 堆快照',     ex:'/heapdump',           eff:'写到 ~/Desktop 诊断内存占用' },
+    { name:'/ide',       desc:'管理 IDE 集成',       ex:'/ide',                 eff:'连 VS Code/Cursor 等并显状态' },
+    { name:'/insights',  desc:'分析使用情况',       ex:'/insights',           eff:'出报告：项目分布/交互模式/摩擦点' },
+    { name:'/install-github-app', desc:'装 Claude GitHub App', ex:'/install-github-app', eff:'选仓库并配 Actions 与 secrets' },
+    { name:'/install-slack-app', desc:'装 Claude Slack app', ex:'/install-slack-app', eff:'浏览器 OAuth 完成安装' },
+    { name:'/keybindings', desc:'打开快捷键配置',     ex:'/keybindings',       eff:'编辑键绑定 JSON' },
+    { name:'/loop',      desc:'定时反复跑某提示',     ex:'/loop 5m 看部署完没', eff:'省略间隔自适应；云端定时' },
+    { name:'/mobile',    desc:'下载手机 App 二维码', ex:'/mobile',               eff:'别名 /ios /android' },
+    { name:'/passes',    desc:'送朋友一周免费试用',   ex:'/passes',               eff:'仅合格账户可见' },
+    { name:'/plugin',    desc:'管理插件',           ex:'/plugin install code-review', eff:'list/install/enable/disable' },
+    { name:'/powerup',   desc:'动画演示快速学功能',   ex:'/powerup',           eff:'交互式小课程' },
+    { name:'/radio',     desc:'打开 lo-fi 电台',     ex:'/radio',               eff:'浏览器播放；无浏览器打印流地址' },
+    { name:'/recap',     desc:'生成本会话一行总结', ex:'/recap',               eff:'按需生成；离开回来也自动出' },
+    { name:'/reload-plugins', desc:'重载插件应用改动', ex:'/reload-plugins --force', eff:'不重启生效；改 MCP 工具需 --force' },
+    { name:'/reload-skills', desc:'重扫 skill 目录',   ex:'/reload-skills',       eff:'磁盘改的 skill 不重启即生效' },
+    { name:'/remote-control', desc:'开放本会话远程控制', ex:'/remote-control',   eff:'从 claude.ai 操控本会话' },
+    { name:'/remote-env', desc:'选云端 agent 环境',   ex:'/remote-env',         eff:'配 web/cloud 默认运行环境' },
+    { name:'/rename',    desc:'重命名当前会话',     ex:'/rename 认证重构',   eff:'提示栏显示；不带参自动取名' },
+    { name:'/run',       desc:'启动并驱动项目 App', ex:'/run',                 eff:'看改动真实运行而非只过测试' },
+    { name:'/run-skill-generator', desc:'教 /run 启动你的项目', ex:'/run-skill-generator', eff:'生成项目专属 run skill' },
+    { name:'/sandbox',   desc:'切换沙箱模式',       ex:'/sandbox',           eff:'隔离文件改动防误伤' },
+    { name:'/schedule',  desc:'创建云端定时任务',     ex:'/schedule 每天跑测试', eff:'Anthropic 云上跑' },
+    { name:'/scroll-speed', desc:'调鼠标滚轮速度',     ex:'/scroll-speed',       eff:'全屏渲染下可用，带标尺预览' },
+    { name:'/setup-bedrock', desc:'配 Amazon Bedrock', ex:'/setup-bedrock',   eff:'交互式配认证/区域/模型' },
+    { name:'/setup-vertex', desc:'配 Google Vertex',   ex:'/setup-vertex',     eff:'交互式配认证/项目/区域/模型' },
+    { name:'/simplify',  desc:'只做清理不改 bug',     ex:'/simplify',           eff:'4 agent 审：复用/简化/效率/抽象' },
+    { name:'/skills',    desc:'列出可用技能',       ex:'/skills',               eff:'按名过滤；t 排 token；空格切可见' },
+    { name:'/statusline', desc:'配置状态栏',         ex:'/statusline 显示 git 分支', eff:'描述需求或无参自动配' },
+    { name:'/stickers',  desc:'订购贴纸',           ex:'/stickers',           eff:'跳转订购页' },
+    { name:'/stop',      desc:'停止后台会话',       ex:'/stop',                 eff:'仅 attached 时可用；保留 transcript' },
+    { name:'/tasks',     desc:'查看后台任务',       ex:'/tasks',               eff:'别名 /bashes；管后台 shell/agent' },
+    { name:'/team-onboarding', desc:'生成团队上手指南', ex:'/team-onboarding', eff:'分析 30 天用量出 markdown' },
+    { name:'/teleport',  desc:'把 web 会话拉到本地', ex:'/teleport',           eff:'拉分支与对话；需订阅' },
+    { name:'/terminal-setup', desc:'配终端快捷键',     ex:'/terminal-setup',   eff:'配 Shift+Enter 等；按需出现' },
+    { name:'/theme',     desc:'换配色主题',         ex:'/theme',               eff:'auto 跟系统；含色盲友好与 ANSI' },
+    { name:'/tui',       desc:'切终端 UI 渲染器',     ex:'/tui fullscreen',   eff:'fullscreen 无闪烁；不带参打印当前' },
+    { name:'/ultraplan', desc:'云端草拟计划并审阅',   ex:'/ultraplan 重构认证', eff:'浏览器审阅后远程或本地执行' },
+    { name:'/ultrareview', desc:'云端多 agent 深度审查', ex:'/ultrareview 1234', eff:'Pro/Max 月 3 次免费' },
+    { name:'/upgrade',   desc:'升级到更高套餐',     ex:'/upgrade',           eff:'打开升级页；仅 Pro/Max 可见' },
+    { name:'/usage',     desc:'看花费/用量/统计',     ex:'/usage',               eff:'按 skill/subagent/MCP 分项' },
+    { name:'/usage-credits', desc:'配超额用量点数',   ex:'/usage-credits',   eff:'触限后继续工作；开账单页' },
+    { name:'/verify',    desc:'构建运行项目验证改动', ex:'/verify',               eff:'真跑起来看效果，非只过测试' },
+    { name:'/voice',     desc:'切换语音听写',       ex:'/voice hold',         eff:'hold/tap/off；需 claude.ai 账号' },
+    { name:'/web-setup', desc:'连 GitHub 到 web 版', ex:'/web-setup',         eff:'用本地 gh 凭证连 claude.ai/code' },
+    { name:'/workflows', desc:'查看运行中的工作流', ex:'/workflows',         eff:'watch/pause/resume/save 工作流' },
+  ]},
+  Subagent: { title: '内置工具 · Claude 的手脚', items: [
+    { name:'Bash',         desc:'执行 shell 命令',        ex:'Bash(npm test)',                          eff:'运行并返回标准输出与错误流' },
+    { name:'Read',         desc:'读取文件内容',           ex:'Read(src/index.ts)',                      eff:'支持文本/图片/PDF，自动识别' },
+    { name:'Edit',         desc:'精确字符串替换',         ex:'Edit(file, oldStr, newStr)',              eff:'按唯一匹配替换，支持多行' },
+    { name:'Write',        desc:'创建或覆盖文件',         ex:'Write(path, content)',                    eff:'写入完整内容，已存在则覆盖' },
+    { name:'Glob',         desc:'文件名模式匹配',         ex:'Glob("**/*.ts")',                         eff:'按 glob 列出匹配的文件路径' },
+    { name:'Grep',         desc:'正则跨文件搜索',         ex:'Grep("TODO", src)',                       eff:'返回匹配行与位置，支持多格式' },
+    { name:'Task',         desc:'委派任务给子智能体',     ex:'Task("general-purpose", "调研 X")',      eff:'隔离上下文并行，不污染主会话' },
+    { name:'WebFetch',     desc:'抓取网页并提问',         ex:'WebFetch(url, "总结")',                   eff:'转 markdown 后用小模型回答' },
+    { name:'WebSearch',    desc:'网页搜索',               ex:'WebSearch("claude code hooks")',          eff:'返回带标题/URL 的结果列表' },
+    { name:'NotebookEdit', desc:'编辑 Jupyter 单元格',    ex:'NotebookEdit(nb.ipynb)',                  eff:'增删改 notebook 的 cell' },
+    { name:'TodoWrite',    desc:'管理任务清单',           ex:'TodoWrite([...])',                        eff:'创建/更新待办，渲染为进度卡' },
+  ]},
+  Config: { title: '配置 · 权限 · 钩子', items: [
+    { name:'model',                  desc:'默认模型设置键',           ex:'"model": "sonnet"',           eff:'会话默认模型；/model 可热切换' },
+    { name:'env',                    desc:'注入会话的环境变量',       ex:'"env": {"FOO":"bar"}',      eff:'作用于会话与所有子进程' },
+    { name:'permissions',            desc:'权限配置 allow/deny/ask',  ex:'{"allow":["Bash(npm test)"]}', eff:'跨作用域合并而非覆盖' },
+    { name:'hooks',                  desc:'生命周期钩子配置',         ex:'{"hooks":{"PreToolUse":[...]}}', eff:'工具调用/会话事件触发自定义命令' },
+    { name:'includeCoAuthoredBy',    desc:'git 提交加 Co-Authored-By',ex:'"includeCoAuthoredBy": true',  eff:'commit 追加 Co-Authored-By: Claude' },
+    { name:'cleanupPeriodDays',      desc:'会话文件保留天数',         ex:'"cleanupPeriodDays": 30',      eff:'默认 30，最小 1；超期启动时清理' },
+    { name:'apiKeyHelper',           desc:'API key 生成脚本',         ex:'"apiKeyHelper": "/bin/gen.sh"', eff:'脚本输出作 X-Api-Key 头' },
+    { name:'outputStyle',            desc:'输出风格设置键',           ex:'"outputStyle": "explanatory"', eff:'重建于 /clear 或重启，不热加载' },
+    { name:'editorMode',             desc:'编辑器键位模式',           ex:'"editorMode": "vim"',         eff:'normal 或 vim' },
+    { name:'fallbackModel',          desc:'备选模型链',               ex:'"fallbackModel": ["sonnet","haiku"]', eff:'主模型过载时按序尝试，最多 3 级' },
+    { name:'PreToolUse',             desc:'钩子：工具调用前',         ex:'matcher "Bash" + command',     eff:'可阻断；exit 2 拦截该次调用' },
+    { name:'PostToolUse',            desc:'钩子：工具调用成功后',     ex:'matcher "Edit" + command',     eff:'编辑后跑 lint / 格式化等' },
+    { name:'UserPromptSubmit',       desc:'钩子：提交提示词时',       ex:'注入附加上下文',                 eff:'stdout 进入 Claude 可见上下文' },
+    { name:'SessionStart',           desc:'钩子：会话开始或恢复',     ex:'打印项目备忘',                   eff:'可注入 additionalContext' },
+    { name:'Stop',                   desc:'钩子：响应结束时',         ex:'decision block 阻止停止',        eff:'exit 2 让 Claude 继续工作' },
+    { name:'.claude/settings.json',  desc:'项目配置（提交 git）',     ex:'.claude/settings.json',          eff:'团队共享的权限/钩子/环境' },
+    { name:'.claude/settings.local.json', desc:'本地配置（不提交）', ex:'.claude/settings.local.json',    eff:'个人覆盖；自动 gitignore' },
+    { name:'~/.claude/settings.json',desc:'用户全局配置',             ex:'~/.claude/settings.json',        eff:'所有项目共享的个人设置' },
+    { name:'CLAUDE.md',              desc:'项目记忆文件',             ex:'CLAUDE.md',                      eff:'每次会话自动加载的核心指令' },
+    { name:'.claude/agents/',        desc:'子智能体目录',             ex:'.claude/agents/reviewer.md',     eff:'frontmatter 定义 name/tools/model' },
+    { name:'.mcp.json',              desc:'项目 MCP 服务器',          ex:'.mcp.json',                      eff:'项目级 MCP 配置，可提交共享' },
+  ]}
+};
+
+/* ============================================================ 详解补充：按命令名索引 when(何时用) / tip(实战注意) / alias(别名) ============================================================ */
+const RICH = {
+  // ---- CLI ----
+  'claude': { when:'想在某个项目里开始一段对话式开发', tip:'首次进入会自动加载该项目的 CLAUDE.md' },
+  'claude -p': { alias:'--print', when:'脚本 / CI 里一次性提问拿结果', tip:'管道接 `cat file | claude -p` 可处理文件' },
+  'claude -c': { alias:'--continue', when:'刚退出又想接着上次聊', tip:'只接最近一条；跨目录的历史用 -r' },
+  'claude -r': { alias:'--resume', when:'想回到几天前的某段会话', tip:'可用会话名代替 ID，更好记' },
+  'claude --model': { when:'这次任务想换更强或更快的模型', tip:'别名 opus / sonnet / haiku / fable 可直接用' },
+  'claude --fallback-model': { when:'主模型限流时不想卡住', tip:'链最多 3 级，按顺序兜底' },
+  'claude mcp': { when:'装好新 MCP 服务器后检查连接', tip:'add / list / remove 三件套' },
+  'claude mcp login': { when:'MCP 需 OAuth 但在脚本里跑', tip:'--no-browser 打印链接、不自动开浏览器' },
+  'claude config': { when:'想永久改某个设置项', tip:'-g 改用户级；不带 -g 改项目级' },
+  'claude update': { when:'提示有新版或排查旧 bug', tip:'也可改 autoUpdatesChannel 走 stable 通道' },
+  'claude doctor': { when:'行为异常时先跑一遍自查', tip:'只读不改；要修复进会话用 /doctor' },
+  'claude auth login': { when:'首次安装或换账号', tip:'--console 走 Console、按 API 计费' },
+  'claude auth status': { when:'脚本里判断是否已登录', tip:'退出码 0/1 可被 if 直接判断' },
+  'claude agents': { when:'想同时跑多个后台任务', tip:'--json 给脚本用；不带参开交互视图' },
+  'claude setup-token': { when:'CI 环境要长期登录', tip:'只打印不保存，自己复制进 secret' },
+  'claude install': { when:'二进制损坏或想锁版本', tip:'stable 比最新版稳，约滞后一周' },
+  'claude --add-dir': { when:'临时要读写当前目录外的代码', tip:'想永久化写进 permissions.additionalDirectories' },
+  'claude --dangerously-skip-permissions': { when:'沙箱 / CI 里完全信任、想省确认', tip:'桌面日常别开，误删风险高' },
+  'claude -v': { alias:'--version', when:'排查问题先报版本号', tip:'完整变更日志看 /release-notes' },
+  // ---- Slash ----
+  '/init': { when:'新项目第一次用 Claude Code', tip:'生成的 CLAUDE.md 可手动补充项目约定' },
+  '/clear': { alias:'/reset /new', when:'上下文被旧任务污染、想换主题', tip:'不删历史，仍可 -r 恢复' },
+  '/compact': { when:'上下文快满了又想继续当前任务', tip:'可带指令告诉它保留哪些重点' },
+  '/model': { when:'任务难度变化、想换模型', tip:'选择会存为默认，下次沿用' },
+  '/config': { alias:'/settings', when:'想改主题 / 输出风格等偏好', tip:'改的即是 settings.json 的可视化版' },
+  '/agents': { when:'想看或建专用子智能体', tip:'真正编辑在 .claude/agents/*.md 文件' },
+  '/mcp': { when:'某个 MCP 连不上或要重授权', tip:'reconnect 比重启会话省事' },
+  '/memory': { when:'想让 Claude 长期记住某条项目规矩', tip:'写进 CLAUDE.md 才持久；会话内提示不算' },
+  '/permissions': { alias:'/allowed-tools', when:'某条命令总弹确认、想免确认', tip:'嫌麻烦可跑 /fewer-permission-prompts 自动收集' },
+  '/hooks': { when:'排查钩子为何没触发', tip:'配置本体在 settings.json 的 hooks 键' },
+  '/review': { when:'PR 提交前快速过一遍', tip:'只读审查，不改代码' },
+  '/cost': { alias:'/usage /stats', when:'想看这会话烧了多少', tip:'超预算可配 --max-budget-usd' },
+  '/help': { when:'忘了某命令是否存在', tip:'命令太多时配合 /skills 一起看' },
+  '/login': { when:'提示未登录或 token 过期', tip:'多账号先 /logout 再登' },
+  '/logout': { when:'换账号或离开公共机器', tip:'清凭证后已开的会话需重启' },
+  '/status': { when:'排查连不上 / 版本 / 账户', tip:'等价设置面板的 Status 标签' },
+  '/resume': { alias:'/continue', when:'想回到某条历史会话', tip:'配 -c 只接最近一条' },
+  '/branch': { when:'想在当前节点试两条思路', tip:'比重启会话省上下文' },
+  '/rewind': { alias:'/checkpoint /undo', when:'刚让 Claude 改坏了、想退回', tip:'连代码改动一起回滚，靠文件快照' },
+  '/diff': { when:'想看 Claude 这一轮到底改了啥', tip:'比直接 git diff 更好按轮查看' },
+  '/export': { when:'想把对话存档或贴给别人', tip:'导出纯文本，不含图片' },
+  '/context': { when:'提示「上下文将满」时看占用', tip:'颜色块越满越该 /compact' },
+  '/doctor': { alias:'/checkup', when:'进会话后想体检并修复', tip:'比 claude doctor 多了修复能力' },
+  '/vim': { when:'习惯 vim、想用 hjkl 编辑输入', tip:'永久化写 editorMode: vim' },
+  '/plan': { when:'复杂任务想先看方案再动手', tip:'确认计划后才进执行，避免乱改' },
+  '/effort': { when:'简单任务省 token、难题拉满', tip:'ultracode 等级最烧但最强' },
+  '/add-dir': { when:'会话中途要碰别的目录', tip:'等价命令行 --add-dir' },
+  '/security-review': { when:'提交前扫一眼有没有漏洞', tip:'只看当前分支的待提交改动' },
+  '/release-notes': { when:'行为变了、想查更新了啥', tip:'可挑版本对比' },
+  '/advisor': { when:'难题想要第二意见', tip:'off 关闭；不带参开选择器' },
+  '/autofix-pr': { when:'提了 PR 想 CI/评审自动修', tip:'需 gh CLI + web 版权限' },
+  '/background': { alias:'/bg', when:'要让当前任务后台继续、腾出终端', tip:'用 claude agents 监控' },
+  '/batch': { when:'一次大改横跨整个代码库', tip:'需 git 仓库；每单元各起 worktree' },
+  '/btw': { when:'想插句题外话不打断主线', tip:'不计入对话历史' },
+  '/cd': { when:'要把会话搬到另一个仓库', tip:'只想加目录用 /add-dir' },
+  '/chrome': { when:'用浏览器集成时', tip:'仅集成场景出现' },
+  '/claude-api': { when:'写 Claude API 代码或升级旧版', tip:'代码 import anthropic 时自动触发' },
+  '/code-review': { when:'提交前审 diff 找 bug', tip:'ultra 跑云端多 agent；--fix 直接改' },
+  '/color': { when:'多会话想用颜色区分', tip:'default 重置；Remote Control 同步到 claude.ai' },
+  '/copy': { when:'想把 Claude 回复贴到别处', tip:'SSH 下按 w 写文件；N 取倒数第 N 条' },
+  '/dataviz': { when:'要画图表/仪表盘', tip:'色盲安全与对比度自动校验' },
+  '/debug': { when:'行为异常要查日志', tip:'默认不开；运行后从此刻起记录' },
+  '/deep-research': { when:'要深度、多源、带引证的调研', tip:'适合政策/选型/学术问题' },
+  '/design-login': { when:'首次用 /design-sync 前授权', tip:'用 claude.ai 账号登录一次' },
+  '/design-sync': { when:'想让 Claude Design 用你的真实组件', tip:'首次大库同步要几小时' },
+  '/desktop': { alias:'/app', when:'想转去桌面 App 继续', tip:'需 Mac/Win + 订阅' },
+  '/exit': { alias:'/quit', when:'结束会话', tip:'后台会话是 detach 而非退出' },
+  '/fast': { when:'要 Opus 加速输出', tip:'不降级小模型；非交互需启动时带 settings' },
+  '/fewer-permission-prompts': { when:'嫌权限确认太多', tip:'扫历史自动加只读命令白名单' },
+  '/focus': { when:'只关心最后结果', tip:'仅全屏渲染可用' },
+  '/fork': { when:'想旁支一个子任务后台跑', tip:'结果回填主会话；区别于 /branch 自己进副本' },
+  '/goal': { when:'要 Claude 一直做到某条件', tip:'clear/stop/off 取消' },
+  '/heapdump': { when:'排查内存占用过高', tip:'输出到 ~/Desktop' },
+  '/ide': { when:'想连编辑器集成', tip:'显示连接状态' },
+  '/insights': { when:'想复盘自己怎么用 Claude', tip:'出摩擦点报告' },
+  '/install-github-app': { when:'团队要用 GitHub 集成', tip:'顺带配 Actions 与 secrets' },
+  '/install-slack-app': { when:'团队要用 Slack 集成', tip:'浏览器完成 OAuth' },
+  '/keybindings': { when:'想改快捷键', tip:'打开 JSON 文件编辑' },
+  '/loop': { alias:'/proactive', when:'要定时反复执行某检查', tip:'省略间隔自适应' },
+  '/mobile': { alias:'/ios /android', when:'想装手机 App', tip:'显二维码' },
+  '/passes': { when:'想送朋友试用', tip:'仅合格账户可见' },
+  '/plugin': { when:'装/管插件', tip:'list/install/enable/disable' },
+  '/powerup': { when:'新手想快速了解功能', tip:'动画小课程' },
+  '/radio': { when:'想要背景音乐', tip:'无浏览器打印流地址' },
+  '/recap': { when:'想要本会话一句话总结', tip:'离开回来也会自动出' },
+  '/reload-plugins': { when:'改了插件想不重启生效', tip:'改 MCP 工具需 --force' },
+  '/reload-skills': { when:'磁盘上加了/改了 skill', tip:'不重启即生效' },
+  '/remote-control': { alias:'/rc', when:'想从 claude.ai 操控本会话', tip:'在桌面继续手机上的会话' },
+  '/remote-env': { when:'配云端 agent 环境', tip:'设 web/cloud 默认运行环境' },
+  '/rename': { when:'想给会话起好记的名', tip:'不带参自动取名' },
+  '/run': { when:'要看改动真跑起来', tip:'比只过测试更靠谱' },
+  '/run-skill-generator': { when:'教 /run 启动你的项目', tip:'生成项目专属 run skill' },
+  '/sandbox': { when:'怕文件被改坏、要隔离', tip:'仅支持平台可用' },
+  '/schedule': { alias:'/routines', when:'要云端定时跑任务', tip:'Anthropic 托管' },
+  '/scroll-speed': { when:'滚屏太快/太慢', tip:'仅全屏渲染；带标尺预览' },
+  '/setup-bedrock': { when:'走 Amazon Bedrock 计费', tip:'需先设 CLAUDE_CODE_USE_BEDROCK=1' },
+  '/setup-vertex': { when:'走 Google Vertex 计费', tip:'需先设 CLAUDE_CODE_USE_VERTEX=1' },
+  '/simplify': { when:'只想清理不改 bug', tip:'找 bug 用 /code-review' },
+  '/skills': { when:'看有哪些技能可用', tip:'t 排 token；空格切可见性' },
+  '/statusline': { when:'想自定义状态栏', tip:'不带参从 shell 提示符自动配' },
+  '/stickers': { when:'想要贴纸', tip:'跳转订购页' },
+  '/stop': { when:'要停掉后台会话', tip:'仅 attached 时可用；保留 transcript' },
+  '/tasks': { alias:'/bashes', when:'看后台跑了哪些任务', tip:'管后台 shell/agent' },
+  '/team-onboarding': { when:'要给队友出上手指南', tip:'分析 30 天用量生成 markdown' },
+  '/teleport': { alias:'/tp', when:'想把 web 会话拉到本地终端', tip:'需订阅' },
+  '/terminal-setup': { when:'Shift+Enter 等不生效', tip:'仅需要的终端出现' },
+  '/theme': { when:'想换配色', tip:'auto 跟系统；含色盲友好' },
+  '/tui': { when:'默认渲染器有闪烁', tip:'fullscreen 切无闪烁' },
+  '/ultraplan': { when:'要复杂规划先审再执行', tip:'浏览器审阅后远程或本地跑' },
+  '/ultrareview': { when:'要最深的代码审查', tip:'推荐 /code-review ultra；Pro/Max 月 3 次免费' },
+  '/upgrade': { when:'想升套餐', tip:'仅 Pro/Max 可见' },
+  '/usage': { when:'看花了多少/用量', tip:'/cost /stats 是别名；按 skill 分项' },
+  '/usage-credits': { when:'触限要继续工作', tip:'开账单页买点数；SSH 打印 URL' },
+  '/verify': { when:'确认改动确实生效', tip:'真构建运行观察，非只过测试' },
+  '/voice': { when:'想用语音输入', tip:'hold/tap/off；需 claude.ai 账号' },
+  '/web-setup': { when:'连 GitHub 到 web 版', tip:'用本地 gh 凭证' },
+  '/workflows': { when:'看后台工作流进度', tip:'watch/pause/resume/save' },
+  // ---- 工具 ----
+  'Bash': { when:'跑测试 / 构建 / git 等命令行操作', tip:'长命令配超时；危险命令加 deny 规则' },
+  'Read': { when:'看文件内容或图片 / PDF', tip:'大文件先 grep 定位再读片段，省 token' },
+  'Edit': { when:'改已有文件里的少量内容', tip:'oldStr 必须唯一，否则替换错位置' },
+  'Write': { when:'新建文件或整体重写', tip:'会覆盖，别用来改配置——用 Edit' },
+  'Glob': { when:'按文件名找文件', tip:'** 跨目录、* 单层，别混淆' },
+  'Grep': { when:'按内容 / 正则找代码', tip:'-i 忽略大小写、-l 只出文件名' },
+  'Task': { when:'子任务会刷屏、想隔离上下文', tip:'description 写清，Claude 才知道何时委派' },
+  'WebFetch': { when:'让 Claude 读某个网页', tip:'第二个参数是问题，越具体答越准' },
+  'WebSearch': { when:'需要联网查最新信息', tip:'结果是线索，关键数据要回原始源核实' },
+  'NotebookEdit': { when:'改 Jupyter notebook 的单元格', tip:'按 cell 索引定位：newCell 加、editCell 改' },
+  'TodoWrite': { when:'多步骤任务想看进度', tip:'拆细原子项，完成立即勾，进度卡才准' },
+  // ---- 配置 ----
+  'model': { when:'想给所有会话设默认模型', tip:'配合 fallbackModel 更稳' },
+  'env': { when:'要给会话注入 PATH / 变量引用等', tip:'别把真密钥写这里，用 apiKeyHelper' },
+  'permissions': { when:'团队要统一权限边界', tip:'规则跨作用域合并，deny 永远赢' },
+  'hooks': { when:'想「每次 X 就自动跑 Y」', tip:'阻断用 exit 2，exit 1 不阻断' },
+  'includeCoAuthoredBy': { when:'想让 commit 标注 Claude 参与', tip:'团队不要可设 false' },
+  'cleanupPeriodDays': { when:'磁盘紧张或合规要短保留', tip:'最小 1，设 0 会报错' },
+  'apiKeyHelper': { when:'用临时密钥中转、不存明文', tip:'配 TTL 控制刷新频率' },
+  'outputStyle': { when:'想要固定输出风格(简洁 / 详述)', tip:'/clear 或重启才重建，不热加载' },
+  'editorMode': { when:'vim 党想用 hjkl', tip:'设 normal 回默认' },
+  'fallbackModel': { when:'主模型常过载', tip:'链按文件最高优先级整体取，不混拼' },
+  'PreToolUse': { when:'拦危险操作 / 跑前置校验', tip:'返回 permissionDecision: deny 即拒' },
+  'PostToolUse': { when:'改完文件自动 lint / 格式化', tip:'matcher 限定工具，避免全量触发' },
+  'UserPromptSubmit': { when:'每次提问自动注入项目备忘', tip:'stdout 才进上下文，stderr 不进' },
+  'SessionStart': { when:'进会话打印环境 / 分支提醒', tip:'可注入 additionalContext' },
+  'Stop': { when:'强制 Claude 没做完不许停', tip:'decision: block 加 reason 让它继续' },
+  '.claude/settings.json': { when:'团队共享配置', tip:'会提交 git，别放个人偏好' },
+  '.claude/settings.local.json': { when:'个人覆盖不想影响团队', tip:'自动 gitignore，本地专属' },
+  '~/.claude/settings.json': { when:'你所有项目都要的默认', tip:'权限规则会和项目级合并' },
+  'CLAUDE.md': { when:'想让 Claude 长期记住项目规矩', tip:'写事实与约定，别写一次性指令' },
+  '.claude/agents/': { when:'反复用同一种专职助手', tip:'frontmatter 的 description 决定何时被调' },
+  '.mcp.json': { when:'项目要共享 MCP 服务器配置', tip:'含 token 的服务器别提交，走用户级' },
+};
+
+/* ============================================================ 用法详解：按命令名索引 detail（详细说明用法、参数、效果） ============================================================ */
+const DETAIL = {
+  // ---- CLI ----
+  'claude': '在终端进入交互式 REPL，可直接对话、读文件、跑命令。首次进入会加载当前目录的 CLAUDE.md 作为项目记忆，工具调用按 permissions 规则确认。退出用 Ctrl+D 或 /exit。',
+  'claude -p': '非交互「打印模式」——执行一次提示、输出结果、立即退出，不开 REPL。适合脚本 / CI：用 --output-format json 拿结构化结果，管道接 cat file | claude -p 让它处理文件内容。',
+  'claude -c': '加载当前目录最近一次会话继续对话，无需记 session-id，包含曾用 /add-dir 加入的目录。只想接最近一条就用它；要回到更早或跨目录的会话用 -r。',
+  'claude -r': '按 session-id 或会话名恢复指定会话；不带参数会弹出交互选择器列出全部历史。会话可用 --name 预先命名，恢复时直接 claude -r 名字 更好记。',
+  'claude --model': '用别名(opus / sonnet / haiku / fable)或完整模型 ID 指定本次会话模型，覆盖 settings 的 model 与 ANTHROPIC_MODEL 环境变量。配合 --fallback-model 在主模型限流时自动切换。',
+  'claude --fallback-model': '主模型过载或不可用时，按逗号分隔的顺序依次尝试备选模型，链最多 3 级。覆盖 settings 的 fallbackModel；建议配 haiku 做兜底省成本。',
+  'claude mcp': '管理 Model Context Protocol 服务器——子命令 add / list / remove / add-json / get 等，连接外部工具与数据源。项目级配置走 .mcp.json，用户级走 claude mcp add -s user。',
+  'claude mcp login': '对已配置的 HTTP / SSE / connector 类型 MCP 服务器跑 OAuth 授权流，不打开会话内的 /mcp 面板。--no-browser 把授权链接打印到终端，适合 SSH / 无头环境。',
+  'claude config': '查看(get)或设置(set)配置项，等同编辑 settings.json。set 带 -g 写用户级、不带写项目级；如 claude config set -g model opus 永久换默认模型。',
+  'claude update': '检查并更新 Claude Code 到最新版，自更新二进制无需手动重装。想更稳可设 autoUpdatesChannel: stable（约滞后一周，跳过重大回归）。',
+  'claude doctor': '只读体检——输出安装健康、settings 校验、Remote Control 资格等诊断，不启动会话也不改配置。要修复问题进会话用 /doctor（可应用修复）。',
+  'claude auth login': '登录 Anthropic 账户。默认走订阅(Pro / Max)登录；--console 切到 Console 按 API 用量计费；--sso 强制单点登录；--email 预填邮箱。',
+  'claude auth status': '以 JSON 输出当前登录状态，已登录退出码 0、未登录退出码 1，方便脚本里 if claude auth status; then ... 判断。--text 给人读格式。',
+  'claude agents': '打开后台会话视图，监控并并行调度多个 session（需交互式终端）。--json 退出并打印 session 数据给脚本；可配 --model / --effort / --agent / --permission-mode 等。',
+  'claude setup-token': '生成一个长效 OAuth token 打印到终端（不自动保存），用于 CI / 脚本长期登录。需 Claude 订阅；复制后存进仓库 secret 即可。',
+  'claude install': '安装或重装原生二进制，可指定版本号(如 2.1.118)、stable 或 latest。二进制损坏、版本回归、或想锁版本时用。',
+  'claude --add-dir': '为本会话追加额外工作目录，授予 Claude 读写这些目录的文件。.claude/ 配置不会从这些目录发现；想永久化写进 permissions.additionalDirectories。',
+  'claude --dangerously-skip-permissions': '跳过全部权限确认，等同 --permission-mode bypassPermissions。仅推荐在沙箱 / CI 等完全信任环境用；桌面日常开启有误删、误执行高风险。',
+  'claude -v': '打印当前 Claude Code 版本号并退出。排查问题报版本时最快；想看完整变更日志用 /release-notes。',
+  // ---- Slash ----
+  '/init': '扫描当前代码库，生成 CLAUDE.md 项目记忆文件，记录技术栈、构建 / 测试命令、代码风格等。生成的文件是起点，应手动补充项目特有约定与禁忌。',
+  '/clear': '清空当前对话上下文、释放 token，开始新对话（别名 /reset、/new）。历史会话仍保留在磁盘，可用 claude -r 恢复；不会删任何东西。',
+  '/compact': '把当前对话历史摘要化，腾出上下文空间继续当前任务（不像 /clear 完全清空）。可带指令告诉它保留哪些重点，如 /compact 保留所有 API 设计决策。',
+  '/model': '切换会话底层模型，选择会存为默认供下次沿用。常用别名 opus / sonnet / haiku；简单任务切 haiku 省 token，难题切 opus。',
+  '/config': '打开可视化设置界面（别名 /settings），调整主题、模型、输出风格、权限模式等。改的即是 settings.json，所见即所得。',
+  '/agents': '提示如何管理子智能体——真正编辑在 .claude/agents/*.md(项目) 或 ~/.claude/agents/*.md(用户)，用 frontmatter 定义 name / description / tools / model。',
+  '/mcp': '管理 MCP 服务器连接与 OAuth：reconnect 重连、enable / disable 启停、查看连接状态。比重启会话省事，授权过期时常用。',
+  '/memory': '编辑 CLAUDE.md 记忆文件、开关自动记忆、查看已存的自动记忆条目。想让 Claude 长期记住的规矩要写进 CLAUDE.md，会话内口头提示不持久。',
+  '/permissions': '管理工具权限的 allow / ask / deny 规则（别名 /allowed-tools）。某条命令总弹确认就加进 allow；危险操作加进 deny 永禁。规则跨作用域合并，deny 永远赢。',
+  '/hooks': '查看当前各工具事件挂载的钩子配置。配置本体在 settings.json 的 hooks 键，按事件(PreToolUse / Stop 等) + matcher + command 结构组织。',
+  '/review': '按 PR 号对 GitHub PR 做快速单次只读审查，找问题不改代码。深度审查用 /code-review skill（可带 effort 等级与 --fix）。',
+  '/cost': '查看本次会话累计 token 用量与花费（别名 /usage、/stats）。想硬控预算可在启动时加 --max-budget-usd。',
+  '/help': '列出全部可用斜杠命令与简短说明。命令太多时配合 /skills 一起看内置技能；也可直接 /命令名 查具体用法。',
+  '/login': '交互式登录 Anthropic 账户。多账号场景先 /logout 清旧凭证再登；切订阅 / Console 计费方式用 claude auth login 更可控。',
+  '/logout': '登出并清除登录凭证。登出后已打开的会话需重启才能继续；凭证清掉即无法再调 API。',
+  '/status': '打开设置界面的 Status 标签，显示版本号、当前模型、登录账户、网络连通性。排查「连不上」或「版本旧」第一步。',
+  '/resume': '恢复历史会话（别名 /continue）——按 session-id 或会话名恢复，不带参弹出选择器。配 claude -c 只接最近一条。',
+  '/branch': '在当前对话节点开一条分支，原会话保留。适合「想试两种思路」——比 /clear 重开省上下文，分支独立演进。',
+  '/rewind': '回滚对话与 / 或代码到之前某个点（别名 /checkpoint、/undo）。靠文件快照，连代码改动一起退；选「从此处摘要」还能压缩历史。',
+  '/diff': '打开交互式 diff 查看器，显示未提交改动，可按轮查看 Claude 每一步到底改了什么。比直接 git diff 更利于复盘 Agent 行为。',
+  '/export': '把当前对话导出为纯文本文件，可指定文件名。用于存档、分享、贴入文档；导出不含图片，纯文字。',
+  '/context': '以彩色网格可视化当前上下文占用——哪些是系统提示、CLAUDE.md、工具结果、对话历史。颜色块越满越该 /compact 或 /clear。',
+  '/doctor': '会话内体检并诊断问题（别名 /checkup），比 claude doctor 多了「可应用修复」的能力——发现配置错误能直接修。',
+  '/vim': '切换输入框为 vim 键位模式，可用 hjkl / insert 等编辑。永久化写 settings 的 editorMode: vim；切回 normal 用 /vim 再按或设 normal。',
+  '/plan': '直接进入计划模式(plan mode)——Claude 只规划不执行，输出方案等你确认。复杂任务先 /plan 看思路，确认后再切执行模式，避免乱改。',
+  '/effort': '设置模型努力等级：low / medium / high / xhigh / max / ultracode。简单任务调低省 token、难题拉满。ultracode 最烧但推理最强。',
+  '/add-dir': '会话内追加工作目录，授予 Claude 文件访问（等价命令行 --add-dir）。临时碰别的目录时用；永久化走 permissions.additionalDirectories。',
+  '/security-review': '扫描当前分支待提交改动中的安全漏洞——注入、密钥泄露、越权等。提交前跑一遍当安全网；只看 diff 不改代码。',
+  '/release-notes': '交互式查看更新日志，可挑版本对比。Claude Code 行为变了、或排查「以前行现在不行」时第一步看这里。',
+  '/advisor': '启用顾问工具——在任务关键节点让第二个模型(opus/sonnet/fable)给建议，提供第二意见。不带参开选择器，off 关闭。',
+  '/autofix-pr': '在云端起一个 watch 当前分支 PR 的会话，CI 失败或评审提意见时自动推送修复。可用提示词限定只修哪类问题；需 gh CLI 与 web 版权限。',
+  '/background': '把当前会话 detach 成后台 agent 继续运行、腾出终端。可用 claude agents 监控，也可带一条指令在 detach 前发出。',
+  '/batch': '把一次大改动拆成 5-30 个独立单元，每个在独立 git worktree 起后台子智能体并行实现、跑测试、开 PR。需 git 仓库。',
+  '/btw': '快速问一个旁支问题，回答不计入主对话历史——适合「顺便确认一下」而不污染上下文。',
+  '/cd': '把整个会话搬到新的工作目录，保留提示缓存、把新目录 CLAUDE.md 作为消息追加。只想加目录不改主目录用 /add-dir。',
+  '/chrome': '配置 Claude in Chrome 浏览器集成相关设置。仅在用到浏览器集成时相关。',
+  '/claude-api': '按你项目的语言加载 Claude API 参考资料(SDK 用法/流式/批量/结构化输出/常见坑)，代码 import anthropic 时自动触发。migrate 子命令升级旧代码到新模型。',
+  '/code-review': '审查当前 diff：找正确性 bug + 复用/简化/效率清理。--fix 直接改、--comment 发 PR 评论、ultra 跑云端多智能体深度审。',
+  '/color': '设当前会话的提示栏颜色(红蓝绿黄紫橙粉青)，default 重置、不带参随机。Remote Control 连接时同步到 claude.ai/code。',
+  '/copy': '把最近的 Claude 回复制到剪贴板，N 取倒数第 N 条。含代码块时弹选择器可选单块或整条；SSH 下按 w 写文件。',
+  '/dataviz': '图表/仪表盘设计指导——选图型、按角色配色、用内置脚本校验色盲安全与对比度，并应用交互与可访问性规则。用占位调色板，你换成自己的。',
+  '/debug': '为本会话开启调试日志并读日志排查问题。默认不开，运行后从那一刻起记录。可描述问题让分析更聚焦。',
+  '/deep-research': '工作流式深度调研：扇出多路联网搜索、抓取并交叉核对来源、综合成带引证的报告。适合政策、选型、学术类问题。',
+  '/design-login': '首次使用 /design-sync 前用 claude.ai 账号授权设计系统访问权限。',
+  '/design-sync': '把仓库的 React 设计系统转成组件并上传到 Claude Design，使其设计稿用你的真实组件。首次大库同步可能要几小时。',
+  '/desktop': '把当前会话转去 Claude Code 桌面 App 继续。需 macOS/Windows + Claude 订阅。',
+  '/exit': '退出 CLI。若处于 attached 的后台会话，则 detach 而会话继续运行。',
+  '/fast': '切换 fast 模式——Opus 加速输出但不降级到更小模型。非交互模式需启动时在 --settings 里带 fastMode。',
+  '/fewer-permission-prompts': '扫你的会话记录，把常见的只读 Bash 与 MCP 调用整理成优先级白名单写进项目 settings.json，减少权限确认。',
+  '/focus': '切换专注视图：只显示你最近的提问、一行工具调用摘要(含编辑 diffstats)、最终回复。仅全屏渲染可用。',
+  '/fork': '派生一个后台子智能体，它继承当前完整对话、按你给的指令工作、完成后结果回到主会话。区别于 /branch(自己进副本)。',
+  '/goal': '设一个目标，Claude 跨轮持续工作直到条件满足。clear/stop/off 等可提前取消。不带参显示当前目标。',
+  '/heapdump': '把 JS 堆快照与内存明细写到 ~/Desktop(无 Desktop 则主目录)，诊断内存占用过高。',
+  '/ide': '管理 IDE 集成并显示连接状态，用于连 VS Code/Cursor 等。',
+  '/insights': '分析你的 Claude Code 会话，生成报告：项目分布、交互模式、摩擦点。用于复盘自己的使用习惯。',
+  '/install-github-app': '为某仓库安装 Claude GitHub App，可顺带配 GitHub Actions 工作流与 secrets。',
+  '/install-slack-app': '安装 Claude Slack 应用，打开浏览器完成 OAuth 授权。',
+  '/keybindings': '打开键盘快捷键配置文件(JSON)，自定义键绑定。',
+  '/loop': '按间隔反复运行某提示，会话开着就一直跑。省略间隔则 Claude 自适应定速。',
+  '/mobile': '显示二维码下载 Claude 手机 App。',
+  '/passes': '送朋友一周免费 Claude Code。仅合格账户可见。',
+  '/plugin': '管理插件：无参开菜单，或传 list/install/enable/disable 等子命令直接操作。',
+  '/powerup': '通过快速交互式小课程与动画演示，发现 Claude Code 的各项功能。适合新手。',
+  '/radio': '在浏览器打开 Claude FM lo-fi 电台。无浏览器时打印流地址。Bedrock/Vertex/Foundry 上不可用。',
+  '/recap': '按需生成当前会话的一句话总结(离开后回来也会自动出现一句 recap)。',
+  '/reload-plugins': '重载所有活动插件以应用改动而无需重启。会改 MCP 工具加载、使提示缓存失效时需 --force 确认。',
+  '/reload-skills': '重扫 skill 与命令目录，让会话期间在磁盘上新增/改动的 skill 不重启即生效。',
+  '/remote-control': '让本会话可从 claude.ai 远程控制。适合在桌面继续手机上的会话。',
+  '/remote-env': '为云端 agent 选择默认运行环境(web/cloud)。',
+  '/rename': '给当前会话重命名并显示在提示栏。不带参则按对话历史自动取名。',
+  '/run': '启动并驱动你项目的 App，看改动真实运行起来——比只过测试更可信。',
+  '/run-skill-generator': '教 /run 与 /verify 如何从干净环境构建、启动、驱动你项目的 App，生成一个项目专属 skill。',
+  '/sandbox': '切换沙箱模式，隔离文件改动防止误伤生产代码。仅支持平台可用。',
+  '/schedule': '创建/更新/列出/运行 routines——在 Anthropic 托管的云基础设施上定时执行。',
+  '/scroll-speed': '交互式调节鼠标滚轮速度，带可实时预览的标尺。仅全屏渲染可用，JetBrains 终端不支持。',
+  '/setup-bedrock': '交互式向导配置 Amazon Bedrock 认证、区域、模型绑定。仅在设了 CLAUDE_CODE_USE_BEDROCK=1 时出现。',
+  '/setup-vertex': '交互式向导配置 Google Cloud Agent Platform 认证、项目、区域、模型绑定。仅在设了 CLAUDE_CODE_USE_VERTEX=1 时出现。',
+  '/simplify': '只做清理、不找 bug：4 个 agent 并行审复用、简化、效率、抽象层级是否恰当并应用修复。找 bug 用 /code-review。',
+  '/skills': '列出可用技能，支持按名过滤；按 t 按 token 排序；空格切换某 skill 对 Claude 与 / 菜单的可见性。',
+  '/statusline': '配置状态栏：描述你想要的内容，或无参则从 shell 提示符自动生成配置。',
+  '/stickers': '跳转订购 Claude Code 贴纸。',
+  '/stop': '停止当前后台会话(仅 attached 时可用)。transcript 与 worktree 都保留；只想 detach 用 /exit 或 ←。',
+  '/tasks': '查看并管理本会话后台运行的一切(后台 shell、子智能体任务)。',
+  '/team-onboarding': '分析你近 30 天的会话/命令/MCP 用量，生成一份团队上手指南 markdown，队友贴为首条消息即可快速就位。',
+  '/teleport': '把一个 Claude Code web 会话拉进本终端：开选择器、拉取分支与对话。需订阅。',
+  '/terminal-setup': '为当前终端配置 Shift+Enter 等快捷键。仅在需要的终端(VS Code/Cursor/Zed 等)出现。',
+  '/theme': '换配色主题：auto 跟系统、明暗变体、色盲友好(daltonized)、ANSI 主题，以及 ~/.claude/themes/ 的自定义主题。',
+  '/tui': '切换终端 UI 渲染器并重启进入：fullscreen 启用无闪烁 alt-screen 渲染器。无参打印当前渲染器。',
+  '/ultraplan': '在 ultraplan 会话里草拟计划、浏览器审阅，然后远程执行或发回本地终端。适合复杂规划先审后做。',
+  '/ultrareview': '在云沙箱跑深度多智能体代码审查。现推荐用 /code-review ultra，本命令保留为别名。Pro/Max 每月 3 次免费。',
+  '/upgrade': '打开升级页切到更高套餐。仅 Pro/Max 计划可见。',
+  '/usage': '显示会话花费、套餐用量限制与活动统计；Pro/Max/Team/Enterprise 还按 skill/subagent/plugin/MCP 分项。/cost、/stats 是别名。',
+  '/usage-credits': '配超额用量点数，触限后继续工作。打开账单页；SSH 等无浏览器环境打印 URL。原 /extra-usage。',
+  '/verify': '通过构建并运行项目 App、观察结果来确认改动确实生效，而非只依赖测试或类型检查。',
+  '/voice': '切换语音听写，或指定模式：hold(按住)、tap(点按)、off(关)。需 claude.ai 账号。',
+  '/web-setup': '用本地 gh CLI 凭证把 GitHub 账号连到 Claude Code web 版。/schedule 在 GitHub 未连时会自动提示。',
+  '/workflows': '打开工作流进度视图：watch、pause、resume、save 正在运行与已完成的工作流。',
+  // ---- 工具 ----
+  'Bash': '执行 shell 命令并返回标准输出 + 错误流。支持超时(长命令防卡死)、后台任务(BashOutput / KillShell 配合)。危险命令应配 permissions.deny 或 PreToolUse 钩子拦截。',
+  'Read': '读取文件内容返回文本；支持图片(自动视觉理解)、PDF、docx 等。大文件先 Grep 定位行号再按 offset / limit 读片段，避免一次性吃满上下文。',
+  'Edit': '对已有文件做精确字符串替换——必须提供 oldStr(唯一匹配)和 newStr。支持多行替换；oldStr 不唯一会替换错位置，应先 Read 确认上下文。',
+  'Write': '创建新文件或整体覆盖写入完整内容。已存在的文件会被覆盖——改配置 / 代码片段用 Edit，整体重写或新建才用 Write。',
+  'Glob': '按文件名 glob 模式列出匹配的文件路径，不读内容。** 跨目录、* 单层通配；常配合 Grep(按内容) + Read(读命中的文件) 三件套定位代码。',
+  'Grep': '按正则 / 内容跨文件搜索，返回匹配行与位置；支持 -i 忽略大小写、-l 只出文件名、output_mode 控制输出格式、glob 限定文件类型。多格式文档优先用 rga。',
+  'Task': '委派子任务给子智能体(subagent)在独立上下文执行，只把摘要返回主会话——避免搜索 / 日志刷屏污染主上下文。description 决定 Claude 何时自动委派，写清触发场景。',
+  'WebFetch': '抓取指定 URL 转 markdown，用小模型按你给的问题提取 / 回答。第二个参数(问题)越具体答越准；失败的页面可走 Jina Reader 备用通道。',
+  'WebSearch': '联网搜索返回带标题 / URL / 摘要的结果列表(非全文)。结果是线索，关键数据 / 法规 / 版本号等要回到原始源核实，勿直接信摘要。',
+  'NotebookEdit': '编辑 Jupyter notebook 的单元格——按 cell 索引定位，支持新增(newCell)、修改(editCell)、删除。比 Write 整个 ipynb 更安全，不会破坏 JSON 结构。',
+  'TodoWrite': '管理任务清单——创建 / 更新待办项与状态(pending / in_progress / completed)，渲染为实时进度卡。多步骤任务用它拆细原子项，完成立即勾，进度可视化。',
+  // ---- 配置 ----
+  'model': '设置会话默认模型，可用别名(opus / sonnet / haiku / fable)或完整 ID。会话内可用 /model 热切换；配合 fallbackModel 在主模型过载时自动降级更稳。',
+  'env': '注入到每个会话及子进程的环境变量字典(如 PATH 补充、配置开关)。切勿把真密钥写这里——用 apiKeyHelper 走外部脚本生成临时凭证更安全。',
+  'permissions': '权限配置对象，含 allow(自动批准) / ask(必问) / deny(永禁)三个规则数组。规则用 Tool(specifier) 语法，如 Bash(npm test)、Read(./.env)；跨作用域合并、deny 永远赢。',
+  'hooks': '生命周期钩子配置——按事件(PreToolUse / PostToolUse / Stop 等)挂自定义命令。结构是 事件→[{matcher, hooks:[{type, command}]}]；阻断用 exit 2，exit 1 不阻断。',
+  'includeCoAuthoredBy': '控制 git commit 是否追加 Co-Authored-By: Claude 标注。团队不希望 commit 带标记就设 false；个人留 true 便于追溯 AI 参与度。',
+  'cleanupPeriodDays': '会话文件 / 日志的保留天数，超期在启动时清理。默认 30、最小 1；设 0 会校验失败。磁盘紧张或合规要求短保留时调低。',
+  'apiKeyHelper': '指定一个 shell 命令，其输出作为 X-Api-Key / Authorization 头随请求发送——用于临时密钥中转、不落明文。配 CLAUDE_CODE_API_KEY_HELPER_TTL_MS 控刷新频率。',
+  'outputStyle': '会话输出风格(如默认 / explanatory)，作为系统提示一部分。不热加载——/clear 或重启会话才重建；想即时换用 /output-style。',
+  'editorMode': '输入框键位模式：normal(默认)或 vim。vim 党设 vim 后可用 hjkl 编辑；不想用设 normal 回默认。',
+  'fallbackModel': '主模型过载 / 不可用时的备选模型链(数组，按序尝试，最多 3 级)。链取最高优先级文件的整体、不跨文件混拼；配合 model 用。',
+  'PreToolUse': '工具调用前触发的钩子事件——最常用于拦危险操作或跑前置校验。返回 hookSpecificOutput.permissionDecision: deny 即拒、allow 直放、ask 转人工；exit 2 也阻断。',
+  'PostToolUse': '工具调用成功后触发——典型用途是 Edit / Write 后自动跑 lint、格式化或测试。用 matcher 限定工具(如 Edit|Write)避免全量触发拖慢。',
+  'UserPromptSubmit': '用户提交提示词、Claude 处理前触发——钩子的 stdout 会作为附加上下文注入 Claude 可见范围(其余事件大多不注入)。适合自动附带项目备忘 / 规范。',
+  'SessionStart': '会话开始或恢复时触发——可注入 additionalContext(如分支名、环境差异提醒)、设置 sessionTitle、watchPaths。适合进会话时打印环境状态。',
+  'Stop': 'Claude 响应结束、准备停下时触发——返回 decision: block 加 reason 可阻止它停、让它继续工作。用于「必须跑完测试才能停」等强制流程。',
+  '.claude/settings.json': '项目级配置文件，提交进 git 与团队共享——放权限规则、hooks、env、模型等团队约定。别放个人偏好(那是 settings.local.json)。',
+  '.claude/settings.local.json': '本地个人配置，Claude Code 创建时自动 gitignore——放你不影响团队的覆盖项(如个人 allow 规则)。优先级高于项目 settings.json。',
+  '~/.claude/settings.json': '用户全局配置，对你所有项目生效——放通用默认模型、全局权限、apiKeyHelper 等。权限规则会与项目 / 本地级合并。',
+  'CLAUDE.md': '项目记忆文件，每次会话自动加载进系统提示——写项目事实与团队约定(技术栈、命令、风格、禁忌)。写持久事实而非一次性指令；一次性指令直接在会话里说。',
+  '.claude/agents/': '子智能体定义目录(.md 文件)，frontmatter 含 name / description / tools / model，正文是系统提示。description 决定 Claude 何时自动调用该 agent；tools 限定其可用工具。',
+  '.mcp.json': '项目级 MCP 服务器配置，可提交 git 让团队共享 MCP 连接。含 OAuth token 等敏感信息的服务器不要提交，改放用户级(claude mcp add -s user)。',
+};
+
+/* ============================================================ 状态 ============================================================ */
+const STORE = 'cc-typing-v1';
+const REVEAL_DWELL = 2200;   // 揭示卡停留毫秒（qwerty 式自动进位）
+let cat = 'CLI';
+let idx = 0;
+let pos = 0;
+let started = false;
+let startTime = 0;
+let timerInt = null;
+let totalKeys = 0;
+let correctKeys = 0;
+let cmdHadError = false;
+let completed = false;       // 当前命令已答对，处于揭示停留窗口
+let revealTimer = null;
+let wrongSet = new Set();
+let progress = loadProgress();
+let soundOn = (localStorage.getItem(STORE + ':sound') ?? '1') === '1';
+let theme = localStorage.getItem(STORE + ':theme') || 'light';
+let audioCtx = null;
+
+/* ============================================================ 持久化 ============================================================ */
+function loadProgress() {
+  try {
+    const raw = JSON.parse(localStorage.getItem(STORE) || '{}');
+    const p = {};
+    Object.keys(DATA).forEach(k => { p[k] = Array.isArray(raw.done?.[k]) ? new Set(raw.done[k]) : new Set(); });
+    wrongSet = new Set(Array.isArray(raw.wrong) ? raw.wrong : []);
+    return p;
+  } catch(e) { const p={}; Object.keys(DATA).forEach(k=>p[k]=new Set()); return p; }
+}
+function saveProgress() {
+  const done = {};
+  Object.keys(progress).forEach(k => done[k] = [...progress[k]]);
+  try { localStorage.setItem(STORE, JSON.stringify({ done, wrong: [...wrongSet] })); } catch(e) {}
+}
+
+/* ============================================================ 音效（Web Audio） ============================================================ */
+function beep(freq, dur, type='sine', vol=0.05) {
+  if (!soundOn) return;
+  try {
+    audioCtx = audioCtx || new (window.AudioContext || window.webkitAudioContext)();
+    if (audioCtx.state === 'suspended') audioCtx.resume();
+    const o = audioCtx.createOscillator(), g = audioCtx.createGain();
+    o.type = type; o.frequency.value = freq;
+    g.gain.value = vol;
+    o.connect(g); g.connect(audioCtx.destination);
+    const t = audioCtx.currentTime;
+    o.start(t);
+    g.gain.exponentialRampToValueAtTime(0.0001, t + dur);
+    o.stop(t + dur);
+  } catch(e) {}
+}
+const sfx = {
+  ok:    () => beep(720, 0.04, 'sine', 0.025),
+  err:   () => beep(160, 0.13, 'square', 0.04),
+  done:  () => { beep(660,0.10,'sine',0.04); setTimeout(()=>beep(990,0.13,'sine',0.04),90); },
+};
+
+/* ============================================================ 渲染 ============================================================ */
+const $ = id => document.getElementById(id);
+function escapeHtml(s){return s.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+function pad(n){return String(n).padStart(2,'0');}
+function highlightCode(s){
+  return escapeHtml(s)
+    .replace(/&lt;[^&]+?&gt;/g, m => `<span class="a">${m}</span>`)
+    .replace(/(&quot;[^&]*?&quot;)/g, m => `<span class="a">${m}</span>`);
+}
+
+function renderTabs() {
+  $('tabs').innerHTML = Object.keys(DATA).map(k => {
+    const lbl = k === 'Subagent' ? '工具' : (k === 'Config' ? '配置' : k);
+    return `<div class="tab ${k===cat?'on':''}" data-cat="${k}">${lbl} <span class="n">${DATA[k].items.length}</span></div>`;
+  }).join('');
+  $('tabs').querySelectorAll('.tab').forEach(t => t.onclick = () => switchCategory(t.dataset.cat));
+}
+
+function renderSidebar() {
+  const items = DATA[cat].items;
+  $('chapName').textContent = DATA[cat].title;
+  $('cmdList').innerHTML = items.map((it, i) => {
+    const cls = i === idx ? 'now' : (progress[cat].has(i) ? 'done' : '');
+    const wcls = wrongSet.has(cat + ':' + i) ? 'wrong' : '';
+    return `<div class="cmd-item ${cls} ${wcls}" data-i="${i}"><span class="mk"></span>${escapeHtml(it.name)}</div>`;
+  }).join('');
+  $('cmdList').querySelectorAll('.cmd-item').forEach(el => el.onclick = () => { idx = +el.dataset.i; resetCommand(); renderAll(); });
+  const done = progress[cat].size, total = items.length;
+  $('progBar').style.width = (done / total * 100) + '%';
+  $('progTxt').textContent = `${done} / ${total} · ${Math.round(done/total*100)}%`;
+  $('wrongCnt').textContent = wrongSet.size;
+}
+
+function renderCommand() {
+  const it = DATA[cat].items[idx];
+  const chars = [...it.name];
+  $('cmdLine').innerHTML = chars.map((ch, i) => {
+    const space = ch === ' ' ? ' space' : '';
+    let cls = 'lt' + space;
+    if (i < pos) cls += ' ok';
+    else if (i === pos && !completed) cls += ' cur';
+    else if (i <= pos && completed) cls += ' ok';
+    return `<span class="${cls}">${ch === ' ' ? ' ' : escapeHtml(ch)}</span>`;
+  }).join('');
+  $('kickerTxt').textContent = `${cat} · ${pad(idx+1)} / ${pad(DATA[cat].items.length)}`;
+  if (!started) {
+    $('hintRow').innerHTML = `<span class="kbd">任意键</span> 开始 · <span class="kbd">Tab</span> 跳过 · <span class="kbd">Esc</span> 重置`;
+    $('hintRow').classList.remove('go');
+  } else {
+    $('hintRow').innerHTML = `<span class="kbd">Tab</span> 跳过 · <span class="kbd">Esc</span> 重置 · 敲对自动下一条`;
+    $('hintRow').classList.remove('go');
+  }
+}
+
+function renderStats() {
+  const elapsed = started ? (Date.now() - startTime) / 1000 : 0;
+  $('sTime').textContent = `${pad(Math.floor(elapsed/60))}:${pad(Math.floor(elapsed%60))}`;
+  $('sInput').textContent = totalKeys;
+  $('sCorrect').textContent = correctKeys;
+  $('sWpm').textContent = elapsed > 0 ? Math.round((correctKeys/5)/(elapsed/60)) : 0;
+  $('sAcc').textContent = (totalKeys > 0 ? Math.round(correctKeys/totalKeys*100) : 100) + '%';
+}
+
+function renderInfo(){
+  const it = DATA[cat].items[idx];
+  const r = RICH[it.name] || {};
+  $('rvName').textContent = it.name;
+  $('rvAlias').textContent = r.alias ? ('别名 ' + r.alias) : '';
+  $('rvDesc').textContent = it.desc;
+  $('rvDetail').textContent = DETAIL[it.name] || '';
+  $('rvWhen').textContent = r.when || '';
+  $('rvCode').innerHTML = highlightCode(it.ex);
+  $('rvEff').textContent = it.eff;
+  $('rvTip').textContent = r.tip || '';
+}
+function renderAll(){ renderTabs(); renderSidebar(); renderCommand(); renderStats(); renderInfo(); }
+
+/* ============================================================ 引擎（qwerty 交互） ============================================================ */
+function resetCommand() {
+  pos = 0; completed = false; cmdHadError = false;
+  clearTimeout(revealTimer); revealTimer = null;
+  $('cmdLine').classList.remove('success');
+}
+
+function startTimer() {
+  if (started) return;
+  started = true; startTime = Date.now();
+  timerInt = setInterval(renderStats, 200);
+}
+function stopTimer(){ if (timerInt){ clearInterval(timerInt); timerInt = null; } }
+function resetStats(){ started = false; stopTimer(); totalKeys = 0; correctKeys = 0; renderStats(); }
+
+function completeCommand() {
+  sfx.done();
+  progress[cat].add(idx);
+  if (cmdHadError) wrongSet.add(cat + ':' + idx); else wrongSet.delete(cat + ':' + idx);
+  saveProgress();
+  renderSidebar();
+  // 自动切下一条：详解常驻右栏，不用空格；末条则弹结算屏
+  if (idx >= DATA[cat].items.length - 1) { showDoneScreen(); return; }
+  idx++;
+  resetCommand();
+  renderAll();                 // 渲染下一条命令字母 + 更新右栏详解
+  $('cmdLine').classList.add('success');   // 切换时给新命令行闪一道绿光作完成提示
+  setTimeout(() => $('cmdLine').classList.remove('success'), 320);
+}
+
+function nextCommand() {
+  clearTimeout(revealTimer); revealTimer = null;
+  if (idx < DATA[cat].items.length - 1) { idx++; resetCommand(); renderAll(); }
+  else showDoneScreen();
+}
+function prevCommand() { if (idx > 0) { idx--; resetCommand(); renderAll(); } }
+
+function showDoneScreen() {
+  clearTimeout(revealTimer);
+  const elapsed = started ? (Date.now() - startTime) / 1000 : 0;
+  const acc = totalKeys > 0 ? Math.round(correctKeys/totalKeys*100) : 100;
+  const wpm = elapsed > 0 ? Math.round((correctKeys/5)/(elapsed/60)) : 0;
+  const wcount = [...wrongSet].filter(x => x.startsWith(cat+':')).length;
+  $('doneStats').textContent = `用时 ${Math.floor(elapsed/60)}m${Math.floor(elapsed%60)}s · WPM ${wpm} · 正确率 ${acc}% · 错题 ${wcount} 条`;
+  $('doneScreen').classList.add('show');
+}
+
+function switchCategory(c){ if (c === cat) return; cat = c; idx = 0; resetCommand(); resetStats(); renderAll(); }
+
+function resetCategory() {
+  progress[cat].clear();
+  [...wrongSet].forEach(x => { if (x.startsWith(cat+':')) wrongSet.delete(x); });
+  idx = 0; resetCommand(); resetStats(); saveProgress(); renderAll();
+}
+
+/* ============================================================ 键盘处理 ============================================================ */
+function onKey(e) {
+  // window+document 双监听防重入：capture 阶段同一事件会先经 Window 再经 Document，
+  // 不拦的话 onKey 触发两次 → 第 2 次 pos 已进位，命中下一字符被误判错误（全错题本 bug 根因）
+  if (e.__ccHandled) return;
+  e.__ccHandled = true;
+  if (e.key === 'Escape') { e.preventDefault(); resetCommand(); renderAll(); return; }
+  if (e.key === 'Tab') { e.preventDefault(); cmdHadError = true; sfx.err(); nextCommand(); return; }
+  if (e.key.length !== 1 && e.key !== ' ') return;   // 仅处理可打印字符
+  if (e.ctrlKey || e.metaKey || e.altKey) return;
+
+  e.preventDefault();
+  startTimer();
+
+  const chars = [...DATA[cat].items[idx].name];
+  const expected = chars[pos];
+  const key = e.key;
+
+  totalKeys++;
+  if (key === expected) {
+    correctKeys++;
+    pos++;
+    sfx.ok();
+    if (pos >= chars.length) { completeCommand(); return; }
+    renderCommand();
+  } else {
+    // 错误键：当前字母红字保持到敲对（不重建 DOM、不计时清除——qwerty 行为）
+    cmdHadError = true;
+    sfx.err();
+    const cur = $('cmdLine').querySelectorAll('.lt')[pos];
+    if (cur) {
+      cur.classList.remove('err');           // 重启抖动动画
+      void cur.offsetWidth;
+      cur.classList.add('err');
+    }
+  }
+  renderStats();
+}
+
+/* ============================================================ 绑定 ============================================================ */
+window.addEventListener('keydown', onKey, true);
+document.addEventListener('keydown', onKey, true);
+document.body.setAttribute('tabindex','-1');
+document.body.style.outline = 'none';
+window.addEventListener('load', () => { try { window.focus(); document.body.focus({preventScroll:true}); } catch(e){} });
+
+$('prevBtn').onclick = prevCommand;
+$('resetBtn').onclick = resetCategory;
+$('restartBtn').onclick = () => { $('doneScreen').classList.remove('show'); resetCategory(); };
+
+$('soundBtn').onclick = () => {
+  soundOn = !soundOn;
+  localStorage.setItem(STORE + ':sound', soundOn ? '1' : '0');
+  $('soundBtn').classList.toggle('on', soundOn);
+  $('soundBtn').style.opacity = soundOn ? '1' : '.4';
+  if (soundOn) sfx.ok();
+};
+$('themeBtn').onclick = () => {
+  theme = theme === 'light' ? 'dark' : 'light';
+  localStorage.setItem(STORE + ':theme', theme);
+  applyTheme();
+};
+function applyTheme() {
+  document.body.setAttribute('data-theme', theme);
+  $('themeBtn').classList.toggle('on', theme === 'dark');
+}
+
+/* 初始 */
+applyTheme();
+$('soundBtn').classList.toggle('on', soundOn);
+$('soundBtn').style.opacity = soundOn ? '1' : '.4';
+renderAll();
+</script>
+</body>
+</html>
