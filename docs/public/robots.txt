@@ -1,0 +1,18 @@
+User-agent: *
+Allow: /
+
+# 显式放行主流 AI 爬虫（GEO 前提：让 ChatGPT / Kimi / 文心一言 / Perplexity 等可检索并引用本站）
+User-agent: GPTBot
+Allow: /
+User-agent: ClaudeBot
+Allow: /
+User-agent: PerplexityBot
+Allow: /
+User-agent: Google-Extended
+Allow: /
+User-agent: Bytespider
+Allow: /
+User-agent: CCBot
+Allow: /
+
+Sitemap: https://cslawyer1985.github.io/xinchun-ai-prework/sitemap.xml

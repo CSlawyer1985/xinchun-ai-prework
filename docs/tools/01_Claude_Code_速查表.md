@@ -1,9 +1,8 @@
 ---
 pageClass: claude-cheatsheet-page
 outline: [2, 3]
+description: Claude Code 速查表：快捷键、Slash 命令、CLI 参数、MCP、记忆、Skills、Agents、Flags 一页速查，适合开课时随查随用。
 ---
-
-# Claude Code 速查表
 
 <div class="cc-guide-hero">
   <p class="cc-guide-hero__eyebrow">Claude Code Reference</p>

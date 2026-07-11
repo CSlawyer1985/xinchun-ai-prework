@@ -1,3 +1,7 @@
+---
+description: Claude Code 安装与配置指南（国内直连优先版）：Node.js、Claude Code CLI、VS Code 插件、CC Switch 与 GLM 接入，含 Mac/Windows 参考教程。
+---
+
 # Claude Code 安装与配置指南（国内直连优先版）
 
 > **课程机制提醒**：本课程采用申请制筛选，基础学费 888 元；录取入班后需另行预交保证金 1000 元，并签署《学习承诺书》。全勤并按要求完成课程，全额退还保证金；缺课、缺作业，保证金罚没。
