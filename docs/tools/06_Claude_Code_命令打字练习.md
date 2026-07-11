@@ -20,7 +20,7 @@ description: Claude Code 命令打字练习——肌肉记忆式掌握 100+ 条 
 .practice-note { font-size: 13px; color: var(--vp-c-text-2); margin: 0 0 28px; }
 </style>
 
-<a class="practice-cta" href="/practice/index.html" target="_blank" rel="noopener">进入练习工具 →</a>
+<a class="practice-cta" href="../practice/index.html" target="_blank" rel="noopener">进入练习工具 →</a>
 
 <p class="practice-note">在新标签页全屏打开，进度自动保存在你自己的浏览器里。</p>
 
