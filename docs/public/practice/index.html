@@ -185,6 +185,22 @@
   .kbd { border: 1px solid var(--line-2); border-radius: 4px; padding: 2px 7px; font-size: 10px; color: var(--label); background: var(--canvas); }
   .hint-row.go { color: var(--accent); }
 
+  /* 快捷键展示 */
+  .combo-display { display:flex; align-items:center; justify-content:center; gap:10px; flex-wrap:wrap; }
+  .combo-display .plus { color: var(--faint); font: 600 12px var(--mono); }
+  .keycap {
+    display:inline-flex; align-items:center; justify-content:center;
+    min-width:44px; height:44px; padding:0 12px;
+    border:1px solid var(--line-2); border-bottom-width:3px; border-radius:8px;
+    background:var(--canvas); color:var(--ink);
+    font:600 14px var(--mono); letter-spacing:0.02em;
+    transition: transform .08s, border-color .12s, background .12s, color .12s;
+  }
+  .keycap.wide { padding:0 14px; }
+  .combo-display.matched .keycap { border-color: var(--ok-glow); background: rgba(31,168,113,.12); color: var(--ok-glow); transform: translateY(-2px); }
+  .combo-display.matched .plus { color: var(--ok-glow); }
+  .combo-display.error .keycap { border-color: var(--err); background: var(--err-soft); color: var(--err); animation: shk .18s; }
+
   /* 答对揭示卡 */
   .reveal {
     position: absolute; left: 50%; transform: translateX(-50%) translateY(14px);
@@ -479,6 +495,80 @@ const DATA = {
     { name:'CLAUDE.md',              desc:'项目记忆文件',             ex:'CLAUDE.md',                      eff:'每次会话自动加载的核心指令' },
     { name:'.claude/agents/',        desc:'子智能体目录',             ex:'.claude/agents/reviewer.md',     eff:'frontmatter 定义 name/tools/model' },
     { name:'.mcp.json',              desc:'项目 MCP 服务器',          ex:'.mcp.json',                      eff:'项目级 MCP 配置，可提交共享' },
+  ]},
+  Shortcut: { title: '快捷键 · 会话内热键（按下正确组合即通过）', mode: 'shortcut', items: [
+    { name:'Esc',          desc:'中断 Claude / 关闭对话框',   eff:'停止当前回复或工具调用；对话框打开时关闭它而非中断', combo:{ key:'Escape' } },
+    { name:'Esc Esc',      desc:'清空输入草稿 / 打开 rewind', eff:'有输入时清空并存入历史；空输入时打开 rewind 回滚菜单', combo:{ key:'Escape', double:true } },
+    { name:'Shift+Tab',    desc:'循环切换权限模式',           eff:'在 default / acceptEdits / plan 等模式间循环',     combo:{ shift:true, key:'Tab' } },
+    { name:'Shift+Enter',  desc:'多行输入换行',               eff:'iTerm2/WezTerm/Ghostty 等原生；VS Code 需 /terminal-setup', combo:{ shift:true, key:'Enter' } },
+    { name:'Ctrl+C',       desc:'中断运行 / 清空输入',        eff:'中断运行中的操作；无运行时首次清空，再次退出',       combo:{ ctrl:true, key:'c' } },
+    { name:'Ctrl+E',       desc:'光标移到行尾',               eff:'多行输入时移到当前逻辑行末尾',                       combo:{ ctrl:true, key:'e' } },
+    { name:'Ctrl+K',       desc:'删除到行尾',                 eff:'删除内容存入粘贴缓冲，可用 Ctrl+Y 取回',             combo:{ ctrl:true, key:'k' } },
+    { name:'Ctrl+Y',       desc:'粘贴已删除文本',             eff:'粘贴 Ctrl+K/U/W 删掉的内容',                         combo:{ ctrl:true, key:'y' } },
+    { name:'Ctrl+B',       desc:'后台运行任务',               eff:'把 Bash/agent 转后台；tmux 用户需按两次',            combo:{ ctrl:true, key:'b' } },
+    { name:'Ctrl+V',       desc:'粘贴剪贴板图片',             eff:'插入 [Image #N] 引用；Win/WSL 若拦截用 Alt+V',       combo:{ ctrl:true, key:'v' } },
+    { name:'Alt+P',        desc:'切换模型（不清空 prompt）',  eff:'mac 为 Option+P；切换底层模型',                      combo:{ alt:true, key:'p' } },
+    { name:'Alt+T',        desc:'切换扩展思考',               eff:'开关 extended thinking；Fable 5 恒开',               combo:{ alt:true, key:'t' } },
+    { name:'Alt+O',        desc:'切换 fast 模式',             eff:'开关 fast mode（Opus 加速输出，不降级小模型）',       combo:{ alt:true, key:'o' } },
+    { name:'Alt+B',        desc:'光标后退一词',               eff:'按词向左移动；mac 需配置 Option as Meta',            combo:{ alt:true, key:'b' } },
+    { name:'Alt+F',        desc:'光标前进一词',               eff:'按词向右移动；mac 需配置 Option as Meta',            combo:{ alt:true, key:'f' } },
+    { name:'↑',            desc:'上一条命令历史',             eff:'多行时先在行内移动，到边界再翻历史',                 combo:{ key:'ArrowUp' } },
+    { name:'↓',            desc:'下一条命令历史',             eff:'多行时先在行内移动，到边界再翻历史',                 combo:{ key:'ArrowDown' } },
+    { name:'←',            desc:'对话框/菜单标签左切',        eff:'权限对话框与菜单中切换标签页',                       combo:{ key:'ArrowLeft' } },
+    { name:'→',            desc:'对话框/菜单标签右切',        eff:'权限对话框与菜单中切换标签页',                       combo:{ key:'ArrowRight' } },
+    { name:'Ctrl+A',       desc:'光标移到行首',               eff:'多行输入时移到当前逻辑行开头；浏览器全选已被本页拦截',  combo:{ ctrl:true, key:'a' } },
+    { name:'Ctrl+D',       desc:'退出 Claude Code（EOF）',    eff:'发送 EOF 信号退出当前会话',                            combo:{ ctrl:true, key:'d' } },
+    { name:'Ctrl+G',       desc:'在默认编辑器中打开 prompt',  eff:'Ctrl+X Ctrl+E 的等价快捷方式；长 prompt 编辑更顺手',    combo:{ ctrl:true, key:'g' } },
+    { name:'Ctrl+R',       desc:'反向搜索命令历史',           eff:'交互式搜索历史 prompt；Ctrl+S 切换搜索范围',           combo:{ ctrl:true, key:'r' } },
+    { name:'Alt+Enter',    desc:'多行输入换行',               eff:'mac 为 Option+Enter；需在终端配置 Option as Meta',      combo:{ alt:true, key:'Enter' } },
+    { name:'Alt+Y',        desc:'循环粘贴历史',               eff:'Ctrl+Y 粘贴后再按 Alt+Y，循环之前删掉的内容',           combo:{ alt:true, key:'y' } },
+    { name:'/',            desc:'输入 / 触发命令菜单',        eff:'斜杠开头触发内置命令、skill 与插件命令',                combo:{ key:'/' } },
+    { name:'!',            desc:'输入 ! 进入 shell 模式',     eff:'直接运行 shell 命令，输出加入会话上下文',               combo:{ key:'!' } },
+    { name:'@',            desc:'输入 @ 触发文件路径补全',    eff:'@ 开头补全文件路径，把文件引用给 Claude',               combo:{ key:'@' } },
+  ]},
+  Vim: { title: 'Vim 编辑模式（/config → Editor mode: vim 开启）', mode: 'shortcut', items: [
+    { name:'Esc',  desc:'进入 NORMAL 模式',         eff:'从 INSERT/VISUAL 切回 NORMAL（vim 默认）',             combo:{ key:'Escape' } },
+    { name:'i',    desc:'光标前插入',               eff:'进入 INSERT 模式，在光标前输入',                        combo:{ key:'i' } },
+    { name:'I',    desc:'行首插入',                 eff:'进入 INSERT，光标到当前行首个非空字符',                 combo:{ key:'I' } },
+    { name:'a',    desc:'光标后插入',               eff:'进入 INSERT，在光标后输入',                             combo:{ key:'a' } },
+    { name:'A',    desc:'行尾插入',                 eff:'进入 INSERT，光标到当前行末尾',                         combo:{ key:'A' } },
+    { name:'o',    desc:'下方开新行',               eff:'当前行下方插入新行并进入 INSERT',                       combo:{ key:'o' } },
+    { name:'O',    desc:'上方开新行',               eff:'当前行上方插入新行并进入 INSERT',                       combo:{ key:'O' } },
+    { name:'v',    desc:'字符可视化选择',           eff:'启动字符级 visual 模式',                                combo:{ key:'v' } },
+    { name:'V',    desc:'行可视化选择',             eff:'启动行级 visual 模式',                                  combo:{ key:'V' } },
+    { name:'h',    desc:'光标左移',                 eff:'NORMAL 下向左移一个字符',                               combo:{ key:'h' } },
+    { name:'j',    desc:'光标下移',                 eff:'NORMAL 下向下移一行',                                   combo:{ key:'j' } },
+    { name:'k',    desc:'光标上移',                 eff:'NORMAL 下向上移一行',                                   combo:{ key:'k' } },
+    { name:'l',    desc:'光标右移',                 eff:'NORMAL 下向右移一个字符',                               combo:{ key:'l' } },
+    { name:'w',    desc:'下一个词',                 eff:'跳到下一个词的开头',                                    combo:{ key:'w' } },
+    { name:'e',    desc:'词尾',                     eff:'跳到当前/下一个词的末尾',                               combo:{ key:'e' } },
+    { name:'b',    desc:'上一个词',                 eff:'跳到上一个词的开头',                                    combo:{ key:'b' } },
+    { name:'0',    desc:'行首',                     eff:'光标到当前行第一列',                                    combo:{ key:'0' } },
+    { name:'$',    desc:'行尾',                     eff:'光标到当前行最后一列',                                  combo:{ key:'$' } },
+    { name:'^',    desc:'首个非空字符',             eff:'光标到当前行第一个非空白字符',                          combo:{ key:'^' } },
+    { name:'G',    desc:'跳到输入末尾',             eff:'光标到整个输入的末尾',                                  combo:{ key:'G' } },
+    { name:'gg',   desc:'跳到输入开头',             eff:'光标到整个输入的开头',                                  combo:{ key:'g', double:true } },
+    { name:'x',    desc:'删除字符',                 eff:'删除光标处字符',                                        combo:{ key:'x' } },
+    { name:'dd',   desc:'删除整行',                 eff:'删除当前行，内容进寄存器',                              combo:{ key:'d', double:true } },
+    { name:'D',    desc:'删到行尾',                 eff:'从光标删到行末',                                        combo:{ key:'D' } },
+    { name:'dw',   desc:'删除一个词',               eff:'operator d + motion w，删到下一词开头',                 combo:{ seq:['d','w'] } },
+    { name:'cc',   desc:'改整行',                   eff:'清空当前行并进入 INSERT',                               combo:{ key:'c', double:true } },
+    { name:'C',    desc:'改到行尾',                 eff:'删到行尾并进入 INSERT',                                 combo:{ key:'C' } },
+    { name:'cw',   desc:'改一个词',                 eff:'删到词尾并进入 INSERT',                                 combo:{ seq:['c','w'] } },
+    { name:'yy',   desc:'复制整行',                 eff:'yank 当前行到寄存器',                                   combo:{ key:'y', double:true } },
+    { name:'Y',    desc:'复制整行',                 eff:'yy 的等价别名',                                         combo:{ key:'Y' } },
+    { name:'yw',   desc:'复制一个词',               eff:'yank 到下一词开头',                                     combo:{ seq:['y','w'] } },
+    { name:'p',    desc:'光标后粘贴',               eff:'在光标后粘贴寄存器内容',                                combo:{ key:'p' } },
+    { name:'P',    desc:'光标前粘贴',               eff:'在光标前粘贴寄存器内容',                                combo:{ key:'P' } },
+    { name:'u',    desc:'撤销',                     eff:'撤销上次修改',                                          combo:{ key:'u' } },
+    { name:'.',    desc:'重复上次修改',             eff:'重复执行最近一次修改命令',                              combo:{ key:'.' } },
+    { name:'J',    desc:'合并下行',                 eff:'把下一行合并到当前行',                                  combo:{ key:'J' } },
+    { name:'f',    desc:'查找下一字符',             eff:'f 后接字符，跳到该字符下一处（f{char}）',               combo:{ key:'f' } },
+    { name:'F',    desc:'查找上一字符',             eff:'F 后接字符，跳到该字符上一处',                          combo:{ key:'F' } },
+    { name:';',    desc:'重复查找',                 eff:'重复上次 f/F/t/T 查找',                                 combo:{ key:';' } },
+    { name:',',    desc:'反向重复查找',             eff:'反方向重复上次 f/F/t/T 查找',                           combo:{ key:',' } },
+    { name:'>>',   desc:'缩进当前行',               eff:'当前行右移一个缩进',                                    combo:{ key:'>', double:true } },
+    { name:'<<',   desc:'反缩进当前行',             eff:'当前行左移一个缩进',                                    combo:{ key:'<', double:true } },
   ]}
 };
 
@@ -813,6 +903,7 @@ let progress = loadProgress();
 let soundOn = (localStorage.getItem(STORE + ':sound') ?? '1') === '1';
 let theme = localStorage.getItem(STORE + ':theme') || 'light';
 let audioCtx = null;
+let lastKey = '', lastKeyTime = 0;   // 双击键序列判定（如 Esc Esc）
 
 /* ============================================================ 持久化 ============================================================ */
 function loadProgress() {
@@ -864,7 +955,7 @@ function highlightCode(s){
 
 function renderTabs() {
   $('tabs').innerHTML = Object.keys(DATA).map(k => {
-    const lbl = k === 'Subagent' ? '工具' : (k === 'Config' ? '配置' : k);
+    const lbl = k === 'Subagent' ? '工具' : (k === 'Config' ? '配置' : (k === 'Shortcut' ? '快捷键' : (k === 'Vim' ? 'Vim' : k)));
     return `<div class="tab ${k===cat?'on':''}" data-cat="${k}">${lbl} <span class="n">${DATA[k].items.length}</span></div>`;
   }).join('');
   $('tabs').querySelectorAll('.tab').forEach(t => t.onclick = () => switchCategory(t.dataset.cat));
@@ -887,6 +978,7 @@ function renderSidebar() {
 
 function renderCommand() {
   const it = DATA[cat].items[idx];
+  if (DATA[cat].mode === 'shortcut') return renderShortcut();
   const chars = [...it.name];
   $('cmdLine').innerHTML = chars.map((ch, i) => {
     const space = ch === ' ' ? ' space' : '';
@@ -906,6 +998,25 @@ function renderCommand() {
   }
 }
 
+function renderShortcut() {
+  const it = DATA[cat].items[idx];
+  const groups = it.name.split(' ').map(seg => seg.split('+'));
+  let html = '';
+  groups.forEach((g, gi) => {
+    if (gi > 0) html += `<span class="plus">→</span>`;
+    g.forEach((k, ki) => {
+      if (ki > 0) html += `<span class="plus">+</span>`;
+      const wide = k.length > 2 ? ' wide' : '';
+      html += `<span class="keycap${wide}">${escapeHtml(k)}</span>`;
+    });
+  });
+  $('cmdLine').innerHTML = `<div class="combo-display" id="comboDisp">${html}</div>`;
+  $('kickerTxt').textContent = `${cat} · ${pad(idx+1)} / ${pad(DATA[cat].items.length)}`;
+  const hint = '按下 ' + it.name + ' 通过';
+  $('hintRow').innerHTML = `${hint} · <span class="kbd">Tab</span> 跳过`;
+  $('hintRow').classList.remove('go');
+}
+
 function renderStats() {
   const elapsed = started ? (Date.now() - startTime) / 1000 : 0;
   $('sTime').textContent = `${pad(Math.floor(elapsed/60))}:${pad(Math.floor(elapsed%60))}`;
@@ -917,6 +1028,18 @@ function renderStats() {
 
 function renderInfo(){
   const it = DATA[cat].items[idx];
+  if (DATA[cat].mode === 'shortcut') {
+    $('rvName').textContent = it.name;
+    $('rvAlias').textContent = it.combo.double ? '双击键' : (it.combo.ctrl ? 'Ctrl 组合' : (it.combo.alt ? 'Alt/Option' : (it.combo.shift ? 'Shift 组合' : '单键')));
+    $('rvDesc').textContent = it.desc;
+    $('rvDetail').textContent = '';
+    $('rvWhen').textContent = '';
+    $('rvCode').textContent = '';
+    $('rvEff').textContent = it.eff;
+    $('rvTip').textContent = it.combo.alt ? 'macOS 需在终端配置 Option as Meta' : '在真实终端会话中按下此组合键即可触发';
+    return;
+  }
+
   const r = RICH[it.name] || {};
   $('rvName').textContent = it.name;
   $('rvAlias').textContent = r.alias ? ('别名 ' + r.alias) : '';
@@ -990,6 +1113,7 @@ function onKey(e) {
   // 不拦的话 onKey 触发两次 → 第 2 次 pos 已进位，命中下一字符被误判错误（全错题本 bug 根因）
   if (e.__ccHandled) return;
   e.__ccHandled = true;
+  if (DATA[cat].mode === 'shortcut') return onShortcutKey(e);
   if (e.key === 'Escape') { e.preventDefault(); resetCommand(); renderAll(); return; }
   if (e.key === 'Tab') { e.preventDefault(); cmdHadError = true; sfx.err(); nextCommand(); return; }
   if (e.key.length !== 1 && e.key !== ' ') return;   // 仅处理可打印字符
@@ -1024,6 +1148,49 @@ function onKey(e) {
 }
 
 /* ============================================================ 绑定 ============================================================ */
+/* ---------- 快捷键模式：组合键判定 ---------- */
+function onShortcutKey(e) {
+  const it = DATA[cat].items[idx];
+  const c = it.combo;
+  if (e.key === 'Tab' && !e.ctrlKey && !e.metaKey && !e.altKey && !e.shiftKey) {
+    e.preventDefault(); cmdHadError = true; sfx.err(); nextCommand(); return;
+  }
+  if (['Shift','Control','Alt','Meta'].includes(e.key)) return;
+  e.preventDefault();
+  startTimer();
+  const ctrl = e.ctrlKey || e.metaKey, alt = e.altKey, shift = e.shiftKey, key = e.key;
+  let matched = false;
+  if (c.double) {
+    if (key === c.key) {
+      const now = Date.now();
+      if (lastKey === c.key && (now - lastKeyTime) < 500) { matched = true; lastKey = ''; lastKeyTime = 0; }
+      else { lastKey = key; lastKeyTime = now; }
+    } else { lastKey = ''; lastKeyTime = 0; }
+  } else if (c.seq) {
+    if (lastKey === c.seq[0] && key === c.seq[1] && lastKeyTime && (Date.now() - lastKeyTime) < 1000) {
+      matched = true; lastKey = ''; lastKeyTime = 0;
+    } else if (key === c.seq[0]) {
+      lastKey = key; lastKeyTime = Date.now();
+    } else { lastKey = ''; lastKeyTime = 0; }
+  } else {
+    matched = (ctrl === !!c.ctrl && alt === !!c.alt && shift === !!c.shift &&
+               key.toLowerCase() === String(c.key || '').toLowerCase());
+  }
+  const disp = $('comboDisp');
+  if (matched) {
+    totalKeys++; correctKeys++; sfx.ok();
+    if (disp) { disp.classList.remove('error'); disp.classList.add('matched'); }
+    setTimeout(() => { completeCommand(); }, 240);
+  } else {
+    if (ctrl || alt || shift || c.double || ['Escape','Enter','Backspace','ArrowUp','ArrowDown','ArrowLeft','ArrowRight'].includes(key)) {
+      totalKeys++; cmdHadError = true; sfx.err();
+      if (disp) { disp.classList.remove('matched'); void disp.offsetWidth; disp.classList.add('error'); }
+    }
+  }
+  renderStats();
+}
+
+
 window.addEventListener('keydown', onKey, true);
 document.addEventListener('keydown', onKey, true);
 document.body.setAttribute('tabindex','-1');
