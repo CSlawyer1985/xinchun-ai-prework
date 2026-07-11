@@ -1,5 +1,6 @@
 ---
 layout: home
+description: 面向法律人的 AI 实操夜校，3 步完成课前准备。含 Claude Code、Cherry Studio 安装指南、实用工具速查与往期学员名录。先导课 + 6 次主课，申请制持续招生。
 
 hero:
   name: "四明山法师 AI 夜校"
@@ -48,3 +49,5 @@ features:
 <StudentVoices />
 
 <StudentShowcase />
+
+<AnthemCard />

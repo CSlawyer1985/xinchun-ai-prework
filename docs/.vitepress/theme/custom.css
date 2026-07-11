@@ -250,16 +250,24 @@
   align-items: end;
   justify-content: space-between;
   gap: 20px;
-  margin-bottom: 22px;
+  margin-bottom: 8px;
 }
 
 .student-showcase__cohort + .student-showcase__cohort {
   margin-top: 48px;
 }
 
-.student-showcase__eyebrow,
 .alumni-directory__season,
 .cc-guide-hero__eyebrow {
+  margin: 0 0 8px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: #0f766e;
+  text-transform: uppercase;
+}
+
+.student-showcase .student-showcase__eyebrow {
   margin: 0 0 8px;
   font-size: 12px;
   font-weight: 700;
@@ -271,6 +279,7 @@
 .student-showcase h2,
 .alumni-directory__header h2 {
   margin: 0;
+  padding: 10px 0 0;
   font-size: clamp(28px, 4vw, 42px);
   line-height: 1.05;
   letter-spacing: -0.03em;
@@ -682,10 +691,10 @@
 
 .student-voices__header {
   max-width: 640px;
-  margin-bottom: 22px;
+  margin-bottom: 8px;
 }
 
-.student-voices__eyebrow {
+.student-voices .student-voices__eyebrow {
   margin: 0 0 8px;
   font-size: 12px;
   font-weight: 700;
@@ -694,8 +703,9 @@
   color: #0f766e;
 }
 
-.student-voices__title {
+.student-voices .student-voices__title {
   margin: 0;
+  padding: 10px 0 0;
   font-size: clamp(28px, 4vw, 40px);
   line-height: 1.08;
   letter-spacing: -0.03em;
@@ -802,7 +812,8 @@
 }
 
 /* 暗色模式标题适配 */
-.dark .student-voices__eyebrow {
+.dark .student-voices__eyebrow,
+.dark .student-showcase__eyebrow {
   color: #5eead4;
 }
 
@@ -866,3 +877,323 @@
     margin-bottom: 6px;
   }
 }
+
+/* ============ 校歌卡带 · AnthemCard ============ */
+.anthem-card {
+  margin: 28px 0 24px;
+  padding-top: 8px;
+  border-top: 1px solid var(--vp-c-divider, rgba(15, 23, 42, 0.08));
+}
+
+.anthem-card__inner {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.anthem-card__head {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.anthem-card .anthem-card__eyebrow {
+  margin: 0;
+  padding: 0;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #0f766e;
+}
+
+html.dark .anthem-card .anthem-card__eyebrow {
+  color: #2dd4bf;
+}
+
+.anthem-card .anthem-card__title {
+  margin: 0;
+  padding: 10px 0 0;
+  font-size: clamp(22px, 2.8vw, 30px);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  color: var(--vp-c-text-1, #0f172a);
+}
+
+.anthem-card .anthem-card__lead {
+  margin: 0;
+  padding: 0;
+  font-size: 13px;
+  line-height: 1.3;
+  color: var(--vp-c-text-2, rgba(15, 23, 42, 0.6));
+  letter-spacing: 0.02em;
+}
+
+/* 卡带 + 歌词并排等高 */
+.anthem-card__stage {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 36px;
+  align-items: center;
+}
+
+/* 完整卡带：背面壳 + 双齿轮 + 正面壳三层叠加，尺寸按 --tape-w 等比缩放 */
+.anthem-card__tape {
+  --tape-w: 340px;
+  position: relative;
+  width: var(--tape-w);
+  height: calc(var(--tape-w) * 379 / 586);
+  flex-shrink: 0;
+}
+
+.anthem-card__tape-back,
+.anthem-card__tape-front {
+  position: absolute;
+  inset: 0;
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: contain;
+}
+
+.anthem-card__tape-back {
+  background-image: var(--tape-back);
+}
+
+.anthem-card__tape-front {
+  background-image: var(--tape-front);
+  pointer-events: none;
+}
+
+.anthem-card__wheel {
+  position: absolute;
+  top: calc(var(--tape-w) * 110 / 586);
+  width: calc(var(--tape-w) * 125 / 586);
+  height: calc(var(--tape-w) * 125 / 586);
+  border-radius: 50%;
+  background: transparent;
+}
+
+.anthem-card__wheel--left {
+  left: calc(var(--tape-w) * 109 / 586);
+  box-shadow: 0 0 0 calc(var(--tape-w) * 70 / 586) #000;
+}
+
+.anthem-card__wheel--right {
+  right: calc(var(--tape-w) * 113 / 586);
+}
+
+.anthem-card__wheel-inner {
+  width: 100%;
+  height: 100%;
+  background: transparent var(--tape-wheel) no-repeat center center;
+  background-size: contain;
+}
+
+.anthem-card__inner.is-playing .anthem-card__wheel--left .anthem-card__wheel-inner {
+  animation: anthemRotL 2.4s linear infinite;
+}
+
+.anthem-card__inner.is-playing .anthem-card__wheel--right .anthem-card__wheel-inner {
+  animation: anthemRotR 2.4s linear infinite;
+}
+
+@keyframes anthemRotL {
+  to { transform: rotate(-360deg); }
+}
+
+@keyframes anthemRotR {
+  to { transform: rotate(360deg); }
+}
+
+/* 歌词区：高度 = 卡带高度，上下渐隐遮罩 + 当前行居中高亮 */
+.anthem-card__lyrics {
+  position: relative;
+  height: calc(var(--tape-w, 340px) * 379 / 586);
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(180deg, transparent, #000 18%, #000 82%, transparent);
+  mask-image: linear-gradient(180deg, transparent, #000 18%, #000 82%, transparent);
+}
+
+.anthem-card__lyrlist {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  transition: transform 0.45s cubic-bezier(0.2, 0.7, 0.2, 1);
+  will-change: transform;
+}
+
+.anthem-card__lyric {
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--vp-c-text-1, #0f172a);
+  opacity: 0.3;
+  text-align: center;
+  cursor: pointer;
+  transition: opacity 0.35s ease, transform 0.35s ease, color 0.35s ease;
+  white-space: nowrap;
+}
+
+.anthem-card__lyric:hover {
+  opacity: 0.6;
+}
+
+.anthem-card__lyric.cur {
+  opacity: 1;
+  transform: scale(1.08);
+  color: var(--workshop-accent);
+  font-weight: 600;
+}
+
+html.dark .anthem-card__lyric.cur {
+  color: #2dd4bf;
+}
+
+.anthem-card__lyric:focus-visible {
+  outline: 1px solid rgba(15, 118, 110, 0.5);
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+/* 控件条：整宽 */
+.anthem-card__player {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+}
+
+.anthem-card__play {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  padding: 0;
+  border: none;
+  border-radius: 999px;
+  background: var(--workshop-accent);
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.18s ease, transform 0.18s ease;
+}
+
+.anthem-card__play:hover {
+  background: #0d6862;
+  transform: translateY(-1px);
+}
+
+.anthem-card__play:focus-visible {
+  outline: 3px solid rgba(15, 118, 110, 0.32);
+  outline-offset: 2px;
+}
+
+.anthem-card__time {
+  flex-shrink: 0;
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+  color: var(--vp-c-text-2, rgba(15, 23, 42, 0.5));
+  min-width: 38px;
+  text-align: center;
+}
+
+.anthem-card__time--duration {
+  text-align: right;
+}
+
+.anthem-card__progress {
+  -webkit-appearance: none;
+  appearance: none;
+  flex: 1;
+  min-width: 0;
+  height: 4px;
+  margin: 0;
+  padding: 0;
+  border-radius: 999px;
+  background: linear-gradient(
+    to right,
+    var(--workshop-accent) 0%,
+    var(--workshop-accent) var(--anthem-progress, 0%),
+    var(--vp-c-divider, rgba(15, 23, 42, 0.12)) var(--anthem-progress, 0%),
+    var(--vp-c-divider, rgba(15, 23, 42, 0.12)) 100%
+  );
+  cursor: pointer;
+}
+
+.anthem-card__progress::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--workshop-accent);
+  border: 2px solid var(--vp-c-bg, #fff);
+  box-shadow: 0 1px 4px rgba(15, 23, 42, 0.2);
+  cursor: pointer;
+  transition: transform 0.15s ease;
+}
+
+.anthem-card__progress::-webkit-slider-thumb:hover {
+  transform: scale(1.15);
+}
+
+.anthem-card__progress::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--workshop-accent);
+  border: 2px solid var(--vp-c-bg, #fff);
+  box-shadow: 0 1px 4px rgba(15, 23, 42, 0.2);
+  cursor: pointer;
+}
+
+.anthem-card__progress::-moz-range-track {
+  background: transparent;
+}
+
+.anthem-card__progress:focus-visible {
+  outline: 3px solid rgba(15, 118, 110, 0.28);
+  outline-offset: 4px;
+  border-radius: 999px;
+}
+
+@media (max-width: 719px) {
+  .anthem-card__stage {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    justify-items: center;
+  }
+
+  .anthem-card__tape {
+    --tape-w: 260px;
+  }
+
+  .anthem-card__lyrics {
+    height: calc(var(--tape-w, 260px) * 379 / 586);
+    width: 100%;
+  }
+
+  .anthem-card__title {
+    font-size: clamp(20px, 5.5vw, 26px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .anthem-card__inner.is-playing .anthem-card__wheel-inner,
+  .anthem-card__lyrlist,
+  .anthem-card__lyric,
+  .anthem-card__play,
+  .anthem-card__progress::-webkit-slider-thumb {
+    transition: none;
+    animation: none;
+  }
+
+  .anthem-card__play:hover {
+    transform: none;
+  }
+}
+

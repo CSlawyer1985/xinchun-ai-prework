@@ -7,6 +7,7 @@ import StudentShowcase from './components/StudentShowcase.vue'
 import StudentVoices from './components/StudentVoices.vue'
 import AlumniDirectory from './components/AlumniDirectory.vue'
 import SiteCounter from './components/SiteCounter.vue'
+import AnthemCard from './components/AnthemCard.vue'
 import './custom.css'
 
 const theme: Theme = {
@@ -23,6 +24,7 @@ const theme: Theme = {
     app.component('StudentVoices', StudentVoices)
     app.component('AlumniDirectory', AlumniDirectory)
     app.component('SiteCounter', SiteCounter)
+    app.component('AnthemCard', AnthemCard)
   }
 }
 
