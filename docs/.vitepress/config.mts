@@ -12,7 +12,7 @@ const siteDescription = '法律人AI实操夜校——培养业务与技术的�
 const shareImagePath = `${base}images/share/wechat-card.png`
 const shareImageUrl = siteUrl ? `${siteUrl}${shareImagePath}` : shareImagePath
 // 线上根 URL：CI 从 SITE_URL + base 推导；本地构建用线上 URL 作 fallback，保证 canonical/sitemap 指向正确
-const homeUrl = (siteUrl ? `${siteUrl}${base}` : 'https://course.legalagi.cn/').replace(/\/+$/, '')
+const homeUrl = (siteUrl ? `${siteUrl}${base}` : 'https://legalagi.cn/').replace(/\/+$/, '')
 
 // 页面绝对 URL（og:url / canonical）
 function pageUrl(relativePath: string) {
