@@ -15,4 +15,4 @@ Allow: /
 User-agent: CCBot
 Allow: /
 
-Sitemap: https://cslawyer1985.github.io/xinchun-ai-prework/sitemap.xml
+Sitemap: https://course.legalagi.cn/sitemap.xml

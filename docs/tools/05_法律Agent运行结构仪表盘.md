@@ -48,7 +48,7 @@ description: 法律 Agent 运行结构仪表盘：78 个交互节点拆透以 Cl
 
 ## 入口
 
-👉 **[打开仪表盘](https://cslawyer1985.github.io/agent-structure-dashboard/)**
+👉 **[打开仪表盘](https://learn-agent.legalagi.cn/)**
 
 ---
 

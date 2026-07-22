@@ -12,7 +12,7 @@ const siteDescription = '法律人AI实操夜校——培养业务与技术的�
 const shareImagePath = `${base}images/share/wechat-card.png`
 const shareImageUrl = siteUrl ? `${siteUrl}${shareImagePath}` : shareImagePath
 // 线上根 URL：CI 从 SITE_URL + base 推导；本地构建用线上 URL 作 fallback，保证 canonical/sitemap 指向正确
-const homeUrl = (siteUrl ? `${siteUrl}${base}` : 'https://cslawyer1985.github.io/xinchun-ai-prework/').replace(/\/+$/, '')
+const homeUrl = (siteUrl ? `${siteUrl}${base}` : 'https://course.legalagi.cn/').replace(/\/+$/, '')
 
 // 页面绝对 URL（og:url / canonical）
 function pageUrl(relativePath: string) {
@@ -158,8 +158,8 @@ export default defineConfig({
           { text: '00 实用工具总览', link: '/tools/00_实用工具总览' },
           { text: '01 Claude Code 速查表', link: '/tools/01_Claude_Code_速查表' },
           { text: '02 Claude Code 提示词 324 条中文翻译版', link: '/tools/02_Claude_Code_提示词_324条_中文翻译版' },
-          { text: '03 法律概念 WIKI', link: 'https://cslawyer1985.github.io/legalwiki/index.html' },
-          { text: '04 Claude for Legal中国法适配', link: 'https://cslawyer1985.github.io/claude-for-legal-ZH/' },
+          { text: '03 法律概念 WIKI', link: 'https://wiki.legalagi.cn/' },
+          { text: '04 Claude for Legal中国法适配', link: 'https://claude.legalagi.cn/' },
           { text: '05 法律 Agent 运行结构仪表盘', link: '/tools/05_法律Agent运行结构仪表盘' },
           { text: '06 Claude Code 命令打字练习', link: '/tools/06_Claude_Code_命令打字练习' }
         ]
