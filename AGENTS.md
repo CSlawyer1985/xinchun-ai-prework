@@ -5,14 +5,13 @@
 - 站点：四明山法师 AI 夜校
 - 正式域名：`https://legalagi.cn/`
 - `www` 别名：`https://www.legalagi.cn/`
-- 过渡兼容域名：`https://course.legalagi.cn/`
 - GitHub 仓库：`CSlawyer1985/xinchun-ai-prework`
 - Cloudflare Pages 项目：`xinchun-ai-prework`
 - 构建目录：`docs/.vitepress/dist`
 - 生产发布：推送 `main` 分支后，由 Cloudflare Pages 自动构建和部署
 - `npm run docs:build` 已在项目内部固定注入 `SITE_URL=https://legalagi.cn`，其优先级高于 Cloudflare 外层遗留的旧环境值
 
-`legalagi.cn` 是本项目唯一 canonical 域名。页面 canonical、Open Graph、JSON-LD、sitemap、robots 及站内绝对链接均应使用该域名。`course.legalagi.cn` 仅用于兼容旧链接，不应再写入新的 canonical 或导航链接。
+`legalagi.cn` 是本项目唯一 canonical 和访问域名。页面 canonical、Open Graph、JSON-LD、sitemap、robots 及站内绝对链接均应使用该域名。`course.legalagi.cn` 已停用并从 Cloudflare Pages 与 DNS 中移除，不得恢复或写入新的页面、导航及 SEO 数据。
 
 ## 整体网站体系
 
