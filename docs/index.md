@@ -51,3 +51,5 @@ features:
 <StudentShowcase />
 
 <AnthemCard />
+
+<EcosystemNav />

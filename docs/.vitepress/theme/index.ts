@@ -8,12 +8,14 @@ import StudentVoices from './components/StudentVoices.vue'
 import AlumniDirectory from './components/AlumniDirectory.vue'
 import SiteCounter from './components/SiteCounter.vue'
 import AnthemCard from './components/AnthemCard.vue'
+import EcosystemNav from './components/EcosystemNav.vue'
 import './custom.css'
 
 const theme: Theme = {
   extends: DefaultTheme,
   Layout: () => {
     return h(DefaultTheme.Layout, null, {
+      'doc-footer-before': () => h(EcosystemNav),
       'layout-bottom': () => h(SiteCounter)
     })
   },
@@ -25,6 +27,7 @@ const theme: Theme = {
     app.component('AlumniDirectory', AlumniDirectory)
     app.component('SiteCounter', SiteCounter)
     app.component('AnthemCard', AnthemCard)
+    app.component('EcosystemNav', EcosystemNav)
   }
 }
 
