@@ -24,6 +24,24 @@
       </a>
     </nav>
 
-    <p class="ecosystem-nav__slogan">业务与技术的双语者</p>
+    <p class="ecosystem-nav__slogan">
+      <svg
+        class="ecosystem-nav__wave"
+        aria-hidden="true"
+        focusable="false"
+        viewBox="0 0 2400 120"
+        preserveAspectRatio="none"
+      >
+        <path
+          class="ecosystem-nav__wave-line ecosystem-nav__wave-line--a"
+          d="M0 60 Q150 0 300 60 T600 60 T900 60 T1200 60 T1500 60 T1800 60 T2100 60 T2400 60"
+        />
+        <path
+          class="ecosystem-nav__wave-line ecosystem-nav__wave-line--b"
+          d="M0 60 Q150 96 300 60 T600 60 T900 60 T1200 60 T1500 60 T1800 60 T2100 60 T2400 60"
+        />
+      </svg>
+      <span class="ecosystem-nav__slogan-text">业务与技术的双语者</span>
+    </p>
   </aside>
 </template>

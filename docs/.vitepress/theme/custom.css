@@ -10,8 +10,8 @@
 .ecosystem-nav {
   position: relative;
   width: min(100%, 1152px);
-  margin: 64px auto 24px;
-  padding: 30px 0 4px;
+  margin: 64px auto 0;
+  padding: 30px 0 0;
   border-top: 1px solid rgba(45, 212, 191, 0.2);
 }
 
@@ -95,12 +95,88 @@
   line-height: 1.45;
 }
 
+/* 标语带：文字上下左右居中，背景 70% 透明度声波 */
 .ecosystem-nav__slogan {
-  margin: 18px 0 0;
-  color: var(--vp-c-text-2);
-  font-size: 13px;
-  letter-spacing: 0.16em;
-  text-align: right;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 96px;
+  margin: 160px 0 0;
+  padding: 30px 24px;
+  overflow: hidden;
+  text-align: center;
+}
+
+.ecosystem-nav__wave {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 100%;
+  opacity: 0.1;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.ecosystem-nav__wave-line {
+  fill: none;
+  stroke: var(--workshop-ascii-accent);
+  stroke-width: 2;
+  stroke-linecap: round;
+  vector-effect: non-scaling-stroke;
+}
+
+.ecosystem-nav__wave-line--a {
+  opacity: 0.55;
+  animation: ecosystem-wave-flow-a 9s linear infinite;
+}
+
+.ecosystem-nav__wave-line--b {
+  opacity: 0.32;
+  stroke-width: 1.5;
+  animation: ecosystem-wave-flow-b 6s linear infinite;
+}
+
+.ecosystem-nav__slogan-text {
+  position: relative;
+  z-index: 1;
+  padding: 0 12px;
+  color: var(--vp-c-text-3);
+  font-size: clamp(13px, 1.5vw, 16px);
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  transition: letter-spacing 240ms ease;
+}
+
+/* 悬停时声波加速、字距微张，呼应"动态交互" */
+.ecosystem-nav__slogan:hover .ecosystem-nav__wave-line--a {
+  animation-duration: 3.5s;
+}
+
+.ecosystem-nav__slogan:hover .ecosystem-nav__wave-line--b {
+  animation-duration: 2.4s;
+}
+
+.ecosystem-nav__slogan:hover .ecosystem-nav__slogan-text {
+  letter-spacing: 0.22em;
+}
+
+@keyframes ecosystem-wave-flow-a {
+  from { transform: translateX(0); }
+  to { transform: translateX(-25%); }
+}
+
+@keyframes ecosystem-wave-flow-b {
+  from { transform: translateX(-25%); }
+  to { transform: translateX(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ecosystem-nav__wave-line--a,
+  .ecosystem-nav__wave-line--b {
+    animation: none;
+  }
 }
 
 .VPDoc .ecosystem-nav {
@@ -144,7 +220,13 @@
   }
 
   .ecosystem-nav__slogan {
-    text-align: left;
+    min-height: 80px;
+    padding: 24px 16px;
+  }
+
+  .ecosystem-nav__slogan-text {
+    font-size: 13px;
+    letter-spacing: 0.16em;
   }
 }
 
@@ -156,6 +238,11 @@
 
 .VPHome .VPHomeHero .container {
   gap: 32px;
+}
+
+/* 首页内容紧贴页脚，覆盖 VitePress 默认主题 scoped 的 128px 间距 */
+.VPHome {
+  margin-bottom: 0 !important;
 }
 
 .VPHome .VPHomeHero .actions {
