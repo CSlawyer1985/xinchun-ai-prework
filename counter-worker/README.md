@@ -19,8 +19,8 @@ npx wrangler login
 npx wrangler kv namespace create COUNTER
 
 # 3. 写入基数（从旧统计迁移过来的起点）
-npx wrangler kv key put --binding=COUNTER pv 2046
-npx wrangler kv key put --binding=COUNTER uv 2046
+npx wrangler kv key put --binding=COUNTER --remote pv 2046
+npx wrangler kv key put --binding=COUNTER --remote uv 2046
 
 # 4. 部署 Worker
 npx wrangler deploy
@@ -46,6 +46,6 @@ curl https://night-counter.<你的子域>.workers.dev/api/counter
 ## 调整基数
 
 ```bash
-npx wrangler kv key put --binding=COUNTER pv <新PV>
-npx wrangler kv key put --binding=COUNTER uv <新UV>
+npx wrangler kv key put --binding=COUNTER --remote pv <新PV>
+npx wrangler kv key put --binding=COUNTER --remote uv <新UV>
 ```
