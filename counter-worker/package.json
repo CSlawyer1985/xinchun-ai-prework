@@ -1,0 +1,12 @@
+{
+  "name": "night-counter",
+  "private": true,
+  "version": "1.0.0",
+  "description": "四明山法师 AI 夜校访问计数 Worker（Cloudflare Workers + KV）",
+  "main": "src/index.js",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "tail": "wrangler tail"
+  }
+}

@@ -1,0 +1,9 @@
+name = "night-counter"
+main = "src/index.js"
+compatibility_date = "2026-07-23"
+
+# KV 命名空间：部署步骤里用 `npx wrangler kv namespace create COUNTER` 创建，
+# 把返回的 id 填到下方 id 字段（preview_id 用 `... --preview` 创建）。
+[[kv_namespaces]]
+binding = "COUNTER"
+id = "64cd079d3449474499b4450a954ddb8c"
