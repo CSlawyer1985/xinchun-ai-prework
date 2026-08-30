@@ -514,7 +514,13 @@
   letter-spacing: -0.03em;
 }
 
-.student-showcase__cta {
+.student-showcase__footer {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 24px;
+}
+
+.student-showcase .student-showcase__cta {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -545,7 +551,7 @@
   line-height: 1;
 }
 
-.student-showcase__cta:hover {
+.student-showcase .student-showcase__cta:hover {
   color: #0f766e;
   opacity: 0.92;
 }
@@ -1043,6 +1049,18 @@
 /* 暗色模式标题适配 */
 .dark .student-voices__eyebrow,
 .dark .student-showcase__eyebrow {
+  color: #5eead4;
+}
+
+.dark .student-showcase .student-showcase__cta {
+  color: rgba(248, 250, 252, 0.92);
+}
+
+.dark .student-showcase .student-showcase__cta::after {
+  border-color: rgba(226, 232, 240, 0.22);
+}
+
+.dark .student-showcase .student-showcase__cta:hover {
   color: #5eead4;
 }
 

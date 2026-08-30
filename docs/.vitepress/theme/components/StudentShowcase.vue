@@ -15,11 +15,6 @@ import { alumniCohorts } from './alumni-data'
           <p class="student-showcase__eyebrow">{{ cohort.season }}</p>
           <h2>{{ cohort.title }}</h2>
         </div>
-        <a
-          v-if="index === alumniCohorts.length - 1"
-          class="student-showcase__cta"
-          :href="withBase('/students/00_往期学员名录')"
-        >查看更多</a>
       </div>
 
       <div class="student-showcase__grid student-showcase__grid--contributors">
@@ -44,6 +39,13 @@ import { alumniCohorts } from './alumni-data'
             <span v-if="member.note" class="student-avatar__note" :title="member.note">{{ member.note }}</span>
           </div>
         </article>
+      </div>
+
+      <div v-if="index === alumniCohorts.length - 1" class="student-showcase__footer">
+        <a
+          class="student-showcase__cta"
+          :href="withBase('/students/00_往期学员名录')"
+        >查看更多</a>
       </div>
     </div>
   </section>
