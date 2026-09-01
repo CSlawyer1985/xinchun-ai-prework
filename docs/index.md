@@ -15,7 +15,7 @@ hero:
       link: /prework/02_Claude_Code_安装与配置指南
     - theme: brand
       text: 立即报名
-      link: https://xeikezlmp0.feishu.cn/share/base/form/shrcn6iE0WZVQ1lKMNnWwM1I6dc
+      link: https://xeikezlmp0.feishu.cn/share/base/form/shrcnaK1RWCxDtG0e3faAsIKFXf
 
 features:
   - title: 第 1 步：模型账号 + Cherry Studio
@@ -27,6 +27,14 @@ features:
 ---
 
 <HomeAsciiHero text="四明山法师 AI 夜校" target=".VPHomeHero .heading" />
+
+<a class="home-signup-notice" href="https://xeikezlmp0.feishu.cn/share/base/form/shrcnaK1RWCxDtG0e3faAsIKFXf" target="_blank" rel="noopener noreferrer">
+  <span class="home-signup-notice__status">
+    <span class="home-signup-notice__dot" aria-hidden="true"></span>
+    第四期报名进行中
+  </span>
+  <span class="home-signup-notice__cta">填写报名表 →</span>
+</a>
 
 <div class="home-prep-strip">
   <article class="home-prep-card">
