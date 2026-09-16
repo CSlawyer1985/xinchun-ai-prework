@@ -135,13 +135,19 @@ export default defineConfig({
   themeConfig: {
     siteTitle,
     nav: [
+      { text: '上期大纲', link: '/courses/00_上期课程大纲' },
       { text: '课前指引', link: '/prework/00_课前准备总览' },
       { text: '实用工具', link: '/tools/00_实用工具总览' },
-      { text: '命令练习', link: '/tools/06_Claude_Code_命令打字练习' },
       { text: '往期学员', link: '/students/00_往期学员名录' },
       { text: '常见问题', link: '/prework/04_常见问题FAQ' }
     ],
     sidebar: [
+      {
+        text: '课程信息',
+        items: [
+          { text: '00 上期课程大纲', link: '/courses/00_上期课程大纲' }
+        ]
+      },
       {
         text: '课前指引',
         items: [

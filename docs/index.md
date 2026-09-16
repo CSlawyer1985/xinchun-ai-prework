@@ -11,8 +11,8 @@ hero:
       text: 先看准备总览
       link: /prework/00_课前准备总览
     - theme: alt
-      text: 直接安装 Claude Code
-      link: /prework/02_Claude_Code_安装与配置指南
+      text: 看看合不合适
+      link: /courses/00_上期课程大纲
     - theme: brand
       text: 立即报名
       link: https://xeikezlmp0.feishu.cn/share/base/form/shrcnaK1RWCxDtG0e3faAsIKFXf
@@ -27,6 +27,13 @@ features:
 ---
 
 <HomeAsciiHero text="四明山法师 AI 夜校" target=".VPHomeHero .heading" />
+
+<a class="home-fit-check" href="/courses/00_上期课程大纲">
+  <span class="home-fit-check__eyebrow">报名前建议</span>
+  <span class="home-fit-check__title">看看合不合适</span>
+  <span class="home-fit-check__description">参考第三期实际授课内容和公益课程服务边界，再决定是否报名。</span>
+  <span class="home-fit-check__cta">查看上期大纲 →</span>
+</a>
 
 <a class="home-signup-notice" href="https://xeikezlmp0.feishu.cn/share/base/form/shrcnaK1RWCxDtG0e3faAsIKFXf" target="_blank" rel="noopener noreferrer">
   <span class="home-signup-notice__status">
