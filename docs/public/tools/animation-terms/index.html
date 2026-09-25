@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="icon" type="image/png" href="../../favicon-32.png">
+<title>动画术语手册</title>
+<style>
+:root{
+  --bg:#f4efe6;--paper:#fbf8f2;--ink:#1d1a16;--ink2:#5d554a;--ink3:#8f8577;--line:#e2d9c9;
+  --ac:#c8611a;--ac-soft:#f6e3d2;--ok:#3d7a4f;--ok-soft:#dcebdf;--mid:#8a6a1c;--mid-soft:#f1e6c8;--no:#8a8177;--no-soft:#ebe6de;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){:root{
+  --bg:#151210;--paper:#1d1916;--ink:#eee5d7;--ink2:#b9ad9c;--ink3:#857a6b;--line:#302a24;
+  --ac:#f08a3c;--ac-soft:#3a2415;--ok:#7fc093;--ok-soft:#1d2e22;--mid:#d9b45c;--mid-soft:#332a14;--no:#9b9184;--no-soft:#29241f;
+  color-scheme:dark;}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.65 -apple-system,"PingFang SC","Hiragino Sans GB",sans-serif}
+.wrap{max-width:1180px;margin:0 auto;padding:56px 24px 96px}
+header h1{font:600 46px/1.15 "Songti SC","STSong",serif;letter-spacing:.06em;margin:0}
+header p{color:var(--ink2);max-width:760px;margin:14px 0 0}
+.legend{display:flex;flex-wrap:wrap;gap:10px 18px;margin-top:18px;font-size:13px;color:var(--ink2)}
+.tag{display:inline-block;font-size:12px;line-height:1;padding:5px 8px;border-radius:4px;white-space:nowrap}
+.s-gen{background:transparent;color:var(--ink3);box-shadow:inset 0 0 0 1px var(--line)}
+.s-ok{background:var(--ok-soft);color:var(--ok)}.s-mid{background:var(--mid-soft);color:var(--mid)}.s-no{background:var(--no-soft);color:var(--no)}
+.bar{position:sticky;top:0;z-index:5;background:var(--bg);padding:16px 0 12px;margin-top:28px;border-bottom:1px solid var(--line)}
+#q{width:100%;font:inherit;font-size:16px;padding:12px 16px;border:1px solid var(--line);border-radius:8px;background:var(--paper);color:var(--ink);outline:none}
+#q:focus{border-color:var(--ac)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.chips button{font:inherit;font-size:13px;padding:6px 12px;border-radius:999px;border:1px solid var(--line);background:var(--paper);color:var(--ink2);cursor:pointer}
+.chips button.on{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+section{margin-top:48px}
+section h2{font:600 26px "Songti SC","STSong",serif;letter-spacing:.04em;margin:0 0 4px}
+section .sub{color:var(--ink3);font-size:13.5px;margin:0 0 18px}
+.tbl{overflow-x:auto;border:1px solid var(--line);border-radius:10px;background:var(--paper)}
+table{width:100%;border-collapse:collapse;min-width:820px}
+th{text-align:left;font-size:12px;font-weight:500;letter-spacing:.08em;color:var(--ink3);padding:12px 14px;border-bottom:1px solid var(--line)}
+td{padding:13px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+tr:last-child td{border-bottom:0}
+td.term{width:22%}
+td.term b{display:block;font-size:15.5px}
+td.term code{font:12.5px Menlo,"SF Mono",monospace;color:var(--ac)}
+td.desc{width:31%;color:var(--ink2)}
+td.use{width:33%}
+td.st{width:14%}
+.demo{display:inline-block;width:100%;height:22px;position:relative;margin-top:8px;border-bottom:1px dashed var(--line)}
+.demo i{position:absolute;left:0;top:5px;width:12px;height:12px;border-radius:50%;background:var(--ac);animation:mv 2.4s infinite alternate}
+@keyframes mv{from{left:0}to{left:calc(100% - 12px)}}
+.map{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:18px 18px 16px}
+.card h3{margin:0 0 6px;font-size:16.5px}
+.card .t{font:13px Menlo,"SF Mono",monospace;color:var(--ac);margin-bottom:8px}
+.card p{margin:0;color:var(--ink2);font-size:14px}
+.say{margin-top:10px;padding:10px 12px;border-radius:6px;background:var(--ac-soft);font-size:13.5px}
+.empty{padding:40px;text-align:center;color:var(--ink3)}
+footer{margin-top:64px;color:var(--ink3);font-size:13px;border-top:1px solid var(--line);padding-top:18px}
+@media (max-width:640px){header h1{font-size:34px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <h1>动画术语手册</h1>
+  <p>做 B-roll、解说动画、动效时常用的专业术语，按「画法工具、运动手法、镜头画面、剪辑结构、声音、交付格式、风格」七类整理。每条写了它是什么、适合展示什么，以及在这台电脑上能不能直接用。最后一节反过来查：想表达某种内容时，该用哪些术语提需求。</p>
+  <div class="legend">
+    <span><span class="tag s-ok">已就绪</span> 本机已装好，直接能用</span>
+    <span><span class="tag s-mid">随时可装</span> 一条命令或打包进网页即可</span>
+    <span><span class="tag s-no">需另装软件</span> 要装大型软件或付费工具</span>
+    <span><span class="tag s-gen">通用概念</span> 不涉及安装的术语</span>
+  </div>
+</header>
+
+<div class="bar">
+  <input id="q" type="search" placeholder="搜索术语、英文名或用途，例如：粒子、morph、数据、透明">
+  <div class="chips" id="chips"></div>
+</div>
+
+<div id="list"></div>
+
+<section id="sec-map">
+  <h2>按内容反查</h2>
+  <p class="sub">想表达什么，就用哪些手法和技术。底部色块里的话可以直接复制去提需求。</p>
+  <div class="map" id="map"></div>
+</section>
+
+<footer>整理于 2026-09-24。本机状态按当时的检查结果：Canvas、SVG、three.js、p5.js、Manim、Playwright、ffmpeg、edge-tts 可用；LaTeX、After Effects、Blender 未装。</footer>
+</div>
+
+<script>
+// [分类, 中文名, 英文/代码名, 是什么, 适合展示, 本机状态(ok/mid/no/-), 演示缓动]
+const D = [
+// ── 画法与工具
+['tool','DOM + CSS 动画','CSS Animation / Transition','让网页上的文字、方块本身动起来，浏览器自带。','标题入场、文字排版、卡片翻转、简单图标动效','ok'],
+['tool','SVG 动画','SVG','矢量图形，放大不糊，可以逐条控制线条和形状。','线条插画、图标、流程图、地图路线、描边生长、形状变形','ok'],
+['tool','Canvas 2D','Canvas API','一块平面画布，每帧自己算好坐标再画，浏览器自带。','图表生长、数字滚动、几千个以内的小元素（第一部就是它）','ok'],
+['tool','WebGL','WebGL','浏览器调用显卡画图的底层接口，一般不直接写，通过 three.js 等库使用。','大量粒子、三维画面、实时光效的底座','ok'],
+['tool','three.js','three.js','基于 WebGL 的三维库：搭场景、放物体、摆摄像机，显卡负责算透视。','粒子聚散、三维物体、镜头推拉环绕、空间纵深（第二部就是它）','mid'],
+['tool','着色器','Shader / GLSL','在显卡上逐像素运行的小程序，画面每个点的颜色由公式决定。','流动渐变背景、烟雾、水波、光效、扭曲、噪声纹理','mid'],
+['tool','WebGPU','WebGPU','WebGL 的下一代接口，算力更强。','百万级粒子模拟、流体；一般 B-roll 用不到','mid'],
+['tool','GSAP','GreenSock','专业的动画时间轴库，擅长把几十个动作排得井井有条。','复杂编排的 SVG 与文字动画、精确卡点','mid'],
+['tool','Motion / anime.js','Framer Motion / anime.js','轻量动画库，写法比 GSAP 简单。','界面动效、小型图标动画','mid'],
+['tool','D3.js','D3','数据可视化库，把数据直接映射成图形。','数据驱动图表、地图、力导向关系网、树状层级','mid'],
+['tool','p5.js','p5.js','创意编程库，写几行就能出生成艺术效果。','生成艺术、手绘感纹理、有机随机图形（本机在 ~/.animlibs）','ok'],
+['tool','PixiJS','PixiJS','高性能 2D 渲染库，用显卡画平面画面。','成千上万个 2D 小图标同时运动','mid'],
+['tool','Lottie','Lottie','After Effects 导出的 JSON 矢量动画格式，体积小。','App 图标动效、网页小动画；源文件要在 AE 里做','no'],
+['tool','Rive','Rive','可交互的矢量动画设计工具，带状态机。','可点击的交互动画；做视频出片意义不大','no'],
+['tool','Remotion','Remotion','用 React 代码写视频，数据换一份就能出一期新片。','模板化、批量化视频（每日行情、每期榜单）','mid'],
+['tool','Motion Canvas','Motion Canvas','用 TypeScript 写解说动画，时间轴和旁白对齐方便。','代码讲解、图解类解说视频','mid'],
+['tool','Manim','Manim Community','Python 写的数学动画引擎，3Blue1Brown 用的就是它的前身。','公式推导、几何证明、函数图像、坐标系变换（公式需另装 LaTeX）','ok'],
+['tool','LaTeX','LaTeX / BasicTeX','专业公式排版系统，Manim 渲染公式时依赖它。','带数学公式的动画','no'],
+['tool','After Effects','Adobe AE','行业标准的动效软件，靠手动 K 帧。','精修的商业级动效、实拍合成','no'],
+['tool','Blender','Blender','开源三维软件，支持材质、灯光、物理渲染。','写实三维物体、金属质感硬币、真实光影','no'],
+['tool','Spline','Spline','网页版三维设计工具，拖拽搭场景。','快速做可视化三维小场景','no'],
+['tool','Playwright','Playwright','程序控制浏览器，逐帧截图，把网页动画变成视频帧。','所有网页类动画的出片环节','ok'],
+['tool','ffmpeg','FFmpeg','音视频处理工具，负责编码、混音、转格式、裁剪。','出 MP4、加音轨、压体积、转 GIF','ok'],
+['tool','语音合成','TTS / edge-tts','把文字变成语音，这次旁白用的是微软云健男声。','旁白、配音试听稿','ok'],
+
+// ── 运动手法
+['move','关键帧','Keyframe','动作的起点和终点这类关键时刻，中间的过程由程序补出来。','所有动画的基础单位','-'],
+['move','补间 / 插值','Tween / Interpolation','在两个关键帧之间自动算出中间状态。','位置、大小、颜色、透明度的平滑过渡','-'],
+['move','缓动','Easing','动作的速度曲线，决定东西动起来是机械还是有重量感。','所有运动；提需求时说「要有重量感」即可','-'],
+['move','线性','Linear','全程匀速。','计时器、传送带、机械运转；别的地方用会显得呆板','-','linear'],
+['move','缓入','Ease-in','慢慢起步，越来越快。','物体离场、下坠、加速冲出画面','-','cubic-bezier(.55,0,1,.45)'],
+['move','缓出','Ease-out / Expo-out','快速出发，慢慢停稳。最常用的一种。','元素入场、卡片落位、文字出现','-','cubic-bezier(.16,1,.3,1)'],
+['move','缓入缓出','Ease-in-out','两头慢中间快。','镜头移动、物体从 A 点移到 B 点','-','cubic-bezier(.65,0,.35,1)'],
+['move','回弹','Overshoot / Back','冲过头一点再退回来。','按钮弹出、图标强调、数字定格','-','cubic-bezier(.34,1.56,.64,1)'],
+['move','弹簧','Spring','像弹簧一样来回晃几下再停。','活泼、卡通、有生命感的物体','-'],
+['move','贝塞尔曲线','Cubic-bezier','用四个数精确描述一条缓动曲线。','需要精调手感时用','-'],
+['move','错峰入场','Stagger','一组元素按顺序依次出现，间隔很短。','列表、柱状图、逐字文字、一排图标','-'],
+['move','形变','Morph','一个形状平滑变成另一个形状。','概念转化：A 变成 B、问题变成答案、钱变成数字','-'],
+['move','描边生长','Line draw / Stroke reveal','线条像被笔画出来一样逐渐出现。','路线、流程、签名、电路、地图轨迹','-'],
+['move','遮罩揭示','Mask reveal / Wipe','用一个形状逐渐露出下面的内容。','标题揭晓、前后对比、分屏切换','-'],
+['move','动态排版','Kinetic Typography','文字本身是主角，随语义放大、弹跳、拆散。','金句、口号、关键词强调','-'],
+['move','数字滚动','Count-up','数字从 0 快速滚到目标值。','数据强调：市值、涨幅、用户数','-'],
+['move','生长','Grow','柱子升起、折线延伸、树枝展开。','数据随时间变化、结构逐步展开','-'],
+['move','数据驱动','Data-driven','画面由真实数据直接生成，不是手摆的。','行情、宏观数据、排名变化','-'],
+['move','粒子系统','Particle System','大量小点按规则运动。','聚散、汇聚成形、流动、爆炸、规模感','-'],
+['move','聚合 / 散开','Assemble / Disperse','碎片汇聚成一个整体，或整体崩解成碎片。','从无到有、秩序与混乱、崩盘','-'],
+['move','视差','Parallax','前景快、背景慢，制造纵深。','平面素材也要有空间感时','-'],
+['move','共享元素过渡','Shared element / FLIP','同一个元素从一个状态变形到另一个状态，不切换。','从全局到细节、从图标展开成详情','-'],
+['move','焦点切换','Focus pull','背景变暗变糊，前景变亮变清楚。','在复杂画面里点出重点','-'],
+['move','噪声扰动','Perlin Noise','自然、连续的随机抖动。','烟雾、水波、呼吸感、有机运动','-'],
+['move','生成艺术','Generative Art','用规则和随机数自动生成图形。','抽象背景、情绪画面、片头氛围','-'],
+['move','故障效果','Glitch','信号错乱、画面撕裂。','崩溃、危机、黑客、系统失灵','-'],
+['move','无缝循环','Seamless loop','首尾完全接上，可以无限循环。','背景素材、GIF、等待画面','-'],
+['move','定格','Hold frame','动作结束后停住一段时间。','给观众反应时间；片尾方便剪辑衔接','-'],
+['move','挤压与拉伸','Squash & Stretch','落地压扁、弹起拉长，迪士尼十二法则之一。','卡通化物体、弹跳的球','-'],
+['move','预备动作','Anticipation','动作前先反向蓄力一下。','跳跃、发射、强调前的一拍','-'],
+['move','跟随与重叠','Follow-through','主体停下后附属部分还会晃一下。','让动作不僵硬','-'],
+['move','弧线运动','Arcs','自然运动走弧线而不是直线。','鼠标轨迹、飞行物、手势','-'],
+
+// ── 镜头与画面
+['cam','推 / 拉','Dolly in / out','摄像机向前靠近或向后退。','推：进入细节、制造紧张；拉：揭示全貌、显示规模','-'],
+['cam','摇','Pan / Tilt','摄像机原地左右或上下转动。','扫过一条时间线、一排对象','-'],
+['cam','环绕','Orbit','摄像机绕着物体转。','展示三维物体、硬币、产品','-'],
+['cam','变焦','Zoom','改变焦距放大缩小，和推拉的透视感不同。','快速强调、滑稽感','-'],
+['cam','跟拍','Tracking','摄像机跟着运动的物体走。','跟随一个光点、一个区块穿过整条链','-'],
+['cam','手持感','Camera shake / drift','轻微不规则的晃动。','增加真实感；大幅晃动用于冲击时刻','-'],
+['cam','景深','Depth of Field','焦点处清楚，前后虚化。','电影感、突出主体','-'],
+['cam','运动模糊','Motion Blur','快速运动的物体拖出残影。','速度感、快速转场','-'],
+['cam','辉光','Bloom / Glow','亮的地方向外溢光。','光点、霓虹、能量感（第二部大量使用）','-'],
+['cam','色调映射','Tone Mapping','把过亮的画面压回可显示范围，保留层次。','粒子叠加过曝时救画面','-'],
+['cam','暗角','Vignette','画面四角压暗。','引导视线到中心、电影感','-'],
+['cam','胶片颗粒','Film Grain','画面上叠一层细小噪点。','去掉数码的塑料感、复古质感','-'],
+['cam','色差','Chromatic Aberration','红绿蓝三色轻微错位。','故障感、镜头感','-'],
+['cam','调色','Color Grading / LUT','整体调整画面色调风格。','统一一组 B-roll 的色彩气质','-'],
+
+// ── 剪辑与结构
+['edit','B-roll','B-roll','配合主画面或旁白的辅助画面，用来解释、过渡、增加信息。','口播视频里的图解、数据、氛围镜头','-'],
+['edit','A-roll','A-roll','主画面，通常是口播人像或采访。','和 B-roll 相对','-'],
+['edit','分镜','Storyboard','用静态草图或文字列出每个镜头的画面。','动工前对齐方向，返工最便宜','-'],
+['edit','动态分镜','Animatic','粗略版的会动的分镜，带大概节奏。','确认时长和节奏','-'],
+['edit','贯穿元素','Hero element','贯穿全片的一个主角元素，在各段之间变形延续。','让短片成为一个整体（两部片子里的橙色光点）','-'],
+['edit','硬切','Cut','直接切到下一个画面。','节奏快、信息密集','-'],
+['edit','叠化','Cross-dissolve','前后两个画面交叉淡入淡出。','时间流逝、柔和过渡','-'],
+['edit','匹配剪辑','Match cut','前后两个镜头形状或动作相似，顺势接上。','高级转场：圆形硬币接到圆形太阳','-'],
+['edit','形变转场','Morph transition','上一个画面的元素直接变成下一个画面的元素。','动画里最顺滑的转场','-'],
+['edit','下三分之一','Lower third','画面下方的字幕条、人名条。','给 B-roll 留出字幕区时说「下方 1/3 留空」','-'],
+['edit','安全区','Safe area','平台界面和字幕不会遮挡的区域。','竖屏视频尤其要注意上下两端','-'],
+['edit','节奏点','Beat / Cue','画面变化对准旁白或音乐的某个时刻。','卡点、强调关键词','-'],
+['edit','片尾卡','End card','片子最后停留的标题或 Logo 画面。','收尾、品牌露出','-'],
+
+// ── 声音
+['audio','旁白','Voiceover / VO','画外解说的人声。','解说类视频的主线','-'],
+['audio','背景音乐','BGM','铺底的连续音乐。','情绪基调','-'],
+['audio','音效','SFX','配合画面动作的短促声音。','落位、弹出、撞击、滴答；让画面「有响应」','-'],
+['audio','闪避 / 侧链压缩','Ducking / Sidechain','人声出现时自动压低音乐。','旁白和音乐同时存在时必做','ok'],
+['audio','响度','Loudness / LUFS','平台统一音量的标准，一般网络平台约 −14 LUFS。','避免片子比别人小声或爆音','ok'],
+['audio','淡入淡出','Fade in / out','声音或画面逐渐出现、消失。','开头结尾不突兀','-'],
+['audio','音画同步','Sync','画面动作和声音的时间严格对齐。','每个音效都要对准对应的帧','-'],
+
+// ── 交付格式
+['out','分辨率','Resolution','画面像素尺寸：1080p 是 1920×1080，4K 是 3840×2160。','常规交付 1080p','-'],
+['out','画幅','Aspect Ratio','画面宽高比：16:9 横屏，9:16 竖屏，1:1 方形，4:5 小红书常用。','按发布平台选','-'],
+['out','帧率','fps','每秒多少帧：24 电影感，25/30 常规，60 更顺滑。','B-roll 跟正片帧率保持一致','-'],
+['out','H.264','H.264 / AVC','最通用的视频编码，任何设备都能放。','默认交付格式','ok'],
+['out','H.265','H.265 / HEVC','同画质体积更小，老设备可能打不开。','需要压体积时','ok'],
+['out','ProRes 4444','Apple ProRes 4444','专业剪辑用的高质量编码，支持透明通道，体积很大。','要叠在实拍画面上的透明 B-roll','ok'],
+['out','透明通道','Alpha Channel','画面背景是透明的，不是黑色。','动画叠在人像或实拍上；要说「透明背景」','-'],
+['out','WebM 透明','WebM (VP9 alpha)','网页用的带透明视频格式，体积小。','网页嵌入的透明动画','ok'],
+['out','GIF','GIF','动图格式，颜色少、体积大，但到处能放。','社交平台预览、文档里的小动图','ok'],
+['out','序列帧','PNG sequence','每一帧存成一张图。','交给剪辑师自由处理、最高质量','ok'],
+['out','CRF / 码率','CRF / Bitrate','控制压缩程度，数字越小画质越好、体积越大。','高清版和分享版的区别就在这里','ok'],
+['out','逐帧渲染','Frame-by-frame render','一帧一帧算出画面再拼成视频，不掉帧、结果确定。','这两部片子的出片方式','ok'],
+['out','实时录屏','Screen recording','边播放边录，简单但可能掉帧。','快速预览','ok'],
+['out','色彩空间','sRGB / Rec.709','颜色的标准范围，视频一般用 Rec.709。','避免导出后颜色发灰或偏色','-'],
+
+// ── 风格
+['style','扁平','Flat design','纯色块、无阴影、干净利落。','知识科普、互联网产品','-'],
+['style','线稿 / 单线','Line art / Mono-line','只用线条，常配一个强调色。','概念解释、流程示意','-'],
+['style','等距视角','Isometric','一种不带透视的斜 45° 立体画法。','系统架构、城市、产业链、供应链','-'],
+['style','金融终端风','Bloomberg terminal','黑底、橙色或绿色数字、等宽字体、高信息密度。','行情、宏观数据、财经解读','-'],
+['style','3Blue1Brown 风','3B1B style','深色底、柔和彩色线条、公式和图形平滑变换。','数学、原理推导（用 Manim 做）','-'],
+['style','Kurzgesagt 风','Kurzgesagt style','饱和色扁平插画、圆润形状、可爱角色。','科普、宏大主题的亲和表达','-'],
+['style','瑞士国际主义','Swiss / International style','严格网格、大号无衬线字、红黑白。','数据报告、理性冷静的论述','-'],
+['style','杂志编辑风','Editorial','衬线大标题、留白、克制配色。','评论、观点、人文类内容','-'],
+['style','手绘 / 粉笔','Hand-drawn / Chalkboard','手绘线条、纸张或黑板质感。','教学、轻松讲解','-'],
+['style','电影感暗调','Cinematic dark','暗场、戏剧光、颗粒、辉光。','情绪片、信仰、历史叙事（这两部就是）','-'],
+['style','低多边形','Low poly','三维物体由少量三角面组成。','轻量的三维场景、游戏感','-'],
+['style','玻璃拟态','Glassmorphism','半透明毛玻璃卡片。','科技产品、界面展示','-'],
+['style','赛博霓虹','Cyberpunk / Neon','暗底、霓虹色发光线条。','科技、加密、未来感','-'],
+['style','蓝图风','Blueprint','蓝底白线的工程图纸感。','技术原理、机制拆解','-'],
+['style','像素风','Pixel art','复古游戏的方块像素。','怀旧、游戏、轻松话题','-'],
+['style','极简','Minimal','极少元素、大量留白。','金句、单一概念强调','-'],
+];
+
+const CATS = { tool: ['画法与工具', '用什么技术把动画画出来'], move: ['运动手法', '东西怎么动：缓动、入场、变形、粒子'], cam: ['镜头与画面效果', '摄像机怎么走、画面加什么质感'], edit: ['剪辑与结构', '一段段画面怎么组织、怎么衔接'], audio: ['声音', '旁白、音乐、音效的相关术语'], out: ['交付格式', '导出视频时要说清楚的参数'], style: ['风格词', '描述整体观感时可以直接用的词'] };
+const ST = { ok: ['已就绪', 's-ok'], mid: ['随时可装', 's-mid'], no: ['需另装软件', 's-no'], '-': ['通用概念', 's-gen'] };
+
+const MAP = [
+  ['数据怎么变化', 'Canvas / D3 · 生长 · 数字滚动 · 错峰', '涨跌、增长、排名变化。折线延伸或柱子升起，终点数字滚动定格。', '「用 Canvas 做折线生长，终点数字滚动，金融终端风」'],
+  ['A 变成了 B', 'SVG · 形变 Morph · 缓入缓出', '概念转化、因果关系。一个图形平滑变成另一个。', '「SVG 线稿风，用 morph 把印钞机变成一杯被稀释的水」'],
+  ['流程、链条、因果', 'SVG · 描边生长 · 错峰', '一步接一步的过程。线条依次画出，节点错峰亮起。', '「SVG 流程图，箭头描边生长，节点错峰出现」'],
+  ['规模感、数量极多', 'three.js · 粒子系统 · 拉镜头', '「成千上万」「全球」。镜头拉远露出全貌。', '「three.js 粒子，最后拉镜头显示规模」'],
+  ['从无到有、从乱到序', 'three.js / Canvas · 聚合 · 辉光', '诞生、形成共识。碎片汇聚成一个整体。', '「金色粒子从四周汇聚拼成 ₿，电影感暗调」'],
+  ['崩溃、危机、下跌', '散开 · 缓入下坠 · 故障效果 · 红色', '崩盘、信任瓦解。整体碎裂下坠，加一点故障感。', '「曲线变红后碎成粒子往下掉，加 glitch」'],
+  ['总量、比例、稀缺', 'SVG / Canvas · 进度环 · 数字滚动', '上限、已用多少、剩多少。圆环走到某个百分比。', '「进度环走到 95.66%，中间数字滚动」'],
+  ['历史、时间线', '摇镜头 Pan · 关键帧 · 错峰', '事件按时间排开，镜头沿时间轴平移。', '「横向时间线，镜头从 2009 摇到 2026，事件错峰弹出」'],
+  ['前后对比', '遮罩揭示 · 分屏 · 硬切', '改变前和改变后。用擦除遮罩揭示另一面。', '「左右分屏，中线向右擦除揭示改变后的样子」'],
+  ['数学、公式、原理', 'Manim · 3Blue1Brown 风', '公式推导、几何关系、函数变化。', '「用 Manim 做，3B1B 风，公式逐项变形」（公式需装 LaTeX）'],
+  ['一句金句', '动态排版 · 回弹 · 定格', '文字本身就是画面，逐字或逐词出现，关键词放大。', '「kinetic typography，关键词回弹放大后定格 1 秒」'],
+  ['地图、路线、流向', 'SVG / D3 地图 · 描边生长', '资金流向、贸易路线、扩散路径。', '「D3 世界地图，资金从美国流向亚洲的弧线描边生长」'],
+  ['系统结构、产业链', '等距视角 Isometric · 错峰', '层级、上下游、组成部分。', '「等距视角三维产业链，各环节错峰升起」'],
+  ['关系网络', 'D3 力导向图 · 生长', '谁和谁有关、节点之间的联系。', '「力导向关系网，节点逐个加入并连线」'],
+  ['氛围、情绪转场', '着色器 · 噪声 · 无缝循环', '没有具体信息，只营造气氛或做转场。', '「shader 流动渐变背景，暗橙色，10 秒无缝循环」'],
+  ['放大某个细节', '推镜头 · 焦点切换 · 共享元素过渡', '从全局聚焦到一个点。', '「从整条链推到创世区块，背景虚化」'],
+];
+
+const list = document.getElementById('list'), chips = document.getElementById('chips'), q = document.getElementById('q');
+let cat = 'all';
+const esc = s => s.replace(/[&<>]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c]));
+function render() {
+  const k = q.value.trim().toLowerCase();
+  let html = '', total = 0;
+  for (const [c, [name, sub]] of Object.entries(CATS)) {
+    if (cat !== 'all' && cat !== c) continue;
+    const rows = D.filter(d => d[0] === c && (!k || d.slice(1, 5).join(' ').toLowerCase().includes(k)));
+    if (!rows.length) continue;
+    total += rows.length;
+    html += `<section><h2>${name}</h2><p class="sub">${sub} · ${rows.length} 条</p><div class="tbl"><table><thead><tr><th>术语</th><th>是什么</th><th>适合展示</th><th>本机状态</th></tr></thead><tbody>` +
+      rows.map(d => `<tr><td class="term"><b>${esc(d[1])}</b><code>${esc(d[2])}</code></td><td class="desc">${esc(d[3])}</td><td class="use">${esc(d[4])}${d[6] ? `<span class="demo"><i style="animation-timing-function:${d[6]}"></i></span>` : ''}</td><td class="st"><span class="tag ${ST[d[5]][1]}">${ST[d[5]][0]}</span></td></tr>`).join('') +
+      `</tbody></table></div></section>`;
+  }
+  list.innerHTML = html || '<div class="empty">没有找到匹配的术语</div>';
+  const mk = MAP.filter(m => !k || m.join(' ').toLowerCase().includes(k));
+  document.getElementById('sec-map').hidden = (cat !== 'all' && cat !== 'map') || !mk.length;
+  document.getElementById('map').innerHTML = mk.map(m => `<div class="card"><h3>${esc(m[0])}</h3><div class="t">${esc(m[1])}</div><p>${esc(m[2])}</p><div class="say">${esc(m[3])}</div></div>`).join('');
+}
+const opts = [['all', '全部'], ...Object.entries(CATS).map(([c, v]) => [c, v[0]]), ['map', '按内容反查']];
+chips.innerHTML = opts.map(([c, n]) => `<button data-c="${c}" class="${c === 'all' ? 'on' : ''}">${n}</button>`).join('');
+chips.onclick = e => { const b = e.target.closest('button'); if (!b) return; cat = b.dataset.c; chips.querySelectorAll('button').forEach(x => x.classList.toggle('on', x === b)); render(); };
+q.oninput = render;
+render();
+</script>
+</body>
+</html>

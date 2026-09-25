@@ -167,7 +167,8 @@ export default defineConfig({
           { text: '03 法律概念 WIKI', link: 'https://wiki.legalagi.cn/' },
           { text: '04 Claude for Legal中国法适配', link: 'https://claude.legalagi.cn/' },
           { text: '05 法律 Agent 运行结构仪表盘', link: '/tools/05_法律Agent运行结构仪表盘' },
-          { text: '06 Claude Code 命令打字练习', link: '/tools/06_Claude_Code_命令打字练习' }
+          { text: '06 Claude Code 命令打字练习', link: '/tools/06_Claude_Code_命令打字练习' },
+          { text: '07 动画术语手册', link: '/tools/07_动画术语手册' }
         ]
       },
       {
