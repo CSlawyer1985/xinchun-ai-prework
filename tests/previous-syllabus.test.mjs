@@ -8,7 +8,7 @@ import path from 'node:path'
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const distRoot = path.join(projectRoot, 'docs', '.vitepress', 'dist')
 
-test('报名者可从首页和导航进入有明确边界说明的上期大纲', () => {
+test('首页显示报名关闭状态且不再显示合适性入口或报名表', () => {
   const build = spawnSync('npm', ['run', 'docs:build'], {
     cwd: projectRoot,
     encoding: 'utf8'
@@ -22,8 +22,10 @@ test('报名者可从首页和导航进入有明确边界说明的上期大纲',
   const homeHtml = readFileSync(path.join(distRoot, 'index.html'), 'utf8')
   const syllabusHtml = readFileSync(syllabusPath, 'utf8')
 
-  assert.match(homeHtml, />看看合不合适</)
-  assert.match(homeHtml, /\/courses\/00_%E4%B8%8A%E6%9C%9F%E8%AF%BE%E7%A8%8B%E5%A4%A7%E7%BA%B2/)
+  assert.match(homeHtml, /报名关闭期/)
+  assert.doesNotMatch(homeHtml, /看看合不合适|第四期报名进行中|xeikezlmp0\.feishu\.cn\/share\/base\/form/)
+  assert.match(syllabusHtml, /第四期报名已截止/)
+  assert.doesNotMatch(syllabusHtml, /xeikezlmp0\.feishu\.cn\/share\/base\/form/)
   assert.match(syllabusHtml, /公益课程/)
   assert.match(syllabusHtml, /不代表下期课程承诺/)
   assert.match(syllabusHtml, /资料：先导课 \+ 6 节主课 \+ 返场课逐字稿/)
