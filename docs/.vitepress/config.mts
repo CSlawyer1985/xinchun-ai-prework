@@ -8,7 +8,7 @@ const base = process.env.GITHUB_ACTIONS === 'true'
   ? (isCustomDomain ? '/' : (isUserSite ? '/' : `/${repo}/`))
   : '/'
 const siteTitle = '四明山法师 AI 夜校'
-const siteDescription = '法律人AI实操夜校——培养业务与技术的双语者，含课前指引、实用工具与往期学员名录。'
+const siteDescription = '法律人AI实操夜校——培养业务与技术的双语者，含 WorkBuddy、Claude Code 课前指引、实用工具与往期学员名录。'
 const shareImagePath = `${base}images/share/wechat-card.png`
 const shareImageUrl = siteUrl ? `${siteUrl}${shareImagePath}` : shareImagePath
 // 线上根 URL：CI 从 SITE_URL + base 推导；本地构建用线上 URL 作 fallback，保证 canonical/sitemap 指向正确
@@ -65,7 +65,7 @@ function courseJsonLd() {
     '@context': 'https://schema.org',
     '@type': 'Course',
     name: '四明山法师 AI 夜校',
-    description: '面向法律从业者的 AI 实操夜校：先导课 + 6 节主课 + 返场复盘，覆盖 Cherry Studio 工作台、Claude Code 基础与进阶、工具链与法律工作流、算力与模型路由、数据专题。',
+    description: '面向法律从业者的 AI 实操夜校：先导课 + 6 节主课 + 返场复盘，覆盖 WorkBuddy 工作台、Claude Code 基础与进阶、ChatGPT / Codex 可选入口、工具链与法律工作流、算力与模型路由、数据专题。',
     provider: {
       '@type': 'EducationalOrganization',
       name: siteTitle,
@@ -152,8 +152,9 @@ export default defineConfig({
         text: '课前指引',
         items: [
           { text: '00 课前准备总览', link: '/prework/00_课前准备总览' },
-          { text: '01 Cherry Studio 安装与配置', link: '/prework/01_Cherry_Studio_安装与配置指南' },
+          { text: '01 WorkBuddy 安装与配置', link: '/prework/01_WorkBuddy_安装与配置指南' },
           { text: '02 Claude Code 安装与配置', link: '/prework/02_Claude_Code_安装与配置指南' },
+          { text: '02 ChatGPT CLI 与 GUI 安装', link: '/prework/02_ChatGPT_CLI与GUI_安装指南' },
           { text: '03 环境验证清单', link: '/prework/03_环境验证清单' },
           { text: '04 常见问题 FAQ', link: '/prework/04_常见问题FAQ' }
         ]

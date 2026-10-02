@@ -1,1074 +1,152 @@
 ---
-description: 四明山法师 AI 夜校常见问题 FAQ：课程保证金机制、上课节奏、技术门槛、模型与网络准备，以及安装配置类常见报错排查。
+description: 四明山法师 AI 夜校常见问题 FAQ：课程机制、WorkBuddy、Claude Code、ChatGPT / Codex CLI、账号网络与课前故障排查。
 faq:
-  - q: 什么是「保证金模式」？
-    a: 课程采用申请制筛选，基础学费 888 元；录取入班后预交保证金 1000 元并签署学习承诺书。全勤并完成课程可获电子结业证书并全额退还保证金；缺课、缺作业则保证金罚没。海泰所律师学费全免，仅缴保证金。
-  - q: 如果不能完成作业，保证金会怎么处理？
-    a: 每次主课后有一周时间完成作业。若延期或跟不上可先在群里同步。缺课、缺作业保证金罚没；连续 2 次未完成课程组有权劝退。具体金额和节点以报名页和学习承诺书为准。
-  - q: 为什么课程强调「必须听课 + 必须做作业」？
-    a: 学员主要是法律人，不少是技术小白。只有听课与动手练习并行，才能把抽象概念转成可用能力。作业是课堂内容的消化过程，不是额外负担。
-  - q: 课程是怎么安排的？
-    a: 采用 1+6+1 结构——1 节先导课、6 节主课（Cherry Studio 工作台、Claude Code 基础与进阶、工具链与法律工作流、算力与模型路由、数据专题）、1 节返场课。每次主课后给一周做作业，配套社群陪跑。
-  - q: 我是法律人、技术基础弱，能跟上吗？
-    a: 可以，但这不是慢节奏的轻体验入门课，更适合已接触过 AI 工具、愿意动手的法律人。每节课配法律场景实操，课后有作业、文档和群内互动。不要求一开始会写代码，但要求愿意按步骤练习。
-  - q: 需要提前准备哪些模型和网络条件？
-    a: 建议至少 1 个国内模型账号（GLM/Kimi/DeepSeek，保证直连）和 1 个国际模型账号（ChatGPT/Claude/Gemini）做能力对比。国际模型通常需要 VPN 或企业合规出口。高频使用优先评估订阅制 Coding Plan，低频任务用按量计费。
+  - q: 课前必须安装哪些工具？
+    a: 本期最低要求是完成 WorkBuddy 和 Claude Code 的安装、登录与最小任务验证。ChatGPT 桌面端与 Codex CLI 是可选入口，建议有兴趣的同学提前体验。
+  - q: 我是技术基础较弱的法律人，能跟上吗？
+    a: 可以，但课程不是只看演示的轻体验课程。你需要愿意按步骤安装、动手练习、记录错误并完成作业。不要求一开始会写代码，但要求愿意处理卡点。
+  - q: WorkBuddy、Claude Code 和 Codex CLI 有什么区别？
+    a: WorkBuddy 偏向任务型 AI 工作台；Claude Code 和 Codex CLI 偏向终端、本地文件和可控执行。三者共同训练的是任务拆解、权限控制、结果检查和工作流意识。
 ---
 
-# 常见问题FAQ (Frequently Asked Questions)
+# 常见问题 FAQ
 
-**本文档目的**：帮助你快速解决安装和配置过程中遇到的常见问题
+使用 `Ctrl+F`（Windows）或 `Cmd+F`（Mac）搜索关键词。遇到文档没有覆盖的问题，请带着完整错误信息到群里求助。
 
-**使用方法**：
-1. 使用`Ctrl+F`（Windows）或`Cmd+F`（Mac）搜索关键词
-2. 按照问题分类查找
-3. 按照解决方法逐步尝试
+## 一、课程与准备
 
-**如果找不到你的问题**：请跳到最后的"截图求助指南"部分。
+### 1. 课前必须安装哪些工具？
 
----
+最低要求：
 
-## 📥 目录
+- WorkBuddy：完成安装、登录和第一个小任务；
+- Claude Code：完成安装、登录、版本检查和第一次本地文件任务；
+- ChatGPT 桌面端与 Codex CLI：可选，但建议有兴趣的同学提前体验。
 
-1. [课程机制类问题](#课程机制类问题)
-2. [安装类问题](#安装类问题)
-3. [配置类问题](#配置类问题)
-4. [使用类问题](#使用类问题)
-5. [平台特定问题](#平台特定问题)
-6. [截图求助指南](#截图求助指南)
+### 2. 为什么要求先做小任务？
 
----
+安装成功不等于会用。课程训练的是“说明任务—提供材料—执行—检查结果—返工”的正向循环，所以课前要先跑通一个小而完整的闭环。
 
-## 📋 课程机制类问题
+### 3. 课前材料可以用真实案卷吗？
 
-### 1. 什么是"保证金模式"？
+不建议。优先使用公开材料、自己编写的测试文本或完全脱敏的材料。不要上传客户姓名、身份证号、联系方式、未公开案卷、内部合同、密码、API Key 或内部链接。
 
-**回答**：
-- 本课程采用申请制筛选，问卷仅作意向摸底与后续定向邀请依据
-- 基础学费为 `888` 元；录取入班后需另行预交保证金 `1000` 元
-- 海泰所律师学费全免，仅需缴纳保证金
-- 保证金的作用是帮助大家形成学习约束，认真听课和完成作业
-- 全勤并按要求完成课程，可获得电子结业证书并全额退还保证金
-- 录取后需签署《学习承诺书》
+### 4. 三个工具都必须参加吗？
 
----
+WorkBuddy 和 Claude Code 是本期主要课前入口。ChatGPT 桌面端与 Codex CLI 是可选入口，用于帮助大家理解桌面 GUI 与命令行 Agent 的不同工作方式。
 
-### 2. 如果我不能完成作业，保证金会怎么处理？
+## 二、WorkBuddy
 
-**回答**：
-- 课程默认节奏是：每次主课后有一周时间完成作业
-- 若出现延期或阶段性跟不上，可先在群里同步
-- 缺课、缺作业，保证金罚没
-- 连续 2 次未完成作业，课程组有权劝退
-- 具体金额和节点以报名页/学习承诺书为准
+### 1. 从哪里下载 WorkBuddy？
 
----
+只从 [WorkBuddy 官方网站](https://www.workbuddy.cn/) 下载。不要使用网盘、群文件或不明镜像中的安装包。
 
-### 3. 为什么课程强调“必须听课+必须做作业”？
+### 2. WorkBuddy 登录不了怎么办？
 
-**回答**：
-- 本课程主要受众是法律人，很多同学是技术小白
-- 只有“听课+动手练习”并行，才能把抽象概念转成可用能力
-- 作业是课堂内容的消化过程，不是额外负担
-- 只要持续完成，你会很快形成自己的AI工作流
+先检查默认浏览器是否能够打开，确认网络能够访问官方页面；再记录操作系统、客户端版本和完整错误提示。如果登录页打开但扫码后没有返回客户端，先重新启动客户端和浏览器，再到群里提交截图求助。
 
----
+### 3. 第一个 WorkBuddy 任务应该多大？
 
-### 4. 课程是怎么安排的？
+建议只使用一份短材料，完成“提取三个事实—生成一份 Markdown 摘要—检查文件”的任务。先建立手感，再增加材料数量和任务复杂度。
 
-**回答**：
-- 课程采用 `1+6+1`：1 节先导课、6 节主课、1 节返场课
-- 先导课用于对齐预期、说明规则、锁定准备标准，并收集真实法律场景
-- 6 节主课依次覆盖：Cherry Studio 工作台、Claude Code 基础、Claude Code 进阶、工具链与法律工作流、算力与模型路由、数据专题
-- 返场课用于作业复盘、案例点评、嘉宾分享和下一步行动建议
-- 原则上每次主课后给一周时间做作业和推进，并配套社群陪跑
+### 4. WorkBuddy 生成的结果可以直接使用吗？
 
----
+不可以直接当作法律结论或事实认定。先核对材料来源、事实对应关系、遗漏和推测，再决定是否进入下一步工作。
 
-### 5. 我是法律人、技术基础弱，能跟上吗？
+## 三、ChatGPT 桌面端与 Codex CLI
 
-**回答**：
-- 可以，但这不是一门慢节奏的轻体验入门课
-- 更适合已经接触过 AI 工具、愿意动手、也愿意处理 bug 和卡点的法律人
-- 每节课都配法律场景实操，课后还有作业、文档和群内互动一起帮你跟上
-- 不要求你一开始就会写代码，但要求你愿意按步骤练习，并把真实问题带进来
+### 1. ChatGPT 的 CLI 到底叫什么？
 
----
+OpenAI 当前对应的终端工具名称是 **Codex CLI**。本页将 ChatGPT 桌面端作为 GUI，将 Codex CLI 作为 CLI 入口介绍。
 
-### 6. 需要提前准备哪些模型和网络条件？
+### 2. 从哪里安装 ChatGPT 桌面端？
 
-**回答**：
-- 建议至少准备：
-  - 1个国内模型账号（GLM/Kimi/DeepSeek其一，保证可直连）
-  - 1个国际模型账号（ChatGPT/Claude/Gemini其一，做能力对比）
-- 国际模型通常需要VPN或企业合规出口网络
-- 计费上建议：
-  - 高频使用优先评估 `Coding Plan`（订阅）
-  - 低频/波动任务优先 `PAYG`（按量计费）
+从 [ChatGPT 官方下载页](https://chatgpt.com/download/) 安装。新的桌面应用整合了 ChatGPT、Work 和 Codex；具体入口受版本、账号和组织策略影响。
 
----
+### 3. 如何安装 Codex CLI？
 
-## 🔧 安装类问题
+官方入门路径为：
 
-### 1. Node.js安装失败
-
-**问题表现**：
-- Windows：安装向导卡住或报错
-- macOS：提示"无法验证开发者"
-- Linux：包管理器安装失败
-
-**可能原因**：
-1. 网络连接不稳定
-2. 杀毒软件阻止
-3. 磁盘空间不足
-4. 权限不足
-
-**解决方法**：
-
-**方法1：重新下载安装包**
-```
-1. 删除已下载的安装包
-2. 清空浏览器缓存
-3. 重新从官网下载：https://nodejs.org/
-4. 重新安装
-```
-
-**方法2：Windows - 使用管理员权限**
-```
-1. 右键点击安装包
-2. 选择"以管理员身份运行"
-3. 完成安装
-```
-
-**方法3：macOS - 解除安全限制**
 ```bash
-# 如果提示"无法验证开发者"，在终端执行：
-sudo spctl --master-disable
-
-# 安装完成后，重新启用（可选）：
-sudo spctl --master-enable
+npm install -g @openai/codex
+codex --login
 ```
 
-**方法4：Linux - 使用nvm安装**
+使用 ChatGPT 账号完成登录。若 `codex` 找不到，重新打开终端并检查 Node.js、npm 和 PATH。
+
+### 4. ChatGPT 登录和 API Key 是一回事吗？
+
+不是。ChatGPT 账号登录、CLI 授权和 API Key 是不同的凭证路径。不要把密码、授权页面内容或 Key 发到群里，也不要将 Key 提交到代码仓库。
+
+## 四、Claude Code
+
+### 1. 是否必须先安装 Node.js？
+
+不必。当前官方推荐原生安装器，不要求 Node.js 作为必备前置。只有选择 npm 安装路径时，才按官方文档准备相应 Node.js 版本。
+
+### 2. 如何确认 Claude Code 安装成功？
+
+运行：
+
 ```bash
-# 安装nvm（Node Version Manager）
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
-
-# 重新加载终端配置
-source ~/.bashrc  # 或 source ~/.zshrc
-
-# 使用nvm安装Node.js
-nvm install --lts
-```
-
-**方法5：使用离线安装包**
-- 如果网络问题，可以下载离线安装包（从其他电脑复制）
-- 或使用他人已下载好的安装包
-
-**验证安装成功**：
-```bash
-node --version
-npm --version
-```
-
----
-
-### 2. Claude Code安装报错
-
-**问题表现**：
-```
-'claude' 不是内部或外部命令
-# 或
-command not found: claude
-# 或
-安装脚本执行失败
-```
-
-**可能原因**：
-- 官方安装方式执行失败
-- Windows 未安装 Git for Windows（或 Git Bash 不可用）
-- PATH 尚未生效（新安装后未重开终端）
-- 兼容安装（npm）权限不足或网络异常
-
-**解决方法**：
-
-**方法1：优先使用官方推荐安装方式**
-
-Windows（PowerShell）：
-```powershell
-irm https://claude.ai/install.ps1 | iex
-```
-
-macOS/Linux：
-```bash
-curl -fsSL https://claude.ai/install.sh | bash
-```
-
-**方法2：Windows 检查 Git**
-```powershell
-git --version
-```
-- 如果报错，先安装 Git for Windows：`https://git-scm.com/download/win`
-- 安装后重开 PowerShell 再试 `claude --version`
-
-**方法3：Windows 备选安装（winget）**
-```powershell
-winget install Anthropic.ClaudeCode
-```
-
-**方法4：指定 Git Bash 路径（Windows 兜底）**
-```powershell
-$env:CLAUDE_CODE_GIT_BASH_PATH="C:\Program Files\Git\bin\bash.exe"
 claude --version
+claude doctor
 ```
 
-**方法5：兼容旧环境（npm，最后再用）**
-```bash
-npm config set registry https://registry.npmmirror.com
-npm install -g @anthropic-ai/claude-code
-```
-
----
-
-### 3. Cherry Studio安装失败
-
-**问题表现**：
-- Windows：安装向导报错
-- macOS：提示"已损坏"或"无法打开"
-- Linux：依赖包缺失
-
-**解决方法**：
-
-**方法1：Windows - 关闭杀毒软件**
-```
-1. 临时关闭Windows Defender或其他杀毒软件
-2. 重新运行安装包
-3. 安装完成后重新启用杀毒软件
-```
-
-**方法2：macOS - 允许来自任何来源**
-```bash
-# 如果提示"已损坏"，执行：
-xattr -cr /Applications/Cherry\ Studio.app
-
-# 或在系统偏好设置中：
-# 系统偏好设置 → 安全性与隐私 → 通用
-# 点击"仍要打开"
-```
-
-**方法3：Linux - 安装依赖**
-```bash
-# Ubuntu/Debian
-sudo apt-get install -f
-
-# 或安装缺失的依赖
-sudo apt-get install libgtk-3-0 libnotify4 libnss3 libxss1 libxtst6 xdg-utils libatspi2.0-0 libuuid1 libappindicator3-1 libsecret-1-0
-
-# Fedora
-sudo dnf install libXScrnSaver
-
-# Arch Linux
-sudo pacman -S gtk3 libnotify nss libxss libxtst xdg-utils libappindicator-gtk3
-```
-
-**方法4：使用AppImage（Linux）**
-```bash
-# 下载AppImage版本
-chmod +x cherry-studio-*.AppImage
-./cherry-studio-*.AppImage
-```
-
----
-
-### 4. 权限错误
-
-**问题表现**：
-```
-EACCES: permission denied
-Error: EPERM: operation not permitted
-```
-
-**解决方法**：
-
-**Windows**：
-```powershell
-# 以管理员身份运行PowerShell
-# 或在文件属性中取消"只读"属性
-```
-
-**macOS/Linux**：
-```bash
-# 使用sudo
-sudo [命令]
-
-# 或修改文件权限
-chmod +x [文件]
-
-# 或修改目录所有者
-sudo chown -R $USER:$USER ~/.npm-global
-```
-
----
-
-### 5. 磁盘空间不足
-
-**问题表现**：
-```
-Error: ENOSPC: no space left on device
-```
-
-**解决方法**：
-
-**方法1：清理磁盘空间**
-- Windows：使用"磁盘清理"工具
-- macOS：清理"下载"文件夹、 emptied垃圾桶
-- Linux：`sudo apt clean`、`sudo journalctl --vacuum-time=3d`
-
-**方法2：检查可用空间**
-```bash
-# Windows
-wmic logicaldisk get name,freespace
-
-# macOS
-df -h
-
-# Linux
-df -h
-```
-
-**方法3：安装到其他目录**
-```bash
-# 指定安装路径
-npm config set prefix '~/path/to/new/location'
-```
-
----
-
-## ⚙️ 配置类问题
-
-### 1. API Key配置失败
-
-**问题表现**：
-```
-Error: ANTHROPIC_AUTH_TOKEN not set
-Error: 401 Unauthorized
-```
-
-**解决方法**：
-
-**方法1：检查配置文件是否存在**
-```bash
-# Windows
-dir $env:USERPROFILE\.claude\settings.json
-
-# macOS/Linux
-ls -la ~/.claude/settings.json
-```
-
-**方法2：检查配置文件内容**
-```bash
-# Windows
-cat $env:USERPROFILE\.claude\settings.json
-
-# macOS/Linux
-cat ~/.claude/settings.json
-```
-
-**确认内容正确**：
-```json
-{
-  "env": {
-    "ANTHROPIC_AUTH_TOKEN": "你的API Key",
-    "ANTHROPIC_BASE_URL": "https://open.bigmodel.cn/api/paas/v4/",
-    "ANTHROPIC_MODEL": "glm-4.7"
-  }
-}
-```
-
-**方法3：检查API Key是否正确**
-- 登录智谱AI平台：https://open.bigmodel.cn/
-- 检查API Key是否有效
-- 重新生成API Key（如果怀疑泄露）
-
-**方法4：检查JSON格式**
-- 确保使用英文引号`"`，不是中文引号`""`
-- 确保所有括号、逗号都正确
-- 使用在线JSON验证工具：https://jsonlint.com/
-
----
-
-### 2. coding-tool-helper 无法运行或写入失败
-
-**问题表现**：
-```bash
-npx @z_ai/coding-helper
-# 报错：command not found / npm ERR! / 权限错误
-```
-
-或运行后没有把配置写入到 Claude Code。
-
-**解决方法**：
-
-**方法1：先检查 Node.js 与 npm**
-```bash
-node -v
-npm -v
-```
-- 需要 Node.js 18+（建议20+）
-- 如果命令不存在，先安装/重装 Node.js
-
-**方法2：重新执行 helper**
-```bash
-npx @z_ai/coding-helper
-```
-- 按向导重新选择 GLM 与 Claude Code
-- 重新粘贴 API Key（注意前后不要带空格）
-
-**方法3：网络与权限排查**
-- 确保网络可访问 `open.bigmodel.cn`
-- Windows 建议以管理员身份运行 PowerShell
-- macOS/Linux 如遇权限错误，检查当前用户目录写权限
-
-**方法4：确认配置是否写入**
-```bash
-# Windows
-cat $env:USERPROFILE\.claude\settings.json
-
-# macOS/Linux
-cat ~/.claude/settings.json
-```
-应至少包含：
-- `ANTHROPIC_AUTH_TOKEN`
-- `ANTHROPIC_BASE_URL`
-- `ANTHROPIC_MODEL`
-
-**方法5：仍失败时的兜底**
-- 临时使用《02_Claude_Code_安装与配置指南.md》中的“手动配置（仅备用）”
-- 在学员群反馈完整报错截图与执行命令
-
----
-
-### 3. 模型列表找不到GLM-4.7
-
-**问题表现**：
-- Cherry Studio中找不到GLM-4.7模型
-- 模型下拉菜单为空
-
-**解决方法**：
-
-**方法1：手动添加模型**
-1. 打开设置 → 模型服务 → 智谱开放平台
-2. 点击"管理模型"或"添加模型"
-3. 输入模型名称：`glm-4.7` 或 `glm-4.7`
-4. 保存
-
-**方法2：刷新模型列表**
-1. 退出Cherry Studio
-2. 重新启动
-3. 检查模型列表
-
-**方法3：检查API权限**
-- 登录智谱AI平台
-- 检查账户是否有权限使用该模型
-- 检查账户余额是否充足
-
-**方法4：使用其他模型**
-- 如果GLM-4.7不可用，可以尝试：
-  - `glm-4.7`
-  - `glm-4-air`
-  - `glm-4-flash`
-
----
-
-### 4. 网络连接超时
-
-**问题表现**：
-```
-Error: Request timeout
-Error: Failed to connect to API server
-```
-
-**解决方法**：
-
-**方法1：测试网络连接**
-```bash
-# Windows
-Test-NetConnection open.bigmodel.cn -Port 443
-
-# macOS/Linux
-curl -I https://open.bigmodel.cn/
-```
-
-**方法2：检查防火墙设置**
-- Windows：检查Windows Defender防火墙
-- macOS：检查"系统偏好设置 → 安全性与隐私 → 防火墙"
-- Linux：检查`ufw`或`iptables`规则
-
-**方法3：检查代理设置**
-- 如果使用VPN，尝试关闭
-- 如果使用代理，确保配置正确
-
-**方法4：更换网络**
-- 尝试使用手机热点
-- 或更换Wi-Fi网络
-
----
-
-### 5. 配置文件位置找不到
-
-**问题表现**：
-```
-Cannot find module '~/.claude/settings.json'
-Error: ENOENT: no such file or directory
-```
-
-**解决方法**：
-
-**方法1：创建配置目录**
-```bash
-# Windows
-mkdir $env:USERPROFILE\.claude
-
-# macOS/Linux
-mkdir -p ~/.claude
-```
-
-**方法2：检查配置文件路径**
-```bash
-# Windows
-echo $env:USERPROFILE\.claude\settings.json
-
-# macOS/Linux
-echo ~/.claude/settings.json
-```
-
-**方法3：手动创建配置文件**
-1. 打开文本编辑器（记事本、VS Code等）
-2. 输入配置内容（参考"步骤5.3"）
-3. 保存到正确路径
-
----
-
-### 6. API认证失败
-
-**问题表现**：
-```
-Error: 401 Unauthorized
-Error: Invalid API Key
-```
-
-**解决方法**：
-
-**方法1：检查API Key**
-- 确认API Key完整复制（不要有多余空格）
-- 确认API Key没有过期
-
-**方法2：重新生成API Key**
-```
-1. 登录智谱AI平台
-2. 进入"API密钥管理"
-3. 删除旧的API Key
-4. 创建新的API Key
-5. 更新配置文件
-```
-
-**方法3：检查账户状态**
-- 登录智谱AI平台
-- 检查账户是否正常
-- 检查余额是否充足
-- 检查是否需要实名认证
-
----
-
-## 💻 使用类问题
-
-### 1. Claude Code启动失败
-
-**问题表现**：
-```
-Error: Cannot find module 'xxx'
-Error: Command not found: claude
-```
-
-**解决方法**：
-
-**方法1：检查Claude Code是否安装**
-```bash
-which claude    # macOS/Linux
-where claude    # Windows
-```
-
-**方法2：重新安装**
-Windows（PowerShell）：
-```powershell
-irm https://claude.ai/install.ps1 | iex
-```
-
-macOS/Linux：
-```bash
-curl -fsSL https://claude.ai/install.sh | bash
-```
-
-如果官方安装失败，再使用 npm 兼容重装：
-```bash
-npm uninstall -g @anthropic-ai/claude-code
-npm install -g @anthropic-ai/claude-code
-```
-
-**方法3：检查PATH环境变量**
-```bash
-# Windows
-echo $env:PATH
-
-# macOS/Linux
-echo $PATH
-
-# 如果claude的路径不在PATH中，手动添加
-```
-
----
-
-### 2. Cherry Studio无法启动
-
-**问题表现**：
-- 点击图标无反应
-- 启动后立即崩溃
-- 提示"运行时错误"
-
-**解决方法**：
-
-**方法1：查看错误日志**
-- Windows：`%APPDATA%\cherry-studio\logs`
-- macOS：`~/Library/Logs/cherry-studio`
-- Linux：`~/.config/cherry-studio/logs`
-
-**方法2：重启应用**
-- 完全退出Cherry Studio（包括后台进程）
-- 重新启动
-
-**方法3：重置配置**
-```bash
-# 删除配置文件夹（会清除所有设置）
-# Windows
-rm -r %APPDATA%\cherry-studio
-
-# macOS
-rm -r ~/Library/Application\ Support/cherry-studio
-
-# Linux
-rm -r ~/.config/cherry-studio
-```
-
-**方法4：更新显卡驱动**
-- 如果是GPU相关问题，更新显卡驱动
-
----
-
-### 3. 消息发送无响应
-
-**问题表现**：
-- 发送消息后长时间无响应
-- 显示"发送中"但不结束
-
-**解决方法**：
-
-**方法1：检查网络连接**
-- 访问其他网站测试网络
-- ping智谱AI服务器：`ping open.bigmodel.cn`
-
-**方法2：检查API余额**
-- 登录智谱AI平台
-- 检查余额是否充足
-
-**方法3：重新发送**
-- 取消当前消息（Ctrl+C或点击取消）
-- 重新发送
-
-**方法4：重启工具**
-- 完全退出工具
-- 重新启动
-- 重试
-
----
-
-### 4. 响应内容异常
-
-**问题表现**：
-- AI回复乱码
-- 回复内容不相关
-- 回复中断
-
-**解决方法**：
-
-**方法1：检查模型选择**
-- 确认选择的是智谱AI模型
-- 尝试切换到其他模型
-
-**方法2：检查提示词**
-- 确保提示词清晰明确
-- 尝试简化提示词
-
-**方法3：重新发送**
-- 有时是临时问题，重新发送即可
-
-**方法4：检查API状态**
-- 访问智谱AI平台
-- 查看是否有系统公告
-
----
-
-### 5. 如何切换模型
-
-**Claude Code**：
-```bash
-# 方法1：启动时指定
-claude --model glm-4.7
-
-# 方法2：在配置文件中设置默认模型
-# 编辑~/.claude/settings.json
-{
-  "env": {
-    "ANTHROPIC_MODEL": "glm-4.7"
-  }
-}
-```
-
-**Cherry Studio**：
-```
-1. 打开对话界面
-2. 在右侧边栏找到"模型选择"下拉菜单
-3. 选择你想要的模型（如GLM-4.7）
-```
-
----
-
-## 🖥️ 平台特定问题
-
-### Windows特定问题
-
-#### WebView2缺失
-**问题表现**：
-```
-Error: WebView2 runtime is required
-```
-
-**解决方法**：
-1. 下载并安装WebView2 Runtime：
-   https://developer.microsoft.com/en-us/microsoft-edge/webview2/
-2. 重新启动Cherry Studio
-
-#### PowerShell执行策略
-**问题表现**：
-```
-cannot be loaded because running scripts is disabled on this system
-```
-
-**解决方法**：
-```powershell
-# 以管理员身份运行PowerShell，执行：
-Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
-```
-
-#### PATH配置问题
-**问题表现**：
-```
-'claude' 不是内部或外部命令
-```
-
-**解决方法**：
-```powershell
-# 方法1：手动添加到PATH
-# 1. 搜索"环境变量"
-# 2. 编辑环境变量 → 系统变量 → Path
-# 3. 添加npm的全局路径（如C:\Users\YourName\AppData\Roaming\npm）
-
-# 方法2：重启PowerShell（让环境变量生效）
-```
-
----
-
-### macOS特定问题
-
-#### 安全设置阻止
-**问题表现**：
-```
-"Cherry Studio"已损坏，无法打开
-```
-
-**解决方法**：
-```bash
-# 方法1：系统偏好设置
-# 系统偏好设置 → 安全性与隐私 → 通用
-# 点击"仍要打开"
-
-# 方法2：解除隔离
-xattr -cr /Applications/Cherry\ Studio.app
-
-# 方法3：允许任何来源（不推荐）
-sudo spctl --master-disable
-```
+前者检查版本，后者提供只读的安装和设置诊断信息。
 
-#### Homebrew安装问题
-**问题表现**：
-```
-Error: Failed to download install script
-```
-
-**解决方法**：
-```bash
-# 使用国内镜像
-/bin/bash -c "$(curl -fsSL https://gitee.com/ineo6/homebrew-install/raw/master/install.sh)"
-```
-
-#### zsh vs bash
-**问题表现**：
-配置文件在bash中生效，但在zsh中不生效
-
-**解决方法**：
-```bash
-# 如果使用zsh（macOS Catalina及以后默认），编辑.zshrc
-nano ~/.zshrc
-
-# 添加PATH配置
-export PATH="$PATH:$(npm config get prefix)/bin"
-
-# 保存并重新加载
-source ~/.zshrc
-```
-
----
-
-### Linux特定问题
-
-#### 依赖包缺失
-**问题表现**：
-```
-error while loading shared libraries: libxxx.so: cannot open shared object file
-```
-
-**解决方法**：
-```bash
-# Ubuntu/Debian
-sudo apt-get install -f
-
-# 或安装缺失的库
-sudo apt-get install libgtk-3-0 libnotify4 libnss3 libxss1 libxtst6 xdg-utils
-
-# Fedora
-sudo dnf install gtk3 libnotify nss libXScrnSaver libxss libxtst xdg-utils
-```
-
-#### 权限问题
-**问题表现**：
-```
-Error: EACCES: permission denied
-```
-
-**解决方法**：
-```bash
-# 使用sudo
-sudo [命令]
-
-# 或修改文件/目录所有者
-sudo chown -R $USER:$USER ~/.claude
-```
-
-#### Wayland vs X11
-**问题表现**：
-Cherry Studio在Wayland下显示异常
-
-**解决方法**：
-```bash
-# 强制使用X11
-GDK_BACKEND=x11 ./cherry-studio-*.AppImage
-```
-
----
-
-## 🆘 截图求助指南
-
-### 当所有方法都无效时
-
-如果你尝试了以上所有方法都无法解决问题，可以使用**终局方案**：截图求助AI。
-
-### 如何截取有效的错误信息
-
-**1. 截取完整的错误信息**
-- ✅ 包括错误代码（如`Error: EACCES`）
-- ✅ 包括错误堆栈（如果有）
-- ✅ 包括执行的命令
-- ❌ 不要只截一半
-- ❌ 不要模糊不清
+### 3. Windows 应该选原生安装还是 WSL？
 
-**2. 提供上下文信息**
-- 你在做什么操作
-- 你已经尝试过的方法
-- 你的操作系统和版本
+原生 Windows 适合直接处理 Windows 本地文件；WSL 2 适合已经使用 Linux 工具链的同学。本期不要求为了安装 Claude Code 而额外学习 WSL。
 
-**3. 保护敏感信息**
-- ❌ 不要泄露API Key
-- ❌ 不要泄露密码
-- ❌ 不要泄露个人隐私
-- ✅ 截图时用马赛克遮挡敏感信息
+### 4. PowerShell 报 `&&` 错误怎么办？
 
----
+你可能把 CMD 命令粘贴到了 PowerShell。请根据教程选择对应终端和对应命令，不要混用。
 
-### 推荐的AI求助工具
+### 5. `claude` 找不到怎么办？
 
-**1. Claude（推荐）**
-- 网址：https://claude.ai/
-- 优点：回复详细、逻辑清晰
-- 适合：复杂问题、编程问题
+关闭当前终端并重新打开，再运行 `claude --version`。如果仍然失败，运行 `claude doctor`，把完整错误信息、系统版本和安装方式带到群里。
 
-**2. ChatGPT**
-- 网址：https://chat.openai.com/
-- 优点：知识广泛
-- 适合：各类问题
+### 6. Claude Code 登录后仍然不能使用怎么办？
 
-**3. 文心一言**
-- 网址：https://yiyan.baidu.com/
-- 优点：中文理解好、国内访问快
-- 适合：国内用户、中文问题
+检查账户是否具备 Claude Code 权限、网络是否稳定，以及是否存在不匹配的 API 环境变量。免费的 claude.ai 账户不包含 Claude Code 访问权限；组织账号或第三方网关按课程组提供的配置处理。
 
----
+## 五、网络、账号与费用
 
-### 提示词模板
+### 1. 需要准备哪些账号？
 
-**模板1：安装失败**
-```
-我在安装AI工具时遇到了错误，请帮我分析原因并提供解决方案。
-
-【工具信息】
-工具名称：[Claude Code / Cherry Studio]
-工具版本：[如果知道]
-
-【我的环境】
-操作系统：[Windows 10 / macOS 13 / Ubuntu 20.04]
-Node.js版本：[如果安装了]
-npm版本：[如果安装了]
-
-【我在做什么】
-[详细描述你在执行什么操作，如"执行npm install命令"]
-
-【错误信息】
-[粘贴完整的错误信息或截图描述]
-
-【我已尝试的方法】
-1. [方法1]
-2. [方法2]
-3. [方法3]
-
-请提供详细的解决步骤，最好能一步步说明，谢谢！
-```
+WorkBuddy 和 ChatGPT / Codex 使用各自的官方账号体系。Claude Code 需要符合官方要求的 Claude 或组织 / 云平台接入。模型账号和套餐是否可用，以当前平台和课程组通知为准。
 
----
+### 2. 网络不稳定怎么办？
 
-**模板2：配置失败**
-```
-我在配置AI工具接入智谱AI时遇到了错误，请帮我解决。
-
-【工具信息】
-工具名称：[Claude Code / Cherry Studio]
-
-【我的配置】
-API Key：sk-***[记得隐藏完整Key]
-API地址：https://open.bigmodel.cn/api/paas/v4/
-模型名称：glm-4.7
-
-【配置文件内容】
-[粘贴settings.json的内容，记得隐藏API Key]
+先确认能访问对应官方登录页和下载页，再确认终端能正常访问网络。截图时同时提供系统、浏览器、终端和错误发生步骤，不要只描述“网络不行”。
 
-【错误信息】
-[粘贴完整的错误信息或截图描述]
+### 3. API Key 应该发给助教帮忙配置吗？
 
-【我已尝试的方法】
-1. 重新生成API Key
-2. 检查网络连接
-3. [其他方法]
-
-请告诉我可能的原因和解决方法，谢谢！
-```
-
----
-
-**模板3：使用问题**
-```
-我在使用AI工具时遇到了问题，请帮我解决。
+不建议。不要把 API Key、密码和登录验证码发给任何人。优先按照文档自行配置，遇到问题时只提供脱敏后的错误信息。
 
-【工具信息】
-工具名称：[Claude Code / Cherry Studio]
-使用的模型：[GLM-4.7 / 其他]
+## 六、截图求助指南
 
-【我正在做什么】
-[详细描述你的操作，如"发送消息"或"上传文档"]
+提问时请一次性提供：
 
-【预期结果】
-[你期望发生什么]
+1. 操作系统和版本；
+2. 工具名称和版本；
+3. 你正在执行的具体步骤；
+4. 完整错误信息；
+5. 已经尝试过的处理方式；
+6. 脱敏后的截图。
 
-【实际结果】
-[实际发生了什么，粘贴错误信息]
+截图前必须遮盖 API Key、密码、手机号、邮箱、客户姓名、案号和内部文件内容。
 
-【环境信息】
-操作系统：[Windows 10 / macOS 13 / Ubuntu 20.04]
-网络状况：[正常 / 使用VPN / 其他]
+推荐提问模板：
 
-请提供解决方法，谢谢！
+```text
+我正在安装 / 使用【工具名称】。
+我的系统是【Windows / macOS / Linux + 版本】。
+我正在执行【具体步骤】。
+完整错误信息是：【粘贴错误】。
+我已经尝试过：【已尝试的方式】。
+请帮我判断下一步应该检查什么。
 ```
-
----
-
-### 需要提供的关键信息清单
-
-在求助时，请尽可能提供以下信息：
-
-**必须提供**：
-- [ ] 完整的错误信息（文字或截图）
-- [ ] 你在执行什么操作
-- [ ] 你的操作系统和版本
-- [ ] 工具名称和版本（如果知道）
-
-**建议提供**：
-- [ ] 你已经尝试过的解决方法
-- [ ] 相关的配置内容（记得隐藏敏感信息）
-- [ ] 网络状况（正常/VPN/其他）
-- [ ] Node.js/npm版本（如果涉及）
-
-**不要提供**：
-- [ ] 完整的API Key（用sk-***代替）
-- [ ] 密码
-- [ ] 个人隐私信息
-
----
-
-## 📞 联系支持
-
-如果以上方法都无法解决问题：
-
-**1. 学员微信群**
-- 在群里提问，附上错误截图
-- 课程组会在群内统一答疑，其他学员也可能补充经验
-
-**2. 联系陈石微信**
-- 微信号/手机号：13567896937
-- 适用于紧急问题、个别沟通、协助排查
-
----
-
-## 💡 预防问题的小贴士
-
-1. **按顺序操作**：严格按照指南步骤操作，不要跳过
-2. **耐心等待**：有些操作（如下载、安装）需要时间，耐心等待
-3. **检查网络**：确保网络稳定，建议使用宽带或WiFi
-4. **备份配置**：配置完成后，备份配置文件
-5. **记录问题**：遇到问题时，记录错误信息，方便排查
-6. **及时求助**：不要拖延，遇到问题及时在群里求助
-
----
-
-**FAQ版本**：v1.0
-**最后更新**：2025年2月4日
-**维护者**：四明山法师 AI 夜校课程组
-
----
 
-**祝你顺利完成课前准备！** 🚀
+如果问题仍未解决，把这份记录带入先导课；能够清楚描述卡点，本身就是课程要训练的能力之一。

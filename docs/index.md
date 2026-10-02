@@ -1,6 +1,6 @@
 ---
 layout: home
-description: 面向法律人的 AI 实操夜校，3 步完成课前准备。含 Claude Code、Cherry Studio 安装指南、实用工具速查与往期学员名录。先导课 + 6 次主课，申请制持续招生。
+description: 面向法律人的 AI 实操夜校，3 步完成课前准备。含 WorkBuddy、Claude Code 安装指南、实用工具速查与往期学员名录。先导课 + 6 次主课，申请制持续招生。
 
 hero:
   name: "四明山法师 AI 夜校"
@@ -14,10 +14,10 @@ hero:
       text: 报名关闭期
 
 features:
-  - title: 第 1 步：模型账号 + Cherry Studio
-    details: 先准备一个国内可直连模型账号，再完成 Cherry Studio 安装与连通测试，约 30 - 45 分钟。
+  - title: 第 1 步：WorkBuddy 工作台
+    details: 从官方入口下载安装 WorkBuddy，完成微信扫码登录，并跑通第一个小任务，约 30 - 45 分钟。
   - title: 第 2 步：Claude Code 全套环境
-    details: 安装 Node.js、Claude Code、VS Code 与 CC Switch，完成 GLM 接入，约 60 - 90 分钟。
+    details: 使用官方原生安装器完成 Claude Code 安装、登录与本地文件任务验证，约 45 - 75 分钟。
   - title: 第 3 步：环境验证 + FAQ
     details: 最后跑一遍环境验证清单；如果卡住，再查 FAQ 或截图到群里求助，约 10 分钟。
 ---
@@ -36,9 +36,9 @@ features:
     <p>1 个国内可直连，1 个国际模型备用。</p>
   </article>
   <article class="home-prep-card">
-    <span class="home-prep-card__label">核心软件</span>
-    <strong>N 个工具</strong>
-    <p>Cherry Studio、Work buddy、Claude Code、Codex、VS Code、CC Switch 等。</p>
+    <span class="home-prep-card__label">核心入口</span>
+    <strong>3 条工具线</strong>
+    <p>WorkBuddy、Claude Code，以及 ChatGPT / Codex 可选入口。</p>
   </article>
 </div>
 
