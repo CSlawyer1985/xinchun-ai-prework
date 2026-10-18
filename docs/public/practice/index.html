@@ -25,6 +25,8 @@
     --accent: #002FA7;
     --accent-soft: #e6ebf7;
     --accent-ink: #0a1f6b;
+    --accent-on: #fff;
+    --accent-on-muted: rgba(255,255,255,.7);
     --ok: #1a1d24;
     --ok-glow: #1fa871;
     --err: #d64545;
@@ -37,26 +39,28 @@
     --sans: 'Inter',-apple-system,BlinkMacSystemFont,system-ui,'PingFang SC','Microsoft YaHei',sans-serif;
   }
   body[data-theme="dark"] {
-    --bg: #0d1117;
-    --canvas: #161b22;
-    --ink: #e6e9f0;
-    --label: #9aa3b2;
-    --faint: #6b7480;
-    --pending: #3a4150;
-    --line: #232a35;
-    --line-2: #2d3540;
-    --row-alt: #1c232d;
-    --accent: #5b82ff;
-    --accent-soft: #1a2347;
-    --accent-ink: #a8bcff;
+    --bg: #010409;
+    --canvas: #0d1117;
+    --ink: #e6edf3;
+    --label: #9ba5b2;
+    --faint: #8b949e;
+    --pending: #8b949e;
+    --line: #21262d;
+    --line-2: #30363d;
+    --row-alt: #161b22;
+    --accent: #79c0ff;
+    --accent-soft: #79c0ff1f;
+    --accent-ink: #a5d6ff;
+    --accent-on: #010409;
+    --accent-on-muted: #283b50;
     --ok: #e6e9f0;
     --ok-glow: #3ddc84;
     --err: #ff6b6b;
     --err-soft: #3a1f24;
-    --code-bg: #0a0e22;
-    --code-fg: #e6e9f7;
-    --code-mut: #6b7480;
-    --code-acc: #6ea8ff;
+    --code-bg: #010409;
+    --code-fg: #e6edf3;
+    --code-mut: #8b949e;
+    --code-acc: #c3a4f6;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html,body { height: 100%; }
@@ -76,7 +80,7 @@
   }
   .brand { display: flex; align-items: center; gap: 9px; padding-bottom: 4px; }
   .brand .logo { width: 22px; height: 22px; border-radius: 5px; background: var(--accent); position: relative; flex-shrink: 0; }
-  .brand .logo::after { content:''; position:absolute; inset:5px; border:2px solid #fff; border-radius:2px; }
+  .brand .logo::after { content:''; position:absolute; inset:5px; border:2px solid var(--accent-on); border-radius:2px; }
   .brand h1 { font-size: 13px; font-weight: 600; letter-spacing: -0.01em; }
   .brand h1 em { font-style: normal; color: var(--faint); font-weight: 400; font-size: 11px; display:block; letter-spacing: 0.02em; }
   .back-link { font: 11px var(--sans); color: var(--faint); text-decoration: none; letter-spacing: 0.02em; margin: -4px 2px 6px; padding: 3px 8px 3px 0; align-self: flex-start; transition: color .15s; }
@@ -136,8 +140,8 @@
   }
   .tab .n { font-size: 9px; color: var(--faint); }
   .tab:hover { background: var(--row-alt); }
-  .tab.on { background: var(--accent); color: #fff; border-color: var(--accent); }
-  .tab.on .n { color: rgba(255,255,255,.7); }
+  .tab.on { background: var(--accent); color: var(--accent-on); border-color: var(--accent); }
+  .tab.on .n { color: var(--accent-on-muted); }
   .tb-spacer { flex: 1; }
   .icon-btn {
     width: 32px; height: 32px; border: 1px solid var(--line); border-radius: 6px;
@@ -214,7 +218,7 @@
   .reveal.show { opacity: 1; transform: translateX(-50%) translateY(0); }
   .reveal-tag {
     display: inline-block; align-self: flex-start; margin-bottom: 2px;
-    background: var(--accent); color: #fff;
+    background: var(--accent); color: var(--accent-on);
     font: 9px/1 var(--mono); letter-spacing: 0.16em; padding: 5px 9px; border-radius: 4px;
   }
   .rv-head { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; padding: 2px 0 8px; border-bottom: 1px solid var(--line); }
@@ -901,7 +905,7 @@ let revealTimer = null;
 let wrongSet = new Set();
 let progress = loadProgress();
 let soundOn = (localStorage.getItem(STORE + ':sound') ?? '1') === '1';
-let theme = localStorage.getItem(STORE + ':theme') || 'light';
+let theme = localStorage.getItem(STORE + ':theme') || 'dark';
 let audioCtx = null;
 let lastKey = '', lastKeyTime = 0;   // 双击键序列判定（如 Esc Esc）
 

@@ -65,9 +65,13 @@
   transition: color 180ms ease, transform 180ms ease;
 }
 
-.ecosystem-nav__links a + a {
+.ecosystem-nav__links a:not(:nth-child(4n + 1)) {
   padding-left: 18px;
   border-left: 1px solid rgba(148, 163, 184, 0.12);
+}
+
+.ecosystem-nav__links a:nth-child(n + 5) {
+  border-top: 1px solid rgba(148, 163, 184, 0.12);
 }
 
 .ecosystem-nav__links a:hover,
@@ -206,11 +210,11 @@
     padding: 15px 12px 15px 0;
   }
 
-  .ecosystem-nav__links a + a {
+  .ecosystem-nav__links a:nth-child(even) {
     padding-left: 12px;
   }
 
-  .ecosystem-nav__links a:nth-child(3) {
+  .ecosystem-nav__links a:nth-child(odd) {
     padding-left: 0;
     border-left: 0;
   }

@@ -1,30 +1,40 @@
+<script setup lang="ts">
+withDefaults(defineProps<{ showSlogan?: boolean }>(), { showSlogan: true })
+
+// Match the blog's project gallery order, excluding the night school itself.
+const projects = [
+  { name: 'Claude for Legal ZH', url: 'https://claude.legalagi.cn/' },
+  { name: '法律概念 Wiki', url: 'https://wiki.legalagi.cn/' },
+  { name: '法律人 Skill 仓库', url: 'https://skill.chenshi.ai/' },
+  { name: 'MemoBall', url: 'https://memoball.chenshi.ai/' },
+  { name: '法律 Agent 解构', url: 'https://learn-agent.legalagi.cn/' },
+  { name: 'DeepSeek Harness 桌面客户端', url: 'https://dsh.chenshi.ai/' },
+  { name: '纪考工作台 · RuleNav', url: 'https://rule.chenshi.ai/' },
+  { name: '法律元 SKILL', url: 'https://skill.chenshi.ai/legal-meta-skill' },
+  { name: '文夹 InkPeg', url: 'https://inkpeg.chenshi.ai/' },
+  { name: 'ADG · Agent 数据网关', url: 'https://adg.chenshi.ai/' }
+]
+</script>
+
 <template>
   <aside class="ecosystem-nav" aria-labelledby="ecosystem-nav-title">
     <div class="ecosystem-nav__heading">
-      <span class="ecosystem-nav__eyebrow">LEGAL AI ECOSYSTEM</span>
-      <h2 id="ecosystem-nav-title">法律 AI 生态</h2>
+      <span class="ecosystem-nav__eyebrow">LEGAL AI PROJECTS</span>
+      <h2 id="ecosystem-nav-title">法律AI作品</h2>
     </div>
 
-    <nav class="ecosystem-nav__links" aria-label="法律 AI 生态站点">
+    <nav class="ecosystem-nav__links" aria-label="法律AI作品站点">
       <a href="https://chenshi.ai/" target="_blank" rel="noopener">
         <span>陈石 · 法与 AI</span>
         <small>chenshi.ai</small>
       </a>
-      <a href="https://learn-agent.legalagi.cn/" target="_blank" rel="noopener">
-        <span>法律 Agent 结构学习</span>
-        <small>learn-agent.legalagi.cn</small>
-      </a>
-      <a href="https://claude.legalagi.cn/" target="_blank" rel="noopener">
-        <span>Claude for Legal ZH</span>
-        <small>claude.legalagi.cn</small>
-      </a>
-      <a href="https://wiki.legalagi.cn/" target="_blank" rel="noopener">
-        <span>法律概念 Wiki</span>
-        <small>wiki.legalagi.cn</small>
+      <a v-for="project in projects" :key="project.url" :href="project.url" target="_blank" rel="noopener">
+        <span>{{ project.name }}</span>
+        <small>{{ project.url.replace('https://', '').replace(/\/$/, '') }}</small>
       </a>
     </nav>
 
-    <p class="ecosystem-nav__slogan">
+    <p v-if="showSlogan" class="ecosystem-nav__slogan">
       <svg
         class="ecosystem-nav__wave"
         aria-hidden="true"

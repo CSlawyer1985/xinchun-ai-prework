@@ -9,13 +9,16 @@ import AlumniDirectory from './components/AlumniDirectory.vue'
 import SiteCounter from './components/SiteCounter.vue'
 import AnthemCard from './components/AnthemCard.vue'
 import EcosystemNav from './components/EcosystemNav.vue'
+import NightSchoolHome from './components/NightSchoolHome.vue'
 import './custom.css'
+import './motion-home.css'
+import './site-theme.css'
 
 const theme: Theme = {
   extends: DefaultTheme,
   Layout: () => {
     return h(DefaultTheme.Layout, null, {
-      'doc-footer-before': () => h(EcosystemNav),
+      'doc-footer-before': () => h(EcosystemNav, { showSlogan: false }),
       'layout-bottom': () => h(SiteCounter)
     })
   },
@@ -28,6 +31,7 @@ const theme: Theme = {
     app.component('SiteCounter', SiteCounter)
     app.component('AnthemCard', AnthemCard)
     app.component('EcosystemNav', EcosystemNav)
+    app.component('NightSchoolHome', NightSchoolHome)
   }
 }
 

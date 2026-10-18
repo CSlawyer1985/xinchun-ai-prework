@@ -1,0 +1,164 @@
+/* Shared palette for the homepage, reading pages, navigation and search. */
+:root,
+:root.dark {
+  color-scheme: dark;
+  --vp-c-bg: #010409;
+  --vp-c-bg-alt: #0d1117;
+  --vp-c-bg-soft: #161b22;
+  --vp-c-bg-elv: #161b22;
+  --vp-c-bg-overlay: #161b22;
+  --vp-c-text-1: #e6edf3;
+  --vp-c-text-2: #9ba5b2;
+  --vp-c-text-3: #8b949e;
+  --vp-c-border: #30363d;
+  --vp-c-divider: #21262d;
+  --vp-c-gutter: #21262d;
+  --vp-c-neutral: #e6edf3;
+  --vp-c-neutral-inverse: #010409;
+  --vp-c-default-1: #b1bac4;
+  --vp-c-default-2: #30363d;
+  --vp-c-default-3: #21262d;
+  --vp-c-default-soft: #161b22;
+  --vp-c-brand-1: #79c0ff;
+  --vp-c-brand-2: #a5d6ff;
+  --vp-c-brand-3: #58a6ff;
+  --vp-c-brand-soft: rgba(121, 192, 255, 0.12);
+  --vp-c-tip-1: #c3a4f6;
+  --vp-c-tip-2: #a371f7;
+  --vp-c-tip-3: #8957e5;
+  --vp-c-tip-soft: rgba(163, 113, 247, 0.12);
+  --vp-nav-bg-color: #010409;
+  --vp-sidebar-bg-color: #0d1117;
+  --vp-local-search-bg: #0d1117;
+  --vp-code-bg: #161b22;
+  --vp-code-color: #c3a4f6;
+  --vp-code-block-bg: #0d1117;
+  --vp-code-block-color: #c9d1d9;
+  --vp-code-line-highlight-color: rgba(121, 192, 255, 0.08);
+  --vp-button-brand-bg: #eef6fc;
+  --vp-button-brand-text: #010409;
+  --vp-button-brand-hover-bg: #cfe9ff;
+  --vp-button-brand-hover-text: #010409;
+  --workshop-accent: #79c0ff;
+  --workshop-ascii-accent: #79c0ff;
+  --workshop-card-border: #30363d;
+  --workshop-card-shadow: none;
+}
+
+html .VPNavBar {
+  border-bottom: 1px solid #ffffff0d;
+  background: #010409ee;
+}
+html .VPNavBarTitle .title {
+  font-size: 16px;
+  letter-spacing: -0.04em;
+}
+html .VPNavBarTitle .title::before {
+  content: '';
+  flex: none;
+  width: 27px;
+  height: 27px;
+  margin-right: 10px;
+  border: 1px solid #30363d;
+  border-radius: 7px;
+  background: #ffffff url('/favicon-32.png') center / 24px no-repeat;
+}
+html .VPFooter {
+  border-color: var(--vp-c-divider);
+  background: var(--vp-c-bg);
+}
+
+/* Reading cards use the same dark surfaces as the homepage. */
+.VPDoc :is(.prep-card, .compare-card, .cc-guide-summary__card) {
+  border: 1px solid var(--vp-c-border);
+  border-radius: 10px;
+  background: var(--vp-c-bg-alt);
+  box-shadow: none;
+}
+.VPDoc :is(.prep-card h4, .compare-card h4, .cc-guide-summary__title) {
+  color: var(--vp-c-text-1);
+}
+.VPDoc :is(.prep-card li, .compare-card li, .cc-guide-summary__card p) {
+  color: var(--vp-c-text-2);
+}
+.VPDoc :is(.prep-card__eyebrow, .compare-card__eyebrow, .cc-guide-summary__eyebrow, .alumni-directory__season, .cc-guide-hero__eyebrow) {
+  color: var(--vp-c-brand-1);
+}
+.VPDoc .cc-guide-hero {
+  border: 1px solid var(--vp-c-border);
+  border-radius: 12px;
+  background: radial-gradient(ellipse at top right, #79c0ff1a, transparent 65%), #0d1117;
+  box-shadow: none;
+  color: var(--vp-c-text-1);
+}
+.VPDoc .cc-guide-hero__lead {
+  color: var(--vp-c-text-2);
+}
+.VPDoc .cc-guide-hero__lead a {
+  color: var(--vp-c-brand-1);
+}
+.VPDoc .cc-guide-pills span {
+  border-color: var(--vp-c-border);
+  color: var(--vp-c-text-1);
+  background: var(--vp-c-bg-soft);
+}
+html.dark .syllabus-hero {
+  border-bottom-color: #79c0ff33;
+  background: linear-gradient(90deg, #79c0ff12, transparent 68%), repeating-linear-gradient(90deg, transparent 0 47px, #79c0ff08 48px);
+}
+html.dark .syllabus-hero::after {
+  color: #79c0ff18;
+}
+.syllabus-hero__meta span + span::before {
+  color: var(--vp-c-text-3);
+}
+html.dark :is(.alumni-avatar strong, .student-avatar__name) {
+  color: var(--vp-c-text-1);
+}
+html.dark :is(.alumni-avatar span, .student-avatar__note) {
+  color: var(--vp-c-text-2);
+}
+html.dark .ecosystem-nav {
+  border-color: var(--vp-c-divider);
+}
+html.dark .site-counter__label {
+  color: var(--vp-c-text-3);
+}
+html.dark .site-counter__dot {
+  color: var(--vp-c-text-3);
+}
+.VPDoc :is(.practice-cta, .animation-terms-cta) {
+  background: #30363d;
+  border: 1px solid #484f58;
+  box-shadow: none;
+}
+.VPDoc :is(.practice-cta, .animation-terms-cta):hover {
+  background: #484f58;
+  box-shadow: none;
+}
+html.dark .anthem-card .anthem-card__eyebrow {
+  color: var(--vp-c-text-3);
+}
+html.dark .anthem-card__lyric.cur {
+  color: #c3a4f6;
+}
+.anthem-card__play:hover {
+  background: #a5d6ff;
+  color: #010409;
+}
+.site-counter__label {
+  color: var(--vp-c-text-3);
+}
+
+@media (min-width: 768px) and (max-width: 1000px) {
+  .DocSearch-Button-Placeholder,
+  .DocSearch-Button-Keys {
+    display: none;
+  }
+  .DocSearch-Button {
+    width: 40px;
+    min-width: 40px;
+    padding: 0;
+    justify-content: center;
+  }
+}

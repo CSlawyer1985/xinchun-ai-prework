@@ -22,7 +22,7 @@ function pageUrl(relativePath: string) {
 
 // 全站统一 head；页面相关的 og:title/og:description/og:url/canonical/twitter:title 由 transformHead 按页注入
 const shareHead = [
-  ['meta', { name: 'theme-color', content: '#071823' }],
+  ['meta', { name: 'theme-color', content: '#010409' }],
   ['link', { rel: 'icon', type: 'image/png', sizes: '32x32', href: `${base}favicon-32.png` }],
   ['link', { rel: 'apple-touch-icon', sizes: '180x180', href: `${base}favicon-180.png` }],
   ['meta', { property: 'og:type', content: 'website' }],
@@ -96,7 +96,7 @@ export default defineConfig({
   base,
   cleanUrls: true,
   lastUpdated: true,
-  appearance: 'dark',
+  appearance: 'force-dark',
   head: shareHead,
   sitemap: {
     hostname: `${homeUrl}/`
