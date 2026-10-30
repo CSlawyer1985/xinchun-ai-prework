@@ -170,7 +170,8 @@ export default defineConfig({
           { text: '05 法律 Agent 运行结构仪表盘', link: '/tools/05_法律Agent运行结构仪表盘' },
           { text: '06 Claude Code 命令打字练习', link: '/tools/06_Claude_Code_命令打字练习' },
           { text: '07 动画术语手册', link: '/tools/07_动画术语手册' },
-          { text: '08 上下文纸带', link: '/tools/08_上下文纸带' }
+          { text: '08 上下文纸带', link: '/tools/08_上下文纸带' },
+          { text: '09 AI 产品矩阵', link: '/tools/09_AI产品矩阵' }
         ]
       },
       {
