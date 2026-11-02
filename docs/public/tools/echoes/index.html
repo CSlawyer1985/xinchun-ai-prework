@@ -1,0 +1,1166 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>历史的回响</title>
+<style>
+:root{--bg:#121212;--bg2:#1a1917;--ink:#e9e4d8;--mute:#9a9486;--line:#34312b;--now:#d2343c;--past:#f2eee6;--paper:#f3eee3;
+--serif:"Songti SC","STSong","Noto Serif CJK SC","Source Han Serif SC","SimSun",Georgia,serif;
+--sans:-apple-system,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans CJK SC",system-ui,sans-serif}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.75;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:100;opacity:.05;
+background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.8' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+a{color:inherit}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+.hero{position:relative;height:100vh;min-height:560px;overflow:hidden;background:radial-gradient(ellipse at 50% 45%,#22201c 0%,#121212 70%)}
+.field{position:absolute;inset:0}
+.cap{position:absolute;left:0;top:0;width:58px;height:22px;border-radius:11px;display:flex;cursor:pointer;border:0;padding:0;background:none;
+will-change:transform;filter:drop-shadow(0 4px 10px rgba(0,0,0,.5));transition:filter .3s}
+.cap i{flex:1;display:block;transition:transform .55s cubic-bezier(.2,.8,.2,1),opacity .55s}
+.cap i:first-child{background:radial-gradient(ellipse 80% 60% at 60% 28%,rgba(255,255,255,.55),transparent 45%),linear-gradient(180deg,#f0646a,#d2343c 45%,#8e1a20);border-radius:11px 0 0 11px}
+.cap i:last-child{background:radial-gradient(ellipse 80% 60% at 40% 28%,rgba(255,255,255,.95),transparent 45%),linear-gradient(180deg,#ffffff,#ece7dc 45%,#a9a398);border-radius:0 11px 11px 0}
+.cap::after{content:"";position:absolute;left:50%;top:1px;bottom:1px;width:1px;background:rgba(0,0,0,.18)}
+.cap.deco{width:30px;height:12px;border-radius:6px;opacity:.75}.cap.deco i:first-child{border-radius:6px 0 0 6px}.cap.deco i:last-child{border-radius:0 6px 6px 0}
+.cap:hover,.cap:focus-visible{filter:drop-shadow(0 0 14px rgba(232,200,140,.55));outline:none}
+.cap.open i:first-child{transform:translateX(-26px) rotate(-28deg);opacity:0}
+.cap.open i:last-child{transform:translateX(26px) rotate(28deg);opacity:0}
+.cap.open::after{opacity:0}
+.dot.past{box-shadow:inset 0 0 0 1px #999}
+.hero-text{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;pointer-events:none;padding:0 20px}
+.kicker{letter-spacing:.3em;font-size:12px;color:var(--mute);margin:0 0 18px}
+h1{font-family:var(--serif);font-weight:600;font-size:clamp(48px,9vw,112px);letter-spacing:.12em;margin:0;line-height:1.1;text-shadow:0 2px 30px rgba(0,0,0,.8)}
+.slogan{font-family:var(--serif);font-size:clamp(17px,2.2vw,24px);letter-spacing:.35em;color:#cfc6b2;margin:22px 0 28px}
+.legend{font-size:13px;color:var(--mute);display:flex;gap:10px;align-items:center;background:rgba(18,18,18,.6);padding:6px 14px;border-radius:20px}
+.dot{width:10px;height:10px;border-radius:50%;display:inline-block}.dot.now{background:var(--now)}.dot.past{background:var(--past)}
+.hint{margin-left:8px;opacity:.7}
+.scroll-cue{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);z-index:2;font-size:12px;letter-spacing:.3em;color:var(--mute);text-decoration:none}
+.tip{position:absolute;z-index:5;pointer-events:none;background:var(--paper);color:#222;font-size:13px;padding:5px 10px;border-radius:4px;white-space:nowrap;opacity:0;transform:translate(-50%,-130%);transition:opacity .2s}
+.tip b{color:#8a5a12;margin-right:6px}
+.sec-title{font-family:var(--serif);font-weight:600;font-size:32px;letter-spacing:.15em;margin:110px 0 30px;text-align:center}
+.intro{max-width:760px;padding-top:90px;font-family:var(--serif);font-size:17px;color:#d6cfbf}
+.intro .callout{border-left:2px solid var(--now);padding:4px 0 4px 20px;margin-top:24px;color:var(--ink)}
+.axis-head{display:grid;grid-template-columns:1fr 1fr;text-align:center;font-size:13px;letter-spacing:.3em}
+.now-c{color:var(--now)}.past-c{color:var(--past)}
+.filters{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:20px 0 40px}
+.filters button{font:inherit;font-size:14px;background:none;color:var(--mute);border:1px solid var(--line);padding:5px 16px;border-radius:20px;cursor:pointer;transition:.2s}
+.filters button:hover{color:var(--ink);border-color:#5a554b}
+.filters button.on{background:var(--ink);color:#141414;border-color:var(--ink)}
+.group{margin-bottom:60px}
+.group h3{font-family:var(--serif);text-align:center;font-weight:600;font-size:20px;letter-spacing:.3em;margin:0 0 24px;color:#cfc6b2}
+.group h3 small{display:block;font-family:var(--sans);font-size:12px;letter-spacing:.1em;color:var(--mute);font-weight:400}
+.rows{position:relative}
+.rows::before{content:"";position:absolute;left:50%;top:0;bottom:0;width:1px;background:linear-gradient(var(--line),var(--line) 90%,transparent)}
+.row{display:grid;grid-template-columns:1fr 56px 1fr;align-items:start;margin-bottom:22px}
+.node{justify-self:center;margin-top:16px;width:34px;height:34px;border-radius:50%;background:var(--bg);border:1px solid #4a463e;font-size:12px;display:grid;place-items:center;color:var(--mute);position:relative;z-index:1}
+.side{background:var(--bg2);border:1px solid var(--line);border-radius:6px;padding:16px 18px;cursor:pointer;transition:border-color .25s,transform .25s}
+.side:hover{transform:translateY(-2px)}
+.side.now{border-top:2px solid var(--now);text-align:right}
+.side .x{display:none;margin-top:12px;padding-top:10px;border-top:1px dashed #3d3a33;text-align:left;font-size:13px;color:#c2bbab}
+.side.ex .x{display:block;animation:fade .35s}.side .x dt{color:var(--mute);font-size:11px;letter-spacing:.2em;margin-top:8px}.side .x dd{margin:2px 0 0}.side .x a{color:#e7a0a4;word-break:break-all}.side.past .x a{color:#cfd8dc}
+.side .tg{font-size:11px;color:var(--mute);margin-top:6px}.side .tg::after{content:"展开 ▾"}.side.ex .tg::after{content:"收起 ▴"}.side:hover{transform:none}
+.node{cursor:pointer}.node:hover{border-color:var(--now);color:var(--ink)}.side.past{border-top:2px solid var(--past)}
+.row:hover .side.now{border-color:var(--now)}.row:hover .side.past{border-color:var(--past)}
+.side .t{font-family:var(--serif);font-size:16px;line-height:1.6}
+.side .m{font-size:12px;color:var(--mute);margin-top:6px}
+.badge{display:inline-block;font-size:11px;padding:0 7px;border-radius:3px;border:1px solid currentColor;margin:0 2px;line-height:18px;white-space:nowrap}
+.b-strong{color:#a9c98a}.b-mid{color:#c9b88a}.s-ok{color:#a9c98a}.s-dis{color:#d79a7a}.s-part{color:#c9b88a}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s ease}
+.reveal.in{opacity:1;transform:none}
+.laws{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px;counter-reset:l}
+.laws li{counter-increment:l;background:var(--bg2);border:1px solid var(--line);padding:22px;border-radius:6px}
+.laws li::before{content:counter(l,cjk-ideographic);font-family:var(--serif);color:var(--now);font-size:14px;letter-spacing:.2em}
+.laws h4{font-family:var(--serif);font-size:19px;margin:6px 0 8px;font-weight:600}
+.laws p{margin:0;color:#c2bbab;font-size:14px}
+.quote{font-family:var(--serif);font-size:26px;text-align:center;margin:60px auto 0;letter-spacing:.2em}
+.quote cite{display:block;font-size:12px;letter-spacing:.1em;color:var(--mute);font-style:normal;margin-top:10px;font-family:var(--sans)}
+.method{font-size:14px;color:#b8b1a2;max-width:820px;margin:0 auto}
+.method .key{border:1px solid var(--line);padding:14px 18px;border-radius:6px;color:var(--ink)}
+.method p{margin:0 0 16px}
+.foot{text-align:center;color:var(--mute);font-size:12px;padding:80px 24px 50px;letter-spacing:.2em}
+/* modal */
+.modal{position:fixed;inset:0;z-index:50;display:grid;place-items:center;padding:20px}
+.modal[hidden]{display:none}
+.backdrop{position:absolute;inset:0;background:rgba(8,8,8,.72);backdrop-filter:blur(6px);animation:fade .35s}
+.card{position:relative;width:min(1040px,100%);max-height:90vh;overflow:auto;background:var(--paper);color:#262420;border-radius:8px;box-shadow:0 30px 80px rgba(0,0,0,.6);animation:pop .5s cubic-bezier(.2,.9,.25,1)}
+@keyframes pop{from{opacity:0;transform:scale(.6) translateY(30px)}to{opacity:1;transform:none}}
+@keyframes fade{from{opacity:0}}
+.card header{padding:22px 28px 14px;border-bottom:1px solid #d8d0bf;display:flex;justify-content:space-between;gap:16px;align-items:flex-start}
+.card header .meta{font-size:12px;color:#7b7366;letter-spacing:.1em}
+.card h2{font-family:var(--serif);font-size:22px;margin:4px 0 0;font-weight:600}
+.close{font:inherit;background:none;border:1px solid #bdb4a2;border-radius:50%;width:34px;height:34px;cursor:pointer;flex:none;font-size:18px;line-height:1}
+.cols{display:grid;grid-template-columns:1fr 1fr}
+.col{padding:22px 28px}
+.col.now{border-right:1px solid #d8d0bf;background:linear-gradient(90deg,rgba(210,52,60,.07),transparent)}
+.col.past{background:linear-gradient(270deg,rgba(0,0,0,.025),transparent)}
+.col h3{font-size:12px;letter-spacing:.3em;margin:0 0 8px}
+.col.now h3{color:#b0262e}.col.past h3{color:#6b655a}
+.col .big{font-family:var(--serif);font-size:19px;line-height:1.55;margin:0 0 14px;font-weight:600}
+dl{margin:0}dt{font-size:12px;color:#7b7366;letter-spacing:.15em;margin-top:12px}dd{margin:2px 0 0;font-size:15px}
+.ev{margin-top:16px;padding:12px 14px;background:rgba(0,0,0,.04);border-radius:4px;font-size:13px;color:#4a453c}
+.ev .lab{font-size:11px;letter-spacing:.15em;color:#7b7366;display:block;margin-bottom:4px}
+.src{display:inline-block;margin-top:12px;font-size:13px;word-break:break-all;color:#2f5f8a}
+.compare{display:grid;grid-template-columns:1fr 1fr 1fr;border-top:1px solid #d8d0bf}
+.compare div{padding:18px 28px;border-right:1px solid #d8d0bf}.compare div:last-child{border:0}
+.compare h4{margin:0 0 6px;font-size:12px;letter-spacing:.3em;color:#7b7366}
+.compare p{margin:0;font-size:15px}
+.compare .lesson{background:#2a2723;color:var(--paper)}.compare .lesson h4{color:#f0646a}
+.card .badge{font-size:11px}.card .b-strong,.card .s-ok{color:#4f7a2c}.card .b-mid,.card .s-part{color:#8a6a1a}.card .s-dis{color:#a24f2a}
+.note{padding:12px 28px;font-size:13px;background:#efe2c8;color:#6b4c12}
+@media (max-width:760px){
+ .wrap{padding:0 16px}
+ .cap{width:42px;height:16px;border-radius:8px}.cap i:first-child{border-radius:8px 0 0 8px}.cap i:last-child{border-radius:0 8px 8px 0}.cap::after{top:3px;height:3px}
+ .slogan{letter-spacing:.2em}.legend{flex-wrap:wrap;justify-content:center}
+ .axis-head{display:none}
+ .rows::before{left:16px}
+ .row{grid-template-columns:34px 1fr;gap:10px 12px}
+ .node{grid-row:1/3;margin-top:8px;align-self:start}
+ .side.now{text-align:left}
+ .side.past{grid-column:2}
+ .side::before{display:block;font-size:11px;letter-spacing:.3em;margin-bottom:4px}.side.now::before{content:"今日";color:var(--now)}.side.past::before{content:"历史";color:var(--past)}
+ .cols,.compare{grid-template-columns:1fr}
+ .col.now{border-right:0;border-bottom:1px solid #d8d0bf}
+ .compare div{border-right:0;border-bottom:1px solid #d8d0bf}
+ .card{max-height:92vh}.card header,.col,.compare div{padding-left:18px;padding-right:18px}
+ .sec-title{margin-top:80px;font-size:26px}
+}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}.card,.backdrop{animation:none}}
+
+</style>
+</head>
+<body>
+<header class="hero" id="hero">
+  <div class="field" id="field" aria-label="42颗胶囊，每颗对应一条对照"></div>
+  <div class="hero-text">
+    <p class="kicker">AI时代的42种思潮 · 技术史中的42次押韵</p>
+    <h1>历史的回响</h1>
+    <p class="slogan">历史不会重复，但会押韵</p>
+    <p class="legend"><span class="dot now"></span>今天 <span class="dot past"></span>历史 <span class="hint">悬停查看，点击打开</span></p>
+  </div>
+  <a class="scroll-cue" href="#timeline">向下 · 时间轴</a>
+  <div class="tip" id="tip"></div>
+</header>
+
+<main>
+  <section class="intro wrap reveal" id="intro"></section>
+
+  <section class="wrap" id="timeline">
+    <h2 class="sec-title reveal">对照时间轴</h2>
+    <div class="axis-head reveal"><span class="now-c">今日现象</span><span class="past-c">历史押韵</span></div>
+    <nav class="filters reveal" id="filters" aria-label="按类别筛选"></nav>
+    <div id="groups"></div>
+  </section>
+
+  <section class="wrap" id="laws">
+    <h2 class="sec-title reveal">七条规律</h2>
+    <ol class="laws" id="lawList"></ol>
+    <blockquote class="quote reveal" id="quote"></blockquote>
+  </section>
+
+  <section class="wrap" id="method">
+    <h2 class="sec-title reveal">方法说明</h2>
+    <div class="method reveal">
+      <p class="key">证据强度：<b>强</b> 官方文件、法规、判决、同行评审论文或档案馆资料；<b>中</b> 权威媒体或二手学术。核实状态：已核实 / 已核实·含争议 / 部分核实（只通过搜索摘要或二手资料确认）。</p>
+      <div id="methodText"></div>
+    </div>
+  </section>
+  <footer class="wrap foot">历史的回响 · 数据整理自研究页面，未新增事实</footer>
+</main>
+
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="mTitle" hidden>
+  <div class="backdrop" data-close></div>
+  <article class="card" id="card"></article>
+</div>
+
+<script>
+window.ECHOES = {
+ "title": "历史的回响",
+ "subtitle": "历史不会重复，但会押韵",
+ "summary": "把深度学习与生成式AI兴起以来的42种社会思潮，逐一对应到工业革命以来技术史中的押韵事件，为后续对比网页打底。",
+ "overview": [
+  "研究时间线从2012年AlexNet开始，重点是2022年11月ChatGPT发布之后。现象分为六类：个体、组织、社会、监管与法律、乐观与狂热、末日与风险。每个现象配一到两个历史押韵事件，并写明相似、不同和启示。",
+  "技术引发的情绪曲线高度相似：先新奇，再恐惧，再仓促禁止或狂热投资，最后通过制度重构被吸收。真正不重复的是速度和对象，这次被放大的是认知能力本身。"
+ ],
+ "cats": [
+  "个体",
+  "组织",
+  "社会",
+  "监管与法律",
+  "乐观与狂热",
+  "末日与风险"
+ ],
+ "items": [
+  {
+   "id": 1,
+   "cat": "个体",
+   "now": "AI让人变笨：认知卸载、依赖",
+   "nowSrc": "https://www.media.mit.edu/publications/your-brain-on-chatgpt/",
+   "past": "苏格拉底担心文字削弱记忆；“谷歌让我们变傻了吗”",
+   "when": "古希腊（柏拉图《斐德罗篇》）；2008年",
+   "story": "《斐德罗篇》借神话称文字会让人疏于记忆；2008年卡尔在《大西洋月刊》撰文担忧互联网损害专注。",
+   "end": "文字与搜索均被接受，但注意力问题至今争论不休。",
+   "same": "外包认知是否萎缩能力。",
+   "diff": "AI可代替推理与写作本身，卸载更深。",
+   "lesson": "要区分“卸载”与“放弃”，保留核心技能刻意练习。",
+   "pastSrc": "https://www.theatlantic.com/magazine/archive/2008/07/is-google-making-us-stupid/306868/",
+   "short": "AI让人变笨",
+   "evNow": "中",
+   "evPast": "中",
+   "evNowText": "MIT媒体实验室论文页面（未打开）。",
+   "evPastText": "《斐德罗篇》与卡尔2008年《大西洋月刊》文章均为公认文本；维基链接已换为《大西洋月刊》原文页（403，未打开）。",
+   "status": "部分核实"
+  },
+  {
+   "id": 2,
+   "cat": "个体",
+   "now": "AI陪伴、恋爱与情感依赖（如Replika、Character.AI诉讼）",
+   "nowSrc": "https://www.reuters.com/legal/mother-sues-ai-chatbot-company-characterai-google-sued-over-sons-suicide-2024-10-23/",
+   "past": "ELIZA效应；小说阅读恐慌",
+   "when": "美国1966年；18–19世纪欧洲",
+   "story": "魏泽鲍姆的ELIZA让用户倾诉心事，令他本人震惊；18世纪有人担心女性沉迷小说而脱离现实。",
+   "end": "ELIZA促使魏泽鲍姆成为AI批评者；小说恐慌消散。",
+   "same": "人把情感投射到媒介上。",
+   "diff": "今天的系统会主动回应、记忆并被商业化优化留存。Garcia诉Character.AI案2024年10月起诉，2025年5月法院驳回被告以言论自由为由的撤诉动议（路透社）；2026年1月7日法院在双方达成和解后驳回该案。2025年9月美国FTC向7家公司发出6(b)令，调查AI陪伴机器人对未成年人的影响。",
+   "lesson": "未成年人保护与产品设计责任是关键。",
+   "pastSrc": "https://dl.acm.org/doi/10.1145/365153.365168",
+   "short": "AI陪伴、恋爱与情感依赖",
+   "evNow": "强",
+   "evPast": "中",
+   "evNowText": "【检索到原文片段】路透社2025年5月21日：法官Anne Conway驳回撤诉动议；FTC新闻稿：向Alphabet、Character Technologies、Meta、OpenAI、Snap、X.AI等7家公司发出6(b)令。",
+   "evPastText": "【检索确认】魏泽鲍姆1967年论文记载其秘书要求他离开房间；1976年书中重述。链接已换为魏泽鲍姆1966年ELIZA原始论文（Communications of the ACM，ACM数字图书馆；未打开）。小说恐慌缺原始来源。另：和解已核实，佛州中区法院2026年1月7日在双方达成调解和解后驳回Garcia案（法院文件，检索确认）。",
+   "status": "已核实"
+  },
+  {
+   "id": 3,
+   "cat": "个体",
+   "now": "创作者抵触：画师、作家、配音演员抗议",
+   "nowSrc": "https://www.sagaftra.org/members-ratify-tvtheatrical-tv-animation-agreements",
+   "past": "摄影术冲击肖像画；有声电影冲击乐手",
+   "when": "19世纪中叶法国；1920年代末美国",
+   "story": "波德莱尔1859年批评摄影侵入艺术；有声片使影院伴奏乐手大量失业，美国音乐家联合会1930年成立“音乐保卫联盟”，反对“罐头音乐”。",
+   "end": "绘画转向印象派等新方向；乐手岗位大幅消失。",
+   "same": "技能被机器复制，身份认同受冲击。",
+   "diff": "AI训练直接使用创作者作品，涉及授权与报酬。",
+   "lesson": "既有艺术重塑，也有真实失业，两者都要正视。",
+   "pastSrc": "https://www.smithsonianmag.com/history/musicians-wage-war-against-evil-robots-92702721/",
+   "short": "创作者抵触",
+   "evNow": "强",
+   "evPast": "中",
+   "evNowText": "【检索到原文片段】SAG-AFTRA官网公告：会员2023年12月5日以78.33%对21.67%批准与AMPTP的TV/Theatrical协议，含A.I.知情同意与补偿条款；官网对抓取返回403，未直接打开。",
+   "evPastText": "【仅摘要】史密森尼杂志、《International Musician》1930年存档；波德莱尔《1859年沙龙》。",
+   "status": "已核实"
+  },
+  {
+   "id": 4,
+   "cat": "个体",
+   "now": "教育作弊恐慌：学生用ChatGPT写作业",
+   "nowSrc": "https://www.nbcnews.com/tech/chatgpt-ban-dropped-new-york-city-public-schools-rcna85089",
+   "past": "计算器进课堂之争",
+   "when": "美国，1970–1980年代",
+   "story": "1986年4月3日，全美数学教师协会（NCTM）在华盛顿开年会，约6000人参会。出版商John Saxon带领约15到20名教师在场外抗议NCTM建议各年级都使用计算器，标语写着“The Button's Nothin' Til the Brain's Trained”。",
+   "end": "计算器被纳入课程，考试改为考察理解。",
+   "same": "先禁止，后整合。纽约市公立学校2023年1月禁用ChatGPT，同年5月撤销。",
+   "diff": "AI覆盖几乎所有学科与写作。",
+   "lesson": "评估方式要变，而非只靠禁令。",
+   "pastSrc": "https://www.washingtonpost.com/archive/local/1986/04/04/math-teachers-stage-a-calculated-protest/c003ddaf-b86f-4f2b-92ca-08533f3a5896/",
+   "short": "教育作弊恐慌",
+   "evNow": "强",
+   "evPast": "强",
+   "evNowText": "NBC News报道纽约市撤销禁令（第二轮已核）。",
+   "evPastText": "《华盛顿邮报》1986年4月4日原报道（第二轮已核）。",
+   "status": "已核实"
+  },
+  {
+   "id": 5,
+   "cat": "组织",
+   "now": "岗位替代：客服、翻译、文案被AI接管（如Klarna称AI承担大量客服工作）",
+   "nowSrc": "https://www.klarna.com/international/press/klarna-ai-assistant-handles-two-thirds-of-customer-service-chats-in-its-first-month/",
+   "past": "电话接线员被自动交换机取代",
+   "when": "美国，1920–1980年代",
+   "story": "AT&T曾雇用数十万接线员（以女性为主）；自动拨号逐步推广后岗位大幅减少。",
+   "end": "Feigenbaum与Gross的研究发现：城市改用自动交换后，25岁以上在职接线员十年后仍在工作的概率下降约7个百分点，转岗者多进入低薪职业；后来的年轻女性则转向文书和服务业，总体就业没有下降。",
+   "same": "以“人机接口”为业的岗位最先被替代。回摆也在发生：2025年5月Klarna CEO称AI客服质量下降，开始重新招聘人工客服（见 https://fortune.com/2025/05/09/klarna-ai-humans-return-on-investment/ ）。",
+   "diff": "AI替代扩散速度可能更快、行业更广。",
+   "lesson": "转型冲击集中在在职中年人，需过渡支持。",
+   "pastSrc": "https://www.nber.org/papers/w28061",
+   "short": "岗位替代",
+   "evNow": "中",
+   "evPast": "强",
+   "evNowText": "Klarna新闻稿属企业自述；Fortune报道其回摆。",
+   "evPastText": "NBER工作论文w28061（第二轮经检索核对）。",
+   "status": "已核实"
+  },
+  {
+   "id": 6,
+   "cat": "组织",
+   "now": "AI生产率悖论：投入巨大，财报难见回报（如MIT NANDA 2025报告称多数企业生成式AI试点未见收益）",
+   "nowSrc": "https://fortune.com/2025/08/18/mit-report-95-percent-generative-ai-pilots-at-companies-failing-cfo/",
+   "past": "索洛悖论；电力生产率滞后",
+   "when": "1987年；1880–1920年代美国",
+   "story": "索洛1987年称“计算机时代随处可见，唯独生产率统计中看不到”；保罗·戴维1990年指出工厂电气化后约数十年才显著提升生产率，因为需要重新设计厂房布局。",
+   "end": "1990年代后期美国生产率回升，部分归因于IT。",
+   "same": "技术先到，组织再造后到。",
+   "diff": "AI部署成本与迭代周期更短。",
+   "lesson": "收益来自流程重构，而非把AI塞进旧流程。",
+   "pastSrc": "https://www.jstor.org/stable/2006600",
+   "short": "AI生产率悖论",
+   "evNow": "中",
+   "evPast": "强",
+   "evNowText": "Fortune转述MIT NANDA报告，原报告未打开。",
+   "evPastText": "【原文已打开】索洛原话出自《纽约时报书评》1987年7月12日第36页：“You can see the computer age everywhere but in the productivity statistics.”",
+   "status": "已核实"
+  },
+  {
+   "id": 7,
+   "cat": "组织",
+   "now": "企业盲目跟风：“AI洗白”、改名加AI",
+   "nowSrc": "https://www.sec.gov/newsroom/press-releases/2024-36",
+   "past": "公司名加“.com”效应",
+   "when": "美国，1998–1999年",
+   "story": "Cooper等2001年在《金融学期刊》发表研究：95家改名加入.com的公司，在宣布前后5天的累计异常收益约为53%。",
+   "end": "研究未发现该溢价随后明显回吐。（“许多公司又改回原名”一说本轮未找到来源，已删除。）",
+   "same": "标签溢价。美国SEC 2024年已处罚“AI洗白”投资顾问。",
+   "diff": "AI确有可用产品，标签与实质更难区分。",
+   "lesson": "看营收与流程变化，不看名字。",
+   "pastSrc": "https://doi.org/10.1111/0022-1082.00408",
+   "short": "企业盲目跟风",
+   "evNow": "强",
+   "evPast": "强",
+   "evNowText": "SEC新闻稿2024-36（检索确认）。",
+   "evPastText": "Cooper等2001年《金融学期刊》论文（检索确认）。",
+   "status": "已核实"
+  },
+  {
+   "id": 8,
+   "cat": "组织",
+   "now": "法律行业冲击：AI律师、按小时计费模式受威胁",
+   "nowSrc": "https://store.legal.thomsonreuters.com/content/dam/ewp-m/documents/thomsonreuters/en/pdf/reports/future-of-professionals-report-2025.pdf",
+   "past": "电子检索与文档审阅取代初级律师工作；印刷术冲击抄写员",
+   "when": "1970年代起（LexisNexis）；15世纪欧洲",
+   "story": "Lexis等数据库改变法律检索；2011年《纽约时报》报道电子取证软件减少文档审阅律师需求。印刷术让抄写员行业衰落。",
+   "end": "律师总数仍增长，工作内容上移。",
+   "same": "重复性文本劳动先被替代。",
+   "diff": "生成式AI可起草与推理，触及核心技能。",
+   "lesson": "定价从工时转向价值与结果。",
+   "pastSrc": "https://www.nytimes.com/2011/03/05/science/05legal.html",
+   "short": "法律行业冲击",
+   "evNow": "中",
+   "evPast": "强",
+   "evNowText": "汤森路透报告PDF（未打开）。",
+   "evPastText": "《纽约时报》2011年3月5日报道（检索确认）。",
+   "status": "已核实"
+  },
+  {
+   "id": 9,
+   "cat": "社会",
+   "now": "大规模技术性失业担忧（高盛2023称约3亿个全职岗位可能受影响）",
+   "nowSrc": "https://www.goldmansachs.com/insights/articles/generative-ai-could-raise-global-gdp-by-7-percent",
+   "past": "卢德运动；1960年代“自动化恐慌”",
+   "when": "英国1811–1816年；美国1964年",
+   "story": "卢德派织工捣毁机器抗议工资与生计受损；1964年“三重革命备忘录”警告自动化导致失业，约翰逊政府设国家委员会研究。",
+   "end": "卢德运动被镇压；1960年代未出现预言中的大规模失业。",
+   "same": "对就业总量的悲观。",
+   "diff": "今天同时冲击认知岗位，速度未知。",
+   "lesson": "总量常被高估，结构与分配冲击常被低估。卢德派反对的其实是不公平的分配。",
+   "pastSrc": "https://www.presidency.ucsb.edu/documents/remarks-upon-signing-bill-creating-the-national-commission-technology-automation-and",
+   "short": "大规模技术性失业担忧",
+   "evNow": "中",
+   "evPast": "强",
+   "evNowText": "高盛报告页面（未打开）。",
+   "evPastText": "【原文已打开】英国国家档案馆：“In 1812, machine-breaking became a crime punishable by death and 17 men were executed the following year.” 三重革命备忘录为检索确认（原维基链接已换为下述UCSB原始文件）。【原文已打开】美国总统项目（UCSB）：约翰逊1964年8月19日签署设立“National Commission on Technology, Automation, and Economic Progress”的法案（P.L. 88-444），称“Automation is not our enemy”。",
+   "status": "已核实"
+  },
+  {
+   "id": 10,
+   "cat": "社会",
+   "now": "不平等加剧：收益集中于少数科技巨头",
+   "nowSrc": "https://www.imf.org/en/Blogs/Articles/2024/01/14/ai-will-transform-the-global-economy-lets-make-sure-it-benefits-humanity",
+   "past": "“恩格斯停顿”；镀金时代垄断",
+   "when": "英国约1790–1840年；美国1870–1900年",
+   "story": "经济史学者艾伦指出英国工业革命早期产出增长而实际工资长期停滞；美国铁路与石油托拉斯集中财富。",
+   "end": "工会、工厂法、反垄断法（1890年谢尔曼法）逐步出现。",
+   "same": "生产率红利先归资本。",
+   "diff": "AI规模效应与数据壁垒可能更强。",
+   "lesson": "分配制度要与技术同步设计。",
+   "pastSrc": "https://doi.org/10.1016/j.eeh.2009.04.004",
+   "short": "不平等加剧",
+   "evNow": "中",
+   "evPast": "强",
+   "evNowText": "IMF博客（403，未打开）。",
+   "evPastText": "Allen 2009年论文（检索确认）。",
+   "status": "已核实"
+  },
+  {
+   "id": 11,
+   "cat": "社会",
+   "now": "虚假信息与深度伪造",
+   "nowSrc": "https://www.reuters.com/world/us/fake-biden-robo-call-tells-new-hampshire-voters-stay-home-2024-01-22/",
+   "past": "黄色新闻；1835年“月亮大骗局”",
+   "when": "美国1835年、1890年代",
+   "story": "《太阳报》1835年刊登月球生物系列假新闻；赫斯特与普利策的煽情报道。",
+   "end": "新闻职业伦理与事实核查兴起。",
+   "same": "新媒介降低造假成本。",
+   "diff": "造假规模化、个性化，几乎零成本。",
+   "lesson": "来源标识（如水印、溯源标准）与媒介素养并重。",
+   "pastSrc": "https://www.loc.gov/item/2003665049/",
+   "short": "虚假信息与深度伪造",
+   "evNow": "强",
+   "evPast": "中",
+   "evNowText": "路透社2024年1月报道（第二轮已核）。",
+   "evPastText": "【检索确认】美国国会图书馆藏1835年石版画《Lunar animals and other objects》；史密森尼图书馆藏1859年版，署名作者Richard Adams Locke。",
+   "status": "部分核实"
+  },
+  {
+   "id": 12,
+   "cat": "社会",
+   "now": "“世界大战”式群体恐慌是否会被AI内容引发",
+   "nowSrc": "https://www.brookings.edu/articles/how-do-artificial-intelligence-and-disinformation-impact-elections/",
+   "past": "1938年《世界大战》广播剧",
+   "when": "美国，1938年10月30日",
+   "story": "威尔斯的火星人入侵广播剧被说成引发全国恐慌。",
+   "end": "后来研究认为恐慌规模被报纸严重夸大。",
+   "same": "对新媒介操控力的想象。",
+   "diff": "AI内容可精准投放。",
+   "lesson": "“恐慌的恐慌”本身也可能被夸大，需要证据。",
+   "pastSrc": "https://slate.com/culture/2013/10/orson-welles-war-of-the-worlds-panic-myth-the-infamous-radio-broadcast-did-not-cause-a-nationwide-hysteria.html",
+   "short": "“世界大战”式群体恐慌是否会",
+   "evNow": "中",
+   "evPast": "中",
+   "evNowText": "布鲁金斯学会文章（未打开）。",
+   "evPastText": "【仅摘要】Slate 2013年文章及Pooley与Socolow的研究。",
+   "status": "已核实"
+  },
+  {
+   "id": 13,
+   "cat": "社会",
+   "now": "信息过载与AI垃圾内容（AI slop）",
+   "nowSrc": "https://www.merriam-webster.com/wordplay/word-of-the-year",
+   "past": "印刷术后的“书太多”抱怨",
+   "when": "16世纪欧洲",
+   "story": "格斯纳等学者抱怨书籍泛滥、难以甄别，催生索引、书目等工具。",
+   "end": "形成目录学、图书馆与学术编辑体系。",
+   "same": "内容爆炸先于筛选工具。",
+   "diff": "AI内容可污染后续AI训练数据。",
+   "lesson": "可信策展和权威来源会更值钱。",
+   "pastSrc": "https://yalebooks.yale.edu/book/9780300165395/too-much-to-know/",
+   "short": "信息过载与AI垃圾内容",
+   "evNow": "中",
+   "evPast": "中",
+   "evNowText": "【原文已打开】韦氏词典2025年度词为slop，释义“digital content of low quality that is produced usually in quantity by means of artificial intelligence”。",
+   "evPastText": "【检索确认】格斯纳1545年《世界书目》，见Ann Blair《Too Much to Know》（耶鲁大学出版社，2010）；出版社页面已打开，书中正文未打开。",
+   "status": "已核实"
+  },
+  {
+   "id": 14,
+   "cat": "监管与法律",
+   "now": "过早或过严监管的担忧",
+   "nowSrc": "https://artificialintelligenceact.eu/",
+   "past": "英国红旗法案",
+   "when": "英国，1865年《机动车法》",
+   "story": "要求道路机动车在公路限速4英里/时、城镇2英里/时，并由一人手持红旗在车前至少60码步行示警（1878年修订后不再强制举红旗，改为车前20码有人步行示警）。",
+   "end": "1896年法案将3吨以下的“轻型机动车”豁免于上述限制，限速提至14英里/时；英国汽车业起步被认为受到拖累（此说有争议）。",
+   "same": "以旧秩序（马车）安全为标准规制新技术。",
+   "diff": "AI风险更隐蔽，过松也有代价。",
+   "lesson": "监管应针对风险而非形态，并设置复审机制。",
+   "pastSrc": "https://www.legislation.gov.uk/ukpga/Vict/28-29/83/pdfs/ukpga_18650083_en.pdf",
+   "short": "过早或过严监管的担忧",
+   "evNow": "强",
+   "evPast": "强",
+   "evNowText": "欧盟AI法案文本站点。",
+   "evPastText": "1865年《机动车法》原文PDF（legislation.gov.uk，检索确认条文）。",
+   "status": "已核实·含争议"
+  },
+  {
+   "id": 15,
+   "cat": "监管与法律",
+   "now": "欧盟AI法案：风险分级立法（2024年8月1日生效）",
+   "nowSrc": "https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai",
+   "past": "美国州际商务委员会（1887）规制铁路；锅炉爆炸催生安全标准",
+   "when": "美国，19世纪后期",
+   "story": "铁路运价歧视引发首个联邦独立监管机构；蒸汽锅炉事故推动ASME规范（1914年首版）。",
+   "end": "行业规制成为现代监管国家的起点。",
+   "same": "通用基础设施技术催生新型监管机构。",
+   "diff": "AI跨境、软件化，执法更难。",
+   "lesson": "标准化和第三方认证是监管落地的抓手。",
+   "pastSrc": "https://www.archives.gov/milestone-documents/interstate-commerce-act",
+   "short": "欧盟AI法案",
+   "evNow": "强",
+   "evPast": "强",
+   "evNowText": "欧盟委员会官网。",
+   "evPastText": "【原文已打开】美国国家档案馆：“the railroads became the first industry subject to Federal regulation”；“In practice, the law was not very effective.”",
+   "status": "已核实"
+  },
+  {
+   "id": 16,
+   "cat": "监管与法律",
+   "now": "中国《生成式人工智能服务管理暂行办法》（2023年8月15日施行）与备案制",
+   "nowSrc": "https://www.cac.gov.cn/2023-07/13/c_1690898327029107.htm",
+   "past": "互联网信息服务管理与早期无线电许可",
+   "when": "中国2000年；美国1912/1927年",
+   "story": "国务院2000年发布《互联网信息服务管理办法》实行许可备案；美国1912年无线电法、1927年无线电法引入频率许可。",
+   "end": "许可制成为媒介治理基本框架。",
+   "same": "以服务提供者准入管理新媒介。",
+   "diff": "“暂行”标签体现包容审慎、边走边改。",
+   "lesson": "律师可关注备案、标识、安全评估等合规业务。",
+   "pastSrc": "https://www.govinfo.gov/content/pkg/STATUTE-44/pdf/STATUTE-44-Pg1162.pdf",
+   "short": "中国《生成式人工智能服务管理",
+   "evNow": "强",
+   "evPast": "中",
+   "evNowText": "国家网信办发布原文。",
+   "evPastText": "【检索确认】国务院2000年《互联网信息服务管理办法》（中国政府网公报）；【检索到原文片段】美国1927年《无线电法》法律汇编原文（govinfo，44 Stat. 1162）：“An Act For the regulation of radio communications”…“for limited periods of time, under licenses granted by Federal authority”。",
+   "status": "已核实"
+  },
+  {
+   "id": 17,
+   "cat": "监管与法律",
+   "now": "版权之争：纽约时报诉OpenAI、Getty诉Stability AI、训练是否合理使用",
+   "nowSrc": "https://www.nytimes.com/2023/12/27/business/media/new-york-times-open-ai-microsoft-lawsuit.html",
+   "past": "自动钢琴纸卷案；VCR“索尼案”；《安妮法令》",
+   "when": "美国1908年、1984年；英国1710年",
+   "story": "1908年White-Smith案判纸卷不侵犯乐谱版权，随后1909年版权法设机械复制强制许可；1984年索尼案认定录像机具有实质性非侵权用途。",
+   "end": "立法创设法定许可，或司法保护技术本身。",
+   "same": "新复制技术挑战既有权利边界。",
+   "diff": "AI是“学习”而非逐字复制，事实认定更难。",
+   "lesson": "历史上常以“许可+报酬”机制收尾。",
+   "pastSrc": "https://supreme.justia.com/cases/federal/us/464/417/",
+   "short": "版权之争",
+   "evNow": "中",
+   "evPast": "强",
+   "evNowText": "《纽约时报》报道（403，未打开）。",
+   "evPastText": "【检索确认】White-Smith案、1909年版权法；【原文已打开】Sony案判决（464 U.S. 417, 1984，Justia）。",
+   "status": "已核实"
+  },
+  {
+   "id": 18,
+   "cat": "监管与法律",
+   "now": "律师用ChatGPT引用虚构判例被罚（Mata v. Avianca，2023年6月，法院对律师及律所处以5000美元罚款；Charlotin数据库截至2026年10月收录约2184起涉AI幻觉的裁判，数字来自检索摘要）",
+   "nowSrc": "https://www.reuters.com/legal/new-york-lawyers-sanctioned-using-fake-chatgpt-cases-legal-brief-2023-06-22/",
+   "past": "电报文本能否构成“书面”合同之争",
+   "when": "美国，19世纪后期",
+   "story": "马里兰州Smith v. Easton（54 Md. 138，1880年）认定电报可以满足反欺诈法对书面形式的要求；艾奥瓦州Watt v. Wisconsin Cranberry Co.（1884年）则以电文含糊、需口头证据补充为由认定不足。",
+   "end": "法律逐步承认新媒介文书效力并设认证规则。",
+   "same": "新工具进入法律程序，信任规则滞后。",
+   "diff": "AI会“自信地编造”。",
+   "lesson": "核验义务不能外包，执业规范需更新。",
+   "pastSrc": "https://app.midpage.ai/document/smith-v-easton-7895505",
+   "short": "律师用ChatGPT引用虚构",
+   "evNow": "强",
+   "evPast": "强",
+   "evNowText": "【检索确认】Mata v. Avianca制裁令；Charlotin数据库。",
+   "evPastText": "Smith v. Easton判决（第二轮已核）。",
+   "status": "已核实"
+  },
+  {
+   "id": 19,
+   "cat": "监管与法律",
+   "now": "AI责任主体之争：谁为AI决策负责",
+   "nowSrc": "https://commission.europa.eu/business-economy-euro/doing-business-eu/contract-rules/digital-contracts/liability-rules-artificial-intelligence_en",
+   "past": "工业事故与无过错工伤赔偿制度",
+   "when": "德国1884年；英国1897年",
+   "story": "工厂事故频发而过错难证，俾斯麦时期德国建立工伤保险，英国1897年《工人赔偿法》。",
+   "end": "责任从个案过错转向风险分配与保险。",
+   "same": "复杂系统致害，过错难以证明。",
+   "diff": "AI致害链条跨开发者、部署者、用户。",
+   "lesson": "保险与严格责任可能比过错责任更适配。",
+   "pastSrc": "https://www.legislation.gov.uk/ukpga/Vict/60-61/37/contents/enacted",
+   "short": "AI责任主体之争",
+   "evNow": "中",
+   "evPast": "强",
+   "evNowText": "欧盟委员会页面。",
+   "evPastText": "【检索确认】德国1884年工伤保险；英国1897年《工人赔偿法》改链英国政府立法数据库legislation.gov.uk原版文本（60 & 61 Vict. c. 37，1897年8月6日御准；页面仅检索确认，未打开）。",
+   "status": "已核实"
+  },
+  {
+   "id": 20,
+   "cat": "监管与法律",
+   "now": "暂停巨型AI实验公开信（2023年3月，暂停6个月）",
+   "nowSrc": "https://futureoflife.org/open-letter/pause-giant-ai-experiments/",
+   "past": "阿西洛马重组DNA会议",
+   "when": "美国，1975年",
+   "story": "科学家先自愿暂停部分重组DNA实验，再在阿西洛马制定分级防护准则。",
+   "end": "形成NIH准则，研究恢复并推动生物技术产业。",
+   "same": "科学共同体自发要求暂停。",
+   "diff": "AI由商业公司主导，暂停未实现。",
+   "lesson": "自律需要可核查的标准才能落地。",
+   "pastSrc": "https://pmc.ncbi.nlm.nih.gov/articles/PMC432675/",
+   "short": "暂停巨型AI实验公开信",
+   "evNow": "强",
+   "evPast": "强",
+   "evNowText": "FLI公开信原文。",
+   "evPastText": "【检索到原文片段】Berg等1975年PNAS《Summary Statement of the Asilomar Conference》（72(6):1981–1984，PMC全文）：大部分实验可在生物与物理防护下继续，部分高风险实验暂不应做。NIH准则1976年发布为检索确认。",
+   "status": "已核实"
+  },
+  {
+   "id": 21,
+   "cat": "乐观与狂热",
+   "now": "“以后人都不用工作”：比尔·盖茨2023年11月在Trevor Noah播客中称或许每周只需工作三天",
+   "nowSrc": "https://www.news.com.au/technology/innovation/inventions/the-machines-can-make-all-the-food-and-the-stuff-bill-gates-likes-the-idea-of-a-threeday-work-week/news-story/e3243745f59fb61796fd7e99f2b6ffb4",
+   "past": "凯恩斯《我们后代的经济前景》",
+   "when": "1930年",
+   "story": "凯恩斯预测百年后发达国家生活水平提高4–8倍，人们每周或只需工作约15小时。",
+   "end": "收入增长大致应验，工时却未大幅缩短。",
+   "same": "技术富足将解放劳动的预言。",
+   "diff": "AI可能替代的是“工作意义”本身。",
+   "lesson": "富足不会自动转化为闲暇，取决于分配与欲望。",
+   "pastSrc": "http://hetwebsite.net/het/texts/keynes/keynes1930grandchildren.htm",
+   "short": "“以后人都不用工作”",
+   "evNow": "中",
+   "evPast": "强",
+   "evNowText": "news.com.au转述播客。",
+   "evPastText": "【原文已打开】凯恩斯1930：“Three-hour shifts or a fifteen-hour week may put off the problem for a great while.”",
+   "status": "已核实"
+  },
+  {
+   "id": 22,
+   "cat": "乐观与狂热",
+   "now": "全民基本收入（UBI）作为AI时代方案",
+   "nowSrc": "https://www.openresearchlab.org/findings",
+   "past": "斯宾汉姆兰制度；尼克松家庭援助计划",
+   "when": "英国1795年；美国1969–1972年",
+   "story": "斯宾汉姆兰按面包价格补贴低收入者；尼克松提出保障收入计划，众议院通过但参议院未通过。",
+   "end": "斯宾汉姆兰1834年被新济贫法取代（其效果评价有争议）。",
+   "same": "技术与市场变动下的收入兜底设想。",
+   "diff": "今天有更多实验数据（如OpenResearch研究）。",
+   "lesson": "制度设计细节决定成败。",
+   "pastSrc": "https://www.presidency.ucsb.edu/documents/address-the-nation-domestic-programs",
+   "short": "全民基本收入",
+   "evNow": "中",
+   "evPast": "中",
+   "evNowText": "OpenResearch研究结果页面。",
+   "evPastText": "【原文已打开】尼克松1969年8月8日全国讲话（UCSB美国总统项目）：“adopt in its place a new family assistance system”。【仅摘要】众议院通过、参议院未通过一节未见原始国会记录。",
+   "status": "已核实·含争议"
+  },
+  {
+   "id": 23,
+   "cat": "乐观与狂热",
+   "now": "AI投资泡沫：算力、估值与“循环融资”（2025年9月英伟达宣布向OpenAI投资最高1000亿美元，引发争议）",
+   "nowSrc": "https://fortune.com/2025/09/28/nvidia-openai-circular-financing-ai-bubble/",
+   "past": "铁路狂热；互联网泡沫",
+   "when": "英国1840年代；美国1995–2000年",
+   "story": "1846年英国议会通过272项铁路公司法案；铁路股自1845年末开始下跌，一直跌到1849–1850年。纳斯达克2000年3月见顶，到2002年累计下跌约78%。",
+   "end": "投机者亏损，但铁路网和光纤成为后来繁荣的基础。",
+   "same": "真实技术+过度资本。",
+   "diff": "AI资本集中于少数盈利巨头，结构不同。",
+   "lesson": "泡沫可能同时是基础设施的“补贴”。",
+   "pastSrc": "https://www-users.cse.umn.edu/~odlyzko/doc/hallucinations.pdf",
+   "short": "AI投资泡沫",
+   "evNow": "中",
+   "evPast": "中",
+   "evNowText": "Fortune报道。",
+   "evPastText": "【仅摘要】1846年272项法案见Odlyzko（明尼苏达大学）铁路狂热研究论文，链接可访问但本轮PDF未能完整解析；纳斯达克跌幅。",
+   "status": "已核实·含争议"
+  },
+  {
+   "id": 24,
+   "cat": "乐观与狂热",
+   "now": "算力军备竞赛与数据中心电力需求",
+   "nowSrc": "https://www.iea.org/reports/energy-and-ai",
+   "past": "电报海底电缆竞赛；电流之战",
+   "when": "1850–1866年；1880年代末美国",
+   "story": "跨大西洋电缆1858年短暂通电后失效，1866年成功；爱迪生与西屋围绕直流交流展开激烈竞争。",
+   "end": "标准统一（交流电胜出），网络效应形成。",
+   "same": "基础设施先行与标准之争。",
+   "diff": "AI算力受芯片出口管制等地缘政治约束。",
+   "lesson": "赢家往往是标准与网络，而非单一速度。",
+   "pastSrc": "https://www.energy.gov/articles/war-currents-ac-vs-dc-power",
+   "short": "算力军备竞赛与数据中心电力需",
+   "evNow": "中",
+   "evPast": "强",
+   "evNowText": "IEA报告。",
+   "evPastText": "【原文已打开】美国能源部：“Starting in the late 1880s, Thomas Edison and Nikola Tesla were embroiled in a battle now known as the War of the Currents.” 1893年西屋以39.9万美元报价击败通用电气的55.4万美元，取得芝加哥世博会供电合同。电缆部分仍为检索确认。",
+   "status": "部分核实"
+  },
+  {
+   "id": 25,
+   "cat": "末日与风险",
+   "now": "AI灭绝风险声明（CAIS 2023年5月）、辛顿离开谷歌发出警告",
+   "nowSrc": "https://www.safe.ai/work/statement-on-ai-risk",
+   "past": "原子科学家警告与“末日时钟”；罗素—爱因斯坦宣言",
+   "when": "1945–1955年",
+   "story": "曼哈顿计划科学家创办《原子科学家公报》，1947年设末日时钟；1955年罗素—爱因斯坦宣言呼吁避免核战。",
+   "end": "推动帕格沃什会议与军控条约，核战未发生。",
+   "same": "创造者本人警告其创造物。",
+   "diff": "AI扩散门槛低，难以像核材料那样管控。",
+   "lesson": "国际协调机制需要提前建立。",
+   "pastSrc": "https://pugwash.org/1955/07/09/statement-manifesto/",
+   "short": "AI灭绝风险声明",
+   "evNow": "强",
+   "evPast": "中",
+   "evNowText": "CAIS声明原文。",
+   "evPastText": "【检索确认】末日时钟1947年；【原文已打开】罗素—爱因斯坦宣言1955年7月9日全文（帕格沃什会议官网）。",
+   "status": "已核实"
+  },
+  {
+   "id": 26,
+   "cat": "末日与风险",
+   "now": "对齐问题：机器目标与人类意图不一致",
+   "nowSrc": "https://www.gov.uk/government/publications/international-ai-safety-report-2025",
+   "past": "维纳对控制论的警告；《弗兰肯斯坦》",
+   "when": "1950年、1960年；1818年",
+   "story": "维纳在《人有人的用处》（1950）和《科学》杂志文章（1960）中警告，机器会按字面执行目标；玛丽·雪莱的小说成为“造物反噬”原型。",
+   "end": "成为文化母题，影响工程安全思想。",
+   "same": "目标设定与失控担忧。",
+   "diff": "今天已有可测量的实证研究。",
+   "lesson": "安全要作为工程学科，而非只是叙事。",
+   "pastSrc": "https://www.jstor.org/stable/1705998",
+   "short": "对齐问题",
+   "evNow": "中",
+   "evPast": "强",
+   "evNowText": "【原文已打开】英国政府页面：《国际AI安全报告》由本吉奥牵头、100多名专家撰写、30多国支持，2025年首版，2026年2月3日出第二版。（报告正文中关于对齐的段落本轮未逐页核对。）",
+   "evPastText": "【原文已打开】维纳1960年5月6日《科学》杂志（Vol.131, pp.1355–1358）：“we had better be quite sure that the purpose put into the machine is the purpose which we really desire and not merely a colorful imitation of it.”",
+   "status": "部分核实"
+  },
+  {
+   "id": 27,
+   "cat": "末日与风险",
+   "now": "AI监控与隐私",
+   "nowSrc": "https://www.amnesty.org/en/latest/news/2023/12/eu-blocs-decision-to-not-ban-public-mass-surveillance-in-ai-act-sets-a-devastating-global-precedent/",
+   "past": "柯达相机与“隐私权”诞生；电话窃听",
+   "when": "1890年；1928年",
+   "story": "便携相机与小报催生沃伦与布兰代斯《论隐私权》；Olmstead案中布兰代斯著名异议。",
+   "end": "隐私法逐步发展，1967年Katz案改判。",
+   "same": "新技术让隐私法理论被重写。",
+   "diff": "AI可从大量公开数据推断隐私。",
+   "lesson": "法律理论会被新技术推着前进，律师可参与塑造。",
+   "pastSrc": "https://www.jstor.org/stable/1321160",
+   "short": "AI监控与隐私",
+   "evNow": "中",
+   "evPast": "强",
+   "evNowText": "国际特赦组织声明。",
+   "evPastText": "【检索确认】Olmstead案、Katz案；沃伦与布兰代斯1890年《The Right to Privacy》改链《哈佛法律评论》JSTOR原文（人机验证页，未打开）。",
+   "status": "已核实"
+  },
+  {
+   "id": 28,
+   "cat": "末日与风险",
+   "now": "AI武器与自主杀伤",
+   "nowSrc": "https://www.icrc.org/en/document/icrc-position-autonomous-weapon-systems",
+   "past": "机枪、毒气与《日内瓦议定书》",
+   "when": "1899年海牙；1925年日内瓦",
+   "story": "（1899年海牙部分本轮未核实）一战毒气后1925年签署议定书禁止使用化学武器。",
+   "end": "部分有效，后续仍有违约。",
+   "same": "技术进入战争后才立规。",
+   "diff": "AI武器边界模糊，难以定义。",
+   "lesson": "定义清晰度决定条约有效性。",
+   "pastSrc": "https://nuke.fas.org/control/geneva/text/geneva1.htm",
+   "short": "AI武器与自主杀伤",
+   "evNow": "强",
+   "evPast": "强",
+   "evNowText": "红十字国际委员会立场文件。",
+   "evPastText": "【检索确认】1925年《日内瓦议定书》文本（FAS）。1899年海牙部分未核实。",
+   "status": "已核实"
+  },
+  {
+   "id": 29,
+   "cat": "个体",
+   "now": "“AI已有意识”之争：谷歌工程师Lemoine称LaMDA有感知，2022年7月被解雇",
+   "nowSrc": "https://www.reuters.com/technology/google-fires-software-engineer-who-claimed-its-ai-chatbot-is-sentient-2022-07-23/",
+   "past": "“土耳其行棋傀儡”",
+   "when": "维也纳，1770年起",
+   "story": "肯佩伦制造的下棋自动机巡展欧美数十年，实际由藏在柜中的棋手操纵。",
+   "end": "19世纪被揭穿，成为“机器智能”幻觉的经典案例。",
+   "same": "人们倾向把表现等同于心智。",
+   "diff": "今天没有藏着的人，难点在如何判断内部状态。",
+   "lesson": "对“意识”主张要求可检验的证据。",
+   "pastSrc": "https://www.smithsonianmag.com/smart-news/debunking-mechanical-turk-helped-set-edgar-allan-poe-path-mystery-writing-180964059/",
+   "short": "“AI已有意识”之争",
+   "evNow": "强",
+   "evPast": "中",
+   "evNowText": "路透社报道。",
+   "evPastText": "【检索确认】史密森尼杂志、《科学美国人》、美联社：行棋傀儡1770年前后由肯佩伦推出，实为柜内藏人操纵。",
+   "status": "部分核实"
+  },
+  {
+   "id": 30,
+   "cat": "社会",
+   "now": "自动驾驶致死事故：2018年3月Uber测试车在亚利桑那州坦佩撞死行人",
+   "nowSrc": "https://www.ntsb.gov/investigations/Pages/HWY18MH010.aspx",
+   "past": "英国首例汽车撞死行人",
+   "when": "伦敦水晶宫，1896年8月17日",
+   "story": "Bridget Driscoll被演示车撞倒身亡，陪审团裁定为意外死亡。",
+   "end": "验尸陪审团裁定为意外死亡。",
+   "same": "新交通技术的第一起致死事故引发舆论震动。",
+   "diff": "NTSB认定Uber事故的主因是安全员分心，企业安全文化也有缺陷。",
+   "lesson": "事故调查与责任认定制度比禁令更重要。",
+   "pastSrc": "https://www.theguardian.com/world/2014/aug/26/uk-first-fatal-car-accident-archive-1896",
+   "short": "自动驾驶致死事故",
+   "evNow": "强",
+   "evPast": "强",
+   "evNowText": "NTSB调查页面。",
+   "evPastText": "【原文已打开】《卫报》档案重刊1896年8月26日报道：验尸官Percy Morrison主持复审，司机Arthur James Edsell称车速约4英里/时，“The jury returned a verdict of accidental death.”",
+   "status": "已核实"
+  },
+  {
+   "id": 31,
+   "cat": "乐观与狂热",
+   "now": "“百模大战”：大量公司争相训练大模型",
+   "nowSrc": "https://hai.stanford.edu/ai-index/2025-ai-index-report",
+   "past": "美国早期汽车厂商爆发后洗牌",
+   "when": "美国，1900–1927年",
+   "story": "1910年前后美国有200多家汽车制造商，规模化生产有利于福特、通用等大厂。",
+   "end": "到1927年活跃厂商降至44家。",
+   "same": "通用技术早期进入者蜂拥，随后快速集中。",
+   "diff": "模型的边际复制成本更低，开源生态可能保留长尾。",
+   "lesson": "押注应用和场景，而非押注每一个基础模型。",
+   "pastSrc": "https://www.ebsco.com/research-starters/history/number-us-automakers-falls-forty-four",
+   "short": "“百模大战”",
+   "evNow": "强",
+   "evPast": "中",
+   "evNowText": "【原文已打开】斯坦福AI Index 2025：“the score difference between the top and 10th-ranked models fell from 11.9% to 5.4% in a year, and the top two are now separated by just 0.7%”；2024年美国机构出品40个重要模型，中国15个。",
+   "evPastText": "EBSCO Research Starters。",
+   "status": "已核实"
+  },
+  {
+   "id": 32,
+   "cat": "监管与法律",
+   "now": "AI芯片出口管制：美国2022年10月限制先进计算芯片与设备对华出口",
+   "nowSrc": "https://www.federalregister.gov/documents/2022/10/13/2022-21658/implementation-of-additional-export-controls-certain-advanced-computing-and-semiconductor",
+   "past": "巴黎统筹委员会（CoCom）",
+   "when": "1949–1994年",
+   "story": "美国与盟国协调限制对苏联集团和中国出口战略物资与两用技术，包括计算机。",
+   "end": "1994年解散，1996年由瓦森纳安排接续。",
+   "same": "把计算能力视为战略资源。",
+   "diff": "今天的半导体供应链高度全球化，单边管制外溢效应更大。",
+   "lesson": "技术民族主义会长期存在，合规与供应链法律需求上升。",
+   "pastSrc": "https://www.armscontrol.org/act/1997-01/arms-control-today/wassenaar-arrangement",
+   "short": "AI芯片出口管制",
+   "evNow": "强",
+   "evPast": "中",
+   "evNowText": "美国《联邦公报》原文。",
+   "evPastText": "美国军控协会文章。",
+   "status": "已核实"
+  },
+  {
+   "id": 33,
+   "cat": "组织",
+   "now": "开源与闭源AI之争（如Meta Llama“开放权重”，被批评为“开源洗白”）",
+   "nowSrc": "https://www.theregister.com/offbeat/2024/10/25/the-open-secret-of-open-washing/975125",
+   "past": "鲍尔默称“Linux是癌症”",
+   "when": "美国，2001年",
+   "story": "微软CEO鲍尔默称GPL许可会像癌症一样感染其他软件。",
+   "end": "Linux成为服务器和云的基础，微软后来也拥抱开源。",
+   "same": "闭源巨头与开源社区的路线之争。",
+   "diff": "AI“开源”常不含训练数据，定义本身有争议。",
+   "lesson": "许可证条款是核心法律问题。",
+   "pastSrc": "https://www.theregister.com/software/2001/06/02/ballmer-linux-is-a-cancer/581119",
+   "short": "开源与闭源AI之争",
+   "evNow": "中",
+   "evPast": "中",
+   "evNowText": "The Register报道。",
+   "evPastText": "The Register 2001年报道。",
+   "status": "已核实"
+  },
+  {
+   "id": 34,
+   "cat": "社会",
+   "now": "AI视频（如Sora）以假乱真，引发“眼见不再为实”的担忧",
+   "nowSrc": "https://openai.com/index/sora/",
+   "past": "卢米埃尔《火车进站》观众惊逃的传说",
+   "when": "法国，1896年",
+   "story": "流行说法称观众以为火车会冲出银幕而惊慌逃跑。",
+   "end": "电影史研究认为找不到当时大规模恐慌的记载，这是电影的“起源神话”。",
+   "same": "新影像技术引发对“真假难辨”的想象。",
+   "diff": "今天的深伪确实被用于诈骗和政治操纵。",
+   "lesson": "不要被夸大的叙事带偏，也不能忽视真实滥用。",
+   "pastSrc": "https://www.documentary.org/feature/lumiere-illuminated-moving-image-debunks-myths-surrounding-arrival-train",
+   "note": "该传说本身属于存疑叙事",
+   "short": "AI视频",
+   "evNow": "强",
+   "evPast": "中",
+   "evNowText": "【原文已打开】OpenAI官方页面称Sora“can generate videos up to a minute long”。页面顶部另注明：“As of April 26, 2026, the Sora product is no longer available.”",
+   "evPastText": "国际纪录片协会文章。",
+   "status": "已核实·含争议"
+  },
+  {
+   "id": 35,
+   "cat": "乐观与狂热",
+   "now": "AI“循环融资”：芯片商投资客户，客户再买芯片",
+   "nowSrc": "https://www.cnbc.com/2025/09/23/nvidia-openai-deal-bubble-concerns-doubts.html",
+   "past": "朗讯、北电的供应商融资",
+   "when": "美国、加拿大，1990年代末",
+   "story": "电信设备商借钱给运营商购买自家设备，账面营收飙升。",
+   "end": "泡沫破裂后客户破产，设备商背上坏账。",
+   "same": "收入可能部分来自自己提供的资金。",
+   "diff": "瑞银等认为今天的AI巨头现金流更强，对债务依赖更低。",
+   "lesson": "看现金流和终端需求，而非合同金额。",
+   "pastSrc": "https://fortune.com/2025/09/28/nvidia-openai-circular-financing-ai-bubble/",
+   "note": "是否构成泡沫，市场观点分歧",
+   "short": "AI“循环融资”",
+   "evNow": "中",
+   "evPast": "中",
+   "evNowText": "CNBC报道。",
+   "evPastText": "Fortune报道。",
+   "status": "已核实·含争议"
+  },
+  {
+   "id": 36,
+   "cat": "组织",
+   "now": "以AI为名裁员：亚马逊裁减1.4万个公司岗位，Salesforce裁减4000个客服岗位，均提及AI；牛津学者称AI成了“好借口”，耶鲁Budget Lab认为AI尚未造成广泛失业",
+   "nowSrc": "https://www.cnbc.com/2025/10/19/firms-are-blaming-ai-for-job-cuts-critics-say-its-a-good-excuse.html",
+   "past": "凯恩斯提出“技术性失业”",
+   "when": "1930年大萧条中",
+   "story": "凯恩斯在《我们后代的经济前景》中称，社会正患上一种新病，即技术性失业：节省劳动的速度超过为劳动找到新用途的速度。",
+   "end": "凯恩斯本人称这只是“暂时的失调阶段”。（大萧条失业主要源于需求崩溃，这是经济史通说，本轮未单独核对。）",
+   "same": "宏观疲软与技术叙事交织，难以区分因果。",
+   "diff": "今天企业有动机把成本削减包装成AI转型。",
+   "lesson": "区分“因为AI”与“以AI为名”。",
+   "pastSrc": "http://hetwebsite.net/het/texts/keynes/keynes1930grandchildren.htm",
+   "short": "以AI为名裁员",
+   "evNow": "中",
+   "evPast": "强",
+   "evNowText": "【原文已打开】CNBC：Salesforce裁减4000个客服岗位；牛津学者Stephany称“We can use AI to make good excuses”。",
+   "evPastText": "【原文已打开】凯恩斯1930：“technological unemployment. This means unemployment due to our discovery of means of economising the use of labour outrunning the pace at which we can find new uses for labour.”",
+   "status": "已核实"
+  },
+  {
+   "id": 37,
+   "cat": "社会",
+   "now": "数据中心“邻避”：居民因电价、用水、噪音反对AI数据中心",
+   "nowSrc": "https://www.npr.org/2025/07/17/nx-s1-5469933/virginia-data-centers-residents-saying-no",
+   "past": "伊顿公学反对大西部铁路",
+   "when": "英国，1835年",
+   "story": "伊顿公学担心铁路带来伦敦的不良影响，地主也反对选线。法案最终通过，但规定伊顿3英里内不得设站，并须设围栏。",
+   "end": "铁路建成，反对方获得补偿性条款。",
+   "same": "全国性基础设施与地方利益冲突。",
+   "diff": "数据中心对当地就业的带动有限，电价外溢更直接。",
+   "lesson": "地方补偿与附加条件往往是解决方式。",
+   "pastSrc": "https://www.nrmfriends.org.uk/post/a-fine-eton-mess",
+   "short": "数据中心“邻避”",
+   "evNow": "中",
+   "evPast": "中",
+   "evNowText": "【原文已打开】NPR：切萨皮克市议会一致否决数据中心；据Data Center Watch，2024年5月至2025年3月有16个项目被推迟或否决。",
+   "evPastText": "【原文已打开】国家铁路博物馆之友会：1835年8月31日法案获御准，伊顿3英里内不得设站。建议补充法案原文。",
+   "status": "已核实"
+  },
+  {
+   "id": 38,
+   "cat": "监管与法律",
+   "now": "中国《人工智能生成合成内容标识办法》2025年9月1日施行，要求显式与隐式标识",
+   "nowSrc": "https://www.gov.cn/lianbo/bumen/202503/content_7014283.htm",
+   "past": "美国1906年《纯净食品和药品法》",
+   "when": "美国，1906年",
+   "story": "辛克莱《屠场》引发公众愤怒，国会立法禁止州际贩卖掺假或标签虚假的食品药品。",
+   "end": "以标签真实为核心的监管，后来发展为FDA体系。",
+   "same": "用“如实标识”应对信息不对称。",
+   "diff": "AI内容标识可能被去除，技术上更难执行。",
+   "lesson": "标识制度需配合平台义务与执法。",
+   "pastSrc": "https://www.fda.gov/about-fda/changes-science-law-and-regulatory-authorities/part-i-1906-food-and-drugs-act-and-its-enforcement",
+   "short": "中国《人工智能生成合成内容标",
+   "evNow": "强",
+   "evPast": "强",
+   "evNowText": "【原文已打开】中国政府网：自2025年9月1日起施行，分显式标识和隐式标识，“任何组织和个人不得恶意删除、篡改、伪造、隐匿”标识。",
+   "evPastText": "【原文已打开】FDA：“The basis of the law rested on the regulation of product labeling rather than pre-market approval.”",
+   "status": "已核实"
+  },
+  {
+   "id": 39,
+   "cat": "组织",
+   "now": "好莱坞编剧罢工（2023年）后的AI条款：AI不是“作者”，AI生成内容不算“文学素材”",
+   "nowSrc": "https://www.wgacontract2023.org/the-campaign/summary-of-the-2023-wga-mba",
+   "past": "1960年编剧罢工争得电视重播分成",
+   "when": "美国，1960年（罢工22周）",
+   "story": "电视兴起后，电影被卖给电视台播放。编剧工会罢工22周，首次争得影片授权电视播放的分成（授权费的1.2%）和电视重播分成。",
+   "end": "重播分成成为好莱坞收入分配的基本制度。",
+   "same": "新的分发或生产技术出现后，创作者通过集体谈判重新划定报酬规则。",
+   "diff": "这一次争议的是作者身份本身，以及作品能否被用于训练。",
+   "lesson": "集体合同可以比立法更早给出规则。",
+   "pastSrc": "https://www.wga.org/the-guild/about-us/history/a-history-of-wga-contract-negotiations-and-gains",
+   "short": "好莱坞编剧罢工",
+   "evNow": "强",
+   "evPast": "强",
+   "evNowText": "【原文已打开】WGA 2023合同摘要第5节：“AI can’t write or rewrite literary material, and AI-generated material will not be considered source material under the MBA”；公司“can’t require the writer to use AI software”。（“AI不是writer”的措辞出自合同备忘录原文，本轮仅见检索片段。）",
+   "evPastText": "【原文已打开】WGA West史料页：“1960 – The Writers Guild of America struck the ATFP for 22-weeks. Gains included the first residuals for theatrical motion pictures, paying 1.2% of the license fee when features were licensed to television… and a 4% residual for television reruns”。",
+   "status": "已核实"
+  },
+  {
+   "id": 40,
+   "cat": "监管与法律",
+   "now": "最高人民法院《关于规范和加强人工智能司法应用的意见》（法发〔2022〕33号）：AI“不得代替法官裁判”",
+   "nowSrc": "https://www.court.gov.cn/zixun/xiangqing/382461.html",
+   "past": "Frye案确立新科学证据的“普遍接受”标准",
+   "when": "美国哥伦比亚特区上诉法院，1923年",
+   "story": "法院拒绝采纳收缩压测谎（早期测谎仪）专家证言，理由是该技术尚未在所属领域获得普遍接受。",
+   "end": "Frye标准沿用数十年，1993年联邦层面被Daubert标准取代。",
+   "same": "司法对新技术先设门槛，坚持由人作最终判断。",
+   "diff": "AI进入的是法官的辅助决策，而不只是证据本身。",
+   "lesson": "“辅助而非替代”与“可解释、可验证”是司法用AI的底线。",
+   "pastSrc": "https://law.justia.com/cases/district-of-columbia/court-of-appeals/1923/no-3968.html",
+   "note": "Daubert取代Frye一说为通识，本轮未单独核对",
+   "short": "最高人民法院《关于规范和加强",
+   "evNow": "强",
+   "evPast": "强",
+   "evNowText": "【原文已打开】最高法官网全文（2022年12月8日，第5条辅助审判原则）：“无论技术发展到何种水平，人工智能都不得代替法官裁判，人工智能辅助结果仅可作为审判工作或审判监督管理的参考”。",
+   "evPastText": "【原文已打开】Frye v. United States, 293 F. 1013（1923年12月3日）：“the thing from which the deduction is made must be sufficiently established to have gained general acceptance in the particular field in which it belongs”。",
+   "status": "已核实"
+  },
+  {
+   "id": 41,
+   "cat": "社会",
+   "now": "AI招聘歧视：亚马逊2018年弃用歧视女性的简历筛选工具；Mobley诉Workday案2025年5月获初步集体认证",
+   "nowSrc": "https://www.reuters.com/article/us-amazon-com-jobs-automation-insight-idUSKCN1MK08G",
+   "past": "Griggs诉杜克电力案确立“差别影响”原则",
+   "when": "美国联邦最高法院，1971年",
+   "story": "公司以高中文凭和通用智力测验作为岗位门槛，黑人员工被大量挡在门外。法院认定即使没有歧视意图，与工作无关却造成排斥效果的测试也违法。",
+   "end": "“差别影响”成为美国就业歧视法的核心理论之一。",
+   "same": "表面中立的筛选工具复制了历史上的不平等。",
+   "diff": "算法的筛选标准更难看清，举证更难。",
+   "lesson": "雇主不能以“工具是第三方做的”为由免责，必须证明与工作相关。",
+   "pastSrc": "https://www.law.cornell.edu/supremecourt/text/401/424",
+   "short": "AI招聘歧视",
+   "evNow": "强",
+   "evPast": "强",
+   "evNowText": "【检索到原文片段】Workday案第128号裁定（2025年5月16日，Rita F. Lin法官）：“Mobley’s motion for preliminary certification of the collective is GRANTED”，争点是AI推荐系统“has a disparate impact on applicants over forty”。路透社2018年亚马逊报道返回401，未打开。",
+   "evPastText": "【原文已打开】Griggs案：“practices that are fair in form, but discriminatory in operation. The touchstone is business necessity.”",
+   "status": "已核实"
+  },
+  {
+   "id": 42,
+   "cat": "社会",
+   "now": "DeepSeek冲击：2025年1月27日英伟达单日市值蒸发近6000亿美元，安德森称之为AI的“斯普特尼克时刻”",
+   "nowSrc": "https://www.cnbc.com/2025/01/27/nvidia-sheds-almost-600-billion-in-market-cap-biggest-drop-ever.html",
+   "past": "斯普特尼克卫星与《国防教育法》",
+   "when": "苏联1957年10月4日；美国1958年9月2日",
+   "story": "苏联率先发射人造卫星，美国震惊。次年国会通过《国防教育法》，大规模资助理科、数学和外语教育。",
+   "end": "太空竞赛和美国理工科教育扩张。",
+   "same": "对手的意外突破引发“落后”焦虑，随后加大投入。",
+   "diff": "DeepSeek的冲击首先体现在资本市场，而且模型是开源的。",
+   "lesson": "“落后”叙事会推动产业和教育政策，也可能被夸大。",
+   "pastSrc": "https://physicstoday.aip.org/news/the-impact-of-sputnik-on-education",
+   "short": "DeepSeek冲击",
+   "evNow": "中",
+   "evPast": "中",
+   "evNowText": "【原文已打开】CNBC：“Nvidia shares plunged 17% on Monday, resulting in a market cap loss of close to $600 billion, the biggest drop ever for a U.S. company.” 【检索到原文片段】Fortune、BBC、NBC：安德森1月26日在X上写道“DeepSeek-R1 is AI’s Sputnik moment”。",
+   "evPastText": "【原文已打开】Physics Today（2007）：“President Dwight Eisenhower signed the NDEA into law on September 2, 1958.”",
+   "status": "已核实"
+  }
+ ],
+ "laws": [
+  {
+   "title": "恐惧以旧世界为参照",
+   "detail": "红旗法案以马车安全衡量汽车，今天的规则也常以人类岗位和旧版权模型衡量AI。"
+  },
+  {
+   "title": "先禁后融",
+   "detail": "计算器、ChatGPT进课堂，都是先禁止，然后改评估方式。"
+  },
+  {
+   "title": "总量乐观，结构残酷",
+   "detail": "从卢德运动到接线员，社会总体就业增长，但特定人群承受了真实损失。"
+  },
+  {
+   "title": "生产率滞后",
+   "detail": "电力与IT都要等组织再造之后才见成效，AI的“悖论”大概率重演。"
+  },
+  {
+   "title": "泡沫留下基础设施",
+   "detail": "铁路和光纤泡沫让投资者亏钱，却为下一代繁荣铺路。"
+  },
+  {
+   "title": "预言时间表总是错",
+   "detail": "凯恩斯的15小时工作周没按时兑现，但方向上有部分应验。"
+  },
+  {
+   "title": "法律在新技术后重写",
+   "detail": "隐私权、工伤赔偿、机械复制许可，都诞生于技术冲击之后。这是律师参与塑造规则的窗口。"
+  }
+ ],
+ "quote": {
+  "text": "历史不会重复，但会押韵。",
+  "cite": "常被归于马克·吐温，但出处未经证实"
+ },
+ "method": [
+  "第七轮（2026年11月2日，北京时间）：把页面上剩余的13个维基百科链接全部换成原始或权威来源，涉及第1、2、3、9、13、16、17、19、20、22、23、25、27条：《大西洋月刊》原文、ACM论文、SAG-AFTRA官网、UCSB美国总统项目、耶鲁大学出版社、govinfo法律汇编、Justia判决、legislation.gov.uk、PMC论文、明尼苏达大学Odlyzko论文、帕格沃什官网、JSTOR。部分站点拒绝抓取，凡是没能直接打开的，在证据注记中标为“未打开”或“检索到原文片段”。本轮没有删除链接。仅第3条今日侧由“中”升为“强”（改用工会官方公告），统计随之变为今日侧强21/中21。Fortune、documentary.org等属于媒体报道，不算博客，予以保留。",
+  "第六轮（2026年11月2日，北京时间）：按用户决定，删除今日侧或历史侧证据为“弱”的7条，即原第1条（早期汽车恐惧）、第2条（计算机扫盲焦虑）、第10条（学徒制瓦解）、第28条（技术万能论）、第29条（AGI预言与AI寒冬）、第30条（“地球村”幻想，含1858年电缆“世界和平”说法）、第41条（新职业涌现）。同时删去站不住的说法：第11条中苏联修改照片的例子；第30条（英国首例汽车撞人致死）中验尸官“永不再发生”的引语，该引语在1896年验尸报道中找不到。删除后剩42条，已重新编号。本节以下各轮说明中的条目编号均已改为新编号，已删条目注明“原”。",
+  "第五轮（2026年11月2日，北京时间）：把只靠维基或博客支撑的条目换成原始或权威来源，涉及第11、13、24、26、29、30、31、34条（以及已删的原第30、41条）。纠正第39条，“AI不是writer”出自合同备忘录，摘要页的原话为“AI can’t write or rewrite literary material”。纠正第42条，CNBC原文为“close to $600 billion”。核实第2条和解撤诉、第9条约翰逊委员会。证据研究（第四轮，2026年11月2日，北京时间）：新增第39至42条，包括编剧罢工、最高法AI司法意见、AI招聘歧视和DeepSeek冲击；AI陪伴与FTC调查并入第2条，AI虚构判例的最新统计并入第18条。“AI羞耻感”有调查数据（WalkMe 2025年调查称48.8%的人隐瞒使用AI，来自检索摘要），但没有找到可靠的历史押韵事件，暂不收录。证据强度分三级：强指官方文件、法规、判决、同行评审论文或档案馆资料；中指权威媒体或二手学术；弱指维基、博客或个人观点。摘录前的标记表示获取方式：【原文已打开】为本轮用WebFetch打开原页面核对；【检索到原文片段】为搜索结果中出现的原文文字；【检索确认】和【仅摘要】为只依据搜索摘要。本轮用WebFetch打开的原文共14页：Pew、英国国家档案馆、美国国家档案馆、凯恩斯原文、NRC、Quote Investigator、索洛出处考证、CNBC、NPR、国家铁路博物馆之友会、中国政府网、FDA、Griggs判决，以及1954年参议院漫画听证页（返回404，已放弃该对照）。",
+  "核实情况（第六轮删除后，42条）：已核实·含争议5条（14、22、23、34、35），部分核实5条（1、11、24、26、29），其余32条为已核实。第三轮曾更正：#7的DOI改为…00408，并删除“改回原名”；#14补充1878年和1896年的条文；#23修正铁路法案数量与股价下跌的时间线；#3补充1930年的“音乐保卫联盟”；另新增#36–38。“部分核实”指只通过搜索摘要或二手资料确认、没有打开原始文献的条目。以下为第二轮说明：已联网逐一检测全部来源链接。失效或指向首页的8条已替换为具体页面，包括第2、4、8、18、21、23、27条（及已删的原第30条）。第4条1986年计算器抗议已按《华盛顿邮报》当时的报道更正；第18条的历史对照已改为可查证的电报合同判例；第5条已补充Klarna重新雇用人工客服和NBER研究的具体结论。新增第29至35条（及已删的原第41条）。Pew、微软、《纽约时报》、SEC、IMF、DOI等链接对自动检测返回403，属于网站拦截机器访问，SEC、NBER、NYT 2011年报道的内容已通过搜索交叉确认。仍存疑或有争议的内容：第14条红旗法案是否拖累英国汽车业；第22条斯宾汉姆兰制度的效果；第23、35条AI是否构成泡沫；第34条火车进站传说；“历史会押韵”的出处。"
+ ]
+};
+
+</script>
+<script>
+(function(){
+const D=window.ECHOES,items=D.items,$=s=>document.querySelector(s);
+const esc=s=>String(s||'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const evB=v=>`<span class="badge ${v==='强'?'b-strong':'b-mid'}">证据${esc(v)}</span>`;
+const stB=s=>`<span class="badge ${s==='已核实'?'s-ok':s.includes('争议')?'s-dis':'s-part'}">${esc(s)}</span>`;
+const link=u=>u?`<a class="src" href="${esc(u)}" target="_blank" rel="noopener">来源：${esc(u.replace(/^https?:\/\//,'').slice(0,70))}${u.length>78?'…':''}</a>`:'';
+
+/* intro */
+$('#intro').innerHTML=(D.summary?`<p>${esc(D.summary)}</p>`:'')+D.overview.map((t,i)=>`<p class="${i===D.overview.length-1?'callout':''}">${esc(t)}</p>`).join('');
+
+/* capsules */
+const field=$('#field'),tip=$('#tip'),hero=$('#hero');let W,H;const caps=[];
+function size(){W=hero.clientWidth;H=hero.clientHeight;}size();addEventListener('resize',size);
+let seed=7;const rnd=()=>((seed=(seed*16807)%2147483647)/2147483647);
+const all=[];items.forEach(it=>all.push([it,0]));for(let k=0;k<126;k++)all.push([items[k%42],1]);
+all.forEach(([it,deco])=>{const b=document.createElement('button');b.className='cap'+(deco?' deco':'');if(deco)b.tabIndex=-1;b.innerHTML='<i></i><i></i>';
+ b.setAttribute('aria-label',`第${it.id}条：${it.short}`);field.appendChild(b);
+ const c={el:b,it,x:rnd()*W,y:rnd()*H,vx:(rnd()-.5)*.25,vy:(rnd()-.5)*.25,r:rnd()*360,vr:(rnd()-.5)*.12,s:deco?.6+rnd()*.6:.85+rnd()*.45,hover:false};caps.push(c);
+ b.addEventListener('mouseenter',()=>{c.hover=true;tip.innerHTML=`<b>${it.id}</b>${esc(it.short)}`;tip.style.opacity=1;});
+ b.addEventListener('mouseleave',()=>{c.hover=false;tip.style.opacity=0;});
+ b.addEventListener('focus',()=>b.dispatchEvent(new Event('mouseenter')));b.addEventListener('blur',()=>b.dispatchEvent(new Event('mouseleave')));
+ b.addEventListener('click',()=>{b.classList.add('open');tip.style.opacity=0;setTimeout(()=>{openCard(it.id);setTimeout(()=>b.classList.remove('open'),400)},480);});
+});
+let mx=-1e4,my=-1e4;hero.addEventListener('mousemove',e=>{const r=hero.getBoundingClientRect();mx=e.clientX-r.left;my=e.clientY-r.top;});
+hero.addEventListener('mouseleave',()=>{mx=my=-1e4});
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+function tick(){caps.forEach(c=>{
+ if(!c.hover&&!reduce){const dx=c.x-mx,dy=c.y-my,d2=dx*dx+dy*dy;
+  if(d2<14000){const f=.6/Math.sqrt(d2+1);c.vx+=dx*f*.05;c.vy+=dy*f*.05;}
+  c.vx*=.995;c.vy*=.995;const sp=Math.hypot(c.vx,c.vy);if(sp<.12){c.vx*=1.02;c.vy*=1.02}if(sp>1.2){c.vx*=.9;c.vy*=.9}
+  c.x+=c.vx;c.y+=c.vy;c.r+=c.vr;
+  if(c.x<-40)c.x=W+30;if(c.x>W+40)c.x=-30;if(c.y<-30)c.y=H+20;if(c.y>H+30)c.y=-20;}
+ const sc=c.hover?c.s*1.35:c.s;c.el.style.transform=`translate(${c.x}px,${c.y}px) rotate(${c.r}deg) scale(${sc})`;
+ if(c.hover){tip.style.left=c.x+(c.el.offsetWidth/2)+'px';tip.style.top=c.y+'px';}
+});requestAnimationFrame(tick);}tick();
+
+/* modal */
+const modal=$('#modal'),card=$('#card');let lastFocus;
+function openCard(id){const it=items.find(i=>i.id===id);lastFocus=document.activeElement;
+ card.innerHTML=`<header><div><div class="meta">第 ${it.id} 条 · ${esc(it.cat)} · ${stB(it.status)}</div><h2 id="mTitle">${esc(it.short)}</h2></div><button class="close" data-close aria-label="关闭">×</button></header>
+ <div class="cols">
+  <section class="col now"><h3>今日现象 ${evB(it.evNow)}</h3><p class="big">${esc(it.now)}</p>
+   ${it.evNowText?`<div class="ev"><span class="lab">证据摘句</span>${esc(it.evNowText)}</div>`:''}${link(it.nowSrc)}</section>
+  <section class="col past"><h3>历史押韵 ${evB(it.evPast)}</h3><p class="big">${esc(it.past)}</p>
+   <dl><dt>时间地点</dt><dd>${esc(it.when)}</dd><dt>经过</dt><dd>${esc(it.story)}</dd><dt>结局</dt><dd>${esc(it.end)}</dd></dl>
+   ${it.evPastText?`<div class="ev"><span class="lab">证据摘句</span>${esc(it.evPastText)}</div>`:''}${link(it.pastSrc)}</section>
+ </div>
+ <div class="compare"><div><h4>相似</h4><p>${esc(it.same)}</p></div><div><h4>不同</h4><p>${esc(it.diff)}</p></div><div class="lesson"><h4>启示</h4><p>${esc(it.lesson)}</p></div></div>
+ ${it.note?`<div class="note">待核实：${esc(it.note)}</div>`:''}`;
+ modal.hidden=false;document.body.style.overflow='hidden';card.querySelector('.close').focus();}
+function closeCard(){modal.hidden=true;document.body.style.overflow='';lastFocus&&lastFocus.focus();}
+modal.addEventListener('click',e=>{if(e.target.closest('[data-close]'))closeCard();});
+addEventListener('keydown',e=>{if(e.key==='Escape'&&!modal.hidden)closeCard();});
+window.openCard=openCard;
+
+/* timeline */
+const groups=$('#groups'),filters=$('#filters');
+groups.innerHTML=D.cats.map(cat=>{const list=items.filter(i=>i.cat===cat);
+ return `<div class="group" data-cat="${esc(cat)}"><h3 class="reveal">${esc(cat)}<small>${list.length} 组对照</small></h3><div class="rows">${list.map(it=>`
+ <div class="row reveal" data-id="${it.id}">
+  <div class="side now" tabindex="0" role="button" aria-expanded="false"><div class="t">${esc(it.now)}</div><div class="m">${evB(it.evNow)} ${stB(it.status)}</div><div class="tg"></div><dl class="x"><dt>证据强度</dt><dd>${esc(it.evNow)}（核实：${esc(it.status)}）</dd>${it.evNowText?`<dt>证据摘句</dt><dd>${esc(it.evNowText)}</dd>`:""}<dt>来源</dt><dd><a href="${esc(it.nowSrc)}" target="_blank" rel="noopener">${esc(it.nowSrc)}</a></dd><dt>相似 / 不同</dt><dd>${esc(it.same)} / ${esc(it.diff)}</dd><dt>启示</dt><dd>${esc(it.lesson)}</dd></dl></div>
+  <div class="node" title="打开完整对照卡片">${it.id}</div>
+  <div class="side past" tabindex="0" role="button" aria-expanded="false"><div class="t">${esc(it.past)}</div><div class="m">${esc(it.when)} ${evB(it.evPast)}</div><div class="tg"></div><dl class="x"><dt>时间地点</dt><dd>${esc(it.when)}</dd><dt>经过</dt><dd>${esc(it.story)}</dd><dt>结局</dt><dd>${esc(it.end)}</dd><dt>证据强度</dt><dd>${esc(it.evPast)}</dd>${it.evPastText?`<dt>证据摘句</dt><dd>${esc(it.evPastText)}</dd>`:""}<dt>来源</dt><dd><a href="${esc(it.pastSrc)}" target="_blank" rel="noopener">${esc(it.pastSrc)}</a></dd></dl></div>
+ </div>`).join('')}</div></div>`}).join('');
+const tog=s=>{s.classList.toggle('ex');s.setAttribute('aria-expanded',s.classList.contains('ex'));};
+groups.addEventListener('click',e=>{if(e.target.closest('a'))return;const n=e.target.closest('.node');if(n){openCard(+n.closest('.row').dataset.id);return;}const s=e.target.closest('.side');if(s&&!e.target.closest('.x'))tog(s);});
+groups.addEventListener('keydown',e=>{const s=e.target.closest('.side');if(s&&e.target===s&&(e.key==='Enter'||e.key===' ')){e.preventDefault();tog(s);}});
+filters.innerHTML=['全部',...D.cats].map((c,i)=>`<button class="${i?'':'on'}" data-c="${esc(c)}">${esc(c)}</button>`).join('');
+filters.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;
+ filters.querySelectorAll('button').forEach(x=>x.classList.toggle('on',x===b));
+ groups.querySelectorAll('.group').forEach(g=>{g.hidden=!(b.dataset.c==='全部'||g.dataset.cat===b.dataset.c);});});
+
+/* laws & method */
+$('#lawList').innerHTML=D.laws.map(l=>`<li class="reveal"><h4>${esc(l.title)}</h4><p>${esc(l.detail)}</p></li>`).join('');
+$('#quote').innerHTML=`${esc(D.quote.text)}<cite>${esc(D.quote.cite)}</cite>`;
+$('#methodText').innerHTML=D.method.map(t=>`<p>${esc(t)}</p>`).join('');
+
+/* reveal */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+})();
+
+</script>
+</body>
+</html>
