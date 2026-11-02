@@ -171,7 +171,8 @@ export default defineConfig({
           { text: '06 Claude Code 命令打字练习', link: '/tools/06_Claude_Code_命令打字练习' },
           { text: '07 动画术语手册', link: '/tools/07_动画术语手册' },
           { text: '08 上下文纸带', link: '/tools/08_上下文纸带' },
-          { text: '09 AI 产品矩阵', link: '/tools/09_AI产品矩阵' }
+          { text: '09 AI 产品矩阵', link: '/tools/09_AI产品矩阵' },
+          { text: '10 为什么是语言？', link: '/tools/10_为什么是语言' }
         ]
       },
       {
