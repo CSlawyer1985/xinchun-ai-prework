@@ -1,0 +1,4 @@
+[Archived via WebFetch 2026-11-04 from https://en.wikipedia.org/wiki/Physical_symbol_system]
+The physical symbol system hypothesis (PSSH) is a position in the philosophy of artificial intelligence formulated by Allen Newell and Herbert A. Simon. They wrote: "A physical symbol system has the necessary and sufficient means for general intelligent action." [Newell & Simon 1976, p. 116]
+... In a 1990 paper Elephants Don't Play Chess, Rodney Brooks ... arguing that symbols are not always necessary since "the world is its own best model. It is always exactly up to date. It always has every detail there is to be known. The trick is to sense it appropriately and often enough." [Brooks 1990, p. 3]
+The PSSH refers to "intelligent action" -- that is, the behavior of the machine -- it does not refer to the "mental states", "mind", "consciousness", or the "experiences" of the machine.

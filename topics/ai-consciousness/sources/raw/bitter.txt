@@ -1,0 +1,4 @@
+[Archived via WebFetch 2026-11-04 from http://www.incompleteideas.net/IncIdeas/BitterLesson.html]
+The Bitter Lesson. Rich Sutton. March 13, 2019.
+The biggest lesson that can be read from 70 years of AI research is that general methods that leverage computation are ultimately the most effective, and by a large margin. ...
+We want AI agents that can discover like we can, not which contain what we have discovered.

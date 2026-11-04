@@ -1,0 +1,4 @@
+[Archived via WebFetch 2026-11-04 from http://jmc.stanford.edu/articles/dartmouth/dartmouth.pdf]
+A PROPOSAL FOR THE DARTMOUTH SUMMER RESEARCH PROJECT ON ARTIFICIAL INTELLIGENCE. J. McCarthy, M. L. Minsky, N. Rochester, C.E. Shannon. August 31, 1955.
+The study is to proceed on the basis of the conjecture that every aspect of learning or any other feature of intelligence can in principle be so precisely described that a machine can be made to simulate it.
+3. Neuron Nets. How can a set of (hypothetical) neurons be arranged so as to form concepts.

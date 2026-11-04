@@ -173,7 +173,8 @@ export default defineConfig({
           { text: '08 上下文纸带', link: '/tools/08_上下文纸带' },
           { text: '09 AI 产品矩阵', link: '/tools/09_AI产品矩阵' },
           { text: '10 为什么是语言？', link: '/tools/10_为什么是语言' },
-          { text: '11 历史的回响', link: '/tools/11_历史的回响' }
+          { text: '11 历史的回响', link: '/tools/11_历史的回响' },
+          { text: '12 AI 有意识吗？', link: '/tools/12_AI有意识吗' }
         ]
       },
       {

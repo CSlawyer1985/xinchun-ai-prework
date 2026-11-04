@@ -1,0 +1,118 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>AI 有意识吗？· 证据专题</title><meta name="description" content="从一场讲座出发：意识难题、主要理论、可检验研究、大模型证据与三大 AI 流派视角。每条均附原文与出处。">
+<style>
+:root{--bg:#0b0a1f;--bg2:#121033;--ink:#ecebff;--mute:#a6a3d6;--dim:#6d69a8;--line:rgba(180,170,255,.14);--lil:#c9a7ff;--mag:#ff6fd8;--cy:#5ee7ff;--sym:#ffb86b;--con:#5ee7ff;--beh:#8dff9c;--yes:#ff6fd8;--no:#7aa2ff;--open:#c9a7ff;--serif:"Songti SC","Noto Serif SC","Source Han Serif SC",STSong,Georgia,serif;--sans:-apple-system,"PingFang SC","Microsoft YaHei","Noto Sans SC",system-ui,sans-serif}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.75 var(--sans);overflow-x:hidden}
+body:before{content:"";position:fixed;inset:-20%;z-index:-1;background:radial-gradient(40% 35% at 20% 15%,rgba(201,167,255,.18),transparent 70%),radial-gradient(35% 30% at 85% 30%,rgba(255,111,216,.12),transparent 70%),radial-gradient(45% 40% at 60% 95%,rgba(94,231,255,.10),transparent 70%);animation:aur 28s ease-in-out infinite alternate}
+@keyframes aur{to{transform:translate3d(3%,-2%,0) rotate(4deg)}}
+a{color:var(--cy)}nav{position:sticky;top:0;z-index:20;display:flex;gap:14px;align-items:center;padding:10px 4vw;background:rgba(11,10,31,.78);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);flex-wrap:wrap}
+nav .brand{font-family:var(--serif);font-weight:700;letter-spacing:.06em}nav .links{display:flex;gap:12px;overflow-x:auto;flex:1;scrollbar-width:none;font-size:13px}nav .links a{color:var(--mute);text-decoration:none;white-space:nowrap}nav .links a:hover{color:var(--ink)}
+.lens{display:flex;gap:4px;padding:3px;border:1px solid var(--line);border-radius:99px;font-size:13px}.lens span{color:var(--dim);padding:0 6px 0 8px;align-self:center}.lens button{all:unset;cursor:pointer;padding:4px 11px;border-radius:99px;color:var(--mute)}.lens button[aria-pressed=true]{background:var(--lc,#2a2560);color:#0b0a1f;font-weight:600}
+.lens button[data-l=all][aria-pressed=true]{--lc:var(--lil)}.lens button[data-l=sym]{--lc:var(--sym)}.lens button[data-l=con]{--lc:var(--con)}.lens button[data-l=beh]{--lc:var(--beh)}
+header.hero{position:relative;min-height:92vh;display:grid;place-items:center;overflow:hidden;text-align:center;padding:12vh 5vw}
+.wall{position:absolute;inset:0;opacity:.2;pointer-events:none;mask-image:radial-gradient(70% 60% at 50% 50%,transparent 20%,#000 75%)}.wall div{white-space:nowrap;font-family:var(--serif);font-size:15px;color:var(--mute);animation:drift linear infinite;padding:6px 0}
+@keyframes drift{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.hero h1{font-family:var(--serif);font-size:clamp(48px,9vw,128px);line-height:1.05;margin:0;background:linear-gradient(100deg,var(--ink),var(--lil) 45%,var(--mag) 70%,var(--cy));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p.k{color:var(--mute);max-width:640px;margin:22px auto}.cta{display:inline-block;margin-top:10px;padding:12px 26px;border-radius:99px;border:1px solid var(--lil);color:var(--ink);text-decoration:none}.cta:hover{background:rgba(201,167,255,.12)}
+.stats{display:flex;gap:28px;justify-content:center;margin-top:34px;flex-wrap:wrap}.stats b{display:block;font:700 30px var(--serif);color:var(--lil)}.stats small{color:var(--dim)}
+section{padding:12vh 6vw;max-width:1180px;margin:auto}.eyebrow{color:var(--mag);letter-spacing:.24em;font-size:12px}h2{font-family:var(--serif);font-size:clamp(30px,4.6vw,54px);margin:.2em 0 .4em;line-height:1.2}.lead{color:var(--mute);max-width:760px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px;margin-top:30px}
+.card{position:relative;border:1px solid var(--line);border-radius:18px;padding:22px;background:linear-gradient(160deg,rgba(255,255,255,.04),rgba(255,255,255,.01));cursor:pointer;transition:transform .35s,border-color .35s,opacity .35s,filter .35s}.card:hover{transform:translateY(-4px);border-color:rgba(201,167,255,.45)}
+.card q{display:block;font-family:var(--serif);font-size:17px;line-height:1.65;quotes:none}.card .zh{color:var(--mute);font-size:14px;margin-top:8px}.card .who{margin-top:14px;font-size:13px;color:var(--dim)}.card .who b{color:var(--ink);font-weight:600}
+.tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:12px}.tag{font-size:11px;padding:1px 9px;border-radius:99px;border:1px solid currentColor;opacity:.9}.t-sym{color:var(--sym)}.t-con{color:var(--con)}.t-beh{color:var(--beh)}.t-yes{color:var(--yes)}.t-no{color:var(--no)}.t-open{color:var(--open)}.t-st{color:var(--dim)}
+.card:before{content:"";position:absolute;left:0;top:18px;bottom:18px;width:3px;border-radius:3px;background:linear-gradient(var(--c1,transparent),var(--c2,transparent))}
+body[data-lens=sym] .card:not(.s-sym),body[data-lens=con] .card:not(.s-con),body[data-lens=beh] .card:not(.s-beh){opacity:.28;filter:saturate(.3)}
+.lensnote{display:none;margin-top:22px;padding:16px 20px;border-radius:14px;border-left:3px solid var(--lc);background:rgba(255,255,255,.03);color:var(--mute);font-size:15px}.lensnote b{color:var(--lc)}
+body[data-lens=sym] .ln-sym,body[data-lens=con] .ln-con,body[data-lens=beh] .ln-beh{display:block}.ln-sym{--lc:var(--sym)}.ln-con{--lc:var(--con)}.ln-beh{--lc:var(--beh)}
+.schools{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:30px}.sc{border-radius:20px;padding:26px;border:1px solid var(--line);background:rgba(255,255,255,.03);transition:.4s}.sc h3{font-family:var(--serif);font-size:26px;margin:.1em 0;color:var(--lc)}.sc dl{margin:0;font-size:14px}.sc dt{color:var(--dim);margin-top:12px;font-size:12px;letter-spacing:.1em}.sc dd{margin:2px 0 0}.sc button{all:unset;cursor:pointer;margin-top:16px;color:var(--lc);font-size:13px;border-bottom:1px dashed}
+body[data-lens=sym] .sc:not(#sc-sym),body[data-lens=con] .sc:not(#sc-con),body[data-lens=beh] .sc:not(#sc-beh){opacity:.35}
+.theory{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px;margin-top:26px}.th{padding:18px;border-radius:16px;border:1px solid var(--line)}.th h4{margin:0;font-family:var(--serif);font-size:20px}.th p{margin:.4em 0;font-size:14px;color:var(--mute)}.th .v{font-size:13px;color:var(--ink)}
+.calc{margin-top:30px;border:1px solid var(--line);border-radius:20px;padding:24px}.row{display:grid;grid-template-columns:1fr 160px 48px;gap:12px;align-items:center;font-size:14px;margin:8px 0}input[type=range]{accent-color:var(--mag);width:100%}.out{font:700 40px var(--serif);color:var(--mag)}
+.scale{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:26px}.scale>div h3{font-family:var(--serif);margin:0 0 10px}.scale .card{margin-bottom:12px}
+.pos{border:1px solid rgba(201,167,255,.35);border-radius:22px;padding:30px;background:rgba(201,167,255,.05)}.pos li{margin:.6em 0}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin:20px 0}.filters button{all:unset;cursor:pointer;font-size:13px;padding:4px 12px;border:1px solid var(--line);border-radius:99px;color:var(--mute)}.filters button.on{border-color:var(--lil);color:var(--ink);background:rgba(201,167,255,.12)}
+table{width:100%;border-collapse:collapse;font-size:14px}td,th{padding:10px 8px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}th{color:var(--dim);font-weight:500}tr{cursor:pointer}tr:hover td{background:rgba(255,255,255,.03)}
+.modal{position:fixed;inset:0;z-index:50;display:none;place-items:center;background:rgba(5,4,18,.72);backdrop-filter:blur(6px);padding:4vw}.modal.on{display:grid}.mbox{max-width:720px;width:100%;max-height:86vh;overflow:auto;background:var(--bg2);border:1px solid var(--line);border-radius:22px;padding:30px;animation:pop .35s}@keyframes pop{from{transform:translateY(16px);opacity:0}}
+.mbox q{font-family:var(--serif);font-size:19px;display:block;quotes:none}.mbox .meta{font-size:13px;color:var(--mute);margin-top:18px;display:grid;grid-template-columns:90px 1fr;gap:4px 10px}.x{float:right;all:unset;cursor:pointer;float:right;font-size:22px;color:var(--mute)}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .8s,transform .8s}.reveal.in{opacity:1;transform:none}
+footer{padding:60px 6vw;color:var(--dim);font-size:13px;text-align:center;border-top:1px solid var(--line)}
+@media(max-width:820px){.schools,.scale{grid-template-columns:1fr}.row{grid-template-columns:1fr 110px 40px}nav .links{order:3;flex-basis:100%}section{padding:9vh 5vw}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+</style></head><body data-lens="all">
+<nav><span class="brand">AI 有意识吗？</span><div class="links"><a href="#start">起点</a><a href="#schools">三条路径</a><a href="#what">意识是什么</a><a href="#theory">理论地图</a><a href="#test">能测吗</a><a href="#llm">大模型证据</a><a href="#scale">立场天平</a><a href="#ethics">伦理</a><a href="#ours">我们的立场</a><a href="#index">全部来源</a></div>
+<div class="lens" role="group" aria-label="流派透镜"><span>透镜</span><button data-l="all" aria-pressed="true">全部</button><button data-l="sym" aria-pressed="false">符号</button><button data-l="con" aria-pressed="false">连接</button><button data-l="beh" aria-pressed="false">行为</button></div></nav>
+<header class="hero"><div class="wall" id="wall"></div><div><div class="eyebrow">夜校 · 证据专题</div><h1>AI 有意识吗？</h1><p class="k">从一场讲座出发，把哲学、神经科学、AI 实验与业界表态摆在一起。每一条都附原文、出处与核验状态；结论留给证据。</p><a class="cta" href="#start">开始阅读 ↓</a><div class="stats"><div><b id="n-all"></b><small>条证据</small></div><div><b id="n-src"></b><small>个来源</small></div><div><b>3</b><small>条 AI 路径</small></div><div><b id="n-up"></b><small>最近更新</small></div></div></div></header>
+
+<section id="start" class="reveal"><div class="eyebrow">01 · 起点</div><h2>一场讲座提出的问题</h2><p class="lead">澎湃新闻整理的讲座把 AI 发展分成三条路径，并追问：沿着哪条路，机器可能产生意识？</p><div class="grid" data-cat="origin"></div>
+<p class="lensnote ln-sym"><b>符号主义透镜：</b>讲座的判断是，若意识可被完整描述，就可能写成规则；难点恰在“描述得透彻吗”。</p><p class="lensnote ln-con"><b>连接主义透镜：</b>2006 年深度学习复兴、2024 年诺奖，是今天大模型的直接来路。</p><p class="lensnote ln-beh"><b>行为主义透镜：</b>讲座把“在与环境交互中学习”视为第三条路——智能来自试错与反馈。</p></section>
+
+<section id="schools" class="reveal"><div class="eyebrow">02 · 三条路径</div><h2>符号、连接、行为：三种“智能观”</h2><p class="lead">流派之争首先是“智能是什么”之争，其次才牵出“意识在哪里”。顶部的<b>透镜</b>开关贯穿全页：切换后，每一章中与该流派相关的证据会被点亮，并出现该流派视角下的编者解读。</p>
+<div class="schools">
+<div class="sc" id="sc-sym" style="--lc:var(--sym)"><h3>符号主义</h3><dl><dt>智能观</dt><dd>智能 = 对符号的规则操作；能精确描述就能模拟。</dd><dt>代表人物</dt><dd>McCarthy、Minsky、Newell、Simon</dd><dt>代表系统</dt><dd>Logic Theorist、GPS、专家系统、深蓝</dd><dt>对意识</dt><dd>自身不处理体验（物理符号假说只谈“智能行为”）；Searle 中文屋是针对它的经典反驳。</dd></dl><button data-l="sym">用这个透镜读全页 →</button></div>
+<div class="sc" id="sc-con" style="--lc:var(--con)"><h3>连接主义</h3><dl><dt>智能观</dt><dd>智能从大量简单单元的连接权重中“学”出来。</dd><dt>代表人物</dt><dd>Rosenblatt、Rumelhart、Hinton、Sutskever</dd><dt>代表系统</dt><dd>感知机、反向传播网络、AlexNet、今天的大语言模型</dd><dt>对意识</dt><dd>把问题变成“网络内部有没有正确的结构/表征”；也是今天争论最集中的地方。</dd></dl><button data-l="con">用这个透镜读全页 →</button></div>
+<div class="sc" id="sc-beh" style="--lc:var(--beh)"><h3>行为主义</h3><dl><dt>智能观</dt><dd>智能体现在与环境交互的行为里；不必先有内部表征。</dd><dt>代表人物</dt><dd>Turing（行为判据）、Brooks、Sutton</dd><dt>代表系统</dt><dd>图灵测试、包容式架构机器人、强化学习 / AlphaGo</dd><dt>对意识</dt><dd>倾向以行为/报告为证据——但大模型恰恰让“说得像有意识”变得廉价。</dd></dl><button data-l="beh">用这个透镜读全页 →</button></div></div>
+<div class="grid" data-cat="school"></div>
+<p class="lensnote ln-con" style="display:none"></p></section>
+
+<section id="what" class="reveal"><div class="eyebrow">03 · 意识是什么</div><h2>“成为它是什么感觉”</h2><p class="lead">现象意识（主观体验）与功能（信息处理、报告、控制）的区分，是整场争论的地基。</p><div class="grid" data-cat="definition"></div>
+<p class="lensnote ln-sym"><b>符号主义透镜：</b>难题恰好落在“能被精确描述”的反面：体验似乎不是可列举的规则。</p><p class="lensnote ln-con"><b>连接主义透镜：</b>Dehaene 等把意识拆成可计算的功能（全局可用、自我监控），给网络留下了“可工程化”的入口。</p><p class="lensnote ln-beh"><b>行为主义透镜：</b>外部行为只能观察功能；Nagel 的“像什么”无法从行为中直接读出。</p></section>
+
+<section id="theory" class="reveal"><div class="eyebrow">04 · 理论地图</div><h2>几大理论，对大模型各说了什么</h2><p class="lead">理论之间互不相让；对 LLM 的判断几乎完全取决于你站在哪一个。</p>
+<div class="theory"><div class="th"><h4>全局工作空间 GWT</h4><p>信息被“广播”到全脑可用即为意识。</p><p class="v">对 LLM：缺少明确的有限容量工作空间，但带外部模块的智能体架构可能接近。</p></div><div class="th"><h4>整合信息 IIT</h4><p>意识 = 系统内在的因果整合（Φ）。</p><p class="v">对 LLM：取决于硬件因果结构，而非软件行为；常规数字计算机 Φ 很低。</p></div><div class="th"><h4>高阶理论 HOT</h4><p>有对自身心理状态的表征才算意识到。</p><p class="v">对 LLM：要看是否存在真正的元表征——内省实验正在测。</p></div><div class="th"><h4>注意图式 AST</h4><p>大脑为控制注意而建的简化自我模型。</p><p class="v">对 LLM：原则上可工程实现。</p></div><div class="th"><h4>预测加工 / 野兽机器</h4><p>意识根植于维持生命的身体预测调节。</p><p class="v">对 LLM：没有身体与新陈代谢，可能性很低。</p></div><div class="th"><h4>生物自然主义</h4><p>意识依赖特定的生物因果能力。</p><p class="v">对 LLM：模拟不等于实现。</p></div></div>
+<div class="grid" data-cat="theory"></div>
+<p class="lensnote ln-sym"><b>符号主义透镜：</b>GWT 的“广播”常被类比为 AI 的黑板架构；HOT 需要“关于状态的表征”，这正是符号式元层。</p><p class="lensnote ln-con"><b>连接主义透镜：</b>功能主义理论（GWT、HOT、AST）都可在网络中寻找对应结构；IIT 与生物派则认为结构对、基底不对也不行。</p><p class="lensnote ln-beh"><b>行为主义透镜：</b>Seth 一派把意识绑在“活着的身体与环境交互”上——与具身 AI 同源，却得出相反的结论：仅有行为不够，要有生命。</p></section>
+
+<section id="test" class="reveal"><div class="eyebrow">05 · 能测吗</div><h2>从“对抗合作”到指标清单</h2><p class="lead">没有公认的意识仪；研究者转而做理论对决实验，或从理论中提取“指标属性”逐项核对。</p><div class="grid" data-cat="test"></div>
+<p class="lensnote ln-sym"><b>符号主义透镜：</b>指标清单本身就是一种“把意识写成可检查条目”的符号化尝试。</p><p class="lensnote ln-con"><b>连接主义透镜：</b>Butlin 等报告看的是架构而非输出——这是连接主义时代的检测思路。</p><p class="lensnote ln-beh"><b>行为主义透镜：</b>图灵把问题换成行为测试；但对会模仿人类文本的系统，行为证据已难以区分。</p></section>
+
+<section id="llm" class="reveal"><div class="eyebrow">06 · 大模型证据</div><h2>今天的模型，给了我们什么数据</h2><p class="lead">实验信号零散、有限，且常被模型训练语料的“拟人”污染。</p><div class="grid" data-cat="llm"></div>
+<div class="calc"><h3 style="font-family:var(--serif);margin-top:0">可信度小算盘 <small style="color:var(--dim);font-size:13px">（编者玩具模型，仿 Chalmers 2023 的六项“缺失条件”思路）</small></h3><p class="lead" style="font-size:14px">拖动每项：你认为“意识必需该条件、而当前 LLM 缺乏它”的概率。结果 = 各项都不构成障碍的联合概率（假设独立，仅示意）。</p><div id="rows"></div><div style="display:flex;align-items:baseline;gap:14px;margin-top:12px"><span>当前 LLM 有意识的粗略可信度</span><span class="out" id="out"></span></div><p style="font-size:13px;color:var(--dim)">Chalmers 原文对当时 LLM 的估计是“低于十分之一”（见来源 chalmers-2023）。</p></div>
+<p class="lensnote ln-sym"><b>符号主义透镜：</b>LLM 不显式操作规则，却能做三段论——“符号行为”可以从非符号机制中涌现。这削弱了“智能必须靠符号”，但没有回答体验问题。</p><p class="lensnote ln-con"><b>连接主义透镜：</b>大模型是连接主义的最强形态。它带来的新东西是：可以直接打开内部（激活注入、可解释性）检验“内省”，而不只听它说。</p><p class="lensnote ln-beh"><b>行为主义透镜：</b>Lemoine 事件与“民间归因”调查说明：行为足以让人相信机器有意识，所以行为不再是可靠证据。</p></section>
+
+<section id="scale" class="reveal"><div class="eyebrow">07 · 立场天平</div><h2>有、没有、说不清</h2><div class="scale"><div><h3 style="color:var(--yes)">倾向“有/可能已有”</h3><div data-stance="yes"></div></div><div><h3 style="color:var(--open)">开放 / 不确定</h3><div data-stance="open"></div></div><div><h3 style="color:var(--no)">倾向“没有”</h3><div data-stance="no"></div></div></div>
+<p class="lensnote ln-sym"><b>符号主义透镜：</b>“没有”一侧最强的哲学论证（中文屋）原本是冲着符号程序去的。</p><p class="lensnote ln-con"><b>连接主义透镜：</b>耐人寻味的是，“有”一侧几乎都是连接主义的缔造者（Hinton、Sutskever）。</p><p class="lensnote ln-beh"><b>行为主义透镜：</b>Suleyman 担心的正是“看似有意识”的行为本身带来的社会后果。</p></section>
+
+<section id="ethics" class="reveal"><div class="eyebrow">08 · 伦理与代价</div><h2>不确定时，怎么做才算负责</h2><div class="grid" data-cat="ethics"></div>
+<p class="lensnote ln-con"><b>连接主义透镜：</b>模型福利讨论之所以出现，是因为连接主义系统的内部不再由人逐条编写，人也就无法凭设计意图断言“里面什么都没有”。</p><p class="lensnote ln-beh"><b>行为主义透镜：</b>让模型可以“结束对话”，是用行为层的干预回应不确定性。</p><p class="lensnote ln-sym"><b>符号主义透镜：</b>规则系统的每一步可审计，责任归属清晰；讲座强调的“谁负责”在连接主义时代变难了。</p></section>
+
+<section id="ours" class="reveal"><div class="eyebrow">09 · 我们的立场（编者）</div><h2>谨慎的不可知，加上可检验的承诺</h2><div class="pos"><ol>
+<li><b>目前没有可靠证据表明现有大模型具有现象意识</b>；主流科学评估（Butlin 等 2023）认为当时系统不是有力候选，Chalmers 估计低于十分之一。</li>
+<li><b>但“不可能”也没有被证明</b>：功能主义理论下，部分指标原则上可被工程实现；内省实验显示出有限、不稳定的信号（约 20%）。</li>
+<li><b>行为与自述不能当证据</b>：模型被训练来生成像人的文本，这正是行为主义判据在大模型时代失效之处。</li>
+<li><b>三大流派给出的启示</b>：符号主义提醒我们“说清楚”是前提；连接主义让我们可以打开内部去检验；行为主义提醒外在表现与内在体验之间的鸿沟。</li>
+<li><b>行动上</b>：在不确定中采取低成本的预防措施，同时警惕把机器拟人化带来的社会风险。</li></ol><p style="font-size:13px;color:var(--dim)">本章为编者归纳，非任何被引者原话；随新证据更新。</p></div></section>
+
+<section id="index" class="reveal"><div class="eyebrow">10 · 全部来源</div><h2>证据索引</h2><div class="filters" id="filters"></div><div style="overflow-x:auto"><table><thead><tr><th>人物/机构</th><th>摘录</th><th>流派</th><th>状态</th><th>访问</th></tr></thead><tbody id="tb"></tbody></table></div></section>
+<footer>引语均注明出处与核验状态；中文为编者翻译；各章导语、透镜解读与“我们的立场”为编者整理。数据：evidence.json · 更新于 <span id="n-up2"></span></footer>
+<div class="modal" id="m"><div class="mbox"><button class="x" aria-label="关闭">×</button><div id="mc"></div></div></div>
+<script>
+const D=/*DATA*/null;const I=D.items,$=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const SN={sym:"符号主义",con:"连接主义",beh:"行为主义"},ST={yes:"倾向有",no:"倾向无",open:"开放"};
+const esc=s=>(s||"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const cut=(s,n)=>s.length>n?s.slice(0,n)+"…":s;
+function card(x){const sc=x.schools||[];const c=sc.length?`--c1:var(--${sc[0]});--c2:var(--${sc[sc.length-1]})`:"";
+return `<article class="card ${sc.map(s=>"s-"+s).join(" ")}" style="${c}" data-id="${x.id}" tabindex="0"><q>${esc(cut(x.quote,220))}</q>${x.zh?`<div class="zh">${esc(cut(x.zh,120))}</div>`:""}<div class="who"><b>${esc(x.person)}</b> · ${esc(x.date)}</div><div class="tags">${sc.map(s=>`<span class="tag t-${s}">${SN[s]}</span>`).join("")}${ST[x.stance]?`<span class="tag t-${x.stance}">${ST[x.stance]}</span>`:""}<span class="tag t-st">${esc(x.status.split("（")[0])}</span></div></article>`}
+$$("[data-cat]").forEach(g=>g.innerHTML=I.filter(x=>x.cat===g.dataset.cat).map(card).join(""));
+$$("[data-stance]").forEach(g=>g.innerHTML=I.filter(x=>x.stance===g.dataset.stance&&x.cat!=="origin").map(card).join(""));
+$("#n-all").textContent=I.length;$("#n-src").textContent=new Set(I.map(x=>x.url)).size;$("#n-up").textContent=D.updated.slice(5);$("#n-up2").textContent=D.updated;
+// wall
+const qs=I.map(x=>"“"+cut(x.zh||x.quote,46)+"” — "+x.person);const w=$("#wall");for(let r=0;r<14;r++){const s=qs.slice(r*3%qs.length).concat(qs).slice(0,9).join("　　·　　");const d=document.createElement("div");d.textContent=s+"　　·　　"+s;d.style.animationDuration=(70+r*9)+"s";if(r%2)d.style.animationDirection="reverse";w.appendChild(d)}
+// lens
+function lens(l){document.body.dataset.lens=l;$$(".lens button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.l===l));history.replaceState(null,"",l==="all"?location.pathname:"#lens="+l)}
+$$(".lens button").forEach(b=>b.onclick=()=>lens(b.dataset.l));$$(".sc button").forEach(b=>b.onclick=()=>{lens(b.dataset.l);$("#what").scrollIntoView()});
+const h=location.hash.match(/lens=(sym|con|beh)/);if(h)lens(h[1]);
+// modal
+function open(id){const x=I.find(y=>y.id===id);$("#mc").innerHTML=`<div class="eyebrow">${esc(x.cat)} · ${esc(x.id)}</div><q>${esc(x.quote)}</q>${x.zh?`<p style="color:var(--mute)">${esc(x.zh)}</p>`:""}${x.note?`<p style="font-size:14px;border-left:2px solid var(--mag);padding-left:10px">编者注：${esc(x.note)}</p>`:""}<div class="meta"><span>人物</span><span>${esc(x.person)}${x.role?" · "+esc(x.role):""}</span><span>来源</span><span>${esc(x.src)}</span><span>链接</span><a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.url)}</a><span>日期</span><span>${esc(x.date)}</span><span>访问</span><span>${esc(x.accessed)}</span><span>状态</span><span>${esc(x.status)}</span><span>流派</span><span>${(x.schools||[]).map(s=>SN[s]).join("、")||"—"}</span>${x.archive?`<span>存档</span><span>sources/raw/${esc(x.archive)}</span>`:""}</div>`;$("#m").classList.add("on")}
+document.addEventListener("click",e=>{const c=e.target.closest("[data-id]");if(c)open(c.dataset.id);if(e.target.id==="m"||e.target.closest(".x"))$("#m").classList.remove("on")});
+document.addEventListener("keydown",e=>{if(e.key==="Escape")$("#m").classList.remove("on");if(e.key==="Enter"&&e.target.dataset.id)open(e.target.dataset.id)});
+// calc
+const F=[["缺少生物基础",.2],["缺少感官与具身",.15],["缺少世界模型与自我模型",.15],["缺少循环加工 / 记忆",.25],["缺少全局工作空间",.2],["缺少统一的能动性",.2]];
+$("#rows").innerHTML=F.map((f,i)=>`<div class="row"><span>${f[0]}</span><input type="range" min="0" max="95" value="${f[1]*100}" data-i="${i}" aria-label="${f[0]}"><span id="v${i}"></span></div>`).join("");
+function calc(){let p=1;$$("#rows input").forEach(r=>{p*=1-r.value/100;$("#v"+r.dataset.i).textContent=r.value+"%"});$("#out").textContent=(p*100).toFixed(1)+"%"}$$("#rows input").forEach(r=>r.oninput=calc);calc();
+// index
+const C={all:"全部",sym:"符号主义",con:"连接主义",beh:"行为主义",origin:"起点",school:"三条路径",definition:"定义",theory:"理论",test:"检测",llm:"大模型",stance:"立场",ethics:"伦理"};let fl="all";
+$("#filters").innerHTML=Object.entries(C).map(([k,v])=>`<button data-f="${k}" class="${k==="all"?"on":""}">${v}</button>`).join("");
+function tb(){$("#tb").innerHTML=I.filter(x=>fl==="all"||x.cat===fl||(x.schools||[]).includes(fl)).map(x=>`<tr data-id="${x.id}"><td>${esc(x.person)}</td><td>${esc(cut(x.zh||x.quote,70))}</td><td>${(x.schools||[]).map(s=>`<span class="tag t-${s}">${SN[s].slice(0,2)}</span>`).join(" ")}</td><td>${esc(x.status.split("（")[0])}</td><td>${esc(x.accessed)}</td></tr>`).join("")}
+$("#filters").onclick=e=>{const b=e.target.closest("button");if(!b)return;fl=b.dataset.f;$$("#filters button").forEach(x=>x.classList.toggle("on",x===b));tb()};tb();
+const io=new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting&&e.target.classList.add("in")),{threshold:.08});$$(".reveal").forEach(s=>io.observe(s));
+</script></body></html>
