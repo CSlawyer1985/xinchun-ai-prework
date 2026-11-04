@@ -51,3 +51,50 @@
 | paper-deepblue | 祁玉（讲座） | 澎湃新闻讲座整理稿 | https://m.thepaper.cn/newsDetail_forward_34390827 | 原文核实（整理稿） | 2026-11-04 | paper.txt |
 | paper-sym-limit | 祁玉（讲座） | 澎湃新闻讲座整理稿 | https://m.thepaper.cn/newsDetail_forward_34390827 | 原文核实（整理稿） | 2026-11-04 | paper.txt |
 | paper-rl | 祁玉（讲座） | 澎湃新闻讲座整理稿 | https://m.thepaper.cn/newsDetail_forward_34390827 | 原文核实（整理稿） | 2026-11-04 | paper.txt |
+| koch-2016-ncc | Koch, Massimini, Boly, Tononi | Nature Reviews Neuroscience 17:307–321 | https://doi.org/10.1038/nrn.2016.22 | 原文核实（摘要） | 2026-11-04 | koch2016.txt |
+| cogitate-2025 | Cogitate Consortium | Nature 642（2025） | https://doi.org/10.1038/s41586-025-08888-1 | 原文核实（摘要） | 2026-11-04 | cogitate2025.txt |
+| mashour-2020 | Mashour, Roelfsema, Changeux, Dehaene | Neuron 105(5):776–798 | https://doi.org/10.1016/j.neuron.2020.01.026 | 原文核实（摘要） | 2026-11-04 | mashour2020.txt |
+| tononi-2016 | Tononi, Boly, Massimini, Koch | Nature Reviews Neuroscience 17:450–461 | https://doi.org/10.1038/nrn.2016.44 | 原文核实（摘要） | 2026-11-04 | tononi2016.txt |
+| alkire-2008 | Alkire, Hudetz, Tononi | Science 322:876–880 | https://doi.org/10.1126/science.1149213 | 原文核实（摘要） | 2026-11-04 | alkire2008.txt |
+| casali-2013 | Casali, Massimini 等 | Science Translational Medicine 5(198):198ra105 | https://doi.org/10.1126/scitranslmed.3006294 | 原文核实（摘要） | 2026-11-04 | casali2013.txt |
+| owen-2006 | Owen, Coleman, Boly, Davis, Laureys, Pickard | Science 313:1402 | https://doi.org/10.1126/science.1130197 | 原文核实（摘要） | 2026-11-04 | owen2006.txt |
+| monti-2010 | Monti, Laureys, Owen 等 | NEJM 362:579–589 | https://doi.org/10.1056/NEJMoa0905370 | 原文核实（摘要） | 2026-11-04 | monti2010.txt |
+| gazzaniga-2005 | Michael Gazzaniga | Nature Reviews Neuroscience 6:653–659 | https://doi.org/10.1038/nrn1723 | 原文核实（摘要） | 2026-11-04 | gazzaniga2005.txt |
+| blindsight-2010 | Sahraie, Weiskrantz 等 | PNAS 107(49):21217–21222 | https://doi.org/10.1073/pnas.1015652107 | 原文核实（摘要） | 2026-11-04 | weisk2010.txt |
+| seth-bayne-2022 | Anil Seth & Tim Bayne | Nature Reviews Neuroscience 23:439–452 | https://doi.org/10.1038/s41583-022-00587-4 | 原文核实（摘要） | 2026-11-04 | seth2022.txt |
+| levine-gap | Stanford Encyclopedia of Philosophy（转述 Levine 1983） | SEP: Consciousness §5.2 | https://plato.stanford.edu/entries/consciousness/ | 转述（经 SEP） | 2026-11-04 | sep_con.txt |
+| mary-jackson | Frank Jackson（经 SEP 引） | SEP: Qualia: The Knowledge Argument | https://plato.stanford.edu/entries/qualia-knowledge/ | 原文核实（SEP 引 Jackson 1982） | 2026-11-04 | sep_qualia-knowledge.txt |
+| panpsychism | Stanford Encyclopedia of Philosophy | SEP: Panpsychism | https://plato.stanford.edu/entries/panpsychism/ | 原文核实 | 2026-11-04 | sep_panpsychism.txt |
+| frankish-2016 | Keith Frankish | Journal of Consciousness Studies 23(11–12):11–39（作者接受稿） | https://keithfrankish.github.io/articles/Frankish_2016_Illusionism_as_a_theory_of_consciousness_eprint.pdf | 原文核实 | 2026-11-04 | frankish2016.txt |
+| hot-sep | Stanford Encyclopedia of Philosophy | SEP: Higher-Order Theories of Consciousness | https://plato.stanford.edu/entries/consciousness-higher/ | 原文核实 | 2026-11-04 | sep_consciousness-higher.txt |
+| cambridge-2012 | Philip Low 执笔；Panksepp、Reiss、Edelman、Van Swinderen、Koch 编 | The Cambridge Declaration on Consciousness | https://www.ocf.berkeley.edu/~jfkihlstrom/ConsciousnessWeb/PDFs/CambridgeDeclarationOnConsciousness.pdf | 原文核实 | 2026-11-04 | cambridge2012.txt |
+| butlin-2026 | Butlin, Long, Bayne, Bengio, Birch, Chalmers 等 | Trends in Cognitive Sciences（2026） | https://doi.org/10.1016/j.tics.2025.10.011 | 原文核实（摘要） | 2026-11-04 | butlin2026.txt |
+| openai-jang-2025 | Joanne Jang（OpenAI 模型行为负责人） | Some thoughts on human-AI relationships（作者 Substack，OpenAI 同步发布） | https://reservoirsamples.substack.com/p/some-thoughts-on-human-ai-relationships | 原文核实 | 2026-11-04 | jang2025.txt |
+| zeng-yi-2025 | 曾毅（中科院自动化所研究员，联合国 AI 高层顾问机构专家） | 中国网专访（新浪转载） | https://news.sina.com.cn/zx/gj/2025-02-28/doc-inemyxcv0195880.shtml | 原文核实（访谈整理） | 2026-11-04 | zeng_china.txt |
+| zhu-songchun | 朱松纯（北京通用人工智能研究院院长） | 《为机器立心》第一章摘录（知识分子·财新博客） | https://zhishifenzi.blog.caixin.com/archives/280608 | 原文核实（书摘） | 2026-11-04 | zhu_caixin.txt |
+| block-1995 | Ned Block | Behavioral and Brain Sciences 18(2):227–247（Cogprints 预印本） | https://web-archive.southampton.ac.uk/cogprints.org/231/1/199712004.html | 原文核实（摘要） | 2026-11-04 | block1995.txt |
+| sep-varieties | Stanford Encyclopedia of Philosophy | SEP: Consciousness §2 | https://plato.stanford.edu/entries/consciousness/ | 原文核实 | 2026-11-04 | sep_con.txt |
+| sep-sentience | Stanford Encyclopedia of Philosophy | SEP: Consciousness §2.1 | https://plato.stanford.edu/entries/consciousness/ | 原文核实 | 2026-11-04 | sep_con.txt |
+
+## 影音图像
+
+| id | 类型 | 标题 | 作者/频道 | 链接 | 许可 | 访问日期 |
+|---|---|---|---|---|---|---|
+| v-chalmers-ted | video | How do you explain consciousness? | David Chalmers · TED | https://www.youtube.com/watch?v=uhRhtFFhNzQ | 平台嵌入 | 2026-11-04 |
+| v-chalmers-meta | video | The Meta-Problem of Consciousness | David Chalmers · Talks at Google | https://www.youtube.com/watch?v=OsYUWtLQBS0 | 平台嵌入 | 2026-11-04 |
+| v-seth-ted | video | Your brain hallucinates your conscious reality | Anil Seth · TED | https://www.youtube.com/watch?v=lyu7v7nWzfo | 平台嵌入 | 2026-11-04 |
+| v-goff-tedx | video | Philip Goff TEDx：泛心论 | Philip Goff · TEDx | https://www.youtube.com/watch?v=UCxhoqzEaUE | 平台嵌入 | 2026-11-04 |
+| v-caltech-16 | video | Lecture 16: A Framework for Consciousness | Caltech（官方频道） | https://www.youtube.com/watch?v=0Fti1IX78Io | 平台嵌入 | 2026-11-04 |
+| v-anthropic | video | Could AI models be conscious? | Anthropic（官方频道） | https://www.youtube.com/watch?v=pyXouxa0WnY | 平台嵌入 | 2026-11-04 |
+| v-hinton-nobel | video | Nobel Prize lecture: Geoffrey Hinton | Nobel Prize（官方频道） | https://www.youtube.com/watch?v=XDE9DjpcSdI | 平台嵌入 | 2026-11-04 |
+| a-fish-80k | audio | Kyle Fish on the most bizarre findings from 5 AI welfare experiments | 80,000 Hours Podcast | https://80000hours.org/podcast/episodes/kyle-fish-ai-welfare-anthropic/ | 平台嵌入 | 2026-11-04 |
+| a-long-80k | audio | Robert Long on why large language models like GPT (probably) aren't conscious | 80,000 Hours Podcast | https://80000hours.org/podcast/episodes/robert-long-artificial-sentience/ | 平台嵌入 | 2026-11-04 |
+| a-tnp-32 | audio | Episode #32: On IIT and adversarial testing of consciousness theories | Theoretical Neuroscience Podcast | https://www.youtube.com/watch?v=StMxqdYm7jo | 平台嵌入 | 2026-11-04 |
+| i-descartes | image | 笛卡尔《论人》中的松果体示意 | René Descartes | https://commons.wikimedia.org/wiki/File:Descartes_mind_and_body.gif | Public domain | 2026-11-04 |
+| i-cajal | image | 卡哈尔绘制的皮层神经元 | Santiago Ramón y Cajal | https://commons.wikimedia.org/wiki/File:Cajal_cortex_drawings.png | Public domain | 2026-11-04 |
+| i-gray | image | 神经元结构示意（Gray728） | Mysid 据 Gray's Anatomy 重绘 | https://commons.wikimedia.org/wiki/File:Gray728.svg | Public domain | 2026-11-04 |
+| i-corpus | image | 胼胝体（矢状位） | Life Science Databases (LSDB) | https://commons.wikimedia.org/wiki/File:Corpus_callosum.png | CC BY-SA 2.1 JP | 2026-11-04 |
+| i-necker | image | 内克尔立方体 | BenFrantzDale | https://commons.wikimedia.org/wiki/File:Necker_cube.svg | CC BY-SA 3.0 | 2026-11-04 |
+| i-kanizsa | image | 卡尼萨三角 | Fibonacci | https://commons.wikimedia.org/wiki/File:Kanizsa_triangle.svg | CC BY-SA 3.0 | 2026-11-04 |
+| i-octopus | image | 章鱼 | Albert Kok | https://commons.wikimedia.org/wiki/File:Octopus2.jpg | CC BY-SA 3.0 | 2026-11-04 |
+| i-turing | image | 16 岁的图灵 | 可能为 Arthur Reginald Chaffin | https://commons.wikimedia.org/wiki/File:Alan_Turing_Aged_16.jpg | Public domain | 2026-11-04 |

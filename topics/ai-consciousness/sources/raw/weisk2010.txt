@@ -1,0 +1,8 @@
+[Europe PMC record, accessed 2026-11-04] PMID 21078979
+Title: Consciousness of the first order in blindsight.
+Authors: Sahraie A, Hibbard PB, Trevethan CT, Ritchie KL, Weiskrantz L.
+Journal: Proceedings of the National Academy of Sciences of the United States of America 2010
+DOI: 10.1073/pnas.1015652107
+
+Abstract:
+At suprathreshold levels, detection and awareness of visual stimuli are typically synonymous in nonclinical populations. But following postgeniculate lesions, some patients may perform above chance in forced-choice detection paradigms, while reporting not to see the visual events presented within their blind field. This phenomenon, termed "blindsight," is intriguing because it demonstrates a dissociation between detection and perception. It is possible, however, for a blindsight patient to have some "feeling" of the occurrence of an event without seeing per se. This is termed blindsight type II to distinguish it from the type I, defined as discrimination capability in the total absence of any acknowledged awareness. Here we report on a well-studied patient, D.B., whose blindsight capabilities have been previously documented. We have found that D.B. is capable of detecting visual patterns defined by changes in luminance (first-order gratings) and those defined by contrast modulation of textured patterns (textured gratings; second-order stimuli) while being aware of the former but reporting no awareness of the latter. We have systematically investigated the parameters that could lead to visual awareness of the patterns and show that mechanisms underlying the subjective reports of visual awareness rely primarily on low spatial frequency, first-order spatial components of the image.

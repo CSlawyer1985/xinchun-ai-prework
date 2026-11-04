@@ -22,3 +22,15 @@ id, cat(origin/school/definition/theory/test/llm/stance/ethics), stance(yes/no/o
 
 ## 每月扫描（建议流程）
 扫描只把候选写进 `inbox/YYYY-MM.md`（标题、链接、原文摘录、为何相关），**不直接改页面**；人工按上面步骤核验后再入库重建。建议关键词：AI consciousness / LLM sentience / model welfare / introspection / IIT GWT test / 意识 大模型。
+
+
+## 影音与引用（第二轮新增）
+
+- `data/media.py`：影音条目 `{id, kind: video|audio|image, title, by, date, yt|mp3|img, url, license, desc, rel, schools, accessed}`。图片只收 PD / CC，文件放 `assets/img/`，build.py 会校验许可与本地文件并复制到 `out/img/`。
+- `evidence.src.py` 的引用表 `C`：`{"A": ["B", ...]}` 表示 A 引用或直接讨论 B，用于生成证据网；build.py 校验 id。
+- 分类 `define`：问题界定章（Nagel 1974、Block 1995、SEP 意识/感受性）。新增条目必须与界定一致：讨论现象意识；AI 仅限当前连接主义大模型及其 Agent。
+
+### 月度例行新增影音
+1. 确认来源权威、链接可达；YouTube 用 oEmbed 核对标题；Commons 图片用 API 查 extmetadata 许可。
+2. 追加到 `data/media.py`，`rel` 指向相关证据 id。
+3. `python3 scripts/build.py --check-links` 通过后复制到站点并提交。

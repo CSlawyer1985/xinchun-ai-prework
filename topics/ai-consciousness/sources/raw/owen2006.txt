@@ -1,0 +1,8 @@
+[Europe PMC record, accessed 2026-11-04] PMID 16959998
+Title: Detecting awareness in the vegetative state.
+Authors: Owen AM, Coleman MR, Boly M, Davis MH, Laureys S, Pickard JD.
+Journal: Science (New York, N.Y.) 2006
+DOI: 10.1126/science.1130197
+
+Abstract:
+We used functional magnetic resonance imaging to demonstrate preserved conscious awareness in a patient fulfilling the criteria for a diagnosis of vegetative state. When asked to imagine playing tennis or moving around her home, the patient activated predicted cortical areas in a manner indistinguishable from that of healthy volunteers.

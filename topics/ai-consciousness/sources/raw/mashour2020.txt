@@ -1,0 +1,8 @@
+[Europe PMC record, accessed 2026-11-04] PMID 32135090
+Title: Conscious Processing and the Global Neuronal Workspace Hypothesis.
+Authors: Mashour GA, Roelfsema P, Changeux JP, Dehaene S.
+Journal: Neuron 2020
+DOI: 10.1016/j.neuron.2020.01.026
+
+Abstract:
+We review the central tenets and neuroanatomical basis of the global neuronal workspace (GNW) hypothesis, which attempts to account for the main scientific observations regarding the elementary mechanisms of conscious processing in the human brain. The GNW hypothesis proposes that, in the conscious state, a non-linear network ignition associated with recurrent processing amplifies and sustains a neural representation, allowing the corresponding information to be globally accessed by local processors. We examine this hypothesis in light of recent data that contrast brain activity evoked by either conscious or non-conscious contents, as well as during conscious or non-conscious states, particularly general anesthesia. We also discuss the relationship between the intertwined concepts of conscious processing, attention, and working memory.

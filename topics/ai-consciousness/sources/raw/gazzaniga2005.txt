@@ -1,0 +1,8 @@
+[Europe PMC record, accessed 2026-11-04] PMID 16062172
+Title: Forty-five years of split-brain research and still going strong.
+Authors: Gazzaniga MS.
+Journal: Nature reviews. Neuroscience 2005
+DOI: 10.1038/nrn1723
+
+Abstract:
+Forty-five years ago, Roger Sperry, Joseph Bogen and I embarked on what are now known as the modern split-brain studies. These experiments opened up new frontiers in brain research and gave rise to much of what we know about hemispheric specialization and integration. The latest developments in split-brain research build on the groundwork laid by those early studies. Split-brain methodology, on its own and in conjunction with neuroimaging, has yielded insights into the remarkable regional specificity of the corpus callosum as well as into the integrative role of the callosum in the perception of causality and in our perception of an integrated sense of self.

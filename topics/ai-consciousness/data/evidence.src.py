@@ -209,3 +209,117 @@ S={"paper-three-paths":["sym","con","beh"],"paper-deepblue":["sym"],"paper-sym-l
 for x in E: x["schools"]=S.get(x["id"],[])
 json.dump({"topic":"AI 有意识吗？","updated":A,"items":E},open("data/evidence.json","w"),ensure_ascii=False,indent=1)
 print("with schools",len(E))
+
+# ======== 第二轮：滚雪球扩展（2026-11-04）========
+def n(**k):
+    k.setdefault("accessed",A); k.setdefault("schools",[]); E.append(k)
+EPMC="https://europepmc.org/article/MED/"
+n(id="koch-2016-ncc",cat="science",stance="na",person="Koch, Massimini, Boly, Tononi",role="神经相关物（NCC）综述",date="2016",
+ quote="the anatomical neural correlates of consciousness are primarily localized to a posterior cortical hot zone that includes sensory areas, rather than to a fronto-parietal network involved in task monitoring and reporting.",
+ zh="意识的解剖学神经相关物主要位于包含感觉区的“后部皮层热区”，而不是负责任务监控与报告的额顶网络。",
+ src="Nature Reviews Neuroscience 17:307–321",url="https://doi.org/10.1038/nrn.2016.22",type="paper",status="原文核实（摘要）",archive="koch2016.txt",cites=["iit4"])
+n(id="cogitate-2025",cat="science",stance="na",person="Cogitate Consortium",role="对抗性合作（IIT vs GNWT），n=256",date="2025",
+ quote="These results align with some predictions of IIT and GNWT, while substantially challenging key tenets of both theories.",
+ zh="结果与 IIT 和 GNWT 的部分预测一致，同时对两者的关键主张构成实质挑战。",
+ src="Nature 642（2025）",url="https://doi.org/10.1038/s41586-025-08888-1",type="paper",status="原文核实（摘要）",archive="cogitate2025.txt",cites=["iit4","gwt","cogitate","mashour-2020"])
+n(id="mashour-2020",cat="science",stance="na",person="Mashour, Roelfsema, Changeux, Dehaene",role="全局神经工作空间综述",date="2020",
+ quote="The GNW hypothesis proposes that, in the conscious state, a non-linear network ignition associated with recurrent processing amplifies and sustains a neural representation, allowing the corresponding information to be globally accessed by local processors.",
+ zh="GNW 假说认为：意识状态下，伴随循环加工的非线性网络“点燃”放大并维持某个神经表征，使相应信息可被各局部处理器全局访问。",
+ src="Neuron 105(5):776–798",url="https://doi.org/10.1016/j.neuron.2020.01.026",type="paper",status="原文核实（摘要）",archive="mashour2020.txt",cites=["gwt","dehaene-2017"])
+n(id="tononi-2016",cat="science",stance="na",person="Tononi, Boly, Massimini, Koch",role="IIT 综述",date="2016",
+ quote="It argues that the physical substrate of consciousness must be a maximum of intrinsic cause-effect power and provides a means to determine, in principle, the quality and quantity of experience.",
+ zh="IIT 认为意识的物理基底必须是内在因果力的极大值，并在原则上给出确定体验质与量的方法。",
+ src="Nature Reviews Neuroscience 17:450–461",url="https://doi.org/10.1038/nrn.2016.44",type="paper",status="原文核实（摘要）",archive="tononi2016.txt",cites=["iit4"])
+n(id="alkire-2008",cat="science",stance="na",person="Alkire, Hudetz, Tononi",role="麻醉与意识",date="2008",
+ quote="Thus, anesthetics seem to cause unconsciousness when they block the brain's ability to integrate information.",
+ zh="因此，麻醉剂似乎是在阻断大脑整合信息的能力时导致无意识的。",
+ src="Science 322:876–880",url="https://doi.org/10.1126/science.1149213",type="paper",status="原文核实（摘要）",archive="alkire2008.txt",cites=["tononi-2016"])
+n(id="casali-2013",cat="science",stance="na",person="Casali, Massimini 等",role="扰动复杂度指数 PCI",date="2013",
+ quote="PCI reliably discriminated the level of consciousness in single individuals during wakefulness, sleep, and anesthesia, as well as in patients who had emerged from coma and recovered a minimal level of consciousness.",
+ zh="PCI 能在个体层面可靠区分清醒、睡眠、麻醉下的意识水平，也能区分从昏迷中苏醒并恢复最低意识的患者。",
+ src="Science Translational Medicine 5(198):198ra105",url="https://doi.org/10.1126/scitranslmed.3006294",type="paper",status="原文核实（摘要）",archive="casali2013.txt",cites=["alkire-2008","tononi-2016"])
+n(id="owen-2006",cat="science",stance="na",person="Owen, Coleman, Boly, Davis, Laureys, Pickard",role="植物状态中的隐性意识",date="2006",
+ quote="When asked to imagine playing tennis or moving around her home, the patient activated predicted cortical areas in a manner indistinguishable from that of healthy volunteers.",
+ zh="当被要求想象打网球或在家中走动时，这位被诊断为植物状态的患者激活了预期的皮层区域，与健康志愿者无法区分。",
+ src="Science 313:1402",url="https://doi.org/10.1126/science.1130197",type="paper",status="原文核实（摘要）",archive="owen2006.txt",cites=[],schools=["beh"],note="行为缺席≠意识缺席：对“以行为判意识”的直接反例。")
+n(id="monti-2010",cat="science",stance="na",person="Monti, Laureys, Owen 等",role="意识障碍中的意愿性脑活动（54 例）",date="2010",
+ quote="These results show that a small proportion of patients in a vegetative or minimally conscious state have brain activation reflecting some awareness and cognition.",
+ zh="结果表明，少部分植物状态或最低意识状态患者有反映一定觉知与认知的脑激活。",
+ src="NEJM 362:579–589",url="https://doi.org/10.1056/NEJMoa0905370",type="paper",status="原文核实（摘要）",archive="monti2010.txt",cites=["owen-2006"],schools=["beh"])
+n(id="gazzaniga-2005",cat="science",stance="na",person="Michael Gazzaniga",role="裂脑研究",date="2005",
+ quote="Split-brain methodology, on its own and in conjunction with neuroimaging, has yielded insights into the remarkable regional specificity of the corpus callosum as well as into the integrative role of the callosum in the perception of causality and in our perception of an integrated sense of self.",
+ zh="裂脑方法揭示了胼胝体的区域特异性，以及它在因果知觉和“统一自我感”中的整合作用。",
+ src="Nature Reviews Neuroscience 6:653–659",url="https://doi.org/10.1038/nrn1723",type="paper",status="原文核实（摘要）",archive="gazzaniga2005.txt",cites=[])
+n(id="blindsight-2010",cat="science",stance="na",person="Sahraie, Weiskrantz 等",role="盲视（患者 D.B.）",date="2010",
+ quote="This phenomenon, termed \"blindsight,\" is intriguing because it demonstrates a dissociation between detection and perception.",
+ zh="这种被称为“盲视”的现象之所以引人注目，是因为它显示了“探测”与“知觉”可以分离。",
+ src="PNAS 107(49):21217–21222",url="https://doi.org/10.1073/pnas.1015652107",type="paper",status="原文核实（摘要）",archive="weisk2010.txt",cites=[],schools=["beh"],note="能正确反应却报告“没看见”：功能与体验可以分离——这正是判断 AI 时的核心难点。")
+n(id="seth-bayne-2022",cat="theory",stance="na",person="Anil Seth & Tim Bayne",role="意识理论综述",date="2022",
+ quote="we review four prominent theoretical approaches to consciousness: higher-order theories, global workspace theories, re-entry and predictive processing theories and integrated information theory.",
+ zh="我们综述四大意识理论路径：高阶理论、全局工作空间理论、再入与预测加工理论、整合信息理论。",
+ src="Nature Reviews Neuroscience 23:439–452",url="https://doi.org/10.1038/s41583-022-00587-4",type="paper",status="原文核实（摘要）",archive="seth2022.txt",cites=["hot","gwt","iit4","seth-bbs"])
+n(id="levine-gap",cat="philosophy",stance="na",person="Stanford Encyclopedia of Philosophy（转述 Levine 1983）",role="解释鸿沟",date="1983 / SEP",
+ quote="Our current inability to supply a suitably intelligible link is sometimes described, following Joseph Levine (1983), as the existence of an explanatory gap",
+ zh="我们目前无法提供一个足够可理解的联结——继 Levine（1983）之后，这常被称为“解释鸿沟”。",
+ src="SEP: Consciousness §5.2",url="https://plato.stanford.edu/entries/consciousness/",type="encyclopedia",status="转述（经 SEP）",archive="sep_con.txt",cites=["chalmers-1995","nagel-1974"])
+n(id="mary-jackson",cat="philosophy",stance="na",person="Frank Jackson（经 SEP 引）",role="知识论证 / 玛丽的房间",date="1982",
+ quote="Mary is a brilliant scientist who is, for whatever reason, forced to investigate the world from a black and white room via a black and white television monitor.",
+ zh="玛丽是一位出色的科学家，出于某种原因只能在黑白房间里通过黑白电视研究世界。（她掌握关于颜色的全部物理知识——走出房间看到红色时，她学到了新东西吗？）",
+ src="SEP: Qualia: The Knowledge Argument",url="https://plato.stanford.edu/entries/qualia-knowledge/",type="encyclopedia",status="原文核实（SEP 引 Jackson 1982）",archive="sep_qualia-knowledge.txt",cites=[],note="括号内追问为编者概括。")
+n(id="panpsychism",cat="philosophy",stance="open",person="Stanford Encyclopedia of Philosophy",role="泛心论",date="2022",
+ quote="Panpsychism is the view that mentality is fundamental and ubiquitous in the natural world.",
+ zh="泛心论认为，心性在自然界中是基本的、无处不在的。",
+ src="SEP: Panpsychism",url="https://plato.stanford.edu/entries/panpsychism/",type="encyclopedia",status="原文核实",archive="sep_panpsychism.txt",cites=["chalmers-1995"])
+n(id="frankish-2016",cat="philosophy",stance="na",person="Keith Frankish",role="错觉论",date="2016",
+ quote="This is the view that phenomenal consciousness, as usually conceived, is illusory. ... the hard problem is replaced by the illusion problem.",
+ zh="错觉论认为，通常理解的现象意识是一种错觉……“难问题”被“错觉问题”取代。",
+ src="Journal of Consciousness Studies 23(11–12):11–39（作者接受稿）",url="https://keithfrankish.github.io/articles/Frankish_2016_Illusionism_as_a_theory_of_consciousness_eprint.pdf",type="paper",status="原文核实",archive="frankish2016.txt",cites=["chalmers-1995"],note="若错觉论为真，AI 是否“有意识”就变成它是否也有同样的自我表征错觉——这让问题更可检验。（编者）")
+n(id="hot-sep",cat="philosophy",stance="na",person="Stanford Encyclopedia of Philosophy",role="高阶理论词条",date="2026",
+ quote="Higher-order theories of consciousness try to explain the difference between unconscious and conscious mental states in terms of a relation obtaining between the conscious state in question and a higher-order representation of some sort",
+ zh="高阶理论试图用“该状态与某种高阶表征之间的关系”来解释有意识与无意识心理状态的差别。",
+ src="SEP: Higher-Order Theories of Consciousness",url="https://plato.stanford.edu/entries/consciousness-higher/",type="encyclopedia",status="原文核实",archive="sep_consciousness-higher.txt",cites=["hot"],schools=["sym"])
+n(id="cambridge-2012",cat="animal",stance="na",person="Philip Low 执笔；Panksepp、Reiss、Edelman、Van Swinderen、Koch 编",role="剑桥意识宣言",date="2012-07-07",
+ quote="Consequently, the weight of evidence indicates that humans are not unique in possessing the neurological substrates that generate consciousness. Non-human animals, including all mammals and birds, and many other creatures, including octopuses, also possess these neurological substrates.",
+ zh="因此，证据的分量表明，人类并非唯一拥有产生意识之神经基底的物种。包括所有哺乳动物和鸟类在内的非人动物，以及章鱼等许多其他生物，也拥有这些神经基底。",
+ src="The Cambridge Declaration on Consciousness",url="https://www.ocf.berkeley.edu/~jfkihlstrom/ConsciousnessWeb/PDFs/CambridgeDeclarationOnConsciousness.pdf",type="official",status="原文核实",archive="cambridge2012.txt",cites=[],schools=["beh"])
+n(id="butlin-2026",cat="ai",stance="open",person="Butlin, Long, Bayne, Bengio, Birch, Chalmers 等",role="AI 意识指标方法（TiCS）",date="2026",
+ quote="Indicators derived from such theories can be used to inform credences about whether particular AI systems are conscious.",
+ zh="从这些理论推导出的指标，可用来为“某个 AI 系统是否有意识”的可信度提供依据。",
+ src="Trends in Cognitive Sciences（2026）",url="https://doi.org/10.1016/j.tics.2025.10.011",type="paper",status="原文核实（摘要）",archive="butlin2026.txt",cites=["butlin-2023","gwt","hot","iit4"],schools=["con"])
+n(id="openai-jang-2025",cat="ai",stance="open",person="Joanne Jang（OpenAI 模型行为负责人）",role="OpenAI 立场",date="2025-06",
+ quote="Ontological consciousness isn’t something we consider scientifically resolvable without clear, falsifiable tests, whereas perceived consciousness can be explored through social science research.",
+ zh="在没有清晰、可证伪的测试之前，我们不认为“本体意识”在科学上可以解决；而“被感知的意识”可以通过社会科学研究来探索。",
+ src="Some thoughts on human-AI relationships（作者 Substack，OpenAI 同步发布）",url="https://reservoirsamples.substack.com/p/some-thoughts-on-human-ai-relationships",type="official",status="原文核实",archive="jang2025.txt",cites=[],schools=["beh"])
+n(id="zeng-yi-2025",cat="china",stance="no",person="曾毅（中科院自动化所研究员，联合国 AI 高层顾问机构专家）",role="中国学者",date="2025-02-28",
+ quote="现在的人工智能技术，它能够分析人类的情感，能够对人类的情感做出一些回应。但是它不是真正具有情感。它没有生命，也没有真正的意识，现在确实也不是真正意义的人类的伙伴，只是一个工具。",zh="",
+ src="中国网专访（新浪转载）",url="https://news.sina.com.cn/zx/gj/2025-02-28/doc-inemyxcv0195880.shtml",type="news",status="原文核实（访谈整理）",archive="zeng_china.txt",cites=[],schools=["beh","con"],note="他同时认为生成式 AI“在行为上模仿人类智能，还不是从机制上模仿”。")
+n(id="zhu-songchun",cat="china",stance="no",person="朱松纯（北京通用人工智能研究院院长）",role="中国学者",date="2024/2025",
+ quote="该论文指出大模型无异于“缸中之脑”，因为大模型本身并不存在于真实世界中，无法像人一样实现从“词语（word）”到“世界（world）”的联结。",zh="",
+ src="《为机器立心》第一章摘录（知识分子·财新博客）",url="https://zhishifenzi.blog.caixin.com/archives/280608",type="book",status="原文核实（书摘）",archive="zhu_caixin.txt",cites=["searle"],schools=["sym","beh"],note="符号落地问题与 Searle 中文屋同源；他主张“价值驱动”的认知架构，统一符号逻辑与统计学习。")
+
+n(id="block-1995",cat="define",stance="na",person="Ned Block",role="现象意识 vs 取用意识",date="1995",
+ quote="Consciousness is a mongrel concept: there are a number of very different \"consciousnesses.\" Phenomenal consciousness is experience; the phenomenally conscious aspect of a state is what it is like to be in that state. The mark of access-consciousness, by contrast, is availability for use in reasoning and rationally guiding speech and action.",
+ zh="“意识”是个混杂概念：存在多种很不相同的“意识”。现象意识就是体验——一个状态的现象意识层面，就是处于该状态“是什么感觉”。取用意识的标志则是：可被用于推理，并理性地引导言语与行动。",
+ src="Behavioral and Brain Sciences 18(2):227–247（Cogprints 预印本）",url="https://web-archive.southampton.ac.uk/cogprints.org/231/1/199712004.html",type="paper",status="原文核实（摘要）",archive="block1995.txt",cites=["nagel-1974"],schools=["con","beh"],note="本专题问的是现象意识。取用意识是功能概念，大模型在相当程度上已具备类似功能——这恰恰不能回答现象意识问题。")
+n(id="sep-varieties",cat="define",stance="na",person="Stanford Encyclopedia of Philosophy",role="意识的多种含义",date="2026",
+ quote="One can refer specifically to phenomenal consciousness, access consciousness, reflexive or meta-mental consciousness, and narrative consciousness among other varieties.",
+ zh="人们可以具体指称现象意识、取用意识、反身或元心理意识（自我意识）、叙事意识等多种意识。",
+ src="SEP: Consciousness §2",url="https://plato.stanford.edu/entries/consciousness/",type="encyclopedia",status="原文核实",archive="sep_con.txt",cites=["block-1995"])
+n(id="sep-sentience",cat="define",stance="na",person="Stanford Encyclopedia of Philosophy",role="感受性与自我意识",date="2026",
+ quote="It may be conscious in the generic sense of simply being a sentient creature, one capable of sensing and responding to its world (Armstrong 1981). ... A third and yet more demanding sense might define conscious creatures as those that are not only aware but also aware that they are aware, thus treating creature consciousness as a form of self-consciousness (Carruthers 2000).",
+ zh="在一般意义上，一个生物“有意识”可以只是指它有感受性（sentience）——能感知并回应世界；更苛刻的意义则要求它不仅觉知，还觉知到自己在觉知，即自我意识。",
+ src="SEP: Consciousness §2.1",url="https://plato.stanford.edu/entries/consciousness/",type="encyclopedia",status="原文核实",archive="sep_con.txt",cites=[],note="注意：动物福利与 AI 福利文献中的 sentience 常特指“有正负效价的体验”（能受苦/感到好），比 SEP 此处的一般义更窄。")
+# 重新归类：澎湃文章降为普通来源
+R={"paper-lecture":"school","paper-three-paths":"school","hinton-2006":"school","nobel-2024":"school","turing-1950":"test","butlin-2026":"test","openai-jang-2025":"stance","cogitate":"theory","iit-pseudo":"theory","cogitate-2025":"theory","nyd-animal":"animal",
+   "paper-brain-align":"ai","chalmers-2023":"ai","anth-introspection":"ai","opus4-bliss":"ai","folk-2024":"ai","lemoine-2022":"ai","paper-buddhism":"philosophy","nagel-1974":"define","chalmers-1995":"philosophy","iep-hard":"philosophy","searle":"philosophy"}
+C={"butlin-2023":["gwt","iit4","hot","ast","seth-bbs","nyd-animal"],"chalmers-2023":["butlin-2023","lemoine-2022","gwt","iit4"],"cogitate":["iit4","gwt"],"iit-pseudo":["iit4","cogitate"],"anth-welfare":["welfare-2024","chalmers-2023"],"welfare-2024":["butlin-2023","nyd-animal"],"anth-end":["anth-welfare"],"google-lemoine":["lemoine-2022"],"google-lemoine-bbc":["lemoine-2022"],"iep-hard":["chalmers-1995"],"chalmers-1995":["nagel-1974"],"nyd-animal":["cambridge-2012"],"suleyman-2025":["butlin-2023"],"paper-three-paths":["dartmouth-1955","rosenblatt-1958","brooks-1991"],"sutton-2019":["paper-deepblue"],"hinton-bigtech":["hinton-2006"],"opus4-bliss":["anth-welfare"],"anth-introspection":["hot"],"seth-ted":["seth-bbs"],"dehaene-2017":["gwt"]}
+for x in E:
+    x["cat"]=R.get(x["id"],x["cat"]); x.setdefault("cites",[])
+    x["cites"]=sorted(set(x["cites"])|set(C.get(x["id"],[])))
+    if x["cat"]=="origin": x["cat"]="school"
+ids={x["id"] for x in E}
+for x in E:
+    bad=[c for c in x["cites"] if c not in ids]; assert not bad,(x["id"],bad)
+exec(open("data/media.py",encoding="utf-8").read())
+json.dump({"topic":"AI 有意识吗？","updated":A,"items":E,"media":M},open("data/evidence.json","w"),ensure_ascii=False,indent=1)
+print("round2",len(E),"items",len(M),"media")

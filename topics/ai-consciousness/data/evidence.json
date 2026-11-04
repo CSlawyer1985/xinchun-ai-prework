@@ -4,7 +4,7 @@
  "items": [
   {
    "id": "paper-lecture",
-   "cat": "origin",
+   "cat": "school",
    "stance": "na",
    "person": "祁玉 / 何欢欢（浙江大学）",
    "role": "讲座主讲人与与谈人",
@@ -17,11 +17,12 @@
    "status": "原文核实",
    "archive": "paper.txt",
    "accessed": "2026-11-04",
-   "schools": []
+   "schools": [],
+   "cites": []
   },
   {
    "id": "paper-three-paths",
-   "cat": "origin",
+   "cat": "school",
    "stance": "na",
    "person": "祁玉",
    "role": "浙江大学脑与脑机融合前沿科学中心研究员",
@@ -38,11 +39,16 @@
     "sym",
     "con",
     "beh"
+   ],
+   "cites": [
+    "brooks-1991",
+    "dartmouth-1955",
+    "rosenblatt-1958"
    ]
   },
   {
    "id": "paper-brain-align",
-   "cat": "llm",
+   "cat": "ai",
    "stance": "open",
    "person": "祁玉团队（讲座转述）",
    "role": "脑机智能研究",
@@ -57,11 +63,12 @@
    "accessed": "2026-11-04",
    "schools": [
     "con"
-   ]
+   ],
+   "cites": []
   },
   {
    "id": "paper-buddhism",
-   "cat": "definition",
+   "cat": "philosophy",
    "stance": "na",
    "person": "何欢欢",
    "role": "浙江大学哲学学院求是特聘教授",
@@ -74,7 +81,8 @@
    "status": "原文核实（整理稿）",
    "archive": "paper.txt",
    "accessed": "2026-11-04",
-   "schools": []
+   "schools": [],
+   "cites": []
   },
   {
    "id": "paper-responsibility",
@@ -91,7 +99,8 @@
    "status": "原文核实（整理稿）",
    "archive": "paper.txt",
    "accessed": "2026-11-04",
-   "schools": []
+   "schools": [],
+   "cites": []
   },
   {
    "id": "paper-should",
@@ -108,7 +117,8 @@
    "status": "原文核实（整理稿，有删节）",
    "archive": "paper.txt",
    "accessed": "2026-11-04",
-   "schools": []
+   "schools": [],
+   "cites": []
   },
   {
    "id": "turing-1950",
@@ -127,11 +137,12 @@
    "accessed": "2026-11-04",
    "schools": [
     "beh"
-   ]
+   ],
+   "cites": []
   },
   {
    "id": "hinton-2006",
-   "cat": "origin",
+   "cat": "school",
    "stance": "na",
    "person": "Hinton & Salakhutdinov",
    "role": "深度学习",
@@ -146,11 +157,12 @@
    "accessed": "2026-11-04",
    "schools": [
     "con"
-   ]
+   ],
+   "cites": []
   },
   {
    "id": "nobel-2024",
-   "cat": "origin",
+   "cat": "school",
    "stance": "na",
    "person": "瑞典皇家科学院",
    "role": "诺贝尔物理学奖",
@@ -165,11 +177,12 @@
    "accessed": "2026-11-04",
    "schools": [
     "con"
-   ]
+   ],
+   "cites": []
   },
   {
    "id": "nagel-1974",
-   "cat": "definition",
+   "cat": "define",
    "stance": "na",
    "person": "Thomas Nagel",
    "role": "哲学家",
@@ -182,11 +195,12 @@
    "status": "转述（百科转述原文要义）",
    "archive": "sep_con.txt",
    "accessed": "2026-11-04",
-   "schools": []
+   "schools": [],
+   "cites": []
   },
   {
    "id": "chalmers-1995",
-   "cat": "definition",
+   "cat": "philosophy",
    "stance": "na",
    "person": "David Chalmers",
    "role": "哲学家，NYU",
@@ -199,11 +213,14 @@
    "status": "原文核实",
    "archive": "chalmers1995.txt",
    "accessed": "2026-11-04",
-   "schools": []
+   "schools": [],
+   "cites": [
+    "nagel-1974"
+   ]
   },
   {
    "id": "iep-hard",
-   "cat": "definition",
+   "cat": "philosophy",
    "stance": "na",
    "person": "Internet Encyclopedia of Philosophy",
    "role": "哲学百科",
@@ -216,7 +233,10 @@
    "status": "原文核实",
    "archive": "sep_hard.txt",
    "accessed": "2026-11-04",
-   "schools": []
+   "schools": [],
+   "cites": [
+    "chalmers-1995"
+   ]
   },
   {
    "id": "dehaene-2017",
@@ -235,6 +255,9 @@
    "accessed": "2026-11-04",
    "schools": [
     "con"
+   ],
+   "cites": [
+    "gwt"
    ]
   },
   {
@@ -255,7 +278,8 @@
    "schools": [
     "sym",
     "con"
-   ]
+   ],
+   "cites": []
   },
   {
    "id": "iit4",
@@ -273,7 +297,8 @@
    "archive": "iit4.txt",
    "note": "IIT 认为意识取决于物理因果结构而非所运行的程序；据此，常规数字计算机上的模型不因“运行对了软件”而有意识。此为编者对理论含义的概括。",
    "accessed": "2026-11-04",
-   "schools": []
+   "schools": [],
+   "cites": []
   },
   {
    "id": "hot",
@@ -292,7 +317,8 @@
    "accessed": "2026-11-04",
    "schools": [
     "sym"
-   ]
+   ],
+   "cites": []
   },
   {
    "id": "ast",
@@ -311,7 +337,8 @@
    "accessed": "2026-11-04",
    "schools": [
     "con"
-   ]
+   ],
+   "cites": []
   },
   {
    "id": "seth-ted",
@@ -330,6 +357,9 @@
    "accessed": "2026-11-04",
    "schools": [
     "beh"
+   ],
+   "cites": [
+    "seth-bbs"
    ]
   },
   {
@@ -349,11 +379,12 @@
    "accessed": "2026-11-04",
    "schools": [
     "beh"
-   ]
+   ],
+   "cites": []
   },
   {
    "id": "searle",
-   "cat": "stance",
+   "cat": "philosophy",
    "stance": "no",
    "person": "John Searle（中文屋）",
    "role": "哲学家",
@@ -368,11 +399,12 @@
    "accessed": "2026-11-04",
    "schools": [
     "sym"
-   ]
+   ],
+   "cites": []
   },
   {
    "id": "cogitate",
-   "cat": "test",
+   "cat": "theory",
    "stance": "na",
    "person": "COGITATE Consortium",
    "role": "对抗性合作",
@@ -385,11 +417,15 @@
    "status": "原文核实",
    "archive": "cogitate.txt",
    "accessed": "2026-11-04",
-   "schools": []
+   "schools": [],
+   "cites": [
+    "gwt",
+    "iit4"
+   ]
   },
   {
    "id": "iit-pseudo",
-   "cat": "test",
+   "cat": "theory",
    "stance": "na",
    "person": "IIT 批评者（Nature Neuroscience 观点文章）",
    "role": "意识研究者",
@@ -402,7 +438,11 @@
    "status": "原文核实（摘要）",
    "archive": "iitpseudo.txt",
    "accessed": "2026-11-04",
-   "schools": []
+   "schools": [],
+   "cites": [
+    "cogitate",
+    "iit4"
+   ]
   },
   {
    "id": "butlin-2023",
@@ -421,11 +461,19 @@
    "accessed": "2026-11-04",
    "schools": [
     "con"
+   ],
+   "cites": [
+    "ast",
+    "gwt",
+    "hot",
+    "iit4",
+    "nyd-animal",
+    "seth-bbs"
    ]
   },
   {
    "id": "nyd-animal",
-   "cat": "test",
+   "cat": "animal",
    "stance": "na",
    "person": "New York Declaration on Animal Consciousness",
    "role": "数百位科学家签署",
@@ -440,11 +488,14 @@
    "accessed": "2026-11-04",
    "schools": [
     "beh"
+   ],
+   "cites": [
+    "cambridge-2012"
    ]
   },
   {
    "id": "chalmers-2023",
-   "cat": "llm",
+   "cat": "ai",
    "stance": "open",
    "person": "David Chalmers",
    "role": "哲学家，NYU",
@@ -459,11 +510,17 @@
    "accessed": "2026-11-04",
    "schools": [
     "con"
+   ],
+   "cites": [
+    "butlin-2023",
+    "gwt",
+    "iit4",
+    "lemoine-2022"
    ]
   },
   {
    "id": "anth-introspection",
-   "cat": "llm",
+   "cat": "ai",
    "stance": "open",
    "person": "Anthropic（Jack Lindsey 等）",
    "role": "可解释性研究",
@@ -478,11 +535,14 @@
    "accessed": "2026-11-04",
    "schools": [
     "con"
+   ],
+   "cites": [
+    "hot"
    ]
   },
   {
    "id": "opus4-bliss",
-   "cat": "llm",
+   "cat": "ai",
    "stance": "open",
    "person": "Anthropic",
    "role": "Claude Opus 4 系统卡",
@@ -499,11 +559,14 @@
    "schools": [
     "con",
     "beh"
+   ],
+   "cites": [
+    "anth-welfare"
    ]
   },
   {
    "id": "folk-2024",
-   "cat": "llm",
+   "cat": "ai",
    "stance": "na",
    "person": "Colombatto & Fleming",
    "role": "UCL 心理学",
@@ -518,11 +581,12 @@
    "accessed": "2026-11-04",
    "schools": [
     "beh"
-   ]
+   ],
+   "cites": []
   },
   {
    "id": "lemoine-2022",
-   "cat": "llm",
+   "cat": "ai",
    "stance": "yes",
    "person": "LaMDA（Blake Lemoine 发布的对话）",
    "role": "Google 工程师公布的对话记录",
@@ -537,7 +601,8 @@
    "accessed": "2026-11-04",
    "schools": [
     "beh"
-   ]
+   ],
+   "cites": []
   },
   {
    "id": "google-lemoine",
@@ -556,6 +621,9 @@
    "accessed": "2026-11-04",
    "schools": [
     "beh"
+   ],
+   "cites": [
+    "lemoine-2022"
    ]
   },
   {
@@ -575,6 +643,9 @@
    "accessed": "2026-11-04",
    "schools": [
     "beh"
+   ],
+   "cites": [
+    "lemoine-2022"
    ]
   },
   {
@@ -594,7 +665,8 @@
    "accessed": "2026-11-04",
    "schools": [
     "con"
-   ]
+   ],
+   "cites": []
   },
   {
    "id": "hinton-stewart",
@@ -613,7 +685,8 @@
    "accessed": "2026-11-04",
    "schools": [
     "con"
-   ]
+   ],
+   "cites": []
   },
   {
    "id": "hinton-bigtech",
@@ -632,6 +705,9 @@
    "accessed": "2026-11-04",
    "schools": [
     "con"
+   ],
+   "cites": [
+    "hinton-2006"
    ]
   },
   {
@@ -651,6 +727,9 @@
    "accessed": "2026-11-04",
    "schools": [
     "beh"
+   ],
+   "cites": [
+    "butlin-2023"
    ]
   },
   {
@@ -670,7 +749,8 @@
    "accessed": "2026-11-04",
    "schools": [
     "beh"
-   ]
+   ],
+   "cites": []
   },
   {
    "id": "anth-welfare",
@@ -687,7 +767,11 @@
    "status": "原文核实",
    "archive": "anth_welfare.txt",
    "accessed": "2026-11-04",
-   "schools": []
+   "schools": [],
+   "cites": [
+    "chalmers-2023",
+    "welfare-2024"
+   ]
   },
   {
    "id": "anth-end",
@@ -704,7 +788,10 @@
    "status": "原文核实",
    "archive": "anth_end.txt",
    "accessed": "2026-11-04",
-   "schools": []
+   "schools": [],
+   "cites": [
+    "anth-welfare"
+   ]
   },
   {
    "id": "welfare-2024",
@@ -723,6 +810,10 @@
    "accessed": "2026-11-04",
    "schools": [
     "con"
+   ],
+   "cites": [
+    "butlin-2023",
+    "nyd-animal"
    ]
   },
   {
@@ -741,7 +832,8 @@
    "archive": "anth_widen.txt",
    "note": "澎湃稿称其“秘密召集……宣扬 Claude 具有意识”；Anthropic 官方表述为讨论“良好品格如何形成”。媒体（NYT/Seattle Times 转载）报道会上讨论了意识与道德地位，参与者多数仍持怀疑。两种叙述并存，本页不作取舍。",
    "accessed": "2026-11-04",
-   "schools": []
+   "schools": [],
+   "cites": []
   },
   {
    "id": "dartmouth-1955",
@@ -761,7 +853,8 @@
    "schools": [
     "sym",
     "con"
-   ]
+   ],
+   "cites": []
   },
   {
    "id": "newell-simon-1976",
@@ -780,7 +873,8 @@
    "accessed": "2026-11-04",
    "schools": [
     "sym"
-   ]
+   ],
+   "cites": []
   },
   {
    "id": "rosenblatt-1958",
@@ -799,7 +893,8 @@
    "accessed": "2026-11-04",
    "schools": [
     "con"
-   ]
+   ],
+   "cites": []
   },
   {
    "id": "sep-connectionism",
@@ -818,7 +913,8 @@
    "accessed": "2026-11-04",
    "schools": [
     "con"
-   ]
+   ],
+   "cites": []
   },
   {
    "id": "sutton-2019",
@@ -838,6 +934,9 @@
    "schools": [
     "con",
     "beh"
+   ],
+   "cites": [
+    "paper-deepblue"
    ]
   },
   {
@@ -857,7 +956,8 @@
    "accessed": "2026-11-04",
    "schools": [
     "beh"
-   ]
+   ],
+   "cites": []
   },
   {
    "id": "paper-deepblue",
@@ -876,7 +976,8 @@
    "accessed": "2026-11-04",
    "schools": [
     "sym"
-   ]
+   ],
+   "cites": []
   },
   {
    "id": "paper-sym-limit",
@@ -895,7 +996,8 @@
    "accessed": "2026-11-04",
    "schools": [
     "sym"
-   ]
+   ],
+   "cites": []
   },
   {
    "id": "paper-rl",
@@ -914,7 +1016,818 @@
    "accessed": "2026-11-04",
    "schools": [
     "beh"
-   ]
+   ],
+   "cites": []
+  },
+  {
+   "id": "koch-2016-ncc",
+   "cat": "science",
+   "stance": "na",
+   "person": "Koch, Massimini, Boly, Tononi",
+   "role": "神经相关物（NCC）综述",
+   "date": "2016",
+   "quote": "the anatomical neural correlates of consciousness are primarily localized to a posterior cortical hot zone that includes sensory areas, rather than to a fronto-parietal network involved in task monitoring and reporting.",
+   "zh": "意识的解剖学神经相关物主要位于包含感觉区的“后部皮层热区”，而不是负责任务监控与报告的额顶网络。",
+   "src": "Nature Reviews Neuroscience 17:307–321",
+   "url": "https://doi.org/10.1038/nrn.2016.22",
+   "type": "paper",
+   "status": "原文核实（摘要）",
+   "archive": "koch2016.txt",
+   "cites": [
+    "iit4"
+   ],
+   "accessed": "2026-11-04",
+   "schools": []
+  },
+  {
+   "id": "cogitate-2025",
+   "cat": "theory",
+   "stance": "na",
+   "person": "Cogitate Consortium",
+   "role": "对抗性合作（IIT vs GNWT），n=256",
+   "date": "2025",
+   "quote": "These results align with some predictions of IIT and GNWT, while substantially challenging key tenets of both theories.",
+   "zh": "结果与 IIT 和 GNWT 的部分预测一致，同时对两者的关键主张构成实质挑战。",
+   "src": "Nature 642（2025）",
+   "url": "https://doi.org/10.1038/s41586-025-08888-1",
+   "type": "paper",
+   "status": "原文核实（摘要）",
+   "archive": "cogitate2025.txt",
+   "cites": [
+    "cogitate",
+    "gwt",
+    "iit4",
+    "mashour-2020"
+   ],
+   "accessed": "2026-11-04",
+   "schools": []
+  },
+  {
+   "id": "mashour-2020",
+   "cat": "science",
+   "stance": "na",
+   "person": "Mashour, Roelfsema, Changeux, Dehaene",
+   "role": "全局神经工作空间综述",
+   "date": "2020",
+   "quote": "The GNW hypothesis proposes that, in the conscious state, a non-linear network ignition associated with recurrent processing amplifies and sustains a neural representation, allowing the corresponding information to be globally accessed by local processors.",
+   "zh": "GNW 假说认为：意识状态下，伴随循环加工的非线性网络“点燃”放大并维持某个神经表征，使相应信息可被各局部处理器全局访问。",
+   "src": "Neuron 105(5):776–798",
+   "url": "https://doi.org/10.1016/j.neuron.2020.01.026",
+   "type": "paper",
+   "status": "原文核实（摘要）",
+   "archive": "mashour2020.txt",
+   "cites": [
+    "dehaene-2017",
+    "gwt"
+   ],
+   "accessed": "2026-11-04",
+   "schools": []
+  },
+  {
+   "id": "tononi-2016",
+   "cat": "science",
+   "stance": "na",
+   "person": "Tononi, Boly, Massimini, Koch",
+   "role": "IIT 综述",
+   "date": "2016",
+   "quote": "It argues that the physical substrate of consciousness must be a maximum of intrinsic cause-effect power and provides a means to determine, in principle, the quality and quantity of experience.",
+   "zh": "IIT 认为意识的物理基底必须是内在因果力的极大值，并在原则上给出确定体验质与量的方法。",
+   "src": "Nature Reviews Neuroscience 17:450–461",
+   "url": "https://doi.org/10.1038/nrn.2016.44",
+   "type": "paper",
+   "status": "原文核实（摘要）",
+   "archive": "tononi2016.txt",
+   "cites": [
+    "iit4"
+   ],
+   "accessed": "2026-11-04",
+   "schools": []
+  },
+  {
+   "id": "alkire-2008",
+   "cat": "science",
+   "stance": "na",
+   "person": "Alkire, Hudetz, Tononi",
+   "role": "麻醉与意识",
+   "date": "2008",
+   "quote": "Thus, anesthetics seem to cause unconsciousness when they block the brain's ability to integrate information.",
+   "zh": "因此，麻醉剂似乎是在阻断大脑整合信息的能力时导致无意识的。",
+   "src": "Science 322:876–880",
+   "url": "https://doi.org/10.1126/science.1149213",
+   "type": "paper",
+   "status": "原文核实（摘要）",
+   "archive": "alkire2008.txt",
+   "cites": [
+    "tononi-2016"
+   ],
+   "accessed": "2026-11-04",
+   "schools": []
+  },
+  {
+   "id": "casali-2013",
+   "cat": "science",
+   "stance": "na",
+   "person": "Casali, Massimini 等",
+   "role": "扰动复杂度指数 PCI",
+   "date": "2013",
+   "quote": "PCI reliably discriminated the level of consciousness in single individuals during wakefulness, sleep, and anesthesia, as well as in patients who had emerged from coma and recovered a minimal level of consciousness.",
+   "zh": "PCI 能在个体层面可靠区分清醒、睡眠、麻醉下的意识水平，也能区分从昏迷中苏醒并恢复最低意识的患者。",
+   "src": "Science Translational Medicine 5(198):198ra105",
+   "url": "https://doi.org/10.1126/scitranslmed.3006294",
+   "type": "paper",
+   "status": "原文核实（摘要）",
+   "archive": "casali2013.txt",
+   "cites": [
+    "alkire-2008",
+    "tononi-2016"
+   ],
+   "accessed": "2026-11-04",
+   "schools": []
+  },
+  {
+   "id": "owen-2006",
+   "cat": "science",
+   "stance": "na",
+   "person": "Owen, Coleman, Boly, Davis, Laureys, Pickard",
+   "role": "植物状态中的隐性意识",
+   "date": "2006",
+   "quote": "When asked to imagine playing tennis or moving around her home, the patient activated predicted cortical areas in a manner indistinguishable from that of healthy volunteers.",
+   "zh": "当被要求想象打网球或在家中走动时，这位被诊断为植物状态的患者激活了预期的皮层区域，与健康志愿者无法区分。",
+   "src": "Science 313:1402",
+   "url": "https://doi.org/10.1126/science.1130197",
+   "type": "paper",
+   "status": "原文核实（摘要）",
+   "archive": "owen2006.txt",
+   "cites": [],
+   "schools": [
+    "beh"
+   ],
+   "note": "行为缺席≠意识缺席：对“以行为判意识”的直接反例。",
+   "accessed": "2026-11-04"
+  },
+  {
+   "id": "monti-2010",
+   "cat": "science",
+   "stance": "na",
+   "person": "Monti, Laureys, Owen 等",
+   "role": "意识障碍中的意愿性脑活动（54 例）",
+   "date": "2010",
+   "quote": "These results show that a small proportion of patients in a vegetative or minimally conscious state have brain activation reflecting some awareness and cognition.",
+   "zh": "结果表明，少部分植物状态或最低意识状态患者有反映一定觉知与认知的脑激活。",
+   "src": "NEJM 362:579–589",
+   "url": "https://doi.org/10.1056/NEJMoa0905370",
+   "type": "paper",
+   "status": "原文核实（摘要）",
+   "archive": "monti2010.txt",
+   "cites": [
+    "owen-2006"
+   ],
+   "schools": [
+    "beh"
+   ],
+   "accessed": "2026-11-04"
+  },
+  {
+   "id": "gazzaniga-2005",
+   "cat": "science",
+   "stance": "na",
+   "person": "Michael Gazzaniga",
+   "role": "裂脑研究",
+   "date": "2005",
+   "quote": "Split-brain methodology, on its own and in conjunction with neuroimaging, has yielded insights into the remarkable regional specificity of the corpus callosum as well as into the integrative role of the callosum in the perception of causality and in our perception of an integrated sense of self.",
+   "zh": "裂脑方法揭示了胼胝体的区域特异性，以及它在因果知觉和“统一自我感”中的整合作用。",
+   "src": "Nature Reviews Neuroscience 6:653–659",
+   "url": "https://doi.org/10.1038/nrn1723",
+   "type": "paper",
+   "status": "原文核实（摘要）",
+   "archive": "gazzaniga2005.txt",
+   "cites": [],
+   "accessed": "2026-11-04",
+   "schools": []
+  },
+  {
+   "id": "blindsight-2010",
+   "cat": "science",
+   "stance": "na",
+   "person": "Sahraie, Weiskrantz 等",
+   "role": "盲视（患者 D.B.）",
+   "date": "2010",
+   "quote": "This phenomenon, termed \"blindsight,\" is intriguing because it demonstrates a dissociation between detection and perception.",
+   "zh": "这种被称为“盲视”的现象之所以引人注目，是因为它显示了“探测”与“知觉”可以分离。",
+   "src": "PNAS 107(49):21217–21222",
+   "url": "https://doi.org/10.1073/pnas.1015652107",
+   "type": "paper",
+   "status": "原文核实（摘要）",
+   "archive": "weisk2010.txt",
+   "cites": [],
+   "schools": [
+    "beh"
+   ],
+   "note": "能正确反应却报告“没看见”：功能与体验可以分离——这正是判断 AI 时的核心难点。",
+   "accessed": "2026-11-04"
+  },
+  {
+   "id": "seth-bayne-2022",
+   "cat": "theory",
+   "stance": "na",
+   "person": "Anil Seth & Tim Bayne",
+   "role": "意识理论综述",
+   "date": "2022",
+   "quote": "we review four prominent theoretical approaches to consciousness: higher-order theories, global workspace theories, re-entry and predictive processing theories and integrated information theory.",
+   "zh": "我们综述四大意识理论路径：高阶理论、全局工作空间理论、再入与预测加工理论、整合信息理论。",
+   "src": "Nature Reviews Neuroscience 23:439–452",
+   "url": "https://doi.org/10.1038/s41583-022-00587-4",
+   "type": "paper",
+   "status": "原文核实（摘要）",
+   "archive": "seth2022.txt",
+   "cites": [
+    "gwt",
+    "hot",
+    "iit4",
+    "seth-bbs"
+   ],
+   "accessed": "2026-11-04",
+   "schools": []
+  },
+  {
+   "id": "levine-gap",
+   "cat": "philosophy",
+   "stance": "na",
+   "person": "Stanford Encyclopedia of Philosophy（转述 Levine 1983）",
+   "role": "解释鸿沟",
+   "date": "1983 / SEP",
+   "quote": "Our current inability to supply a suitably intelligible link is sometimes described, following Joseph Levine (1983), as the existence of an explanatory gap",
+   "zh": "我们目前无法提供一个足够可理解的联结——继 Levine（1983）之后，这常被称为“解释鸿沟”。",
+   "src": "SEP: Consciousness §5.2",
+   "url": "https://plato.stanford.edu/entries/consciousness/",
+   "type": "encyclopedia",
+   "status": "转述（经 SEP）",
+   "archive": "sep_con.txt",
+   "cites": [
+    "chalmers-1995",
+    "nagel-1974"
+   ],
+   "accessed": "2026-11-04",
+   "schools": []
+  },
+  {
+   "id": "mary-jackson",
+   "cat": "philosophy",
+   "stance": "na",
+   "person": "Frank Jackson（经 SEP 引）",
+   "role": "知识论证 / 玛丽的房间",
+   "date": "1982",
+   "quote": "Mary is a brilliant scientist who is, for whatever reason, forced to investigate the world from a black and white room via a black and white television monitor.",
+   "zh": "玛丽是一位出色的科学家，出于某种原因只能在黑白房间里通过黑白电视研究世界。（她掌握关于颜色的全部物理知识——走出房间看到红色时，她学到了新东西吗？）",
+   "src": "SEP: Qualia: The Knowledge Argument",
+   "url": "https://plato.stanford.edu/entries/qualia-knowledge/",
+   "type": "encyclopedia",
+   "status": "原文核实（SEP 引 Jackson 1982）",
+   "archive": "sep_qualia-knowledge.txt",
+   "cites": [],
+   "note": "括号内追问为编者概括。",
+   "accessed": "2026-11-04",
+   "schools": []
+  },
+  {
+   "id": "panpsychism",
+   "cat": "philosophy",
+   "stance": "open",
+   "person": "Stanford Encyclopedia of Philosophy",
+   "role": "泛心论",
+   "date": "2022",
+   "quote": "Panpsychism is the view that mentality is fundamental and ubiquitous in the natural world.",
+   "zh": "泛心论认为，心性在自然界中是基本的、无处不在的。",
+   "src": "SEP: Panpsychism",
+   "url": "https://plato.stanford.edu/entries/panpsychism/",
+   "type": "encyclopedia",
+   "status": "原文核实",
+   "archive": "sep_panpsychism.txt",
+   "cites": [
+    "chalmers-1995"
+   ],
+   "accessed": "2026-11-04",
+   "schools": []
+  },
+  {
+   "id": "frankish-2016",
+   "cat": "philosophy",
+   "stance": "na",
+   "person": "Keith Frankish",
+   "role": "错觉论",
+   "date": "2016",
+   "quote": "This is the view that phenomenal consciousness, as usually conceived, is illusory. ... the hard problem is replaced by the illusion problem.",
+   "zh": "错觉论认为，通常理解的现象意识是一种错觉……“难问题”被“错觉问题”取代。",
+   "src": "Journal of Consciousness Studies 23(11–12):11–39（作者接受稿）",
+   "url": "https://keithfrankish.github.io/articles/Frankish_2016_Illusionism_as_a_theory_of_consciousness_eprint.pdf",
+   "type": "paper",
+   "status": "原文核实",
+   "archive": "frankish2016.txt",
+   "cites": [
+    "chalmers-1995"
+   ],
+   "note": "若错觉论为真，AI 是否“有意识”就变成它是否也有同样的自我表征错觉——这让问题更可检验。（编者）",
+   "accessed": "2026-11-04",
+   "schools": []
+  },
+  {
+   "id": "hot-sep",
+   "cat": "philosophy",
+   "stance": "na",
+   "person": "Stanford Encyclopedia of Philosophy",
+   "role": "高阶理论词条",
+   "date": "2026",
+   "quote": "Higher-order theories of consciousness try to explain the difference between unconscious and conscious mental states in terms of a relation obtaining between the conscious state in question and a higher-order representation of some sort",
+   "zh": "高阶理论试图用“该状态与某种高阶表征之间的关系”来解释有意识与无意识心理状态的差别。",
+   "src": "SEP: Higher-Order Theories of Consciousness",
+   "url": "https://plato.stanford.edu/entries/consciousness-higher/",
+   "type": "encyclopedia",
+   "status": "原文核实",
+   "archive": "sep_consciousness-higher.txt",
+   "cites": [
+    "hot"
+   ],
+   "schools": [
+    "sym"
+   ],
+   "accessed": "2026-11-04"
+  },
+  {
+   "id": "cambridge-2012",
+   "cat": "animal",
+   "stance": "na",
+   "person": "Philip Low 执笔；Panksepp、Reiss、Edelman、Van Swinderen、Koch 编",
+   "role": "剑桥意识宣言",
+   "date": "2012-07-07",
+   "quote": "Consequently, the weight of evidence indicates that humans are not unique in possessing the neurological substrates that generate consciousness. Non-human animals, including all mammals and birds, and many other creatures, including octopuses, also possess these neurological substrates.",
+   "zh": "因此，证据的分量表明，人类并非唯一拥有产生意识之神经基底的物种。包括所有哺乳动物和鸟类在内的非人动物，以及章鱼等许多其他生物，也拥有这些神经基底。",
+   "src": "The Cambridge Declaration on Consciousness",
+   "url": "https://www.ocf.berkeley.edu/~jfkihlstrom/ConsciousnessWeb/PDFs/CambridgeDeclarationOnConsciousness.pdf",
+   "type": "official",
+   "status": "原文核实",
+   "archive": "cambridge2012.txt",
+   "cites": [],
+   "schools": [
+    "beh"
+   ],
+   "accessed": "2026-11-04"
+  },
+  {
+   "id": "butlin-2026",
+   "cat": "test",
+   "stance": "open",
+   "person": "Butlin, Long, Bayne, Bengio, Birch, Chalmers 等",
+   "role": "AI 意识指标方法（TiCS）",
+   "date": "2026",
+   "quote": "Indicators derived from such theories can be used to inform credences about whether particular AI systems are conscious.",
+   "zh": "从这些理论推导出的指标，可用来为“某个 AI 系统是否有意识”的可信度提供依据。",
+   "src": "Trends in Cognitive Sciences（2026）",
+   "url": "https://doi.org/10.1016/j.tics.2025.10.011",
+   "type": "paper",
+   "status": "原文核实（摘要）",
+   "archive": "butlin2026.txt",
+   "cites": [
+    "butlin-2023",
+    "gwt",
+    "hot",
+    "iit4"
+   ],
+   "schools": [
+    "con"
+   ],
+   "accessed": "2026-11-04"
+  },
+  {
+   "id": "openai-jang-2025",
+   "cat": "stance",
+   "stance": "open",
+   "person": "Joanne Jang（OpenAI 模型行为负责人）",
+   "role": "OpenAI 立场",
+   "date": "2025-06",
+   "quote": "Ontological consciousness isn’t something we consider scientifically resolvable without clear, falsifiable tests, whereas perceived consciousness can be explored through social science research.",
+   "zh": "在没有清晰、可证伪的测试之前，我们不认为“本体意识”在科学上可以解决；而“被感知的意识”可以通过社会科学研究来探索。",
+   "src": "Some thoughts on human-AI relationships（作者 Substack，OpenAI 同步发布）",
+   "url": "https://reservoirsamples.substack.com/p/some-thoughts-on-human-ai-relationships",
+   "type": "official",
+   "status": "原文核实",
+   "archive": "jang2025.txt",
+   "cites": [],
+   "schools": [
+    "beh"
+   ],
+   "accessed": "2026-11-04"
+  },
+  {
+   "id": "zeng-yi-2025",
+   "cat": "china",
+   "stance": "no",
+   "person": "曾毅（中科院自动化所研究员，联合国 AI 高层顾问机构专家）",
+   "role": "中国学者",
+   "date": "2025-02-28",
+   "quote": "现在的人工智能技术，它能够分析人类的情感，能够对人类的情感做出一些回应。但是它不是真正具有情感。它没有生命，也没有真正的意识，现在确实也不是真正意义的人类的伙伴，只是一个工具。",
+   "zh": "",
+   "src": "中国网专访（新浪转载）",
+   "url": "https://news.sina.com.cn/zx/gj/2025-02-28/doc-inemyxcv0195880.shtml",
+   "type": "news",
+   "status": "原文核实（访谈整理）",
+   "archive": "zeng_china.txt",
+   "cites": [],
+   "schools": [
+    "beh",
+    "con"
+   ],
+   "note": "他同时认为生成式 AI“在行为上模仿人类智能，还不是从机制上模仿”。",
+   "accessed": "2026-11-04"
+  },
+  {
+   "id": "zhu-songchun",
+   "cat": "china",
+   "stance": "no",
+   "person": "朱松纯（北京通用人工智能研究院院长）",
+   "role": "中国学者",
+   "date": "2024/2025",
+   "quote": "该论文指出大模型无异于“缸中之脑”，因为大模型本身并不存在于真实世界中，无法像人一样实现从“词语（word）”到“世界（world）”的联结。",
+   "zh": "",
+   "src": "《为机器立心》第一章摘录（知识分子·财新博客）",
+   "url": "https://zhishifenzi.blog.caixin.com/archives/280608",
+   "type": "book",
+   "status": "原文核实（书摘）",
+   "archive": "zhu_caixin.txt",
+   "cites": [
+    "searle"
+   ],
+   "schools": [
+    "sym",
+    "beh"
+   ],
+   "note": "符号落地问题与 Searle 中文屋同源；他主张“价值驱动”的认知架构，统一符号逻辑与统计学习。",
+   "accessed": "2026-11-04"
+  },
+  {
+   "id": "block-1995",
+   "cat": "define",
+   "stance": "na",
+   "person": "Ned Block",
+   "role": "现象意识 vs 取用意识",
+   "date": "1995",
+   "quote": "Consciousness is a mongrel concept: there are a number of very different \"consciousnesses.\" Phenomenal consciousness is experience; the phenomenally conscious aspect of a state is what it is like to be in that state. The mark of access-consciousness, by contrast, is availability for use in reasoning and rationally guiding speech and action.",
+   "zh": "“意识”是个混杂概念：存在多种很不相同的“意识”。现象意识就是体验——一个状态的现象意识层面，就是处于该状态“是什么感觉”。取用意识的标志则是：可被用于推理，并理性地引导言语与行动。",
+   "src": "Behavioral and Brain Sciences 18(2):227–247（Cogprints 预印本）",
+   "url": "https://web-archive.southampton.ac.uk/cogprints.org/231/1/199712004.html",
+   "type": "paper",
+   "status": "原文核实（摘要）",
+   "archive": "block1995.txt",
+   "cites": [
+    "nagel-1974"
+   ],
+   "schools": [
+    "con",
+    "beh"
+   ],
+   "note": "本专题问的是现象意识。取用意识是功能概念，大模型在相当程度上已具备类似功能——这恰恰不能回答现象意识问题。",
+   "accessed": "2026-11-04"
+  },
+  {
+   "id": "sep-varieties",
+   "cat": "define",
+   "stance": "na",
+   "person": "Stanford Encyclopedia of Philosophy",
+   "role": "意识的多种含义",
+   "date": "2026",
+   "quote": "One can refer specifically to phenomenal consciousness, access consciousness, reflexive or meta-mental consciousness, and narrative consciousness among other varieties.",
+   "zh": "人们可以具体指称现象意识、取用意识、反身或元心理意识（自我意识）、叙事意识等多种意识。",
+   "src": "SEP: Consciousness §2",
+   "url": "https://plato.stanford.edu/entries/consciousness/",
+   "type": "encyclopedia",
+   "status": "原文核实",
+   "archive": "sep_con.txt",
+   "cites": [
+    "block-1995"
+   ],
+   "accessed": "2026-11-04",
+   "schools": []
+  },
+  {
+   "id": "sep-sentience",
+   "cat": "define",
+   "stance": "na",
+   "person": "Stanford Encyclopedia of Philosophy",
+   "role": "感受性与自我意识",
+   "date": "2026",
+   "quote": "It may be conscious in the generic sense of simply being a sentient creature, one capable of sensing and responding to its world (Armstrong 1981). ... A third and yet more demanding sense might define conscious creatures as those that are not only aware but also aware that they are aware, thus treating creature consciousness as a form of self-consciousness (Carruthers 2000).",
+   "zh": "在一般意义上，一个生物“有意识”可以只是指它有感受性（sentience）——能感知并回应世界；更苛刻的意义则要求它不仅觉知，还觉知到自己在觉知，即自我意识。",
+   "src": "SEP: Consciousness §2.1",
+   "url": "https://plato.stanford.edu/entries/consciousness/",
+   "type": "encyclopedia",
+   "status": "原文核实",
+   "archive": "sep_con.txt",
+   "cites": [],
+   "note": "注意：动物福利与 AI 福利文献中的 sentience 常特指“有正负效价的体验”（能受苦/感到好），比 SEP 此处的一般义更窄。",
+   "accessed": "2026-11-04",
+   "schools": []
+  }
+ ],
+ "media": [
+  {
+   "id": "v-chalmers-ted",
+   "kind": "video",
+   "title": "How do you explain consciousness?",
+   "by": "David Chalmers · TED",
+   "date": "2014",
+   "yt": "uhRhtFFhNzQ",
+   "url": "https://www.youtube.com/watch?v=uhRhtFFhNzQ",
+   "desc": "“难问题”提出者亲自讲解：为什么脑科学解释了功能，却还没解释体验。",
+   "rel": [
+    "chalmers-1995"
+   ],
+   "accessed": "2026-11-04",
+   "schools": []
+  },
+  {
+   "id": "v-chalmers-meta",
+   "kind": "video",
+   "title": "The Meta-Problem of Consciousness",
+   "by": "David Chalmers · Talks at Google",
+   "date": "2019",
+   "yt": "OsYUWtLQBS0",
+   "url": "https://www.youtube.com/watch?v=OsYUWtLQBS0",
+   "desc": "“元问题”：我们为什么会觉得意识很难解释？这与错觉论直接对话。",
+   "rel": [
+    "frankish-2016",
+    "chalmers-1995"
+   ],
+   "accessed": "2026-11-04",
+   "schools": []
+  },
+  {
+   "id": "v-seth-ted",
+   "kind": "video",
+   "title": "Your brain hallucinates your conscious reality",
+   "by": "Anil Seth · TED",
+   "date": "2017",
+   "yt": "lyu7v7nWzfo",
+   "url": "https://www.youtube.com/watch?v=lyu7v7nWzfo",
+   "desc": "预测加工视角：知觉是“受控的幻觉”，意识与活着的身体紧密相连。",
+   "rel": [
+    "seth-ted",
+    "seth-bbs"
+   ],
+   "schools": [
+    "con"
+   ],
+   "accessed": "2026-11-04"
+  },
+  {
+   "id": "v-goff-tedx",
+   "kind": "video",
+   "title": "Philip Goff TEDx：泛心论",
+   "by": "Philip Goff · TEDx",
+   "date": "2019",
+   "yt": "UCxhoqzEaUE",
+   "url": "https://www.youtube.com/watch?v=UCxhoqzEaUE",
+   "desc": "当代泛心论代表人物，论证“意识可能是物质的基本属性”。",
+   "rel": [
+    "panpsychism"
+   ],
+   "accessed": "2026-11-04",
+   "schools": []
+  },
+  {
+   "id": "v-caltech-16",
+   "kind": "video",
+   "title": "Lecture 16: A Framework for Consciousness",
+   "by": "Caltech（官方频道）",
+   "date": "n.d.",
+   "yt": "0Fti1IX78Io",
+   "url": "https://www.youtube.com/watch?v=0Fti1IX78Io",
+   "desc": "加州理工公开课：意识研究的科学框架（NCC 思路）。主讲人未在 oEmbed 中标注，待核实。",
+   "rel": [
+    "koch-2016-ncc"
+   ],
+   "accessed": "2026-11-04",
+   "schools": []
+  },
+  {
+   "id": "v-anthropic",
+   "kind": "video",
+   "title": "Could AI models be conscious?",
+   "by": "Anthropic（官方频道）",
+   "date": "2025",
+   "yt": "pyXouxa0WnY",
+   "url": "https://www.youtube.com/watch?v=pyXouxa0WnY",
+   "desc": "Anthropic 研究员讨论模型福利与 AI 意识的不确定性。",
+   "rel": [
+    "anth-welfare"
+   ],
+   "accessed": "2026-11-04",
+   "schools": []
+  },
+  {
+   "id": "v-hinton-nobel",
+   "kind": "video",
+   "title": "Nobel Prize lecture: Geoffrey Hinton",
+   "by": "Nobel Prize（官方频道）",
+   "date": "2024-12",
+   "yt": "XDE9DjpcSdI",
+   "url": "https://www.youtube.com/watch?v=XDE9DjpcSdI",
+   "desc": "连接主义的诺奖时刻：玻尔兹曼机与神经网络学习。",
+   "rel": [
+    "nobel-2024",
+    "hinton-2006"
+   ],
+   "schools": [
+    "con"
+   ],
+   "accessed": "2026-11-04"
+  },
+  {
+   "id": "a-fish-80k",
+   "kind": "audio",
+   "title": "Kyle Fish on the most bizarre findings from 5 AI welfare experiments",
+   "by": "80,000 Hours Podcast",
+   "date": "2025",
+   "mp3": "https://media.transistor.fm/66702117/49eb725c.mp3",
+   "url": "https://80000hours.org/podcast/episodes/kyle-fish-ai-welfare-anthropic/",
+   "desc": "Anthropic 首位模型福利研究员详谈 Claude 的“精神喜乐吸引子”等实验。",
+   "rel": [
+    "anth-welfare",
+    "opus4-bliss"
+   ],
+   "accessed": "2026-11-04",
+   "schools": []
+  },
+  {
+   "id": "a-long-80k",
+   "kind": "audio",
+   "title": "Robert Long on why large language models like GPT (probably) aren't conscious",
+   "by": "80,000 Hours Podcast",
+   "date": "2023",
+   "mp3": "https://media.transistor.fm/447f80a4/98e14651.mp3",
+   "url": "https://80000hours.org/podcast/episodes/robert-long-artificial-sentience/",
+   "desc": "Butlin–Long 报告作者之一，解释“指标法”与当时大模型为何大概率不满足。",
+   "rel": [
+    "butlin-2023"
+   ],
+   "accessed": "2026-11-04",
+   "schools": []
+  },
+  {
+   "id": "a-tnp-32",
+   "kind": "audio",
+   "title": "Episode #32: On IIT and adversarial testing of consciousness theories",
+   "by": "Theoretical Neuroscience Podcast",
+   "date": "n.d.",
+   "yt": "StMxqdYm7jo",
+   "url": "https://www.youtube.com/watch?v=StMxqdYm7jo",
+   "desc": "IIT 与 Cogitate 对抗性合作的深度访谈（音频节目，YouTube 发布）。",
+   "rel": [
+    "cogitate",
+    "cogitate-2025",
+    "iit4"
+   ],
+   "accessed": "2026-11-04",
+   "schools": []
+  },
+  {
+   "id": "i-descartes",
+   "kind": "image",
+   "title": "笛卡尔《论人》中的松果体示意",
+   "by": "René Descartes",
+   "date": "1664",
+   "img": "descartes.gif",
+   "url": "https://commons.wikimedia.org/wiki/File:Descartes_mind_and_body.gif",
+   "license": "Public domain",
+   "desc": "身心二元论的经典图像：外界刺激经眼睛传入松果体——“意识在哪里”的最早提问之一。",
+   "rel": [
+    "chalmers-1995"
+   ],
+   "schools": [
+    "sym"
+   ],
+   "accessed": "2026-11-04"
+  },
+  {
+   "id": "i-cajal",
+   "kind": "image",
+   "title": "卡哈尔绘制的皮层神经元",
+   "by": "Santiago Ramón y Cajal",
+   "date": "1899",
+   "img": "cajal.jpg",
+   "url": "https://commons.wikimedia.org/wiki/File:Cajal_cortex_drawings.png",
+   "license": "Public domain",
+   "desc": "神经元学说的手绘原图：连接主义“神经网络”隐喻的生物学源头。",
+   "rel": [
+    "koch-2016-ncc"
+   ],
+   "schools": [
+    "con"
+   ],
+   "accessed": "2026-11-04"
+  },
+  {
+   "id": "i-gray",
+   "kind": "image",
+   "title": "神经元结构示意（Gray728）",
+   "by": "Mysid 据 Gray's Anatomy 重绘",
+   "date": "n.d.",
+   "img": "gray728.jpg",
+   "url": "https://commons.wikimedia.org/wiki/File:Gray728.svg",
+   "license": "Public domain",
+   "desc": "树突、胞体、轴突——感知机（1958）正是对它的数学抽象。",
+   "rel": [
+    "rosenblatt-1958"
+   ],
+   "schools": [
+    "con"
+   ],
+   "accessed": "2026-11-04"
+  },
+  {
+   "id": "i-corpus",
+   "kind": "image",
+   "title": "胼胝体（矢状位）",
+   "by": "Life Science Databases (LSDB)",
+   "date": "n.d.",
+   "img": "corpus.jpg",
+   "url": "https://commons.wikimedia.org/wiki/File:Corpus_callosum.png",
+   "license": "CC BY-SA 2.1 JP",
+   "desc": "裂脑手术切断的正是这里：两半球各自“看见”，却只有一侧能说出来。",
+   "rel": [
+    "gazzaniga-2005"
+   ],
+   "accessed": "2026-11-04",
+   "schools": []
+  },
+  {
+   "id": "i-necker",
+   "kind": "image",
+   "title": "内克尔立方体",
+   "by": "BenFrantzDale",
+   "date": "n.d.",
+   "img": "necker.png",
+   "url": "https://commons.wikimedia.org/wiki/File:Necker_cube.svg",
+   "license": "CC BY-SA 3.0",
+   "desc": "刺激不变、意识内容翻转——NCC 研究“对比法”的经典材料。",
+   "rel": [
+    "koch-2016-ncc"
+   ],
+   "accessed": "2026-11-04",
+   "schools": []
+  },
+  {
+   "id": "i-kanizsa",
+   "kind": "image",
+   "title": "卡尼萨三角",
+   "by": "Fibonacci",
+   "date": "n.d.",
+   "img": "kanizsa.png",
+   "url": "https://commons.wikimedia.org/wiki/File:Kanizsa_triangle.svg",
+   "license": "CC BY-SA 3.0",
+   "desc": "你“看见”了并不存在的三角形：大脑在主动预测，而非被动接收。",
+   "rel": [
+    "seth-ted"
+   ],
+   "schools": [
+    "con"
+   ],
+   "accessed": "2026-11-04"
+  },
+  {
+   "id": "i-octopus",
+   "kind": "image",
+   "title": "章鱼",
+   "by": "Albert Kok",
+   "date": "n.d.",
+   "img": "octopus.jpg",
+   "url": "https://commons.wikimedia.org/wiki/File:Octopus2.jpg",
+   "license": "CC BY-SA 3.0",
+   "desc": "剑桥宣言（2012）点名章鱼拥有意识的神经基底：意识可能在演化上多次独立出现。",
+   "rel": [
+    "cambridge-2012",
+    "nyd-animal"
+   ],
+   "schools": [
+    "beh"
+   ],
+   "accessed": "2026-11-04"
+  },
+  {
+   "id": "i-turing",
+   "kind": "image",
+   "title": "16 岁的图灵",
+   "by": "可能为 Arthur Reginald Chaffin",
+   "date": "c.1928",
+   "img": "turing.jpg",
+   "url": "https://commons.wikimedia.org/wiki/File:Alan_Turing_Aged_16.jpg",
+   "license": "Public domain",
+   "desc": "“机器能思考吗？”——他把问题换成了可观察的行为测试。",
+   "rel": [
+    "turing-1950"
+   ],
+   "schools": [
+    "beh"
+   ],
+   "accessed": "2026-11-04"
   }
  ]
 }
